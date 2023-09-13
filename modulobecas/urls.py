@@ -17,8 +17,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from app_becas.views.signup import Signup
+from app_becas.views.signin import Signin
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('signup/', Signup.as_view(), name='signup')
+    path('signup/', Signup.as_view(), name='signup'),
+    path('signin/', Signin.as_view(), name='signin')
 ]
