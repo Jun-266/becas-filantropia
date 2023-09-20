@@ -19,6 +19,7 @@ from django.urls import path
 from app_becas.views.signup import Signup
 from app_becas.views.signin import Signin
 from app_becas.views.home import Home
+from app_becas.views.calendar import Calendar
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -26,4 +27,5 @@ urlpatterns = [
     path('home/', Home.as_view(), name='home'),
     path('signup/', Signup.as_view(), name='signup'),
     path('signout/', Home.signout, name='signout'),
+    path('calendar/', Calendar.as_view(), name='calendar'),
 ]
