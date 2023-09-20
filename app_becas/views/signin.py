@@ -20,4 +20,4 @@ class Signin(View):
             return HttpResponse('El usuario no existe')
         else:
             login(request, user)
-            return redirect('/')
+            return redirect('home/')

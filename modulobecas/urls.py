@@ -18,9 +18,12 @@ from django.contrib import admin
 from django.urls import path
 from app_becas.views.signup import Signup
 from app_becas.views.signin import Signin
+from app_becas.views.home import Home
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', Signin.as_view(), name=''),
+    path('home/', Home.as_view(), name='home'),
     path('signup/', Signup.as_view(), name='signup'),
-    path('signin/', Signin.as_view(), name='signin')
+    path('signout/', Home.signout, name='signout'),
 ]

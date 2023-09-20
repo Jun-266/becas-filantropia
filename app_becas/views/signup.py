@@ -13,7 +13,6 @@ class Signup(View):
             'form': UserCreationForm
         })
 
-
     def post(self, request):
         if request.POST['password1'] == request.POST['password2']:
             try:
@@ -21,9 +20,8 @@ class Signup(View):
                     username=request.POST['username'],
                     password=request.POST['password1'])
                 user.save()
-                return redirect('/signin')
+                return redirect('')
             except IntegrityError:
                 return HttpResponse('El usuario ya existe')
         else:
             return HttpResponse('Las contraseñas no son iguales')
-
