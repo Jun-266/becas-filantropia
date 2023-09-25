@@ -1,11 +1,12 @@
-from django.shortcuts import render
+from django import forms
+from django.shortcuts import render, redirect
 from django.views import View
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 
-
 @method_decorator(login_required, name='dispatch')
-class Calendar(View):
-    #init_date = 0
+class Add_calendar(View):
+
     def get(self, request):
-        return render(request, 'calendar.html')
+        return render(request, 'add_calendar.html')
+    
