@@ -5,7 +5,8 @@ from django.utils.decorators import method_decorator
 
 
 @method_decorator(login_required, name='dispatch')
-class Calendar(View):
-    #init_date = 0
+class Manage_user(View):
+
     def get(self, request):
-        return render(request, 'calendar.html')
+        return render(request, 'manage_user.html')
+    
