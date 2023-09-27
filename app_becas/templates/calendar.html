@@ -1,6 +1,10 @@
 {% extends 'layouts/base.html' %}
 
 {% block content %}
-    <h1>Página Calendar</h1>
-    <a href="{% url 'add_calendar' %}">Registrar Cronogramas</a>
+    <div class="container p-5">
+        <h1>Página Calendar</h1>
+        <a href="{% url 'add_calendar' %}" class="btn btn-primary">
+            Registrar Cronogramas
+        </a>
+    </div>
 {% endblock %}
