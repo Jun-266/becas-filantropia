@@ -4,6 +4,7 @@
 | 19-09-2023 | Di inicio al primer Sprint. Sin embargo, no desarrollé ninguna historia de usuario | Durante el día de hoy, empezaré a desarrollar al menos una de las actividades que me corresponden | Por el momento no he encontrado ningún impedimento. |
 | 20-09-2023 | Iniciar con el desarrollo de mis historias de usuario | Continuar con el desarrollo de las historias de usuario asignadas a mí | Tengo dudas sobre como implementar la funcionalidad de los reportes debido que, no tengo los datos suficientes |
 | 26-09-2023 | Adelantar la implementación de las vistas para los informes | Terminaré las vistas de los informes | Aún no he logrado la implementación para cargar archivos |
+| 27-09-2023 | Realice mucho refactor a las vistas del proyecto | Terminar de una vez por todas las vistas de los informes y la funcionalidad de cargar archivos | Necesitamos tiempo y más compromiso |
 
 ## Juan Lora
 
