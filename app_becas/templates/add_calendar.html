@@ -3,9 +3,12 @@
 {% block content %}
     <h1>Agregar un Cronograma</h1>
 
-    {{form.as_p}}
-    <button>
-        Save
-    </button>
+    <form method = "POST">
+        {% csrf_token %}
+        {{form.as_p}}
+        <button>
+            Guardar
+        </button>
+    </form>
 
 {% endblock %}
