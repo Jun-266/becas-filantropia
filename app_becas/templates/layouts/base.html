@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Modulo de becas</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+          rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar navbar-expand-sm bg-primary navbar-dark">
+        <div class="container-fluid">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="/home/">
+                        Inicio
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'scholarship' %}">
+                        Becas
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/reports/">
+                        Informes
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'manage_user' %}">
+                        Usuarios
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'calendar' %}">
+                        Cronogramas
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/signout/">
+                        Salir
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    {% block content %}
+    {% endblock %}
+
+    <!-- Plantillas para elementos HTML.
+    <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
+    </li>
+    -->
+</body>
+</html>

@@ -1,0 +1,28 @@
+{% extends 'layouts/base.html' %}
+
+{% block content %}
+    <div class="container p-5 my-3 border">
+        <h1 class="text-center">Gestión de informes</h1>
+        <ul class="nav justify-content-center">
+            <li class="nav-item">
+                <a href="generar-informe.html" rel="next" class="btn btn-primary m-2">
+                    Generar informe
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="informes-externos.html" rel="next" class="btn btn-primary m-2">
+                    Informes externos
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="mailto:" class="btn btn-primary m-2">
+                    Enviar informe
+                </a>
+            </li>
+        </ul>
+        <a href="{% url 'upload-report' %}" class="btn btn-primary">
+            Cargar Archivo
+        </a>
+    </div>
+
+{% endblock %}

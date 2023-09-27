@@ -1,18 +1,11 @@
-{% extends 'base.html' %}
+{% extends 'layouts/base.html' %}
 
 {% block content %}
     <h1>Agregar un Cronograma</h1>
 
-    <h2>FORMS con HTML</h2>
-    <form action="forms" method="post">
-        <label for="nombre">Nombre:</label>
-        <input type="text" name="name" id="nombre" placeholder="JuanLora"><br>
-        <label for="idEmail">Email:</label>
-        <input value="default@gmail.com" type="email" name="email" id="idEmail"><br>
-        <label for="idTextArea">Comentarios:</label> <br>
-        <textarea name="text" id="idTextArea" cols="30" rows="5"></textarea>
-        <br><button type="submit">subir/ aun no funciona</button>
-
-    </form>
+    {{form.as_p}}
+    <button>
+        Save
+    </button>
 
 {% endblock %}
