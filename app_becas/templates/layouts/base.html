@@ -8,33 +8,50 @@
           rel="stylesheet">
 </head>
 <body>
+    <nav class="navbar navbar-expand-sm bg-primary navbar-dark">
+        <div class="container-fluid">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="/home/">
+                        Inicio
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'scholarship' %}">
+                        Becas
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/reports/">
+                        Informes
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'manage_user' %}">
+                        Usuarios
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'calendar' %}">
+                        Cronogramas
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/signout/">
+                        Salir
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
 
-<nav>
-    <ul>
-        <li>
-            <a href="/signout/">Salir</a>
-        </li>
-        <li>
-            <a href="/home/">Inicio</a>
-        </li>
-        <li>
-            <a href="{% url 'scholarship' %}">Becas</a>
-        </li>
-        <li>
-            <a href="/reports/">
-                Gestión de Informes
-            </a>
-        </li>
-        <li>
-            <a href="{% url 'manage_user' %}">Gestión de usuarios</a>
-        </li>
-        <li>
-            <a href="{% url 'calendar' %}">Cronogramas</a>
-        </li>
-    </ul>
-</nav>
+    {% block content %}
+    {% endblock %}
 
-{% block content %}
-{% endblock %}
+    <!-- Plantillas para elementos HTML.
+    <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
+    </li>
+    -->
 </body>
 </html>

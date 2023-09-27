@@ -36,4 +36,5 @@ urlpatterns = [
     path('manage_user/', Manage_user.as_view(), name='manage_user'),
     path('scholarship/', Scholarship.as_view(), name='scholarship'),
     path('reports/', hr.home, name='reports'),
+    path('reports-upload/', hr.upload_report, name='upload-report')
 ]
