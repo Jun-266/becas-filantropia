@@ -9,3 +9,11 @@ class Scholarship(View):
 
     def get(self, request):
         return render(request, 'scholarship.html')
+
+    def searchByName(name):
+        for scolarchip in self.becas:
+            if scolarchip["nombre"] == name:
+                return scolarchip
+            return None
+
+scolarchipFound = scolarchipFound.searchByName(scolarchipName)
