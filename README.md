@@ -14,6 +14,7 @@
 | 25-09-2023 | Creé las vistas básicas/generales de la aplicacion, el nav bar menu (resta el de gestión de informes, Jun lo hará) y creé un formulario con html para agregar un Cronograma| Crear un forms con Django para agregar cronograma | Necesito reafianzar los conceptos de Django forms, en primer lugar|
 | 26-09-2023 | Se creó una base del formulario usando django| Completar el formulario con los datos necesarios para agregar cronograma, además, establecer su metodo POST | Solucionados los previos|
 | 27-09-2023 | Configuré el formulario para funcionar con POST y se testeó manualmente con la DB| Terminar el formulario con todos los datos necesarios para agregar cronograma | time! |
+| 28-09-2023 | Modelo de calendario creado con sus campos de fecha| Buscar e implementar una alternativa para los campos de fecha en el formulario, para practidad del end-user, y optimización del metodo POST| La forma en la que se reciben los datos por POST, funciona, pero quizá es ineficiente y quedaría muy largo. Debe cambiarse |
 
 
 ## Jeison Lasprilla
