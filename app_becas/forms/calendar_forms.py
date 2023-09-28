@@ -1,7 +1,11 @@
 from django import forms
-from datetime import date
 
 class Form_add_calendar(forms.Form):
-    inscription_start_date = forms.CharField(label= "Fecha de inicio de la Inscripción", max_length=200)
-    inscription_deadline = forms.CharField(label= "Fecha de terminación de la Inscripción", max_length=200)
+    inscription_start_date = forms.DateField(label= "Inicio de la Inscripción", widget=forms.SelectDateWidget)
+    inscription_deadline = forms.DateField(label= "Fin de la Inscripción", widget=forms.SelectDateWidget)
     selection_start_date = forms.DateField(label= "Inicio de la Selección de participantes", widget=forms.SelectDateWidget)
+    selection_deadline = forms.DateField(label= "Fin de la Selección de participantes", widget=forms.SelectDateWidget)
+    interview_start_date = forms.DateField(label= "Inicio de Entrevistas a participantes", widget=forms.SelectDateWidget)
+    interview_deadline = forms.DateField(label= "Fin de la Entrevistas a participantes", widget=forms.SelectDateWidget)
+    publish_elected_start_date = forms.DateField(label= "Inicio de Publicación de resultados", widget=forms.SelectDateWidget)
+    publish_elected_deadline = forms.DateField(label= "Fin de Publicación de resultados", widget=forms.SelectDateWidget)

@@ -3,7 +3,7 @@ from django.views import View
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from app_becas.forms.calendar_forms import Form_add_calendar
-from app_becas.models import Calendar
+#from app_becas.models import Calendar
 from datetime import datetime
 
 
@@ -19,9 +19,8 @@ class Add_calendar(View):
     
     def post(self, request):
         #print(request.POST)
-        Calendar.objects.create(inscription_start_date =request.POST['inscription_start_date'],
-                                inscription_deadline = request.POST['inscription_deadline'],
-                                selection_start_date = datetime.strptime(request.POST['selection_start_date_year']+"-"+request.POST['selection_start_date_month']+"-"+request.POST['selection_start_date_day'], "%Y-%m-%d"))
+        #Calendar.objects.create(inscription_start_date = datetime.strptime(request.POST['inscription_start_date_year']+"-"+request.POST['inscription_start_date_month']+"-"+request.POST['inscription_start_date_day'], "%Y-%m-%d"),
+        #                        inscription_deadline = datetime.strptime(request.POST['inscription_start_date_year']+"-"+request.POST['inscription_start_date_month']+"-"+request.POST['inscription_start_date_day'], "%Y-%m-%d"))
         
         return redirect('')
         
