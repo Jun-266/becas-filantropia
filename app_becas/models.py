@@ -2,7 +2,6 @@ from django.db import models
 
 # Create your models here.
 class Calendar(models.Model):
-    id_beca = models.CharField( max_length=30)
     inscription_start_date = models.DateField()
     inscription_deadline = models.DateField()
     selection_start_date = models.DateField()
