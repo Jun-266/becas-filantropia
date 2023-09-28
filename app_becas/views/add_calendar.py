@@ -19,8 +19,8 @@ class Add_calendar(View):
     
     def post(self, request):
         #print(request.POST)
-        Calendar.objects.create(inscription_start_date = datetime.strptime(request.POST['inscription_start_date_year']+"-"+request.POST['inscription_start_date_month']+"-"+request.POST['inscription_start_date_day'], "%Y-%m-%d"),
-                                inscription_deadline = datetime.strptime(request.POST['inscription_deadline_year']+"-"+request.POST['inscription_deadline_month']+"-"+request.POST['inscription_deadline_day'], "%Y-%m-%d"))
+        #Calendar.objects.create(inscription_start_date = datetime.strptime(request.POST['inscription_start_date_year']+"-"+request.POST['inscription_start_date_month']+"-"+request.POST['inscription_start_date_day'], "%Y-%m-%d"),
+        #                        inscription_deadline = datetime.strptime(request.POST['inscription_deadline_year']+"-"+request.POST['inscription_deadline_month']+"-"+request.POST['inscription_deadline_day'], "%Y-%m-%d"))
         
         return redirect('')
         
