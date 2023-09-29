@@ -5,6 +5,7 @@
 | 20-09-2023 | Iniciar con el desarrollo de mis historias de usuario | Continuar con el desarrollo de las historias de usuario asignadas a mí | Tengo dudas sobre como implementar la funcionalidad de los reportes debido que, no tengo los datos suficientes |
 | 26-09-2023 | Adelantar la implementación de las vistas para los informes | Terminaré las vistas de los informes | Aún no he logrado la implementación para cargar archivos |
 | 27-09-2023 | Realice mucho refactor a las vistas del proyecto | Terminar de una vez por todas las vistas de los informes y la funcionalidad de cargar archivos | Necesitamos tiempo y más compromiso |
+| 28-09-2023 | Sigo desarrollando la funcionalidad para subir archivos | Terminar la funcionalidad de subir los archivos para implementar otra funcionalidad | Actualmente me encuentro sin internet en el lugar donde resido, entonces me veo limitado al uso de internet en la universidad para consultar documentación |
 
 ## Juan Lora
 
