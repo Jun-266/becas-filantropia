@@ -24,11 +24,11 @@
 | 25-09-2023 | Familiarizandome con el proyecto, solucioné algunos problemas con la cofiguración del proyecto en mi maquina| Iniciaré con la implementación del API_R6_2: Inicio de Sesión a través de Credenciales de la API de Banner | Aun no termino por definir si sea buena idea hacer el inicio de sesión dependiente de las Credenciales de la API de Banner|
 | 26-09-2023 | Hice un redireccionamiento a la pagina de la universidad para ingresar con banner| Relacionar los datos al ingresar en banner con el proyecto | Tenía problemas con la autenticación social con banner, encontré una solución que espero probar mañana|
 | 27-09-2023 | Intente realizar el inicio de sesión con un API REST o un OAuth con banner| Saltaré a otro requerimiento por ahora y organizaré el redireccionamiento a banner de manera opcional | Se dificulta los servicios de autenticación al no contar con información puntual de la universidad para hacer el API REST o OIDC|
-| 28-09-2023 |Inicié con el GES_USU_R6_1, creé el modelo y algunos usuarios de prueba con DB Browser| Terminaré la creación de usuarios de Filantropía y Apoyo Financiero | Se fué la energía por mi sector la mayoría del día lo que me impidió avanzar de la mejor forma, sin embargo se pudo cumplir con el día|
 
 ## Santiago Prado Larrarte
 | Fecha | ¿Qué he hecho desde el último daily SCRUM? | ¿Qué haré durante el día de hoy? | ¿He visto o encontrado algún impedimento? |
 | --- | --- | --- | --- |
 | 27-09-2023 | Solucione el problema que tenia con mi computador mac, por lo tanto este ultimo dia me puse al dia con el proyecto | Cree el metodo en la vista de   becas para buscar una beca por el nombre|Si, se debe crear la clase becas para ponerles los atributos y poderme a referir a el nombre de la beca, ya que, es necesario para mi feat de buscar beca por su nombre
+| 29-09-2023 | Repase un poco mas el proyecto y me puse al dia con algunas tareas que tenia | Cree el metodo en la vista de becas para añadir una nueva beca|La clase beca sigue sin estar definida, por lo tanto no es posible probar los metodos aun, el dia de mañana lo definire y pondre a prueba los metodos creados
 
 
