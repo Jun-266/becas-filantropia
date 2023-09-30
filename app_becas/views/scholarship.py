@@ -7,6 +7,8 @@ from django.utils.decorators import method_decorator
 @method_decorator(login_required, name='dispatch')
 class Scholarship(View):
 
+    becas =[]
+
     def get(self, request):
         return render(request, 'scholarship.html')
 
@@ -15,5 +17,12 @@ class Scholarship(View):
             if scolarchip["nombre"] == name:
                 return scolarchip
             return None
+
+    def addScolarchip(name,description,type,amount):
+        new_scolarchip = {"nombre": name, "descripción": description, "monto": amount}
+        becas.append(new_scolarchip)
+
+    print(f"Se ha agregado una nueva beca: {name}")
+
 
 scolarchipFound = scolarchipFound.searchByName(scolarchipName)
