@@ -1,3 +1,4 @@
+from typing import Any
 from django.shortcuts import render
 from django.views import View
 from django.contrib.auth.decorators import login_required
@@ -8,6 +9,12 @@ from django.utils.decorators import method_decorator
 class Scholarship(View):
 
     becas =[]
+
+    def __init__(self, name, description, type, amount):
+        self.name = name
+        self.description = description
+        self.type = type
+        self.amount = amount
 
     def get(self, request):
         return render(request, 'scholarship.html')
