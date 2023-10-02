@@ -3,17 +3,19 @@
 {% block content %}
     <div class="container p-5">
         <h1>Página Calendar</h1>
-        <a href="{% url 'add_calendar' %}" class="btn btn-primary">
+        <a href="{% url 'calendar_add' %}" class="btn btn-primary">
             Registrar Cronogramas
         </a>
     </div>
+
+    <div>Buscar una beca</div>
 
     <h2> Cronogramas creados</h2>
     {% for calendar in calendars %}
 
         <article class="card">
             <a href="{% url 'calendar' %}" class="btn btn-primary">
-                {{calendar}}
+                Para la beca: {{calendar.scholarship_id}}
             </a>
         </article>
 

@@ -5,9 +5,7 @@
 
     <form id="formID_add_calendar" class="container p-5" method = "POST">
         {% csrf_token %}
-        <!--{{form.as_p}}-->
-        <label for="name">Nombre del cronograma</label> <br>
-        <input type="text" id="name" name="name"><br>
+        
         <label for="calendar_type_id">ID del tipo de Convocatoria</label> <br>
         <input type="text" id="calendar_type_id" name="calendar_type_id"><br>
         <label for="scholarship_id">ID de la Beca</label> <br>
