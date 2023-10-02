@@ -1,8 +1,8 @@
 from django import forms
 
 class Form_add_calendar(forms.Form):
-    inscription_start_date = forms.DateField(label= "Inicio de la Inscripción", widget=forms.SelectDateWidget)
     '''
+    inscription_start_date = forms.DateField(label= "Inicio de la Inscripción", widget=forms.SelectDateWidget)
     inscription_deadline = forms.DateField(label= "Fin de la Inscripción", widget=forms.SelectDateWidget)
     selection_start_date = forms.DateField(label= "Inicio de la Selección de participantes", widget=forms.SelectDateWidget)
     selection_deadline = forms.DateField(label= "Fin de la Selección de participantes", widget=forms.SelectDateWidget)

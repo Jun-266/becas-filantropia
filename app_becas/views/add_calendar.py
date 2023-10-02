@@ -12,14 +12,21 @@ class Add_calendar(View):
 
 
     def get(self, request):
+        #Delete a record
+        #record = Calendar.objects.get(auto_id = 6)
+        #record.delete()
+
         #Show form
         return render(request, 'add_calendar.html',{
             'form': Form_add_calendar()
         })
     
     def post(self, request):
-        print(request.POST)
-        Calendar.objects.create(inscription_start_date = request.POST['inscription_s'],
+        
+        Calendar.objects.create(name =request.POST['name'],
+                                calendar_type_id = request.POST['calendar_type_id'],
+                                scholarship_id =request.POST['scholarship_id'],
+                                inscription_start_date = request.POST['inscription_s'],
                                 inscription_deadline = request.POST['inscription_d'],
                                 selection_start_date = request.POST['inscription_s'],
                                 selection_deadline = request.POST['selection_d'],

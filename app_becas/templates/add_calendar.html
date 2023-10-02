@@ -3,9 +3,16 @@
 {% block content %}
     <h1>Agregar un Cronograma</h1>
 
-    <form id="formID_add_calendar" method = "POST">
+    <form id="formID_add_calendar" class="container p-5" method = "POST">
         {% csrf_token %}
         <!--{{form.as_p}}-->
+        <label for="name">Nombre del cronograma</label> <br>
+        <input type="text" id="name" name="name"><br>
+        <label for="calendar_type_id">ID del tipo de Convocatoria</label> <br>
+        <input type="text" id="calendar_type_id" name="calendar_type_id"><br>
+        <label for="scholarship_id">ID de la Beca</label> <br>
+        <input type="text" id="scholarship_id" name="scholarship_id"><br>
+
         <label for="inscription_sd">Inicio de Inscripciones</label><br>  
         <input type="date" id="inscription_s" name="inscription_s" min="2023-01-01"><br>
         <label for="inscription_dl">Fin de Inscripciones</label><br>  
