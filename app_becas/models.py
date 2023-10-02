@@ -11,4 +11,4 @@ class Calendar(models.Model):
     publish_elected_start_date = models.DateField()
     publish_elected_deadline = models.DateField( )
     def __str__(self):
-        return self.name
+        return str(self.inscription_start_date)

@@ -21,7 +21,7 @@ class Add_calendar(View):
         print(request.POST)
         Calendar.objects.create(inscription_start_date = request.POST['inscription_s'],
                                 inscription_deadline = request.POST['inscription_d'],
-                                selection_start_date = request.POST['selection_s'],
+                                selection_start_date = request.POST['inscription_s'],
                                 selection_deadline = request.POST['selection_d'],
                                 interview_start_date = request.POST['interview_s'],
                                 interview_deadline = request.POST['interview_d'],

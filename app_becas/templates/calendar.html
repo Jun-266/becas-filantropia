@@ -7,4 +7,16 @@
             Registrar Cronogramas
         </a>
     </div>
+
+    <h2> Cronogramas creados</h2>
+    {% for calendar in calendars %}
+
+        <article class="card">
+            <a href="{% url 'calendar' %}" class="btn btn-primary">
+                {{calendar}}
+            </a>
+        </article>
+
+    {% endfor %}
+
 {% endblock %}
