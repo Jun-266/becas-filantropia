@@ -31,5 +31,6 @@
 | 27-09-2023 | Solucione el problema que tenia con mi computador mac, por lo tanto este ultimo dia me puse al dia con el proyecto | Cree el metodo en la vista de   becas para buscar una beca por el nombre|Si, se debe crear la clase becas para ponerles los atributos y poderme a referir a el nombre de la beca, ya que, es necesario para mi feat de buscar beca por su nombre
 | 29-09-2023 | Repase un poco mas el proyecto y me puse al dia con algunas tareas que tenia | Cree el metodo en la vista de becas para añadir una nueva beca|La clase beca sigue sin estar definida, por lo tanto no es posible probar los metodos aun, el dia de mañana lo definire y pondre a prueba los metodos creados 
 | 01-10-2023 | Planifique las tares que tengo que realizar | Cree la clase beca con los atributos de name,description,type y amount|Ya que cree la clase beca, ahora toca relacionarlo con el html y verificar que los metodos creados anteriormente, funcionen correctamente
+| 02-10-2023 | Me propuse realizar la estructura en html de las diferentes pestañas en la gestion de becas | Realice la estructura de html en la pestaña becas|No, me falta realizar la estructura de las demas pestañas de la gestion de becas y contectar los forms con la base de datos para realizar la prueba de los metodos
 
 
