@@ -4,7 +4,6 @@ from django.db import models
 class Calendar(models.Model):
     auto_id =  models.AutoField(primary_key = True)
     calendar_type_id = models.CharField(max_length=2)
-    name = models.CharField(max_length=30)
     scholarship_id = models.CharField(max_length=20)
     inscription_start_date = models.DateField()
     inscription_deadline = models.DateField()
@@ -15,4 +14,4 @@ class Calendar(models.Model):
     publish_elected_start_date = models.DateField()
     publish_elected_deadline = models.DateField( )
     def __str__(self):
-        return str(self.name)
+        return str(self.auto_id)
