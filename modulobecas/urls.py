@@ -22,6 +22,7 @@ from app_becas.views.home import Home
 from app_becas.views.calendar import Calendar
 from app_becas.views.add_calendar import Add_calendar
 from app_becas.views.manage_user import Manage_user
+from app_becas.views.manage_user_2 import Manage_user_2
 from app_becas.views.scholarship import Scholarship
 
 urlpatterns = [
@@ -34,4 +35,6 @@ urlpatterns = [
     path('add_calendar/', Add_calendar.as_view(), name='add_calendar'),
     path('manage_user/', Manage_user.as_view(), name='manage_user'),
     path('scholarship/', Scholarship.as_view(), name='scholarship'),
+    path('manage_user_2/', Manage_user_2.as_view(), name='manage_user_2'),
+    
 ]

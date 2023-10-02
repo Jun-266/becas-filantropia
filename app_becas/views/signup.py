@@ -3,7 +3,6 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.db import IntegrityError
-from django.http import HttpResponse
 
 
 class Signup(View):
@@ -22,6 +21,12 @@ class Signup(View):
                 user.save()
                 return redirect('')
             except IntegrityError:
-                return HttpResponse('El usuario ya existe')
+                return render(request, 'signup.html', {
+                    'form': UserCreationForm,
+                    'error': 'El usuario ya está registrado'
+                })
         else:
-            return HttpResponse('Las contraseñas no son iguales')
+            return render(request, 'signup.html', {
+                'form': UserCreationForm,
+                'error': 'Las contraseñas no son iguales'
+            })
