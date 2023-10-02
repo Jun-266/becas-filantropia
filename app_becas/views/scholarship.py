@@ -10,26 +10,16 @@ class Scholarship(View):
 
     becas =[]
 
-    def __init__(self, name, description, type, amount):
-        self.name = name
-        self.description = description
-        self.type = type
-        self.amount = amount
-
     def get(self, request):
         return render(request, 'scholarship.html')
 
     def searchByName(name):
-        for scolarchip in self.becas:
-            if scolarchip["nombre"] == name:
-                return scolarchip
+        for scholarship in self.becas:
+            if scholarship["nombre"] == name:
+                return scholarship
             return None
 
-    def addScolarchip(name,description,type,amount):
-        new_scolarchip = {"nombre": name, "descripción": description, "monto": amount}
-        becas.append(new_scolarchip)
-
-    print(f"Se ha agregado una nueva beca: {name}")
+    def addScholarship(name,description,type,amount):
+        new_scholarship = {"nombre": name, "descripción": description, "monto": amount}
 
 
-scolarchipFound = scolarchipFound.searchByName(scolarchipName)

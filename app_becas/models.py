@@ -1,3 +1,7 @@
 from django.db import models
 
-# Create your models here.
+class Scholarship(models.Model):
+    name = models.CharField
+    description = models.CharField(max_length=250)
+    amount = models.IntegerField()
+
