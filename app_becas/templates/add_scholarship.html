@@ -2,7 +2,7 @@
 
 {% block content %}
     <h1>Registrar una beca</h1>
-
+    
     <form id="formID_add_scholarship" class="container p-5" method="POST">
         {% csrf_token %}
         
@@ -17,8 +17,9 @@
 
         <label for="scholarship_type">Tipo de Beca</label><br>
         <select id="scholarship_type" name="type_scholarship">
-            {% for choice in form.type_scholarship %}
-                <option value="{{ choice.0 }}">{{ choice.1 }}</option>
+            
+            {% for choice in lista %}
+                <option >"{{choice}}"</option>
             {% endfor %}
         </select><br>
 

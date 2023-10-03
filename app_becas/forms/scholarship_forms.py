@@ -1,14 +1,14 @@
 from django import forms
 from app_becas.models import Scholarship 
 
-class ScholarshipForm(forms.ModelForm):
-        
+class ScholarshipForm(forms.Form):
+    #form = Scholarship()
     type_scholarship = forms.ChoiceField(
     choices=[('Excelencia', 'Excelencia'), ('Logros y Representantes', 'Logros y Representantes'),
                 ('Colaboradores', 'Colaboradores'), ('Especial', 'Especial'),
                 ('Familiar y Minorías', 'Familiar y Minorías')],
     label="Tipo de Beca"
-    
+
     )
 
 class Form_add_calendar(forms.Form):

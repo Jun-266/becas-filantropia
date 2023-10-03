@@ -11,14 +11,18 @@ from app_becas.forms.scholarship_forms import ScholarshipForm
 class Add_scholarship(View):
 
     def get(self, request):
-        form = ScholarshipForm()
+        
+        lista = [('Excelencia', 'Excelencia'), ('Logros y Representantes', 'Logros y Representantes'),
+                ('Colaboradores', 'Colaboradores'), ('Especial', 'Especial'),
+               ('Familiar y Minorías', 'Familiar y Minorías')]
+    
         return render(request, 'add_scholarship.html',{
-            'form': ScholarshipForm()
+            'lista': lista
         })
     
     def post (self,request):
 
-        Scholarship.objects.create(scholarship_id = request.POST['auto_id'],
+        Scholarship.objects.create(
                                    scholarship_name = request.POST['name'],
                                    scholarship_description = request.POST['description'],
                                    scholarship_amount = request.POST['amount'],
