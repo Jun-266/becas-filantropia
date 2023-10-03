@@ -1,17 +1,29 @@
-<h1>Crear Nueva Beca</h1>
-    
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Guardar Beca</button>
-</form>
+{% extends 'layouts/base.html' %}
 
-{% if form.errors %}
-<div class="errors">
-    <h2>Errores en el formulario:</h2>
-    <ul>
-        {% for field, errors in form.errors.items %}
-        <li>{{ field }}: {{ errors.0 }}</li>
-        {% endfor %}
-    </ul>
-</div>
+{% block content %}
+    <h1>Registrar una beca</h1>
+
+    <form id="formID_add_scholarship" class="container p-5" method="POST">
+        {% csrf_token %}
+        
+        <label for="scholarship_name">Nombre de la beca</label> <br>
+        <input type="text" id="scholarship_name" name="name"><br>
+
+        <label for="scholarship_description">Descripción</label><br>  
+        <input type="text" id="scholarship_description" name="description"><br>
+
+        <label for="scholarship_amount">Cobertura económica</label><br>  
+        <input type="number" id="scholarship_amount" name="amount"><br>
+
+        <label for="scholarship_type">Tipo de Beca</label><br>
+        <select id="scholarship_type" name="type_scholarship">
+            {% for choice in form.type_scholarship %}
+                <option value="{{ choice.0 }}">{{ choice.1 }}</option>
+            {% endfor %}
+        </select><br>
+
+        <button type="submit">
+            Guardar
+        </button>
+    </form>
+{% endblock %}

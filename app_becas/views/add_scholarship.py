@@ -12,14 +12,16 @@ class Add_scholarship(View):
 
     def get(self, request):
         form = ScholarshipForm()
-        return render(request, '')
+        return render(request, 'add_scholarship.html',{
+            'form': ScholarshipForm()
+        })
     
     def post (self,request):
 
-        form = ScholarshipForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('nombre_de_la_vista_o_url')
-        else:
-            return render(request, 'add_scholarship.html', {'form': form})
-    
+        Scholarship.objects.create(scholarship_id = request.POST['auto_id'],
+                                   scholarship_name = request.POST['name'],
+                                   scholarship_description = request.POST['description'],
+                                   scholarship_amount = request.POST['amount'],
+                                   scholarship_type = request.POST['type_scholaship'])
+        
+        return redirect(' ')
