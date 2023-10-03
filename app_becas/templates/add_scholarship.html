@@ -1,2 +1,17 @@
+<h1>Crear Nueva Beca</h1>
+    
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Guardar Beca</button>
+</form>
 
-<h1>dijiedjiedjiedjie</h1>
+{% if form.errors %}
+<div class="errors">
+    <h2>Errores en el formulario:</h2>
+    <ul>
+        {% for field, errors in form.errors.items %}
+        <li>{{ field }}: {{ errors.0 }}</li>
+        {% endfor %}
+    </ul>
+</div>
