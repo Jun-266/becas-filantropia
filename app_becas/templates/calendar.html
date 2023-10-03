@@ -8,17 +8,22 @@
         </a>
     </div>
 
-    <div>Buscar una beca</div>
+    <div class="container pl-5">Buscar una beca</div>
 
-    <h2> Cronogramas creados</h2>
-    {% for calendar in calendars %}
+    <h2 class="container pl-5"> Cronogramas creados</h2>
+    
+    {% load send_id %}
+    {% if calendar is defined %}
+        {% for calendar in calendars %}
+            <article class="card container p-5">
+                <a href="{% send_id calendar.auto_id  %}" class="btn btn-primary">
+                    Asociado a beca # {{calendar.scholarship_id}}
+                </a>
+            </article>
 
-        <article class="card">
-            <a href="{% url 'calendar' %}" class="btn btn-primary">
-                Para la beca: {{calendar.scholarship_id}}
-            </a>
-        </article>
-
-    {% endfor %}
+        {% endfor %}
+    {% else %}
+        <p>No existe ningún registro</p>
+    {% endif %}
 
 {% endblock %}

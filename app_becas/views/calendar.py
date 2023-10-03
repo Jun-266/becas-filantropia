@@ -1,3 +1,6 @@
+import urllib
+from django.shortcuts import redirect
+
 from django.shortcuts import render
 from django.views import View
 from django.contrib.auth.decorators import login_required
@@ -14,4 +17,17 @@ class Calendar(View):
         return render(request, 'calendar.html', {
             'calendars': calendars
         })
+    
+    def send_id(value):
+        params = {
+            'id': value,
+        }
+        url = 'calendar_show_info'
+
+        response = redirect(url)
+        if params:
+            query_string = urllib.urlencode(params)
+            response['Location'] += '?' + query_string
+        return redirect(response)
+        
         

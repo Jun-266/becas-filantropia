@@ -1,5 +1,13 @@
 {% extends 'layouts/base.html' %}
 
 {% block content %}
-    <h1>hola</h1>
-{% endblock}
+    <div class=" container p-5">
+        <h1>Cronograma asiganado a beca: {{calendar.scholarship_id}} </h1>
+        <p>ID: {{calendar.auto_id}}</p>
+        <p>Fecha de inicio: {{calendar.inscription_start_date}}</p><br>
+        
+    </div>
+    
+    
+
+{% endblock %}
