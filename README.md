@@ -18,6 +18,7 @@
 | 27-09-2023 | Configuré el formulario para funcionar con POST y se testeó manualmente con la DB| Terminar el formulario con todos los datos necesarios para agregar cronograma | time! |
 | 28-09-2023 | Modelo de calendario creado con sus campos de fecha| Buscar e implementar una alternativa para los campos de fecha en el formulario, para practidad del end-user, y optimización del metodo POST| La forma en la que se reciben los datos por POST, funciona, pero quizá es ineficiente y quedaría muy largo. Debe cambiarse |
 | 02-10-2023 | _(madrugada)_ Modifiqué el modelo del cronograma/calendario, además muestro los registros en la pantalla 'Calendar' y finalmente, cuando se clickean, se abre una nueva pantalla con la información del cronograma (Se empezó otra feature)| Dormir! y ya haré otro *daily-Scrum* ahora en la mañana temprano| No he podido enviar un objeto mediante la sintaxis jinja, lo máximo que consegui fue hacerlo pero sobre la misma view, y utilizando query|
+| 04-10-2023 | Explicación de git a compañeros y solución de dudas| Crear la función de buscar cronograma mediante su id, con metodo get, y mostrarlo en pantalla como único objeto de una lista | - |
 
 
 ## Jeison Lasprilla
