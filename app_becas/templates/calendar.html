@@ -8,10 +8,26 @@
         </a>
     </div>
 
-    <div class="container pl-5">Buscar una beca</div>
-
-    <h2 class="container pl-5"> Cronogramas creados</h2>
+    <div class="container pl-5">
+        <h3>Buscar una beca</h3>
+        <form id="form_search_calendar" method = "POST">
+            {% csrf_token %}
+            
+            <label for="search">icon.png *</label> 
+            <input type="text" id="to_search" name="to_search" placeholder="ID de la beca">
     
+            <button>
+                Buscar
+            </button>
+        </form> <br>
+    </div>
+    
+    <div class="container pl-5">
+        <h2 > Cronogramas:</h2>
+        <p>{{msg}}</p>
+    </div>
+    
+
     {% load send_id %}
     {% if calendar is defined %}
         {% for calendar in calendars %}

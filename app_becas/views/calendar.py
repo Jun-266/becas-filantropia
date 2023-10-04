@@ -14,10 +14,28 @@ class Calendar(View):
     def get(self, request):
          # calendar = list(Calendar.objects.values())
         calendars = Calendar_obj.objects.all()
+        msg_any = ""
         return render(request, 'calendar.html', {
-            'calendars': calendars
-        })
+            'calendars': calendars,
+            'msg': ""
+        }, )
     
+    def post(self, request):
+        
+        calendars = Calendar_obj.objects.filter(scholarship_id = request.POST['to_search']) 
+        
+        if calendars: 
+            return render(request, 'calendar.html', {
+                'calendars': calendars,
+                'msg': ""
+            })
+        else :
+            msg_error = "No se encontró ninguna coincidencia"
+            return render(request, 'calendar.html', {
+                'calendars': calendars, 
+                "msg": msg_error,
+            })
+        
     def send_id(value):
         params = {
             'id': value,
