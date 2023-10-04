@@ -5,6 +5,7 @@
 
     <form action="/manage_user_2/" method="POST">
         {% csrf_token %}
+        <input type="text" name="userId" placeholder="Identificación">
         <input type="text" name="name" placeholder="Nombre">
         <input type="text" name="lastname" placeholder="Apellido">
         <input type="email" name="email" placeholder="Correo electrónico">
