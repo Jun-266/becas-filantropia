@@ -7,6 +7,7 @@
 | 27-09-2023 | Realice mucho refactor a las vistas del proyecto | Terminar de una vez por todas las vistas de los informes y la funcionalidad de cargar archivos | Necesitamos tiempo y más compromiso |
 | 28-09-2023 | Sigo desarrollando la funcionalidad para subir archivos | Terminar la funcionalidad de subir los archivos para implementar otra funcionalidad | Actualmente me encuentro sin internet en el lugar donde resido, entonces me veo limitado al uso de internet en la universidad para consultar documentación |
 | 02-10-2023 | Estuve trabajando en la implementación de la funcionalidad para subir archivos. Sin embargo, debido a inconvenientes personales no he podido avanzar mucho | Implementar al menos una funcionalidad especificada en el tablero de Jira | Por el momento, mucha carga academica por mi parte |
+| 03-10-2023 | Implemente la funcionalidad para cargar archivos al programa. Sin embargo, aún quedan detalles por pulir y mejorar.| Implementaré al menos una funcionalidad pendiente en el tablero de SCRUM. | Para la funcionalidad de subir archivos, no encontré mucha documentación al respecto. |
 
 ## Juan Lora
 
