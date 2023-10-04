@@ -23,9 +23,9 @@ class Add_scholarship(View):
     def post (self,request):
 
         Scholarship.objects.create(
-                                   scholarship_name = request.POST['name'],
-                                   scholarship_description = request.POST['description'],
-                                   scholarship_amount = request.POST['amount'],
-                                   scholarship_type = request.POST['type_scholaship'])
+                                   name = request.POST['name'],
+                                   description = request.POST['description'],
+                                   amount = request.POST['amount'],
+                                   type_scholarship = request.POST['type_scholarship'])
         
-        return redirect(' ')
+        return redirect('')

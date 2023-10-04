@@ -4,9 +4,9 @@ from app_becas.models import Scholarship
 class ScholarshipForm(forms.Form):
     #form = Scholarship()
     type_scholarship = forms.ChoiceField(
-    choices=[('Excelencia', 'Excelencia'), ('Logros y Representantes', 'Logros y Representantes'),
-                ('Colaboradores', 'Colaboradores'), ('Especial', 'Especial'),
-                ('Familiar y Minorías', 'Familiar y Minorías')],
+    choices=[('Excelencia'), ('Logros y Representantes'),
+                ('Colaboradores'), ('Especial'),
+                ('Familiar y Minorías')],
     label="Tipo de Beca"
 
     )
