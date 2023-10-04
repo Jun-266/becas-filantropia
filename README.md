@@ -6,8 +6,6 @@
 | 26-09-2023 | Adelantar la implementación de las vistas para los informes | Terminaré las vistas de los informes | Aún no he logrado la implementación para cargar archivos |
 | 27-09-2023 | Realice mucho refactor a las vistas del proyecto | Terminar de una vez por todas las vistas de los informes y la funcionalidad de cargar archivos | Necesitamos tiempo y más compromiso |
 | 28-09-2023 | Sigo desarrollando la funcionalidad para subir archivos | Terminar la funcionalidad de subir los archivos para implementar otra funcionalidad | Actualmente me encuentro sin internet en el lugar donde resido, entonces me veo limitado al uso de internet en la universidad para consultar documentación |
-| 02-10-2023 | Estuve trabajando en la implementación de la funcionalidad para subir archivos. Sin embargo, debido a inconvenientes personales no he podido avanzar mucho | Implementar al menos una funcionalidad especificada en el tablero de Jira | Por el momento, mucha carga academica por mi parte |
-| 03-10-2023 | Implemente la funcionalidad para cargar archivos al programa. Sin embargo, aún quedan detalles por pulir y mejorar.| Implementaré al menos una funcionalidad pendiente en el tablero de SCRUM. | Para la funcionalidad de subir archivos, no encontré mucha documentación al respecto. |
 
 ## Juan Lora
 
@@ -18,7 +16,6 @@
 | 26-09-2023 | Se creó una base del formulario usando django| Completar el formulario con los datos necesarios para agregar cronograma, además, establecer su metodo POST | Solucionados los previos|
 | 27-09-2023 | Configuré el formulario para funcionar con POST y se testeó manualmente con la DB| Terminar el formulario con todos los datos necesarios para agregar cronograma | time! |
 | 28-09-2023 | Modelo de calendario creado con sus campos de fecha| Buscar e implementar una alternativa para los campos de fecha en el formulario, para practidad del end-user, y optimización del metodo POST| La forma en la que se reciben los datos por POST, funciona, pero quizá es ineficiente y quedaría muy largo. Debe cambiarse |
-| 02-10-2023 | _(madrugada)_ Modifiqué el modelo del cronograma/calendario, además muestro los registros en la pantalla 'Calendar' y finalmente, cuando se clickean, se abre una nueva pantalla con la información del cronograma (Se empezó otra feature)| Dormir! y ya haré otro *daily-Scrum* ahora en la mañana temprano| No he podido enviar un objeto mediante la sintaxis jinja, lo máximo que consegui fue hacerlo pero sobre la misma view, y utilizando query|
 
 
 ## Jeison Lasprilla
@@ -27,7 +24,6 @@
 | 25-09-2023 | Familiarizandome con el proyecto, solucioné algunos problemas con la cofiguración del proyecto en mi maquina| Iniciaré con la implementación del API_R6_2: Inicio de Sesión a través de Credenciales de la API de Banner | Aun no termino por definir si sea buena idea hacer el inicio de sesión dependiente de las Credenciales de la API de Banner|
 | 26-09-2023 | Hice un redireccionamiento a la pagina de la universidad para ingresar con banner| Relacionar los datos al ingresar en banner con el proyecto | Tenía problemas con la autenticación social con banner, encontré una solución que espero probar mañana|
 | 27-09-2023 | Intente realizar el inicio de sesión con un API REST o un OAuth con banner| Saltaré a otro requerimiento por ahora y organizaré el redireccionamiento a banner de manera opcional | Se dificulta los servicios de autenticación al no contar con información puntual de la universidad para hacer el API REST o OIDC|
-| 03-10-2023 | Cree la tabla app_becas_my_user en la base de datos y la vinculé con el django | Mejorar el diseño del html y subir al develop | Dificultades para hacer los reportes en el daily el mismo día |
 
 ## Santiago Prado Larrarte
 | Fecha | ¿Qué he hecho desde el último daily SCRUM? | ¿Qué haré durante el día de hoy? | ¿He visto o encontrado algún impedimento? |
@@ -36,5 +32,8 @@
 | 29-09-2023 | Repase un poco mas el proyecto y me puse al dia con algunas tareas que tenia | Cree el metodo en la vista de becas para añadir una nueva beca|La clase beca sigue sin estar definida, por lo tanto no es posible probar los metodos aun, el dia de mañana lo definire y pondre a prueba los metodos creados 
 | 01-10-2023 | Planifique las tares que tengo que realizar | Cree la clase beca con los atributos de name,description,type y amount|Ya que cree la clase beca, ahora toca relacionarlo con el html y verificar que los metodos creados anteriormente, funcionen correctamente
 | 02-10-2023 | Me propuse realizar la estructura en html de las diferentes pestañas en la gestion de becas | Realice la estructura de html en la pestaña becas|No, me falta realizar la estructura de las demas pestañas de la gestion de becas y contectar los forms con la base de datos para realizar la prueba de los metodos
+| 03-10-2023 | Realice la estructura de html de tres historias de usuario| Realice la estructura de html en la pestaña becas y en el de registrar nueva beca|No, me falta realizar la estructura de las demas pestañas de la gestion de becas y contectar los forms con la base de datos para realizar la prueba de los metodos
+| 04-10-2023 | Me propuse relizar dos funcionalidades y que se conectara el registro con la base de datos| Realice la funcionalidad de registro de becas y la generacion automatica del ID| No, por ahora no he encontrado un impedimento mas alla de conocer nuevas formas de realizar formularios y conectarlos con la base de datos
+
 
 
