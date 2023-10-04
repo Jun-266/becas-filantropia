@@ -12,5 +12,5 @@ class Calendar_show_info(View):
         calendar = Calendar_obj.objects.get(auto_id = request.GET['auto_id'])
         #calendar = self
         return render(request, 'calendar_show_info.html', {
-            'calendar': calendar
+            'calendar' : calendar
         })
