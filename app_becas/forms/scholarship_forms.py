@@ -8,7 +8,6 @@ class ScholarshipForm(forms.Form):
                 ('Colaboradores'), ('Especial'),
                 ('Familiar y Minorías')],
     label="Tipo de Beca"
-
     )
 
 class Form_add_calendar(forms.Form):
