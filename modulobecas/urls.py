@@ -1,25 +1,10 @@
-"""
-URL configuration for modulobecas project.
-
-The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/4.2/topics/http/urls/
-Examples:
-Function views
-    1. Add an import:  from my_app import views
-    2. Add a URL to urlpatterns:  path('', views.home, name='home')
-Class-based views
-    1. Add an import:  from other_app.views import Home
-    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
-Including another URLconf
-    1. Import the include() function: from django.urls import include, path
-    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
-"""
 from django.contrib import admin
 from django.urls import path
 from app_becas.views.signup import Signup
 from app_becas.views.signin import Signin
 from app_becas.views.home import Home
 import app_becas.views.reports as hr
+import app_becas.views.scholarship_type as sct
 from app_becas.views.calendar import Calendar
 from app_becas.views.calendar_add import Calendar_add
 from app_becas.views.calendar_show_info import Calendar_show_info
@@ -41,4 +26,5 @@ urlpatterns = [
     path('reports_upload/', hr.upload_report, name='upload_report'),
     path('reports_external/', hr.external_reports, name='external_reports'),
     path('reports_generate/', hr.generate_report, name='generate_report'),
+    path('scholarship_type/', sct.home_scholarship, name='scholarship_type_home'),
 ]

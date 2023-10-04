@@ -1,0 +1,15 @@
+{% extends 'layouts/base.html' %}
+
+{% block content %}
+    <div class="container text-center">
+        <h1 class="mt-2 mb-2">Tipos de becas</h1>
+        {% for sch_t in scholarship_types %}
+            <div class="clearfix border border-primary rounded">
+                <div class="float-start ms-2 mt-2">{{ sch_t }}</div>
+                <div class="float-end"><a class="btn">Eliminar</a></div>
+            </div>
+        {% endfor %}
+        <a class="btn btn-primary mt-2" href="{% url 'scholarship' %}">
+            Volver</a>
+    </div>
+{% endblock %}
