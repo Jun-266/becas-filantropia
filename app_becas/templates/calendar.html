@@ -14,17 +14,29 @@
             {% csrf_token %}
             
             <label for="search">icon.png *</label> 
-            <input type="text" id="to_search" name="to_search" placeholder="ID de la beca">
-    
-            <button>
+            {% if default_value_msg == "not-searched" %}
+                <input type="text" id="to_search" name="to_search" placeholder="ID de la beca" >
+            {% else %}
+                <input type="text" id="to_search" name="to_search" placeholder="ID de la beca" value={{default_value_msg}}>
+            {% endif%}
+            <button class="btn btn-secondary">
                 Buscar
             </button>
-        </form> <br>
+            {% if default_value_msg != "not-searched"%}
+                <a href="{{calendar}}" class="btn btn-warning">
+                    Limpiar búsqueda
+                </a>
+            {% endif%}
+        </form>
+        
+        <br><br>
+
     </div>
     
     <div class="container pl-5">
         <h2 > Cronogramas:</h2>
         <p>{{msg}}</p>
+        
     </div>
     
 

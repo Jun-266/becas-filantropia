@@ -2,11 +2,13 @@
 
 {% block content %}
     <div class=" container p-5">
-        <h1>Cronograma asiganado a beca: {{calendar.scholarship_id}} </h1>
+        <h1>Cronograma de la Beca: (ID){{calendar.scholarship_id}} </h1><br>
         
-        <p>ID: {{calendar.auto_id}}</p>
-        <p>Tipo: {{calendar.calendar_type_id}}</p>
-        <p> <span class="fw-bold">Inscripciones:</span> {{calendar.inscription_start_date}} - hasta - {{calendar.inscription_deadline}}</p><br>
+        <p><span class="fw-bold">Tipo: </span> {{calendar.calendar_type_id}}</p>
+        <p> <span class="fw-bold">Inscripciones: </span> {{calendar.inscription_start_date}} - {{calendar.inscription_deadline}}</p>
+        <p> <span class="fw-bold">Eleccion de participantes: </span> {{calendar.selection_start_date}} - {{calendar.selection_deadline}}</p>
+        <p> <span class="fw-bold">Entrevistas: </span> {{calendar.interview_start_date}} - {{calendar.interview_deadline}}</p>
+        <p> <span class="fw-bold">Publicación de studiantes electos: </span> {{calendar.publish_elected_start_date}} - {{calendar.publish_elected_deadline}}</p>
         
         
     </div>
