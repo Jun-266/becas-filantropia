@@ -38,4 +38,7 @@
 | 04-10-2023 | Me propuse relizar dos funcionalidades y que se conectara el registro con la base de datos| Realice la funcionalidad de registro de becas y la generacion automatica del ID| No, por ahora no he encontrado un impedimento mas alla de conocer nuevas formas de realizar formularios y conectarlos con la base de datos
 | 04-10-2023 | Pude realizar tres funcionalidad las cuales son: Generar ID automatico para las becas, registrar nueva beca y seleccionar tipo de beca| Realice el pull request de las tres funcionalidades y Voy a empezar a trabajar en la funcionalidad de registrar nuevo tipo de beca| No, por ahora no he encontrado ningun impedimento
 
-
+### Nota:
+Debido a inconvenientes con algunos compañeros, este archivo quedo modificado de tal forma que, hace parecer que 
+Jeison Lasprilla y mi persona (David Kim) no hemos hecho el reporte diario desde el 28 de Septiembre. Recomiendo revisar 
+el historial para confirmar de que hemos estado haciendo el reporte diario desde el 02 de Octubre. Gracias por su atención.
