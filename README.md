@@ -6,6 +6,7 @@
 | 26-09-2023 | Adelantar la implementación de las vistas para los informes | Terminaré las vistas de los informes | Aún no he logrado la implementación para cargar archivos |
 | 27-09-2023 | Realice mucho refactor a las vistas del proyecto | Terminar de una vez por todas las vistas de los informes y la funcionalidad de cargar archivos | Necesitamos tiempo y más compromiso |
 | 28-09-2023 | Sigo desarrollando la funcionalidad para subir archivos | Terminar la funcionalidad de subir los archivos para implementar otra funcionalidad | Actualmente me encuentro sin internet en el lugar donde resido, entonces me veo limitado al uso de internet en la universidad para consultar documentación |
+| 04-10-2023 | Estuve trabajando en la HU, P1MB-29. Sin embargo, por falta de comunicación con el equipo, mi trabajo fue desechado debido que, la funcionalidad la estaba desarrollando otro compañero. | Estuve trabajando brevemente en la HU, P1MB-34 | Por el momento ninguno. |
 
 ## Juan Lora
 
