@@ -25,6 +25,8 @@ from app_becas.views.calendar_add import Calendar_add
 from app_becas.views.calendar_show_info import Calendar_show_info
 from app_becas.views.manage_user import Manage_user
 from app_becas.views.scholarship import Scholarship
+from app_becas.views.add_scholarship import Add_scholarship
+from app_becas.views.all_scholarships import All_scholarships
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -41,4 +43,6 @@ urlpatterns = [
     path('reports_upload/', hr.upload_report, name='upload_report'),
     path('reports_external/', hr.external_reports, name='external_reports'),
     path('reports_generate/', hr.generate_report, name='generate_report'),
+    path('add_scholarship/', Add_scholarship.as_view(), name='add_scholarship'),
+    path('all_scholarships/', All_scholarships.as_view(), name ='all_scholarships')
 ]
