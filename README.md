@@ -28,6 +28,7 @@
 | 25-09-2023 | Familiarizandome con el proyecto, solucioné algunos problemas con la cofiguración del proyecto en mi maquina| Iniciaré con la implementación del API_R6_2: Inicio de Sesión a través de Credenciales de la API de Banner | Aun no termino por definir si sea buena idea hacer el inicio de sesión dependiente de las Credenciales de la API de Banner|
 | 26-09-2023 | Hice un redireccionamiento a la pagina de la universidad para ingresar con banner| Relacionar los datos al ingresar en banner con el proyecto | Tenía problemas con la autenticación social con banner, encontré una solución que espero probar mañana|
 | 27-09-2023 | Intente realizar el inicio de sesión con un API REST o un OAuth con banner| Saltaré a otro requerimiento por ahora y organizaré el redireccionamiento a banner de manera opcional | Se dificulta los servicios de autenticación al no contar con información puntual de la universidad para hacer el API REST o OIDC|
+| 05 -10 -2023 | Actualicé mi rama con los cambios de develop | Hacer el enum de los roles y organizar las opciones en una caja de selección. También iniciar con el modelo de donante | No he podido dedicar mucho tiempo al proyecto entre semana |
 
 ## Santiago Prado Larrarte
 | Fecha | ¿Qué he hecho desde el último daily SCRUM? | ¿Qué haré durante el día de hoy? | ¿He visto o encontrado algún impedimento? |
