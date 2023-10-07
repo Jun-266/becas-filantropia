@@ -28,4 +28,4 @@ class Add_scholarship(View):
                                    amount = request.POST['amount'],
                                    type_scholarship = request.POST['type_scholarship'])
         
-        return redirect('')
+        return redirect('scholarship')
