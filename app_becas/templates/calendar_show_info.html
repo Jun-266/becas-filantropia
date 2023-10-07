@@ -9,9 +9,13 @@
         <p> <span class="fw-bold">Eleccion de participantes: </span> {{calendar.selection_start_date}} - {{calendar.selection_deadline}}</p>
         <p> <span class="fw-bold">Entrevistas: </span> {{calendar.interview_start_date}} - {{calendar.interview_deadline}}</p>
         <p> <span class="fw-bold">Publicación de studiantes electos: </span> {{calendar.publish_elected_start_date}} - {{calendar.publish_elected_deadline}}</p>
+        <br>
         
+        <a href="{% url 'delete_calendar' %}" class="btn btn-warning">Eliminar Cronograma</a>
         
+
     </div>
+    
     <!--
         calendar_type_id = models.CharField(max_length=2)
     scholarship_id = models.CharField(max_length=20)
