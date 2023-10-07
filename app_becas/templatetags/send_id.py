@@ -10,9 +10,6 @@ register = template.Library()
 def send_id(value):
     mydata = Calendar.objects.filter(auto_id=value)
     
-    your_params = {
-        'calendar' : mydata,
-    }
     return redirect_params('calendar_show_info', str(value))
 
 def redirect_params(url, params):
