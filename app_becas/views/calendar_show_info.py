@@ -1,5 +1,4 @@
 from django.shortcuts import render, redirect
-from django.urls import reverse
 from django.views import View
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
@@ -12,14 +11,19 @@ class Calendar_show_info(View):
     def get(self, request):
         # calendar = list(Calendar.objects.values())
         calendar = Calendar_obj.objects.get(auto_id = request.GET['auto_id'])
-        request.session['calendar_ss'] = calendar.auto_id
+        request.session['ss_calendar_id'] = calendar.auto_id
         return render(request, 'calendar_show_info.html', {
             'calendar' : calendar
         })
     
     def delete_calendar(request):
-        calendar = Calendar_obj.objects.get(request.session.get['calendar_ss'])
+        calendar = Calendar_obj.objects.get(auto_id = request.session.get('ss_calendar_id'))
         calendar.delete()
+        try:
+            del request.session["ss_calendar_id"]
+        except KeyError:
+            pass
+        # Here should be a notification
         return redirect('calendar')
     
   
