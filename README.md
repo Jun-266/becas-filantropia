@@ -20,6 +20,7 @@
 | 02-10-2023 | _(madrugada)_ Modifiqué el modelo del cronograma/calendario, además muestro los registros en la pantalla 'Calendar' y finalmente, cuando se clickean, se abre una nueva pantalla con la información del cronograma (Se empezó otra feature)| Dormir! y ya haré otro *daily-Scrum* ahora en la mañana temprano| No he podido enviar un objeto mediante la sintaxis jinja, lo máximo que consegui fue hacerlo pero sobre la misma view, y utilizando query|
 | 04-10-2023 | Explicación de git a compañeros y solución de dudas| Crear la función de buscar cronograma mediante su id, con metodo get, y mostrarlo en pantalla como único objeto de una lista | - |
 | 05-10-2023 | Se creó la función de buscar cronograma por id de beca asociado, se muestra listado, y al darle click muestra su información | Mostrar la información de cada cronograma completa | - |
+| 06-10-2023 | Se muestra la info completa, _Limpié_ un poco el código, creé una nueva rama HU-19 para borrar records, e implementé dicha funcionalidad usando un forms vacio y método post, pero finalmente decidí buscar hacerlo de otra forma. Definí hacerlo con sessions | Implementar la funcionalidad de borrar record de un cronograma con session | No sé mucho de como utilizar el request.session |
 
 
 ## Jeison Lasprilla
