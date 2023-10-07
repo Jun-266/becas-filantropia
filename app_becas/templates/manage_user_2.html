@@ -1,18 +1,22 @@
-{% extends 'base.html' %}
+{% extends 'layouts/base.html' %}
 
 {% block content %}
     <h1>Agregar usuario</h1>
 
     <form action="/manage_user_2/" method="POST">
         {% csrf_token %}
-        <input type="text" name="userId" placeholder="Identificación">
-        <input type="text" name="name" placeholder="Nombre">
-        <input type="text" name="lastname" placeholder="Apellido">
-        <input type="email" name="email" placeholder="Correo electrónico">
-        <input type="text" name="phone" placeholder="Teléfono">
-        <input type="text" name="rol" placeholder="Rol">
+        <input type="text" name="userId" placeholder="Identificación" class="form-control col-md-6" style="font-size: 16px; margin: 20px 0;">
+        <input type="text" name="name" placeholder="Nombre" class="form-control col-md-6" style="font-size: 16px; margin: 20px 0;">
+        <input type="text" name="lastname" placeholder="Apellido" class="form-control col-md-6" style="font-size: 16px; margin: 20px 0;">
+        <input type="email" name="email" placeholder="Correo electrónico" class="form-control col-md-6" style="font-size: 16px; margin: 20px 0;">
+        <input type="text" name="phone" placeholder="Teléfono" class="form-control col-md-6" style="font-size: 16px; margin: 20px 0;">
 
-        <button>Agregar usuario</button>
+        <select name="rol" class="form-control col-md-6" style="margin-bottom: 10px;">
+            <option value="1">Apoyo Financiero</option>
+            <option value="2">Filantropia</option>
+        </select>
+
+        <button type="submit" class="btn btn-primary col-md-6" style="margin-bottom: 20px;">Agregar usuario</button>
     </form>
 
     <p>
