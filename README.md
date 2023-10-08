@@ -31,7 +31,7 @@
 | 27-09-2023 | Intente realizar el inicio de sesión con un API REST o un OAuth con banner| Saltaré a otro requerimiento por ahora y organizaré el redireccionamiento a banner de manera opcional | Se dificulta los servicios de autenticación al no contar con información puntual de la universidad para hacer el API REST o OIDC|
 | 05 -10 -2023 | Actualicé mi rama con los cambios de develop | Hacer el enum de los roles y organizar las opciones en una caja de selección. También iniciar con el modelo de donante | No he podido dedicar mucho tiempo al proyecto entre semana |
 | 06 -10 -2023 | Hice el enum con los roles y modifiqué el hmtl con bootstrap |Iniciar con el modelo de donante y definir respecto a que continuar| - |
-| 06 -10 -2023 | Continué modificando el hmtl con bootstrap y finalicé este requerimiento. Inicié feat-27 | Terminar la relación modelo - donante | Este es mi ultimo requerimiento, así que posterior a este tendré que aportar realizando cambios que ayuden asemejar el proyecto al mockup del figma |
+| 07 -10 -2023 | Continué modificando el hmtl con bootstrap y finalicé este requerimiento. Inicié feat-27 | Terminar la relación modelo - donante | Este es mi ultimo requerimiento, así que posterior a este tendré que aportar realizando cambios que ayuden asemejar el proyecto al mockup del figma |
 
 ## Santiago Prado Larrarte
 | Fecha | ¿Qué he hecho desde el último daily SCRUM? | ¿Qué haré durante el día de hoy? | ¿He visto o encontrado algún impedimento? |
