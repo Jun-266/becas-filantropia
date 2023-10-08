@@ -3,7 +3,7 @@ from django.db import models
 
 class Calendar(models.Model):
         
-    auto_id =  models.AutoField(primary_key = True)
+    auto_id =  models.UUIDField(default=uuid.uuid4, editable=False, primary_key= True)
     calendar_type_id = models.CharField(max_length=2)
     scholarship_id = models.CharField(max_length=20)
     inscription_start_date = models.DateField()
@@ -19,7 +19,7 @@ class Calendar(models.Model):
         return str(self.auto_id)
     
 class Contact(models.Model):
-    auto_id = models.AutoField(primary_key = True)
+    auto_id = models.UUIDField(default=uuid.uuid4, editable=False, primary_key= True)
     identification = models.CharField(max_length=30)
     type = models.CharField(max_length=30)
     email = models.EmailField(max_length=30)
@@ -30,7 +30,7 @@ class Contact(models.Model):
     
 class Scholarship(models.Model):
     temp = models.CharField(max_length=22)
-    auto_id = models.UUIDField(default=uuid.uuid4, editable=False)
+    auto_id = models.UUIDField(default=uuid.uuid4, editable=False, primary_key= True)
     name = models.CharField(max_length=30)
     description = models.CharField(max_length=250)
     amount = models.IntegerField()
@@ -42,7 +42,7 @@ class Scholarship(models.Model):
 class Donor(models.Model):
     scholarships = models.ManyToManyField(Scholarship, related_name='donors')
     contacts = models.ManyToManyField(Contact, related_name='donors')
-    auto_id = models.AutoField(primary_key = True)
+    auto_id = models.UUIDField(default=uuid.uuid4, editable=False, primary_key= True)
     enterprise_name = models.CharField(max_length=20)
 
     def __str__(self):

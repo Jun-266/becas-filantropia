@@ -1,30 +1,37 @@
 {% extends 'layouts/base.html' %}
 
 {% block content %}
-    <h1>Registrar una beca</h1>
+    <h1 class="text-center mt-5">Registrar una beca</h1>
     
-    <form id="formID_add_scholarship" class="container p-5" method="POST">
+    <form id="formID_add_scholarship" class="container p-5">
         {% csrf_token %}
         
-        <label for="scholarship_name">Nombre de la beca</label> <br>
-        <input type="text" id="scholarship_name" name="name"><br>
+        <div class="mb-3">
+            <label for="scholarship_name" class="form-label">Nombre de la beca</label>
+            <input type="text" class="form-control" id="scholarship_name" name="name">
+        </div>
 
-        <label for="scholarship_description">Descripción</label><br>  
-        <input type="text" id="scholarship_description" name="description"><br>
+        <div class="mb-3">
+            <label for="scholarship_description" class="form-label">Descripción</label>
+            <textarea class="form-control form-control-lg" id="scholarship_description" name="description"></textarea>
+        </div>
 
-        <label for="scholarship_amount">Cobertura económica</label><br>  
-        <input type="number" id="scholarship_amount" name="amount"><br>
+        <div class="mb-3">
+            <label for="scholarship_amount" class="form-label">Cobertura económica</label>
+            <input type="number" class="form-control" id="scholarship_amount" name="amount">
+        </div>
 
-        <label for="scholarship_type">Tipo de Beca</label><br>
-        <select id="scholarship_type" name="type_scholarship">
-            
-            {% for choice in lista %}
-                <option >"{{choice}}"</option>
-            {% endfor %}
-        </select><br>
-
-        <button type="submit">
-            Guardar
-        </button>
+        <div class="mb-3">
+            <label for="scholarship_type" class="form-label">Tipo de Beca</label>
+            <select class="form-select" id="scholarship_type" name="type_scholarship">
+                {% for choice in lista %}
+                    <option>{{choice}}</option>
+                {% endfor %}
+            </select>
+        </div>
+        
+        <div class="mb-3 text-center">
+            <button type="submit" class="btn btn-primary">Guardar</button>
+        </div>
     </form>
 {% endblock %}
