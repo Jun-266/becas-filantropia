@@ -1,25 +1,87 @@
 {% extends 'layouts/base.html' %}
 
 {% block content %}
-    <h1>Agregar usuario</h1>
+    <div class="container p-5 my-3 border">
+        <div class="row">
+            <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4">
+                <a href="/manage_user" class="btn btn-primary btn-sm">Volver</a>
+                
+                <div class="card mt-3">
+                    <h1 class="card-title mx-3 mt-2">Agregar usuario</h1>
+                    <div class="card-body">
+                        <form action="/manage_user_2/" method="POST">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <input type="text" id="userId" name="userId" class="form-control" placeholder="Numero de documento"
+                                    maxlength="50" required>
+                            </div>
 
-    <form action="/manage_user_2/" method="POST">
-        {% csrf_token %}
-        <input type="text" name="userId" placeholder="Identificación" class="form-control col-md-6" style="font-size: 16px; margin: 20px 0;">
-        <input type="text" name="name" placeholder="Nombre" class="form-control col-md-6" style="font-size: 16px; margin: 20px 0;">
-        <input type="text" name="lastname" placeholder="Apellido" class="form-control col-md-6" style="font-size: 16px; margin: 20px 0;">
-        <input type="email" name="email" placeholder="Correo electrónico" class="form-control col-md-6" style="font-size: 16px; margin: 20px 0;">
-        <input type="text" name="phone" placeholder="Teléfono" class="form-control col-md-6" style="font-size: 16px; margin: 20px 0;">
+                            <div class="form-group">
+                                <input type="text" id="name" name="name" class="form-control" placeholder="Nombre"
+                                    maxlength="50" required>
+                            </div>
 
-        <select name="rol" class="form-control col-md-6" style="margin-bottom: 10px;">
-            <option value="1">Apoyo Financiero</option>
-            <option value="2">Filantropia</option>
-        </select>
+                            <div class="form-group">
+                                <input type="text" id="lastname" name="lastname" class="form-control" placeholder="Apellido"
+                                    maxlength="50" required>
+                            </div>
 
-        <button type="submit" class="btn btn-primary col-md-6" style="margin-bottom: 20px;">Agregar usuario</button>
-    </form>
+                            <div class="form-group">
+                                <input type="text" id="email" name="email" class="form-control" placeholder="Correo electrónico"
+                                    maxlength="50" required>
+                            </div>
 
-    <p>
-        <a href="/manage_user">Volver</a>
-    </p>
+                            <div class="form-group">
+                                <input type="text" id="phone" name="phone" class="form-control" placeholder="Teléfono"
+                                    maxlength="50" required>
+                            </div>
+
+                            <div class="form-group">
+                                <select name="rol" class="form-control col-md-6" style="margin-bottom: 10px;">
+                                    <option value="1">Apoyo Financiero</option>
+                                    <option value="2">Filantropia</option>
+                                    <option value="3">Director Filantropia</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-success btn-block text-white">Guardar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-sm-12 col-md-6 col-lg-8 col-xl-8 mt-4">
+                <h1>Listado de Usuarios</h1>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Documento</th>
+                            <th>Nombre</th>
+                            <th>Apellido</th>
+                            <th>Correo</th>
+                            <th>Telefono</th>
+                            <th>Rol</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for user in users %}
+                            <tr>
+                                <td>{{ user.autoId }}</td>
+                                <td>{{ user.userId }}</td>
+                                <td>{{ user.name }}</td>
+                                <td>{{ user.lastname }}</td>
+                                <td>{{ user.email }}</td>
+                                <td>{{ user.phone }}</td>
+                                <td>{{ user.rol }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 {% endblock %}

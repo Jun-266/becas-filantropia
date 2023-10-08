@@ -13,7 +13,11 @@ from app_becas.models import My_user
 class Manage_user_2(View):
 
     def get(self, request):
+
+        users = My_user.objects.all()
+
         return render(request, 'manage_user_2.html', {
+            'users': users, 
             'form': Form_add_user()
         })
 
