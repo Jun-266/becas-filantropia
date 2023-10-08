@@ -10,10 +10,6 @@ class Calendar_add(View):
 
 
     def get(self, request):
-        #Delete a record
-        #record = Calendar.objects.get(auto_id = 6)
-        #record.delete()
-
         #Show form
         return render(request, 'calendar_add.html',{
             'form': Form_add_calendar()
@@ -32,5 +28,5 @@ class Calendar_add(View):
                                 publish_elected_start_date = request.POST['publish_elected_s'],
                                 publish_elected_deadline = request.POST['publish_elected_d'])
         
-        return redirect('')
+        return redirect('calendar')
         

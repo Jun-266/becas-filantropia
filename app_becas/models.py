@@ -27,4 +27,4 @@ class Calendar(models.Model):
     publish_elected_deadline = models.DateField( )
 
     def __str__(self):
-        return str(self.auto_id)
+        return str(self.auto_id) 
