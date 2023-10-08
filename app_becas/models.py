@@ -14,8 +14,7 @@ class My_user(models.Model):
     def __str__(self):
         return f'{self.name} {self.lastname}'
     
-    
-# Create your models here.
+
 class   Scholarship(models.Model):
     auto_id = models.UUIDField(default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=30)
@@ -25,6 +24,7 @@ class   Scholarship(models.Model):
 
     def __str__(self):
         return self.name
+    
     
 class Calendar(models.Model):
         
