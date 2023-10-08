@@ -17,7 +17,6 @@ class My_user(models.Model):
     
 # Create your models here.
 class   Scholarship(models.Model):
-    temp = models.CharField(max_length=22)
     auto_id = models.UUIDField(default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=30)
     description = models.CharField(max_length=250)
@@ -42,4 +41,4 @@ class Calendar(models.Model):
     publish_elected_deadline = models.DateField( )
 
     def __str__(self):
-        return str(self.auto_id)
+        return str(self.auto_id) 

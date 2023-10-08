@@ -15,7 +15,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, re_path
 from app_becas.views.signup import Signup
 from app_becas.views.signin import Signin
 from app_becas.views.home import Home
@@ -38,6 +38,7 @@ urlpatterns = [
     path('calendar/', Calendar.as_view(), name='calendar'),
     path('calendar_add/', Calendar_add.as_view(), name='calendar_add'),
     path('calendar_show_info/', Calendar_show_info.as_view(), name='calendar_show_info'),
+    path('delete_calendar/', Calendar_show_info.delete_calendar, name='delete_calendar'),
     path('manage_user/', Manage_user.as_view(), name='manage_user'),
     path('scholarship/', Scholarship.as_view(), name='scholarship'),
     path('manage_user_2/', Manage_user_2.as_view(), name='manage_user_2'),
