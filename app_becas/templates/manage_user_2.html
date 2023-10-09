@@ -55,7 +55,7 @@
 
             <div class="col-sm-12 col-md-6 col-lg-8 col-xl-8 mt-4">
                 <h1>Listado de Usuarios</h1>
-                <table class="table">
+                <table class="table table-striped">
                     <thead>
                         <tr>
                             <th>ID</th>
@@ -65,6 +65,7 @@
                             <th>Correo</th>
                             <th>Telefono</th>
                             <th>Rol</th>
+                            <th colspan="">Opciones</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -77,6 +78,8 @@
                                 <td>{{ user.email }}</td>
                                 <td>{{ user.phone }}</td>
                                 <td>{{ user.rol }}</td>
+                                <td><a href== "modify_user/{{user.autoId}}" class ="btn btn-info">Edit</a></td>
+                                <td><a href== "delete_user/{{user.autoId}}" class ="btn btn-danger">Delete</a></td>
                             </tr>
                         {% endfor %}
                     </tbody>

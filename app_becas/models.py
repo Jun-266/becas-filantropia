@@ -59,4 +59,4 @@ class Donor(models.Model):
     enterprise_name = models.CharField(max_length=20)
 
     def __str__(self):
-        return str(self.auto_id) 
+        return str(self.auto_id)
