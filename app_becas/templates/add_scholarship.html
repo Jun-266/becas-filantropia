@@ -1,9 +1,9 @@
 {% extends 'layouts/base.html' %}
 
 {% block content %}
-    <h1>Registrar una beca</h1>
+    <h1 class="text-center mt-5">Registrar una beca</h1>
     
-    <form id="formID_add_scholarship" class="container p-5" method="POST">
+    <form id="formID_add_scholarship" class="container p-5">
         {% csrf_token %}
 
         {{form.as_p}}
