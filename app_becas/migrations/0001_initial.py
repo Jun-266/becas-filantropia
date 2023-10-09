@@ -31,7 +31,7 @@ class Migration(migrations.Migration):
                 ('name', models.CharField(max_length=30)),
                 ('description', models.CharField(max_length=250)),
                 ('amount', models.IntegerField()),
-                ('type_scholarship', models.CharField(choices=[('Excelencia', 'Excelencia'), ('Logros y Representantes', 'Logros y Representantes'), ('Colaboradores', 'Colaboradores'), ('Especial', 'Especial'), ('Familiar y Minorías', 'Familiar y Minorías')], max_length=50)),
+                ('type_scholarship', models.CharField(max_length=50)),
             ],
         ),
 
@@ -51,6 +51,13 @@ class Migration(migrations.Migration):
                 ('publish_elected_deadline', models.DateField()),
             ],
         ),
+
+        migrations.CreateModel(
+            name='TypeScholarship',
+            fields=[
+                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('name', models.CharField(max_length=50, unique=True)),
+
         migrations.CreateModel(
             name='Contact',
             fields=[
@@ -61,17 +68,7 @@ class Migration(migrations.Migration):
                 ('phone', models.CharField(max_length=30)),
             ],
         ),
-        migrations.CreateModel(
-            name='Scholarship',
-            fields=[
-                ('temp', models.CharField(max_length=22)),
-                ('auto_id', models.UUIDField(default=uuid.uuid4, editable=False, primary_key=True, serialize=False)),
-                ('name', models.CharField(max_length=30)),
-                ('description', models.CharField(max_length=250)),
-                ('amount', models.IntegerField()),
-                ('type_scholarship', models.CharField(choices=[('Excelencia', 'Excelencia'), ('Logros y Representantes', 'Logros y Representantes'), ('Colaboradores', 'Colaboradores'), ('Especial', 'Especial'), ('Familiar y Minorías', 'Familiar y Minorías')], max_length=50)),
-            ],
-        ),
+        
         migrations.CreateModel(
             name='Donor',
             fields=[

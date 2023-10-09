@@ -20,11 +20,11 @@ class Scholarship(models.Model):
     name = models.CharField(max_length=30)
     description = models.CharField(max_length=250)
     amount = models.IntegerField()
-    type_scholarship = models.CharField(max_length=50, choices=[('Excelencia', 'Excelencia'), ('Logros y Representantes', 'Logros y Representantes'), ('Colaboradores', 'Colaboradores'), ('Especial', 'Especial'), ('Familiar y Minorías', 'Familiar y Minorías')])
+    type_scholarship = models.CharField(max_length=50)
 
     def __str__(self):
         return self.name
-    
+
     
 class Calendar(models.Model):
         
@@ -40,10 +40,14 @@ class Calendar(models.Model):
     publish_elected_start_date = models.DateField()
     publish_elected_deadline = models.DateField( )
 
-    def __str__(self):
-        return str(self.auto_id)
-
+    def __str__(self):        return str(self.auto_id)
     
+class TypeScholarship(models.Model):
+    name = models.CharField(max_length=50,unique=True)
+
+    def __str__(self):
+        return self.name 
+
 class Contact(models.Model):
     auto_id = models.UUIDField(default=uuid.uuid4, editable=False, primary_key= True)
     identification = models.CharField(max_length=30)
