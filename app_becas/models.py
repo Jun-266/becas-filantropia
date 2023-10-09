@@ -27,9 +27,9 @@ class Scholarship(models.Model):
 
     
 class Calendar(models.Model):
-        
-    auto_id = models.UUIDField(default=uuid.uuid4, editable=False, primary_key= True)
-    calendar_type_id = models.CharField(max_length=2)
+    #auto_id = models.AutoField(primary_key=True)
+    auto_id = models.UUIDField(default=uuid.uuid4, primary_key= True)
+    convocation_type_id = models.CharField(max_length=2)
     scholarship_id = models.CharField(max_length=20)
     inscription_start_date = models.DateField()
     inscription_deadline = models.DateField()
@@ -40,7 +40,8 @@ class Calendar(models.Model):
     publish_elected_start_date = models.DateField()
     publish_elected_deadline = models.DateField( )
 
-    def __str__(self):        return str(self.auto_id)
+    def _str_(self):
+        return str("sch id:"+self.scholarship_id)
     
 class TypeScholarship(models.Model):
     name = models.CharField(max_length=50,unique=True)
