@@ -32,6 +32,7 @@
 | 05 -10 -2023 | Actualicé mi rama con los cambios de develop | Hacer el enum de los roles y organizar las opciones en una caja de selección. También iniciar con el modelo de donante | No he podido dedicar mucho tiempo al proyecto entre semana |
 | 06 -10 -2023 | Hice el enum con los roles y modifiqué el hmtl con bootstrap |Iniciar con el modelo de donante y definir respecto a que continuar| - |
 | 07 -10 -2023 | Continué modificando el hmtl con bootstrap y finalicé este requerimiento. Inicié feat-27 | Terminar la relación modelo - donante | Este es mi ultimo requerimiento, así que posterior a este tendré que aportar realizando cambios que ayuden asemejar el proyecto al mockup del figma |
+| 08 -10 -2023 | Creé los modelos de donante, contacto, los relacioné entre sí y con las becas. También cambié el html del login para conseguir una vista más amigable. | Conectar la relación beca - donante con el html que corresponda | - |
 
 ## Santiago Prado Larrarte
 | Fecha | ¿Qué he hecho desde el último daily SCRUM? | ¿Qué haré durante el día de hoy? | ¿He visto o encontrado algún impedimento? |
