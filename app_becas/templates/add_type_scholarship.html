@@ -1,0 +1,26 @@
+{% extends 'layouts/base.html' %}
+
+{% block content %}
+    <h1>Registrar un tipo de beca</h1>
+
+    {% for beca in tipos_beca %}
+  
+    <article class="card">
+            Para la beca: {{beca.name}}
+        </a>
+    </article>
+
+{% endfor %}
+
+<form id="formID_add_scholarship" class="container p-5" method="POST">
+
+  {% csrf_token %}
+  {{form.as_p }}
+
+    <button type="submit">
+      Guardar
+    </button>
+</form>
+
+{% endblock %}
+
