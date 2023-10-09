@@ -33,7 +33,8 @@ class Migration(migrations.Migration):
                 ('name', models.CharField(max_length=30)),
                 ('description', models.CharField(max_length=250)),
                 ('amount', models.IntegerField()),
-                ('type_scholarship', models.CharField(max_length=50)),            ],
+                ('type_scholarship', models.CharField(max_length=50)),
+            ],
         ),
 
         migrations.CreateModel(
@@ -50,6 +51,14 @@ class Migration(migrations.Migration):
                 ('interview_deadline', models.DateField()),
                 ('publish_elected_start_date', models.DateField()),
                 ('publish_elected_deadline', models.DateField()),
+            ],
+        ),
+
+        migrations.CreateModel(
+            name='TypeScholarship',
+            fields=[
+                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('name', models.CharField(max_length=50, unique=True)),
             ],
         ),
     ]
