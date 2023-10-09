@@ -21,7 +21,7 @@
 | 04-10-2023 | Explicación de git a compañeros y solución de dudas| Crear la función de buscar cronograma mediante su id, con metodo get, y mostrarlo en pantalla como único objeto de una lista | - |
 | 05-10-2023 | Se creó la función de buscar cronograma por id de beca asociado, se muestra listado, y al darle click muestra su información | Mostrar la información de cada cronograma completa | - |
 | 06-10-2023 | Se muestra la info completa, _Limpié_ un poco el código, creé una nueva rama HU-19 para borrar records, e implementé dicha funcionalidad usando un forms vacio y método post, pero finalmente decidí buscar hacerlo de otra forma. Definí hacerlo con sessions | Implementar la funcionalidad de borrar record de un cronograma con session | No sé mucho de como utilizar el request.session |
-
+| 08-10-2023 | Aprendí como utilizar el session. Se implementó el eliminar beca con request.session | Crear la funcionalidad de modificar cronograma | - |
 
 ## Jeison Lasprilla
 | Fecha | ¿Qué he hecho desde el último daily SCRUM? | ¿Qué haré durante el día de hoy? | ¿He visto o encontrado algún impedimento? |
