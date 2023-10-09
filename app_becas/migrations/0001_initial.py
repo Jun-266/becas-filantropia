@@ -13,6 +13,31 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
+            name='My_user',
+            fields=[
+                ('userId', models.CharField(max_length=255)),
+                ('autoId', models.AutoField(primary_key=True, serialize=False)),
+                ('name', models.CharField(max_length=255)),
+                ('lastname', models.CharField(max_length=255)),
+                ('email', models.EmailField(max_length=254)),
+                ('phone', models.CharField(max_length=255)),
+                ('rol', models.CharField(max_length=255)),
+                ],
+            ),
+
+        migrations.CreateModel(
+            name='Scholarship',
+            fields=[
+                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('auto_id', models.UUIDField(default=uuid.uuid4, editable=False)),
+                ('name', models.CharField(max_length=30)),
+                ('description', models.CharField(max_length=250)),
+                ('amount', models.IntegerField()),
+                ('type_scholarship', models.CharField(choices=[('Excelencia', 'Excelencia'), ('Logros y Representantes', 'Logros y Representantes'), ('Colaboradores', 'Colaboradores'), ('Especial', 'Especial'), ('Familiar y Minorías', 'Familiar y Minorías')], max_length=50)),
+            ],
+        ),
+
+        migrations.CreateModel(
             name='Calendar',
             fields=[
                 ('auto_id', models.AutoField(primary_key=True, serialize=False)),
@@ -26,17 +51,6 @@ class Migration(migrations.Migration):
                 ('interview_deadline', models.DateField()),
                 ('publish_elected_start_date', models.DateField()),
                 ('publish_elected_deadline', models.DateField()),
-            ],
-        ),
-        migrations.CreateModel(
-            name='Scholarship',
-            fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('auto_id', models.UUIDField(default=uuid.uuid4, editable=False)),
-                ('name', models.CharField(max_length=30)),
-                ('description', models.CharField(max_length=250)),
-                ('amount', models.IntegerField()),
-                ('type_scholarship', models.CharField(choices=[('Excelencia', 'Excelencia'), ('Logros y Representantes', 'Logros y Representantes'), ('Colaboradores', 'Colaboradores'), ('Especial', 'Especial'), ('Familiar y Minorías', 'Familiar y Minorías')], max_length=50)),
             ],
         ),
     ]

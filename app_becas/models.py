@@ -1,8 +1,21 @@
 import uuid
 from django.db import models
 
+class My_user(models.Model):
+    userId = models.CharField(max_length=255)
+    autoId = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=255)
+    lastname = models.CharField(max_length=255)
+    email = models.EmailField()
+    phone = models.CharField(max_length=255)
+    rol = models.CharField(max_length=255)
+    
+
+    def __str__(self):
+        return f'{self.name} {self.lastname}'
+    
+
 class Scholarship(models.Model):
-    temp = models.CharField(max_length=22)
     auto_id = models.UUIDField(default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=30)
     description = models.CharField(max_length=250)
@@ -11,6 +24,7 @@ class Scholarship(models.Model):
 
     def __str__(self):
         return self.name
+    
     
 class Calendar(models.Model):
         
@@ -26,11 +40,11 @@ class Calendar(models.Model):
     publish_elected_start_date = models.DateField()
     publish_elected_deadline = models.DateField( )
 
-    def __str__(self):
-        return str(self.auto_id)
+    def __str__(self):        return str(self.auto_id)
     
 class TypeScholarship(models.Model):
     name = models.CharField(max_length=50,unique=True)
 
     def __str__(self):
-        return self.name
+        return self.name 
+
