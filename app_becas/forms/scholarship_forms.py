@@ -1,5 +1,5 @@
 from django import forms
-from app_becas.models import Scholarship , TypeScholarship 
+from app_becas.models import TypeScholarship 
 
 
 class ScholarshipForm(forms.Form):

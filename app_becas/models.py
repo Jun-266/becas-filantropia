@@ -20,11 +20,11 @@ class Scholarship(models.Model):
     name = models.CharField(max_length=30)
     description = models.CharField(max_length=250)
     amount = models.IntegerField()
-    type_scholarship = models.CharField(max_length=50, choices=[('Excelencia', 'Excelencia'), ('Logros y Representantes', 'Logros y Representantes'), ('Colaboradores', 'Colaboradores'), ('Especial', 'Especial'), ('Familiar y Minorías', 'Familiar y Minorías')])
+    type_scholarship = models.CharField(max_length=50)
 
     def __str__(self):
         return self.name
-    
+
     
 class Calendar(models.Model):
         

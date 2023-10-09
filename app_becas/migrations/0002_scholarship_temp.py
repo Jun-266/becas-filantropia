@@ -18,7 +18,7 @@ class Migration(migrations.Migration):
                 ('name', models.CharField(max_length=30)),
                 ('description', models.CharField(max_length=250)),
                 ('amount', models.IntegerField()),
-                ('type_scholarship', models.CharField(choices=[('Excelencia', 'Excelencia'), ('Logros y Representantes', 'Logros y Representantes'), ('Colaboradores', 'Colaboradores'), ('Especial', 'Especial'), ('Familiar y Minorías', 'Familiar y Minorías')], max_length=50)),
+                ('type_scholarship', models.CharField(max_length=50)),
             ],
         ),
     ]

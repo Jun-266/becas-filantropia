@@ -7,6 +7,7 @@ from app_becas.models import Scholarship as Scholarchip_obj
 
 
 @method_decorator(login_required, name='dispatch')
+
 class Scholarship(View):
 
     def get(self, request):
@@ -17,4 +18,5 @@ class Scholarship(View):
             if scholarship["nombre"] == name:
                 return scholarship
             return None
+
         

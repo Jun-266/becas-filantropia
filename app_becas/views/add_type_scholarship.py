@@ -3,8 +3,6 @@ from django.shortcuts import render, redirect
 from django.views import View
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
-from app_becas.models import Scholarship
-from app_becas.forms.scholarship_forms import ScholarshipForm
 from app_becas.models import TypeScholarship
 from app_becas.forms.scholarship_forms import type_scholarship_form
 
