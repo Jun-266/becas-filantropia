@@ -1,6 +1,19 @@
 import uuid
 from django.db import models
 
+class My_user(models.Model):
+    userId = models.CharField(max_length=255)
+    autoId = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=255)
+    lastname = models.CharField(max_length=255)
+    email = models.EmailField()
+    phone = models.CharField(max_length=255)
+    rol = models.CharField(max_length=255)
+    
+    def __str__(self):
+        return f'{self.name} {self.lastname}'
+    
+    
 class Calendar(models.Model):
         
     auto_id =  models.UUIDField(default=uuid.uuid4, editable=False, primary_key= True)
@@ -46,4 +59,4 @@ class Donor(models.Model):
     enterprise_name = models.CharField(max_length=20)
 
     def __str__(self):
-        return str(self.auto_id)
+        return str(self.auto_id) 

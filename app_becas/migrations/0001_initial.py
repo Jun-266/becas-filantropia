@@ -13,6 +13,19 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
+            name='My_user',
+            fields=[
+                ('userId', models.CharField(max_length=255)),
+                ('autoId', models.AutoField(primary_key=True, serialize=False)),
+                ('name', models.CharField(max_length=255)),
+                ('lastname', models.CharField(max_length=255)),
+                ('email', models.EmailField(max_length=254)),
+                ('phone', models.CharField(max_length=255)),
+                ('rol', models.CharField(max_length=255)),
+                ],
+            ),
+
+        migrations.CreateModel(
             name='Calendar',
             fields=[
                 ('auto_id', models.UUIDField(default=uuid.uuid4, editable=False, primary_key=True, serialize=False)),
