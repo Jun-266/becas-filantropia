@@ -27,8 +27,7 @@ class Scholarship(models.Model):
 
     
 class Calendar(models.Model):
-        
-    auto_id = models.UUIDField(default=uuid.uuid4, editable=False, primary_key= True)
+    auto_id = models.UUIDField(default=uuid.uuid4, primary_key= True)
     calendar_type_id = models.CharField(max_length=2)
     scholarship_id = models.CharField(max_length=20)
     inscription_start_date = models.DateField()
@@ -62,7 +61,7 @@ class Contact(models.Model):
 class Donor(models.Model):
     scholarships = models.ManyToManyField(Scholarship, related_name='donors')
     contacts = models.ManyToManyField(Contact, related_name='donors')
-    auto_id = models.UUIDField(default=uuid.uuid4, editable=False, primary_key= True)
+    auto_id = models.UUIDField(default=uuid.uuid4, editable=False, primary_key= True)   
     enterprise_name = models.CharField(max_length=20)
 
     def __str__(self):
