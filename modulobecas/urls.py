@@ -44,6 +44,7 @@ urlpatterns = [
     path('calendar_update/', Calendar_show_info.update_calendar, name='calendar_update'),
     path('manage_user/', Manage_user.as_view(), name='manage_user'),
     path('scholarship/', Scholarship.as_view(), name='scholarship'),
+    path('scholarship_print_values/', Scholarship.print_values, name='scholarship_print_values'),
     path('manage_user_2/', Manage_user_2.as_view(), name='manage_user_2'),
     path('reports/', hr.home, name='reports'),
     path('reports_upload/', hr.upload_report, name='upload_report'),

@@ -17,6 +17,7 @@ class My_user(models.Model):
 
 class Scholarship(models.Model):
     auto_id = models.UUIDField(default=uuid.uuid4, editable=False)
+    calendar_id = models.UUIDField()
     name = models.CharField(max_length=30)
     description = models.CharField(max_length=250)
     amount = models.IntegerField()

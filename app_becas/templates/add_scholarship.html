@@ -8,10 +8,11 @@
 
         {{form.as_p}}
         
-        <a href='add_type_scholarship' class="btn btn-primary">Agregar Tipo de Beca</a>
+        <a href='add_type_scholarship' class="btn btn-secondary">Agregar Tipo de Beca</a>
+        <a href="{% url 'calendar_add' %}" class="btn btn-secondary">Crear y enlazar Cronograma</a>
 
         <br><br>
-        <button type="submit">
+        <button type="submit" class="btn btn-primary">
             Guardar
         </button>
     </form>
