@@ -18,5 +18,4 @@ def redirect_params(url, params):
         query_string = "auto_id="+params
         response['Location'] += '?' + query_string
 
-    print(response)
     return response.url
