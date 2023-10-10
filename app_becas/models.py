@@ -68,3 +68,7 @@ class Donor(models.Model):
     def __str__(self):
         return str(self.auto_id)
 
+
+class File(models.Model):
+    my_file = models.FileField(upload_to='archivos/')
+
