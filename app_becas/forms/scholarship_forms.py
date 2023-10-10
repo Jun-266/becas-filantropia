@@ -7,7 +7,7 @@ class ScholarshipForm(forms.Form):
     description = forms.CharField(label='Descripción')
     amount = forms.DecimalField(label='Monto')
     type_scholarship_objects = TypeScholarship.objects.all()
-    type_scholarship_choices = [(obj.id, obj.name) for obj in type_scholarship_objects]
+    type_scholarship_choices = [(obj.name,obj.name) for obj in type_scholarship_objects]
     type_scholarship = forms.ChoiceField(
         label='Tipo de Beca',
         choices=[('', 'Selecciona un tipo de beca')] + type_scholarship_choices,
@@ -19,6 +19,12 @@ class type_scholarship_form(forms.Form):
 
     new_type_scholarship = forms.CharField(
         label='Nuevo Tipo de Beca',
+    )
+
+class delete_type(forms.Form):
+
+    delete_type_scholarship = forms.CharField(
+        label= 'Nombre de tipo de beca:', 
     )
 
 class Form_add_calendar(forms.Form):
