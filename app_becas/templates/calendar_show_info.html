@@ -12,22 +12,10 @@
         <br>
         
         <a href="{% url 'delete_calendar' %}" class="btn btn-warning">Eliminar Cronograma</a>
+        <a href="{% url 'calendar_update' %}" class="btn btn-secondary">Actualizar Cronograma</a>
         
 
     </div>
-    
-    <!--
-        calendar_type_id = models.CharField(max_length=2)
-    scholarship_id = models.CharField(max_length=20)
-    inscription_start_date = models.DateField()
-    inscription_deadline = models.DateField()
-    selection_start_date = models.DateField()
-    selection_deadline = models.DateField()
-    interview_start_date = models.DateField()
-    interview_deadline = models.DateField()
-    publish_elected_start_date = models.DateField()
-    publish_elected_deadline
-    -->
     
 
 {% endblock %}

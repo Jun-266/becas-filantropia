@@ -2,7 +2,6 @@ from django.shortcuts import render, redirect
 from django.views import View
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
-from app_becas.forms.calendar_forms import Form_add_calendar
 from app_becas.models import Calendar
 
 @method_decorator(login_required, name='dispatch')
@@ -12,7 +11,7 @@ class Calendar_add(View):
     def get(self, request):
         #Show form
         return render(request, 'calendar_add.html',{
-            'form': Form_add_calendar()
+            #'form': Form_add_calendar()
         })
     
     def post(self, request):
@@ -29,4 +28,3 @@ class Calendar_add(View):
                                 publish_elected_deadline = request.POST['publish_elected_d'])
         
         return redirect('calendar')
-        
