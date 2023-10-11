@@ -1,9 +1,9 @@
 {% extends 'layouts/base.html' %}
 
 {% block content %}
-    <h1>Registrar una beca</h1>
+    <h1 class="text-center mt-5">Registrar una beca</h1>
     
-    <form id="formID_add_scholarship" class="container p-5" method="POST">
+    <form id="formID_add_scholarship" class="container p-5" method="post">
         {% csrf_token %}
 
         {{form.as_p}}
@@ -11,7 +11,7 @@
         <a href='add_type_scholarship' class="btn btn-primary">Agregar Tipo de Beca</a>
         <a href='delete_type_scholarship' class="btn btn-primary">Eliminar Tipo de Beca</a>
 
-        <br>
+        <br><br>
         <button type="submit">
             Guardar
         </button>

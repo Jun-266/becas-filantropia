@@ -2,11 +2,12 @@ from django.views import View
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import authenticate, login
-
+from app_becas.scripts import init as init_script
 
 class Signin(View):
 
     def get(self, request):
+        init_script()
         return render(request, 'signin.html', {
             'form': AuthenticationForm
         })

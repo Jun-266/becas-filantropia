@@ -9,7 +9,6 @@ from app_becas.models import Calendar as Calendar_obj
 class Calendar(View):
     
     def get(self, request):
-         # calendar = list(Calendar.objects.values())
         calendars = Calendar_obj.objects.all()
         return render(request, 'calendar.html', {
             'calendars': calendars,
