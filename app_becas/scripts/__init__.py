@@ -2,7 +2,7 @@ from app_becas.models import TypeScholarship
 
 #name = models.CharField(max_length=50,unique=True)
 def init():   
-    if not TypeScholarship.objects.all():
+    if not TypeScholarship.objects.exists():
         print("# Table TypeScholarship initialized")
         TypeScholarship.objects.create(name="Matricula")
         TypeScholarship.objects.create(name="Alimentación")
