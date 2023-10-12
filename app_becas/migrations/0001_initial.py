@@ -64,7 +64,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='TypeScholarship',
             fields=[
-                ('name', models.CharField(max_length=50, primary_key=True, serialize=False)),
+                ('name', models.CharField(max_length=50, primary_key=True)),
             ],
         ),
 

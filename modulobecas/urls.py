@@ -15,6 +15,7 @@ from app_becas.views.all_scholarships import All_scholarships
 from app_becas.views.add_type_scholarship import AddTypeScholarship
 from django.conf import settings
 from django.views.static import serve
+from app_becas.views.delete_type_scholarship import DeleteTypeScholarship
 
 
 urlpatterns = [
@@ -37,7 +38,9 @@ urlpatterns = [
     path('reports_generate/', hr.generate_report, name='generate_report'),
     path('add_scholarship/', Add_scholarship.as_view(), name='add_scholarship'),
     path('all_scholarships/', All_scholarships.as_view(), name ='all_scholarships'),
-    path('add_scholarship/add_type_scholarship/', AddTypeScholarship.as_view(), name ='add_type_scholarship')
+    path('add_scholarship/add_type_scholarship/', AddTypeScholarship.as_view(), name ='add_type_scholarship'),
+    path('add_scholarship/delete_type_scholarship/', DeleteTypeScholarship.as_view(), name ='delete_type_scholarship')
+    
 ]
 
 urlpatterns += [
