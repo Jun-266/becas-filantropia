@@ -1,8 +1,12 @@
 {% extends 'layouts/base.html' %}
 
 {% block content %}
-    <div class="container p-5">
-        <h1>Gestión de becas</h1>
+<div class="container p-5">
+    <h1>Gestión de becas</h1>
+
+    <div class="creation-scolarship">
+        <a href="{% url 'add_scholarship' %}" class="btn btn-primary">Registrar Programa De Beca</a>
+        <br><br>
     </div>
 
     <div class="types_scholarship">
@@ -15,27 +19,23 @@
         <input placeholder="Buscar">
     </div>
 
-    <div class="creation-scolarship">
-        <a href="{% url 'add_scholarship' %}">Registrar Programa De Beca</a>
-    </div>
+    <br><br>
 
-    <div class="all_scholarships">
-        <a href="{% url 'all_scholarships' %}">
-            <img src="https://www.poli.edu.co/sites/default/files/beca_excelencia.png">
-        </a>
-            <h3>Beca Excelencia</h3>
-        <img src="https://www.poli.edu.co/sites/default/files/beca_logros_y_representantes.png"> 
-        <h3>Beca Logros Y Representantes</h3>
-        <img src="https://www.poli.edu.co/sites/default/files/beca_colaboradores.png">
-        <h3>Beca Colaboradores</h3>
-        <img src="https://www.poli.edu.co/sites/default/files/beca_especial.png">
-        <h3>Beca Especial</h3>
-        <img src="https://www.poli.edu.co/sites/default/files/beca_para_familiares.png">
-        <h3>Beca Para Familiares</h3>
-        <img src="https://www.poli.edu.co/sites/default/files/beca_minorias.png">
-        <h3>Beca Minorias</h3>
-        
-    </div>
+    {% load send_id %}
+    {% if scholarship is defined %}
+        {% for scholarship in scholarships %}
+            <article class="card container p-1">
+                <a href="{% send_id 'show_scholarship_info' scholarship.auto_id %}" class="btn btn-primary">
+                    Beca: {{scholarship.name}}
+                </a>
+            </article>
+
+        {% endfor %}
+    {% else %}
+        <p>No existe ningún registro</p>
+    {% endif %}
+</div>
+    
 
 
 {% endblock %}

@@ -1,8 +1,8 @@
-from typing import Any
 from django.shortcuts import render
 from django.views import View
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
+from app_becas.models import Scholarship as Scholarship_obj
 
 
 @method_decorator(login_required, name='dispatch')
@@ -10,7 +10,10 @@ from django.utils.decorators import method_decorator
 class Scholarship(View):
 
     def get(self, request):
-        return render(request, 'scholarship.html')
+        scholarships = Scholarship_obj.objects.all()
+        return render(request, 'scholarship.html', {
+            'scholarships': scholarships,
+        })
 
     def searchByName(name):
         for scholarship in self.becas:

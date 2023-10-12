@@ -1,0 +1,22 @@
+{% extends 'layouts/base.html' %}
+
+{% block content %}
+
+    <div class="container p-5">
+        <h1>Beca: {{scholarship.name}} </h1><br>
+        
+        <p><span class="fw-bold">ID (últimos digitos): </span> {{scholarship.auto_id.hex}}</p>
+        <p> <span class="fw-bold">Descripción: </span> {{scholarship.description}}</p>
+        <p> <span class="fw-bold">Monto: </span> {{scholarship.amount}}</p>
+        <p> <span class="fw-bold">Destinado a: </span> {{scholarship.type_scholarship}}</p>
+        <br>
+    </div>
+
+{% endblock %}
+        <!--
+            For future functions, delete and modify view Calendar
+            <a href="{% url 'delete_scholarship' %}" class="btn btn-warning">Eliminar Beca</a>
+            <a href="{% url 'update_scholarship' %}" class="btn btn-secondary">Actualizar Beca</a>
+        -->
+        
+    
