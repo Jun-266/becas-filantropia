@@ -69,16 +69,6 @@ class Migration(migrations.Migration):
         ),
 
         migrations.CreateModel(
-            name='Contact',
-            fields=[
-                ('auto_id', models.UUIDField(default=uuid.uuid4, editable=False, primary_key=True, serialize=False)),
-                ('identification', models.CharField(max_length=30)),
-                ('type', models.CharField(max_length=30)),
-                ('email', models.EmailField(max_length=30)),
-                ('phone', models.CharField(max_length=30)),
-            ],
-        ),
-        migrations.CreateModel(
             name='Donor',
             fields=[
                 ('auto_id', models.UUIDField(default=uuid.uuid4, editable=False, primary_key=True, serialize=False)),
