@@ -28,3 +28,12 @@ class AddTypeScholarship(View):
         tipos_beca = TypeScholarship.objects.all()
         error_message = "Debes proporcionar un nuevo tipo de beca."
         return render(request, 'add_type_scholarship.html', {'tipos_beca': tipos_beca, 'error_message': error_message})
+    
+    def delete_type_scholarship(request):
+        type_scholarship = TypeScholarship.objects.get(name = request.GET('name_scholarship'))
+        type_scholarship.delete()
+        try:
+            del request.session['name_scholarship']
+        except KeyError:
+            pass
+        return redirect('add_type_scholarship')
