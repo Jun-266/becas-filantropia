@@ -27,6 +27,7 @@ urlpatterns = [
     path('calendar_add/', Calendar_add.as_view(), name='calendar_add'),
     path('calendar_show_info/', Calendar_show_info.as_view(), name='calendar_show_info'),
     path('delete_calendar/', Calendar_show_info.delete_calendar, name='delete_calendar'),
+    path('calendar_update/', Calendar_show_info.update_calendar, name='calendar_update'),
     path('manage_user/', Manage_user.as_view(), name='manage_user'),
     path('scholarship/', Scholarship.as_view(), name='scholarship'),
     path('manage_user_2/', Manage_user_2.as_view(), name='manage_user_2'),

@@ -20,13 +20,14 @@ class Add_scholarship(View):
             description = form.cleaned_data['description']
             amount = form.cleaned_data['amount']
             type_scholarship = form.cleaned_data['type_scholarship']
-
-        Scholarship.objects.create(
-            name=name,
-            description=description,
-            amount=amount,
-            type_scholarship=type_scholarship
-        )
+            #print
+            print("##Is valid")
+            Scholarship.objects.create(
+                name=name,
+                description=description,
+                amount=amount,
+                type_scholarship=type_scholarship
+            )
 
         return redirect('scholarship')
 
