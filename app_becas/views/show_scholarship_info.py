@@ -11,11 +11,13 @@ class Show_scholarship_info(View):
 
     def get(self, request):
         scholarship = Scholarship.objects.get(auto_id = request.GET['auto_id'])
+        auto_id_hex = scholarship.auto_id.hex[:8]
         # for delete method, if wants to be implemented in here
         # request.session['ss_scholarship_id'] = scholarship.auto_id.hex
-        
+
         return render(request, 'show_scholarship_info.html', {
-            'scholarship' : scholarship
+            'scholarship' : scholarship,
+            'auto_id_hex' : auto_id_hex
         })
 
         
