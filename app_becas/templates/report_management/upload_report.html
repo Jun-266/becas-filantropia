@@ -7,10 +7,12 @@
         <form method="POST" enctype="multipart/form-data">
             {% csrf_token %}
             {{ form_for_file.as_p }}
-            <button>Guardar</button>
+            <button class="btn btn-primary">Guardar</button>
+            <br>
+            <br>
         </form>
 
-        <a class="btn btn-primary" href="/reports/">
+        <a class="btn btn-secondary" href="/reports/">
             Volver
         </a>
     </div>
