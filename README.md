@@ -9,6 +9,7 @@
 | 04-10-2023 | Estuve trabajando en la HU, P1MB-29. Sin embargo, por falta de comunicación con el equipo, mi trabajo fue desechado debido que, la funcionalidad la estaba desarrollando otro compañero. | Estuve trabajando brevemente en la HU, P1MB-34                                                    | Por el momento ninguno.                                                                                                                                    |
 | 09-10-2023 | Terminé la funcionalidad para subir archivos a la aplicación                                                                                                                             | Implementaré la funcionalidad P1MB-28 del tablero                                                 | Por el momento, no he encontrado ningún impedimento                                                                                                        |
 | 10-10-2023 | Estoy a la espera de que me acepten mi pull request para hacer merge con la rama develop y sigo trabajando en la funcionalidad P1MB-28 | Hoy estuve haciendo unos pequeños retoques para hacer la interfaz para la carga de archivos más pulida | Por el momento, no he encontrado ningún impedimento. |
+| 11-10-2023 | Trabajar en la implementación de la funcionalidad P1MB-28 | No trabaje en el proyecto porque estaba repasando para otras materias | Ninguno.
 
 ## Juan Lora
 
