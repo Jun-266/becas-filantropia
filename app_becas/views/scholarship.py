@@ -12,10 +12,4 @@ class Scholarship(View):
     def get(self, request):
         return render(request, 'scholarship.html')
 
-    def searchByName(name):
-        for scholarship in self.becas:
-            if scholarship["nombre"] == name:
-                return scholarship
-            return None
-
         
