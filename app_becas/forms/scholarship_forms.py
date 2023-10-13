@@ -4,6 +4,17 @@ from app_becas.models import Scholarship
 from app_becas.models import Calendar
 from django.db.utils import OperationalError
 
+class Scholarship_form_model(forms.ModelForm):
+    class Meta:
+        model = Scholarship
+        fields = ["auto_id",
+                  "name"
+                  "description",
+                  "amount",
+                  "type_scholarship"
+                  "calendar_id",
+                  ]
+
 class ScholarshipForm(forms.Form):
     name = forms.CharField(label='Nombre de la beca')
     description = forms.CharField(label='Descripción')
@@ -37,10 +48,8 @@ class ScholarshipForm(forms.Form):
         return choices
     
     def get_dynamic_choice_ci(request):
-        choices = [(obj.auto_id, "-"+Scholarship.objects.get(obj.scholarship_id).name) for obj in Calendar.objects.all()]
+        choices = [(obj.auto_id, obj.auto_id.hex[:8]) for obj in Calendar.objects.all()]
         return  choices
-    
-   
 
 
 class type_scholarship_form(forms.Form):

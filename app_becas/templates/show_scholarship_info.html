@@ -8,8 +8,29 @@
         <p><span class="fw-bold">ID (primeros 8-digitos): </span> {{auto_id_hex}}</p>
         <p> <span class="fw-bold">Descripción: </span> {{scholarship.description}}</p>
         <p> <span class="fw-bold">Monto: </span> {{scholarship.amount}}</p>
-        <p> <span class="fw-bold">Destinado a: </span> {{scholarship.type_scholarship}}</p>
-        <br>
+        <p> <span class="fw-bold">Destinado a: </span> {{type_scholarship.name}}</p>
+
+        <h2>Cronograma:</h2>
+        {% if calendar %}
+            <br>
+
+            <p><span class="fw-bold">ID de la Convocatoria: </span> {{calendar.convocation_type_id}}</p>
+            <p> <span class="fw-bold">Inscripciones: </span> {{calendar.inscription_start_date}} - {{calendar.inscription_deadline}}</p>
+            <p> <span class="fw-bold">Eleccion de participantes: </span> {{calendar.selection_start_date}} - {{calendar.selection_deadline}}</p>
+            <p> <span class="fw-bold">Entrevistas: </span> {{calendar.interview_start_date}} - {{calendar.interview_deadline}}</p>
+            <p> <span class="fw-bold">Publicación de studiantes electos: </span> {{calendar.publish_elected_start_date}} - {{calendar.publish_elected_deadline}}</p>
+            <br>
+            
+            <a href="{% url 'delete_calendar' %}" class="btn btn-warning">Desvincular Cronograma</a>
+            <a href="{% url 'calendar_update' %}" class="btn btn-primary">Actualizar Cronograma</a>
+        {% else %}
+            <br>
+            <br>
+            <p class="fw-bold text-danger text-uppercase">¡{{msg}}!</p>
+        {% endif %}
+        <br><br>
+        <a href="{}" class="btn btn-danger">Eliminar Beca</a>
+        <a href="{}" class="btn btn-primary">Actualizar Beca</a>
     </div>
 
 {% endblock %}

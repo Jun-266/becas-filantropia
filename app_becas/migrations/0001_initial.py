@@ -50,23 +50,7 @@ class Migration(migrations.Migration):
                 ('rol', models.CharField(max_length=255)),
             ],
         ),
-        migrations.CreateModel(
-            name='Scholarship',
-            fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('auto_id', models.UUIDField(default=uuid.uuid4, editable=False)),
-                ('name', models.CharField(max_length=30)),
-                ('description', models.CharField(max_length=250)),
-                ('amount', models.IntegerField()),
-                ('type_scholarship', models.CharField(max_length=50)),
-            ],
-        ),
-        migrations.CreateModel(
-            name='TypeScholarship',
-            fields=[
-                ('name', models.CharField(max_length=50, primary_key=True)),
-            ],
-        ),
+
 
         migrations.CreateModel(
             name='Donor',

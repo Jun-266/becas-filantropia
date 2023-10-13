@@ -16,7 +16,7 @@ class My_user(models.Model):
     
 
 class Scholarship(models.Model):
-    auto_id = models.UUIDField(default=uuid.uuid4, editable=False)
+    auto_id = models.UUIDField(default=uuid.uuid4, primary_key=True)
     calendar_id = models.UUIDField()
     name = models.CharField(max_length=30)
     description = models.CharField(max_length=250)
@@ -28,7 +28,6 @@ class Scholarship(models.Model):
 
     
 class Calendar(models.Model):
-    #auto_id = models.AutoField(primary_key=True)
     auto_id = models.UUIDField(default=uuid.uuid4, primary_key= True)
     convocation_type_id = models.CharField(max_length=2)
     scholarship_id = models.CharField(max_length=20)
@@ -45,7 +44,7 @@ class Calendar(models.Model):
         return str("sch id:"+self.scholarship_id)
     
 class TypeScholarship(models.Model):
-    name = models.CharField(max_length=50, primary_key=True)
+    name = models.CharField(max_length=50,primary_key=True)
 
     def __str__(self):
         return self.name 
@@ -69,8 +68,4 @@ class Donor(models.Model):
 
     def __str__(self):
         return str(self.auto_id)
-
-
-class File(models.Model):
-    my_file = models.FileField(upload_to='archivos/')
 

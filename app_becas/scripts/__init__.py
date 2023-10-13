@@ -7,7 +7,6 @@ def init():
         TypeScholarship.objects.create(name="Matricula")
         TypeScholarship.objects.create(name="Alimentación")
         TypeScholarship.objects.create(name="Transporte")
-    
     # In case you need to delete them
     '''
     print("deleting")
