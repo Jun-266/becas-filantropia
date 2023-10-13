@@ -6,7 +6,7 @@
     {% for beca in tipos_beca %}
   
     <article class="card">
-            Para la beca: {{beca.name}}
+            Nombre : {{beca.name}}
         </a>
     </article>
 
@@ -17,10 +17,11 @@
   {% csrf_token %}
   {{form.as_p }}
 
+</form>
+
     <button type="submit">
       Guardar
     </button>
-</form>
 
 {% endblock %}
 
