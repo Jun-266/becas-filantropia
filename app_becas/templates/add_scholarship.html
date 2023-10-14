@@ -3,35 +3,17 @@
 {% block content %}
     <h1 class="text-center mt-5">Registrar una beca</h1>
     
-    <form id="formID_add_scholarship" class="container p-5">
+    <form id="formID_add_scholarship" class="container p-5" method="post">
         {% csrf_token %}
+
+        {{form.as_p}}
         
-        <div class="mb-3">
-            <label for="scholarship_name" class="form-label">Nombre de la beca</label>
-            <input type="text" class="form-control" id="scholarship_name" name="name">
-        </div>
+        <a href='add_type_scholarship' class="btn btn-primary">Agregar Tipo de Beca</a>
+        <a href='delete_type_scholarship' class="btn btn-primary">Eliminar Tipo de Beca</a>
 
-        <div class="mb-3">
-            <label for="scholarship_description" class="form-label">Descripción</label>
-            <textarea class="form-control form-control-lg" id="scholarship_description" name="description"></textarea>
-        </div>
-
-        <div class="mb-3">
-            <label for="scholarship_amount" class="form-label">Cobertura económica</label>
-            <input type="number" class="form-control" id="scholarship_amount" name="amount">
-        </div>
-
-        <div class="mb-3">
-            <label for="scholarship_type" class="form-label">Tipo de Beca</label>
-            <select class="form-select" id="scholarship_type" name="type_scholarship">
-                {% for choice in lista %}
-                    <option>{{choice}}</option>
-                {% endfor %}
-            </select>
-        </div>
-        
-        <div class="mb-3 text-center">
-            <button type="submit" class="btn btn-primary">Guardar</button>
-        </div>
+        <br><br>
+        <button type="submit">
+            Guardar
+        </button>
     </form>
 {% endblock %}

@@ -3,7 +3,16 @@
 {% block content %}
     <div class="container p-5">
         <h1>Cargar informe</h1>
-        <a class="btn btn-primary" href="/reports/">
+
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form_for_file.as_p }}
+            <button class="btn btn-primary">Guardar</button>
+            <br>
+            <br>
+        </form>
+
+        <a class="btn btn-secondary" href="/reports/">
             Volver
         </a>
     </div>
