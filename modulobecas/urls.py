@@ -12,6 +12,7 @@ from app_becas.views.scholarship import Scholarship
 from app_becas.views.add_scholarship import Add_scholarship
 from app_becas.views.all_scholarships import All_scholarships
 from app_becas.views.delete_user import Delete_user
+from app_becas.views.modify_user import Modify_user
 from app_becas.views.add_type_scholarship import AddTypeScholarship
 from django.conf import settings
 from django.views.static import serve
@@ -39,8 +40,9 @@ urlpatterns = [
     path('all_scholarships/', All_scholarships.as_view(), name ='all_scholarships'),
     path('manage_user/delete_user/<int:autoId>/', Delete_user.as_view(), name='delete_user'),
     path('add_scholarship/add_type_scholarship/', AddTypeScholarship.as_view(), name ='add_type_scholarship'),
-    path('add_scholarship/delete_type_scholarship/', DeleteTypeScholarship.as_view(), name ='delete_type_scholarship')
-    
+    path('add_scholarship/delete_type_scholarship/', DeleteTypeScholarship.as_view(), name ='delete_type_scholarship'),
+    path('modify_user/delete_type_scholarship/', DeleteTypeScholarship.as_view(), name ='delete_type_scholarship'),
+    path('manage_user/modify_user/<int:autoId>/', Modify_user.as_view(), name='modify_user')
 ]
 
 urlpatterns += [

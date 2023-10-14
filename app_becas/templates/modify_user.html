@@ -1,0 +1,61 @@
+{% extends 'layouts/base.html' %}
+
+{% block content %}
+    <div class="container p-5 my-3 border">
+        <div class="row">
+            <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4">
+                <a href="/manage_user" class="btn btn-primary btn-sm">Volver</a>
+                
+                <div class="card mt-3">
+                    <h1 class="card-title mx-3 mt-2">Modificar usuario</h1>
+                    <div class="card-body">
+                        <form method="POST">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <input type="text" id="autoId" value="{{user.autoId|safe}}" name="autoId" class="form-control" placeholder="Auto ID" readonly
+                                    maxlength="50" required>
+                            </div>
+
+                            <div class="form-group">
+                                <input type="text" id="userId" value="{{user.userId|safe}}" name="userId" class="form-control" placeholder="Numero de documento" readonly
+                                    maxlength="50" required>
+                            </div>
+
+                            <div class="form-group">
+                                <input type="text" id="name" value="{{user.name|safe}}" name="name" class="form-control" placeholder="Nombre"
+                                    maxlength="50" required>
+                            </div>
+
+                            <div class="form-group">
+                                <input type="text" id="lastname" value="{{user.lastname|safe}}" name="lastname" class="form-control" placeholder="Apellido"
+                                    maxlength="50" required>
+                            </div>
+
+                            <div class="form-group">
+                                <input type="text" id="email" value="{{user.email|safe}}" name="email" class="form-control" placeholder="Correo electrónico"
+                                    maxlength="50" required>
+                            </div>
+
+                            <div class="form-group">
+                                <input type="text" id="phone" value="{{user.phone|safe}}" name="phone" class="form-control" placeholder="Teléfono"
+                                    maxlength="50" required>
+                            </div>
+
+                            <div class="form-group">
+                                <select name="rol" class="form-control col-md-6" style="margin-bottom: 10px;">
+                                    <option value="1" {% if user.rol == 1 %}selected{% endif %}>Apoyo Financiero</option>
+                                    <option value="2" {% if user.rol == 2 %}selected{% endif %}>Filantropia</option>
+                                    <option value="3" {% if user.rol == 3 %}selected{% endif %}>Director Filantropia</option>
+                                </select>
+                            </div>                            
+
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-success btn-block text-white">Guardar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
