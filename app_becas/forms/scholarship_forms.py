@@ -21,7 +21,7 @@ class ScholarshipForm(forms.Form):
         self.fields['type_scholarship'].choices = self.get_dynamic_choice()
 
     def get_dynamic_choice(request):
-        choices = [(obj.id, obj.name) for obj in TypeScholarship.objects.all()]
+        choices = [(obj.name, obj.name) for obj in TypeScholarship.objects.all()]
         return choices
 
 class type_scholarship_form(forms.Form):
@@ -35,3 +35,8 @@ class delete_type(forms.Form):
     delete_type_scholarship = forms.CharField(
         label= 'Nombre de tipo de beca:', 
     )
+
+class SearchScholarshipForm(forms.Form):
+    scholarship_name = forms.CharField(label='Nombre de la Beca', required=False)
+
+

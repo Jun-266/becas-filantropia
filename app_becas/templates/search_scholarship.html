@@ -1,0 +1,21 @@
+{% extends 'layouts/base.html' %}
+
+{% block content %}
+    <h1>Buscar Beca por Nombre</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label for="nombre_beca">Nombre de Beca:</label>
+        <input type="text" name="nombre_beca" id="nombre_beca">
+        <button type="submit">Buscar</button>
+    </form>
+
+    {% if becas %}
+        <h2>Resultados de la Búsqueda:</h2>
+        <ul>
+            {% for beca in becas %}
+                <li>{{ beca.nombre }}</li>
+                <!-- Puedes mostrar otros detalles de la beca aquí -->
+            {% endfor %}
+        </ul>
+    {% endif %}
+    {% endblock %}
