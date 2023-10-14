@@ -1,0 +1,54 @@
+{% extends 'layouts/base.html' %}
+
+{% block content %}
+    <div class="container p-5 my-3 border">
+        <div class="row">
+            <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4">
+                <a href="/home" class="btn btn-primary btn-sm">Volver</a>
+                
+                <div class="card mt-3">
+                    <h1 class="card-title mx-3 mt-2">Agregar donante</h1>
+                    <div class="card-body">
+                        <form action="/manage_donor/" method="POST">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <input type="text" id="enterprise_name" name="enterprise_name" class="form-control" placeholder="Nombre de la empresa"
+                                    maxlength="50" required>
+                            </div>
+
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-success btn-block text-white">Guardar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-sm-12 col-md-6 col-lg-8 col-xl-8 mt-4">
+                <h1>Listado de donantes</h1>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre de la empresa</th>
+                            <th colspan="">Opciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for donor in donors %}
+                            <tr>
+                                <td>{{ donor.auto_id }}</td>
+                                <td>{{ donor.enterprise_name }}</td>
+                                <td><a href= "modify_donor/{{donor.auto_id}}" class ="btn btn-info">Edit</a></td>
+                                <td>
+                                    <a href="delete_donor/{{donor.auto_id}}" id="delete-donor" class="btn btn-danger";">Delete</a>
+                                </td>  
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}

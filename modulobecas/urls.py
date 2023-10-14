@@ -8,6 +8,7 @@ from app_becas.views.calendar import Calendar
 from app_becas.views.calendar_add import Calendar_add
 from app_becas.views.calendar_show_info import Calendar_show_info
 from app_becas.views.manage_user import Manage_user
+from app_becas.views.manage_donor import Manage_donor
 from app_becas.views.scholarship import Scholarship
 from app_becas.views.add_scholarship import Add_scholarship
 from app_becas.views.all_scholarships import All_scholarships
@@ -17,7 +18,8 @@ from app_becas.views.add_type_scholarship import AddTypeScholarship
 from django.conf import settings
 from django.views.static import serve
 from app_becas.views.delete_type_scholarship import DeleteTypeScholarship
-
+from app_becas.views.delete_donor import Delete_donor
+from app_becas.views.modify_donor import Modify_donor
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -38,11 +40,13 @@ urlpatterns = [
     path('reports_generate/', hr.generate_report, name='generate_report'),
     path('add_scholarship/', Add_scholarship.as_view(), name='add_scholarship'),
     path('all_scholarships/', All_scholarships.as_view(), name ='all_scholarships'),
-    path('manage_user/delete_user/<int:autoId>/', Delete_user.as_view(), name='delete_user'),
+    path('manage_user/delete_user/<str:auto_id>/', Delete_user.as_view(), name='delete_user'),
     path('add_scholarship/add_type_scholarship/', AddTypeScholarship.as_view(), name ='add_type_scholarship'),
     path('add_scholarship/delete_type_scholarship/', DeleteTypeScholarship.as_view(), name ='delete_type_scholarship'),
-    path('modify_user/delete_type_scholarship/', DeleteTypeScholarship.as_view(), name ='delete_type_scholarship'),
-    path('manage_user/modify_user/<int:autoId>/', Modify_user.as_view(), name='modify_user')
+    path('manage_user/modify_user/<str:auto_id>/', Modify_user.as_view(), name='modify_user'),
+    path('manage_donor/', Manage_donor.as_view(), name='manage_donor'),
+    path('manage_donor/delete_donor/<str:auto_id>/', Delete_donor.as_view(), name='delete_donor'),
+    path('manage_donor/modify_donor/<str:auto_id>/', Modify_donor.as_view(), name='modify_donor'),
 ]
 
 urlpatterns += [

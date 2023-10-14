@@ -12,12 +12,12 @@
                         <form method="POST">
                             {% csrf_token %}
                             <div class="form-group">
-                                <input type="text" id="autoId" value="{{user.autoId|safe}}" name="autoId" class="form-control" placeholder="Auto ID" readonly
+                                <input type="text" id="auto_Id" value="{{user.auto_id|default:'Auto ID'|safe}}" name="auto_Id" class="form-control" placeholder="Auto ID" readonly
                                     maxlength="50" required>
                             </div>
 
                             <div class="form-group">
-                                <input type="text" id="userId" value="{{user.userId|safe}}" name="userId" class="form-control" placeholder="Numero de documento" readonly
+                                <input type="text" id="user_id" value="{{user.user_id|safe}}" name="user_id" class="form-control" placeholder="Numero de documento" readonly
                                     maxlength="50" required>
                             </div>
 

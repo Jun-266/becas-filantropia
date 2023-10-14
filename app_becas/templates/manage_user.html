@@ -3,7 +3,7 @@
 {% block content %}
     <div class="container p-5 my-3 border">
         <div class="row">
-            <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4">
+            <div class="col-sm-12 col-md-6 col-lg-3 col-xl-3">
                 <a href="/home" class="btn btn-primary btn-sm">Volver</a>
                 
                 <div class="card mt-3">
@@ -12,7 +12,7 @@
                         <form action="/manage_user/" method="POST">
                             {% csrf_token %}
                             <div class="form-group">
-                                <input type="text" id="userId" name="userId" class="form-control" placeholder="Numero de documento"
+                                <input type="text" id="user_id" name="user_id" class="form-control" placeholder="Numero de documento"
                                     maxlength="50" required>
                             </div>
 
@@ -53,7 +53,7 @@
             </div>
 
 
-            <div class="col-sm-12 col-md-6 col-lg-8 col-xl-8 mt-4">
+            <div class="col-sm-12 col-md-6 col-lg-9 col-xl-9 mt-4">
                 <h1>Listado de Usuarios</h1>
                 <table class="table table-striped">
                     <thead>
@@ -71,16 +71,16 @@
                     <tbody>
                         {% for user in users %}
                             <tr>
-                                <td>{{ user.autoId }}</td>
-                                <td>{{ user.userId }}</td>
+                                <td>{{ user.auto_id }}</td>
+                                <td>{{ user.user_id }}</td>
                                 <td>{{ user.name }}</td>
                                 <td>{{ user.lastname }}</td>
                                 <td>{{ user.email }}</td>
                                 <td>{{ user.phone }}</td>
                                 <td>{{ user.rol }}</td>
-                                <td><a href= "modify_user/{{user.autoId}}" class ="btn btn-info">Edit</a></td>
+                                <td><a href= "modify_user/{{user.auto_id}}" class ="btn btn-info">Edit</a></td>
                                 <td>
-                                    <a href="delete_user/{{user.autoId}}" id="delete-user" class="btn btn-danger";">Delete</a>
+                                    <a href="delete_user/{{user.auto_id}}" id="delete-user" class="btn btn-danger";">Delete</a>
                                 </td>  
                             </tr>
                         {% endfor %}
