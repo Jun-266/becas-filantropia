@@ -64,9 +64,10 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='TypeScholarship',
             fields=[
-                ('name', models.CharField(max_length=50, unique=True)),
+                ('name', models.CharField(max_length=50, primary_key=True)),
             ],
         ),
+
         migrations.CreateModel(
             name='Donor',
             fields=[
@@ -74,6 +75,14 @@ class Migration(migrations.Migration):
                 ('enterprise_name', models.CharField(max_length=20)),
                 ('contacts', models.ManyToManyField(related_name='donors', to='app_becas.contact')),
                 ('scholarships', models.ManyToManyField(related_name='donors', to='app_becas.scholarship')),
+            ],
+        ),
+
+        migrations.CreateModel(
+            name='File',
+            fields=[
+                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('my_file', models.FileField(upload_to='archivos/')),
             ],
         ),
     ]

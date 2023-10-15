@@ -12,6 +12,7 @@ class Calendar_show_info(View):
     def get(self, request):
         calendar = Calendar_obj.objects.get(auto_id = request.GET['auto_id'])
         request.session['ss_calendar_id'] = calendar.auto_id.hex
+        print ( "##" + request.session.get('ss_calendar_id'))
         return render(request, 'calendar_show_info.html', {
             'calendar' : calendar
         })

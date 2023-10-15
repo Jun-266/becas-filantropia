@@ -1,8 +1,12 @@
 {% extends 'layouts/base.html' %}
 
 {% block content %}
-    <div class="container p-5">
-        <h1>Gestión de becas</h1>
+<div class="container p-5">
+    <h1>Gestión de becas</h1>
+
+    <div class="creation-scolarship">
+        <a href="{% url 'add_scholarship' %}" class="btn btn-primary">Registrar Programa De Beca</a>
+        <br><br>
     </div>
 
     <div class="types_scholarship">
@@ -16,6 +20,23 @@
         <a href="{% url 'search_scholarship' %}">Buscar Programa De Beca</a>
     </div>
 
+    <br><br>
+
+    {% load send_id %}
+    {% if scholarship is defined %}
+        {% for scholarship in scholarships %}
+            <article class="card container p-1">
+                <a href="{% send_id 'show_scholarship_info' scholarship.auto_id %}" class="btn btn-primary">
+                    Beca: {{scholarship.name}}
+                </a>
+            </article>
+
+        {% endfor %}
+    {% else %}
+        <p>No existe ningún registro</p>
+    {% endif %}
+</div>
+    
     <div class="creation-scolarship">
         <a href="{% url 'add_scholarship' %}">Registrar Programa De Beca</a>
     </div>

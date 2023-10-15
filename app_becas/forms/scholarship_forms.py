@@ -1,13 +1,17 @@
 from django import forms
 from app_becas.models import TypeScholarship 
-
+from django.db.utils import OperationalError
 
 class ScholarshipForm(forms.Form):
     name = forms.CharField(label='Nombre de la beca')
     description = forms.CharField(label='Descripción')
     amount = forms.DecimalField(label='Monto')
     type_scholarship_objects = TypeScholarship.objects.all()
-    type_scholarship_choices = [(obj.name,obj.name) for obj in type_scholarship_objects]
+    try:
+        type_scholarship_choices = [(obj.name,obj.name) for obj in type_scholarship_objects]
+    except OperationalError:
+        print("## Es necesario que apliques las migraciones")
+        print("## Para que se cree automáticamente las tablas necesarias")
 
     default_choices = [('', 'Selecciona un tipo de beca')]
     type_scholarship = forms.ChoiceField(
@@ -19,6 +23,7 @@ class ScholarshipForm(forms.Form):
     def __init__(self, *args, **kwargs):
         super(ScholarshipForm, self).__init__(*args, **kwargs)
         self.fields['type_scholarship'].choices = self.get_dynamic_choice()
+        
 
     def get_dynamic_choice(request):
         choices = [(obj.name, obj.name) for obj in TypeScholarship.objects.all()]
