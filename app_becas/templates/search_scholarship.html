@@ -9,13 +9,13 @@
         <button type="submit">Buscar</button>
     </form>
 
-    {% if becas %}
+    {% if scholarship %}
         <h2>Resultados de la Búsqueda:</h2>
         <ul>
-            {% for beca in becas %}
-                <li>{{ beca.nombre }}</li>
-                <!-- Puedes mostrar otros detalles de la beca aquí -->
-            {% endfor %}
+                <li>{{ scholarship.name }}</li>
         </ul>
+    {% else %}
+         {{msg}}
     {% endif %}
-    {% endblock %}
+{% endblock %}
+

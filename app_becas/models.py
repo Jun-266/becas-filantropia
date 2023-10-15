@@ -22,6 +22,9 @@ class Scholarship(models.Model):
     amount = models.IntegerField()
     type_scholarship = models.CharField(max_length=50)
 
+    def auto_id_string(self):
+        return str(self.auto_id)
+
     def __str__(self):
         return self.name
 
