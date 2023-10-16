@@ -12,8 +12,8 @@
                         <form action="/manage_donor/" method="POST">
                             {% csrf_token %}
                             <div class="form-group">
-                                <input type="text" id="enterprise_name" name="enterprise_name" class="form-control" placeholder="Nombre de la empresa"
-                                    maxlength="50" required>
+                                <input type="text" id="enterprise_name" style="margin-bottom: 10px;" value="{{donor.enterprise_name|safe}}" name="enterprise_name" class="form-control" placeholder="Nombre de la empresa"
+                                  maxlength="50" required>
                             </div>
 
                             <div class="form-group">
