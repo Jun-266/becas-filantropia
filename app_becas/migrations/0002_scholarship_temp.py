@@ -13,8 +13,8 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Scholarship',
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('auto_id', models.UUIDField(default=uuid.uuid4, editable=False)),
+                ('id', models.BigAutoField(auto_created=True, serialize=False, verbose_name='ID')),
+                ('auto_id', models.CharField(default=uuid.uuid4, editable=False ,primary_key=True)),
                 ('name', models.CharField(max_length=30)),
                 ('description', models.CharField(max_length=250)),
                 ('amount', models.IntegerField()),

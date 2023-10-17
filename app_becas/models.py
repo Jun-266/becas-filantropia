@@ -16,15 +16,12 @@ class My_user(models.Model):
     
 
 class Scholarship(models.Model):
-    auto_id = models.UUIDField(default=uuid.uuid4, editable=False)
+    auto_id = models.CharField(default=uuid.uuid4, max_length=36, unique=True, editable=False)
     name = models.CharField(max_length=30)
     description = models.CharField(max_length=250)
     amount = models.IntegerField()
     type_scholarship = models.CharField(max_length=50)
-
-    def auto_id_string(self):
-        return str(self.auto_id)
-
+    
     def __str__(self):
         return self.name
 
