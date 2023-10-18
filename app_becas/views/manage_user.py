@@ -3,7 +3,10 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponseRedirect
 from app_becas.forms.add_user import Form_add_user
 from app_becas.models import My_user
+from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
 
+@method_decorator(login_required, name='dispatch')
 class Manage_user(View):
 
     def get(self, request):
