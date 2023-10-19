@@ -22,7 +22,7 @@
     <br><br>
 
     {% load send_id %}
-    {% if scholarship is defined %}
+    {% if scholarships %}
         {% for scholarship in scholarships %}
             <article class="card container p-1">
                 <a href="{% send_id 'show_scholarship_info' scholarship.auto_id %}" class="btn btn-primary">

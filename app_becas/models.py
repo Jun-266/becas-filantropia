@@ -30,7 +30,6 @@ class Scholarship(models.Model):
 class Calendar(models.Model):
     auto_id = models.UUIDField(default=uuid.uuid4, primary_key= True)
     convocation_type_id = models.CharField(max_length=2)
-    scholarship_id = models.CharField(max_length=20)
     inscription_start_date = models.DateField()
     inscription_deadline = models.DateField()
     selection_start_date = models.DateField()
@@ -68,4 +67,8 @@ class Donor(models.Model):
 
     def __str__(self):
         return str(self.auto_id)
+
+class File(models.Model):
+    my_file = models.FileField(upload_to='archivos/')
+    
 

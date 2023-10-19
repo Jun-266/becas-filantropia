@@ -17,7 +17,6 @@ class Calendar_add(View):
     def post(self, request):
         
         Calendar.objects.create(convocation_type_id = request.POST['convocation_type_id'],
-                                scholarship_id =request.POST['scholarship_id'],
                                 inscription_start_date = request.POST['inscription_s'],
                                 inscription_deadline = request.POST['inscription_d'],
                                 selection_start_date = request.POST['inscription_s'],

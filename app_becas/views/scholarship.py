@@ -14,6 +14,8 @@ class Scholarship(View):
         return render(request, 'scholarship.html', {
             'scholarships': scholarships,
         })
+    
+    
 
     def search_by_name(request):
         request.session['ss_scholarship_name'] = scholarship.name

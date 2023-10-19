@@ -6,7 +6,6 @@ class Calendar_form_model(forms.ModelForm):
         model = Calendar
         fields = ["auto_id",
                   "convocation_type_id",
-                  "scholarship_id",
                   "inscription_start_date", 
                   "inscription_deadline",
                   "selection_start_date",

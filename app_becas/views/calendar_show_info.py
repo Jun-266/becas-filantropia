@@ -10,7 +10,9 @@ from app_becas.models import Calendar as Calendar_obj
 class Calendar_show_info(View):
 
     def get(self, request):
-        calendar = Calendar_obj.objects.get(auto_id = request.GET['auto_id'])
+        print(">>>>")
+        print(request.GET['id'])
+        calendar = Calendar_obj.objects.get(auto_id = request.GET['id'])
         request.session['ss_calendar_id'] = calendar.auto_id.hex
         print ( "##" + request.session.get('ss_calendar_id'))
         return render(request, 'calendar_show_info.html', {

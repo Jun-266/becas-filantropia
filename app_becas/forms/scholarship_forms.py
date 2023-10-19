@@ -8,10 +8,10 @@ class Scholarship_form_model(forms.ModelForm):
     class Meta:
         model = Scholarship
         fields = ["auto_id",
-                  "name"
+                  "name",
                   "description",
                   "amount",
-                  "type_scholarship"
+                  "type_scholarship",
                   "calendar_id",
                   ]
 
@@ -20,13 +20,12 @@ class ScholarshipForm(forms.Form):
     description = forms.CharField(label='Descripción')
     amount = forms.DecimalField(label='Monto')
 
-    default_choices = [('', 'Selecciona un cronograma existente')] 
     calendar_id = forms.ChoiceField(
         label='Cronograma (ID)',
         initial = '',
     )
 
-    default_choices = [('', '_')]
+    default_choices = [('', '_')]  
     type_scholarship = forms.ChoiceField(
         label='Tipo de Beca',
         choices= default_choices,
@@ -49,7 +48,9 @@ class ScholarshipForm(forms.Form):
     
     def get_dynamic_choice_ci(request):
         choices = [(obj.auto_id, obj.auto_id.hex[:8]) for obj in Calendar.objects.all()]
-        return  choices
+        if not choices:
+            choices = [('', 'No existe un cronograma, crea uno')] + choices
+        return choices
 
 
 class type_scholarship_form(forms.Form):
