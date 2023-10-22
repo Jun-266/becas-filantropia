@@ -9,6 +9,7 @@ from app_becas.views.calendar_add import Calendar_add
 from app_becas.views.calendar_show_info import Calendar_show_info
 from app_becas.views.manage_user import Manage_user
 from app_becas.views.manage_donor import Manage_donor
+from app_becas.views.manage_contact import Manage_contact
 from app_becas.views.scholarship import Scholarship
 from app_becas.views.add_scholarship import Add_scholarship
 from app_becas.views.all_scholarships import All_scholarships
@@ -20,6 +21,7 @@ from django.views.static import serve
 from app_becas.views.delete_type_scholarship import DeleteTypeScholarship
 from app_becas.views.delete_donor import Delete_donor
 from app_becas.views.modify_donor import Modify_donor
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -33,6 +35,7 @@ urlpatterns = [
     path('delete_calendar/', Calendar_show_info.delete_calendar, name='delete_calendar'),
     path('calendar_update/', Calendar_show_info.update_calendar, name='calendar_update'),
     path('manage_user/', Manage_user.as_view(), name='manage_user'),
+    path('manage_contact/', Manage_contact.as_view(), name='manage_contact'),
     path('scholarship/', Scholarship.as_view(), name='scholarship'),
     path('reports/', hr.home, name='reports'),
     path('reports_upload/', hr.upload_report, name='upload_report'),
