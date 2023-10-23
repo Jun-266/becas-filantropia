@@ -21,6 +21,8 @@ from django.views.static import serve
 from app_becas.views.delete_type_scholarship import DeleteTypeScholarship
 from app_becas.views.delete_donor import Delete_donor
 from app_becas.views.modify_donor import Modify_donor
+from app_becas.views.delete_contact import Delete_contact
+from app_becas.views.modify_contact import Modify_contact
 
 
 urlpatterns = [
@@ -50,6 +52,8 @@ urlpatterns = [
     path('manage_donor/', Manage_donor.as_view(), name='manage_donor'),
     path('manage_donor/delete_donor/<str:auto_id>/', Delete_donor.as_view(), name='delete_donor'),
     path('manage_donor/modify_donor/<str:auto_id>/', Modify_donor.as_view(), name='modify_donor'),
+    path('manage_contact/delete_contact/<str:auto_id>/', Delete_contact.as_view(), name='delete_contact'),
+    path('manage_contact/modify_contact/<str:auto_id>/', Modify_contact.as_view(), name='modify_contact'),
 ]
 
 urlpatterns += [

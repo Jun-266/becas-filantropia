@@ -64,9 +64,9 @@
                                 <td>{{ contact.email }}</td>
                                 <td>{{ contact.phone }}</td>
                                 <td>{{ contact.type }}</td>
-                                <td><a href= "modify_user/{{user.auto_id}}" class ="btn btn-info">Edit</a></td>
+                                <td><a href= "modify_contact/{{contact.auto_id}}" class ="btn btn-info">Edit</a></td>
                                 <td>
-                                    <a href="delete_user/{{user.auto_id}}" id="delete-user" class="btn btn-danger";">Delete</a>
+                                    <a href="delete_contact/{{contact.auto_id}}" id="delete-contact" class="btn btn-danger";">Delete</a>
                                 </td>  
                             </tr>
                         {% endfor %}
