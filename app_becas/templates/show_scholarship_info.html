@@ -5,13 +5,17 @@
     <div class="container p-5">
         <h1>Beca: {{scholarship.name}} </h1><br>
         
-        <p><span class="fw-bold">ID (primeros 8-digitos): </span> {{auto_id_hex}}</p>
+        <p><span class="fw-bold">ID: </span> {{scholarship.auto_id}}</p>
         <p> <span class="fw-bold">Descripción: </span> {{scholarship.description}}</p>
         <p> <span class="fw-bold">Monto: </span> {{scholarship.amount}}</p>
         <p> <span class="fw-bold">Destinado a: </span> {{scholarship.type_scholarship}}</p>
         <br>
+
+        <a href="" class="btn btn-warning">Eliminar Beca</a>
+        <a href="" class="btn btn-secondary">Actualizar Beca</a>  
     </div>
 
+    
 {% endblock %}
         <!--
             For future functions, delete and modify view Calendar
