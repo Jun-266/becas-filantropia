@@ -13,10 +13,10 @@
     {% if scholarship %}
         <h2>Resultados de la Búsqueda:</h2>
         <ul>
-                <li><a href="show_scholarship_info/ {{scholarship.auto_id}}">{{ scholarship.name }}</a></li>
+                <li><a class="btn btn-primary" href="/show_scholarship_info?auto_id={{scholarship.auto_id}}">{{ scholarship.name }}</a></li>
         </ul>
     {% else %}
-         {{msg}}
+         {{msg}}    
     {% endif %}
 </div>
     
