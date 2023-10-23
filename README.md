@@ -49,6 +49,7 @@
 | 15 -10 -2023 | Implementé la lógica en los campos de relacionar beca con donante y contacto con donante | Hacer un html para los contactos o hacer las busquedas                                 | Ninguno
 | 21 -10 -2023 | Modifqué la vista de editar donante, definí en lo que voy a trabajar este fin de semana mientras iniciamos el sprint. Comencé por agregar y mostrar contacto | Hacer la función de eliminar y editar contacto| Ninguno
 | 22 -10 -2023 | Hice la función de eliminar y editar contacto | Crear el modelo de Student y avanzar con la base de la vista| Ninguno
+| 23 -10 -2023 | Creé el modelo de Student y Major con su relación de 1 a 1 | Avanzar con la vista de Student | Ninguno
 
 ## Santiago Prado Larrarte
 | Fecha      | ¿Qué he hecho desde el último daily SCRUM?                                                                                             | ¿Qué haré durante el día de hoy?                                                                                                                                                    | ¿He visto o encontrado algún impedimento?                                                                                                                               |
