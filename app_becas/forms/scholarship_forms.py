@@ -40,3 +40,8 @@ class delete_type(forms.Form):
     delete_type_scholarship = forms.CharField(
         label= 'Nombre de tipo de beca:', 
     )
+
+class SearchScholarshipForm(forms.Form):
+    scholarship_name = forms.CharField(label='Nombre de la Beca', required=False)
+
+

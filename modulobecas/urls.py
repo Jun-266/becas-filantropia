@@ -19,6 +19,7 @@ from django.conf import settings
 from django.views.static import serve
 from app_becas.views.delete_type_scholarship import DeleteTypeScholarship
 from app_becas.views.show_scholarship_info import Show_scholarship_info
+from app_becas.views.search_scholarship import SearchScholarship
 from app_becas.views.delete_donor import Delete_donor
 from app_becas.views.modify_donor import Modify_donor
 from app_becas.views.delete_contact import Delete_contact
@@ -42,9 +43,9 @@ urlpatterns = [
     path('scholarship/', Scholarship.as_view(), name='scholarship'),
     path('show_scholarship_info/', Show_scholarship_info.as_view(), name='show_scholarship_info'),
     path('add_scholarship/', Add_scholarship.as_view(), name='add_scholarship'),
-    path('manage_user/delete_user/<str:auto_id>/', Delete_user.as_view(), name='delete_user'),
     path('add_scholarship/add_type_scholarship/', AddTypeScholarship.as_view(), name ='add_type_scholarship'),
     path('add_scholarship/delete_type_scholarship/', DeleteTypeScholarship.as_view(), name ='delete_type_scholarship'),
+    path('search_scholarship/', SearchScholarship.as_view(), name ='search_scholarship'),
 
     path('reports/', hr.home, name='reports'),
     path('reports_upload/', hr.upload_report, name='upload_report'),
@@ -52,6 +53,7 @@ urlpatterns = [
     path('reports_generate/', hr.generate_report, name='generate_report'),
     
     path('manage_user/', Manage_user.as_view(), name='manage_user'),
+    path('manage_user/delete_user/<str:auto_id>/', Delete_user.as_view(), name='delete_user'),
     path('manage_contact/', Manage_contact.as_view(), name='manage_contact'),
     path('manage_user/modify_user/<str:auto_id>/', Modify_user.as_view(), name='modify_user'),
     path('manage_donor/', Manage_donor.as_view(), name='manage_donor'),
@@ -59,6 +61,7 @@ urlpatterns = [
     path('manage_donor/modify_donor/<str:auto_id>/', Modify_donor.as_view(), name='modify_donor'),
     path('manage_contact/delete_contact/<str:auto_id>/', Delete_contact.as_view(), name='delete_contact'),
     path('manage_contact/modify_contact/<str:auto_id>/', Modify_contact.as_view(), name='modify_contact'),
+
 ]
 
 urlpatterns += [

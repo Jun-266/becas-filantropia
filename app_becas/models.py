@@ -21,7 +21,7 @@ class Scholarship(models.Model):
     description = models.CharField(max_length=250)
     amount = models.IntegerField()
     type_scholarship = models.CharField(max_length=50)
-
+    
     def __str__(self):
         return self.name
 
