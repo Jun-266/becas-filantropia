@@ -1,0 +1,65 @@
+{% extends 'layouts/base.html' %}
+
+{% block content %}
+
+    <div class="container p-5 my-3 border">
+        <div class="row">
+            <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4">
+                <a href="/manage_donor" class="btn btn-primary btn-sm">Volver</a>
+                
+                <div class="card mt-3">
+                    <h1 class="card-title mx-3 mt-2">Modificar donante</h1>
+                    <div class="card-body">
+                        <form method="POST">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <input type="text" id="auto_Id" value="{{donor.auto_id|default:'Auto ID'|safe}}" name="auto_Id" class="form-control" placeholder="Auto ID" readonly maxlength="50" required>
+                            </div>
+
+                            <div class="form-group">
+                                <input type="text" id="enterprise_name" style="margin-bottom: 10px;" value="{{donor.enterprise_name|safe}}" name="enterprise_name" class="form-control" placeholder="Nombre de la empresa" maxlength="50" required>
+                            </div>
+
+                            <div class="input-group mt-3">
+                                <input type="text" class="form-control" id="donor_scholarship" name="donor_scholarship" placeholder='ID Beca'>
+                                <button type="submit" name="action" value="asociar_beca" class="btn btn-primary">Asociar Beca</button>
+                              </div>
+                              
+                              <div class="input-group mt-1 mb-3">
+                                <input type="text" class="form-control" id="donor_contact" name="donor_contact" placeholder='ID Contacto'>
+                                <button type="submit" name="action" value="asociar_contacto" class="btn btn-primary">Asociar Contacto</button>
+                              </div>
+                                          
+
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-success btn-block text-white" style="margin-top: 10px;">Guardar</button>
+                            </div>
+                    
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript">
+function asociarBeca() {
+    const donorAutoId = $("#donor_scholarship").val();
+    const scholarshipId = $("#donor_scholarship").val();
+
+    $.post("/asociar_beca/", { donor_auto_id: donorAutoId, scholarship_id: scholarshipId }, function(data) {
+        console.log(data);
+    });
+}
+
+function asociarContacto() {
+    const donorAutoId = $("#donor_contact").val();
+    const contactId = $("#donor_contact").val();
+
+    $.post("/asociar_contacto/", { donor_auto_id: donorAutoId, contact_id: contactId }, function(data) {
+        console.log(data);
+    });
+}
+</script>
