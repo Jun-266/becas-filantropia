@@ -21,4 +21,4 @@ class ManageUser2(View):
                                email=request.POST['email'],
                                phone=request.POST['phone'],
                                rol=request.POST['rol'])
-        return redirect('home')
+        return redirect('/manage_user/')

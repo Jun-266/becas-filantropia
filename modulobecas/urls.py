@@ -12,7 +12,6 @@ from app_becas.views.manage_donor import Manage_donor
 from app_becas.views.manage_contact import Manage_contact
 from app_becas.views.scholarship import Scholarship
 from app_becas.views.add_scholarship import Add_scholarship
-from app_becas.views.all_scholarships import All_scholarships
 from app_becas.views.delete_user import Delete_user
 from app_becas.views.modify_user import Modify_user
 from app_becas.views.add_type_scholarship import AddTypeScholarship
@@ -43,7 +42,6 @@ urlpatterns = [
     path('scholarship/', Scholarship.as_view(), name='scholarship'),
     path('show_scholarship_info/', Show_scholarship_info.as_view(), name='show_scholarship_info'),
     path('add_scholarship/', Add_scholarship.as_view(), name='add_scholarship'),
-    path('all_scholarships/', All_scholarships.as_view(), name ='all_scholarships'),
     path('manage_user/delete_user/<str:auto_id>/', Delete_user.as_view(), name='delete_user'),
     path('add_scholarship/add_type_scholarship/', AddTypeScholarship.as_view(), name ='add_type_scholarship'),
     path('add_scholarship/delete_type_scholarship/', DeleteTypeScholarship.as_view(), name ='delete_type_scholarship'),

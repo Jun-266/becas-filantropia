@@ -18,7 +18,7 @@ class ManageUser(View):
         })
 
     def post(self, request):
-        My_user.objects.create(userId=request.POST['userId'],
+        My_user.objects.create(user_id=request.POST['user_id'],
                                name=request.POST['name'],
                                lastname=request.POST['lastname'],
                                email=request.POST['email'],
