@@ -1,17 +1,65 @@
-{% extends 'base.html' %}
+{% extends 'layouts/base.html' %}
 
 {% block content %}
-    <h1>Signin form</h1>
+    <div class="container-fluid p-0">
 
-    <form action="/signin/" method="POST">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button>Iniciar sesión</button>
-    </form>
+        <img src="https://www.sainc.co/wp-content/uploads/1987/08/MG_2867.jpg" class="img-fluid bg-image" alt="Imagen de fondo">
 
-    <p>
-        <a href="/signup">
-            ¿No tienes una cuenta? Registrate aquí
-        </a>
-    </p>
+        <div class="container-md login-container">
+            <div class="row justify-content-center align-items-center h-100">
+                <div class="col-md-12">
+                    <div class="border rounded p-5 bg-white shadow">
+                        <h1 class="text-center">Iniciar sesión</h1>
+                        <div id="divError" class="alert alert-danger">
+                            {{ error_message }}
+                        </div>
+                        <form action="/" method="POST">
+                            {% csrf_token %}
+                            {{ form.as_p }}
+                            <div class="text-center">
+                                <button class="btn btn-primary">
+                                    Iniciar sesión
+                                </button>
+                            </div>
+                        </form>
+
+                        <a href="/signup" class="btn btn-outline-secondary mt-2 center">
+                            ¿No tienes una cuenta? Regístrate aquí
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        
+        .bg-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            object-fit: cover;
+            filter: brightness(0.5);
+        }
+
+        .login-container {
+            position: relative;
+            padding: 0;
+            min-height: 80vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+    </style>
+
+    <script>
+        const divError = document.getElementById('divError');
+        const value = divError.innerText;
+
+        divError.hidden = value === '';
+    </script>
 {% endblock %}

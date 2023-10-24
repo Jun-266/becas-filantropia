@@ -1,0 +1,63 @@
+{% extends 'layouts/base.html' %}
+
+{% block content %}
+    <div class="container p-5">
+        <h1>Página Calendar</h1>
+        <a href="{% url 'calendar_add' %}" class="btn btn-primary">
+            Registrar Cronogramas
+        </a>
+    </div>
+
+    <div class="container pl-5">
+        <h3>Buscar una beca</h3>
+        <form id="form_search_calendar" method = "POST">
+            {% csrf_token %}
+            
+            <label for="search">icon.png *</label> 
+            {% if default_value_msg == "not-searched" %}
+                <input type="text" id="to_search" name="to_search" placeholder="nombre de la beca" >
+            {% else %}
+                <input type="text" id="to_search" name="to_search" placeholder="nombre de la beca" value={{default_value_msg}}>
+            {% endif%}
+            <button class="btn btn-secondary">
+                Buscar
+            </button>
+            {% if default_value_msg != "not-searched"%}
+                <a href="{{calendar}}" class="btn btn-warning">
+                    Limpiar búsqueda
+                </a>
+            {% endif%}
+        </form>
+        
+        <br><br>
+
+    </div>
+    
+    <div class="container pl-5">
+        <h2 > Cronogramas:</h2>
+        <p>{{msg}}</p>
+        
+    </div>
+    
+
+    <div class="card container p-5">
+        {% load send_id %}
+        {% if calendar is defined %}
+            {% for calendar in calendars %}
+            <ul>
+                <li><a href="/calendar_show_info?auto_id={{calendar.auto_id}}" class="btn btn-primary">
+                    Asociado a beca # {{calendar.scholarship_id}}
+                    </a>
+                </li>
+                
+            </ul>
+                
+    
+            {% endfor %}
+        {% else %}
+            <p>No existe ningún registro</p>
+        {% endif %}
+    </div>
+    
+
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends 'layouts/base.html' %}
+
+{% block content %}
+    
+    <h1>Agregar un Cronograma</h1>
+    
+
+    <form id="formID_add_calendar" class="container p-5" method = "POST">
+        {% csrf_token %}
+        
+        <label for="convocation_type_id">ID del tipo de Convocatoria</label> 
+        <input type="text" id="convocation_type_id" name="convocation_type_id"><br><br>
+        <label for="scholarship_id">ID de la Beca</label> 
+        <input type="text" id="scholarship_id" name="scholarship_id" maxlength="20"><br><br>
+
+        <label for="inscription_sd">Inicio  -</label> <label for="inscription_dl">Fin de Inscripciones</label><br>  
+        <input type="date" id="inscription_s" name="inscription_s" min="2023-01-01">
+        <input type="date" id="inscription_d" name="inscription_d" min="2023-01-01"><br><br>
+
+        <label for="selection_s">Inicio -</label>
+        <label for="selection_d">Fin de Inscripciones</label><br>  
+        <input type="date" id="selection_s" name="selection_s" min="2023-01-01">
+        <input type="date" id="selection_d" name="selection_d" min="2023-01-01"><br><br>
+
+        <label for="interview_s">Inicio -</label>
+        <label for="interview_d">Fin de Entrevistas a participantes</label><br>  
+        <input type="date" id="interview_s" name="interview_s" min="2023-01-01">
+        <input type="date" id="interview_d" name="interview_d" min="2023-01-01"><br><br>
+        
+        <label for="publish_elected_s">Publicación y</label>
+        <label for="publish_elected_d">Duración de resultados</label><br>  
+        <input type="date" id="publish_elected_s" name="publish_elected_s" min="2023-01-01">
+        <input type="date" id="publish_elected_d" name="publish_elected_d" min="2023-01-01"><br><br>
+
+        <button>
+            Guardar
+        </button>
+    </form>
+
+{% endblock %}

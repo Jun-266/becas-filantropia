@@ -1,0 +1,78 @@
+{% extends 'layouts/base.html' %}
+
+{% block content %}
+    <div class="container p-5 my-3 border">
+        <div class="row">
+            <div class="col-sm-12 col-md-6 col-lg-3 col-xl-3">
+                <a href="/home" class="btn btn-primary btn-sm">Volver</a>
+                
+                <div class="card mt-3">
+                    <h1 class="card-title mx-3 mt-2">Agregar contacto</h1>
+                    <div class="card-body">
+                        <form action="/manage_contact/" method="POST">
+
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <input type="text" id="identification" name="identification" class="form-control" placeholder="Número de identificación"
+                                    maxlength="50" required>
+                            </div>
+
+                            <div class="form-group">
+                                <input type="text" id="email" name="email" class="form-control" placeholder="Correo electrónico"
+                                    maxlength="50" required>
+                            </div>
+
+                            <div class="form-group">
+                                <input type="text" id="phone" name="phone" class="form-control" placeholder="Teléfono"
+                                    maxlength="50" required>
+                            </div>
+
+                            <div class="form-group">
+                                <select name="type" class="form-control col-md-6" style="margin-bottom: 10px;">
+                                    <option value="1">Dueño</option>
+                                    <option value="2">Empleado</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-success btn-block text-white">Guardar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-sm-12 col-md-6 col-lg-9 col-xl-9 mt-4">
+                <h1>Listado de Contactos</h1>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>identificacion</th>
+                            <th>Correo</th>
+                            <th>Telefono</th>
+                            <th>Tipo</th>
+                            <th colspan="">Opciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for contact in contacts %}
+                            <tr>
+                                <td>{{ contact.auto_id }}</td>
+                                <td>{{ contact.identification }}</td>
+                                <td>{{ contact.email }}</td>
+                                <td>{{ contact.phone }}</td>
+                                <td>{{ contact.type }}</td>
+                                <td><a href= "modify_contact/{{contact.auto_id}}" class ="btn btn-info">Edit</a></td>
+                                <td>
+                                    <a href="delete_contact/{{contact.auto_id}}" id="delete-contact" class="btn btn-danger";">Delete</a>
+                                </td>  
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}
