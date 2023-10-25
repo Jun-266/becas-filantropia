@@ -1,0 +1,112 @@
+{% extends 'layouts/base.html' %}
+
+{% block content %}
+    <div class="container p-5 my-3 border">
+        <div class="row">
+            <div class="col-sm-12 col-md-6 col-lg-3 col-xl-3">
+                <a href="/home" class="btn btn-primary btn-sm">Volver</a>
+                
+                <div class="card mt-3">
+                    <h1 class="card-title mx-3 mt-2">Agregar estudiante</h1>
+                    <div class="card-body">
+                        <form action="/manage_student/" method="POST">
+
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <input type="text" id="code" name="code" class="form-control" placeholder="Código de estudiante"
+                                    maxlength="50" required>
+                            </div>
+
+                            <div class="form-group">
+                                <input type="text" id="name" name="name" class="form-control" placeholder="Nombre"
+                                    maxlength="50" required>
+                            </div>
+
+                            <div class="form-group">
+                                <input type="text" id="lastname" name="lastname" class="form-control" placeholder="Apellido"
+                                    maxlength="50" required>
+                            </div>
+
+                            <div class="form-group">
+                                <input type="text" id="school" name="school" class="form-control" placeholder="Escuela"
+                                    maxlength="50" required>
+                            </div>
+
+                            <div class="form-group">
+                                <input type="text" id="email" name="email" class="form-control" placeholder="Correo electrónico"
+                                    maxlength="50" required>
+                            </div>
+
+                            <div class="form-group">
+                                <input type="text" id="phone" name="phone" class="form-control" placeholder="Teléfono"
+                                    maxlength="50" required>
+                            </div>
+
+                            <div class="form-group">
+                                <input type="text" id="first_semester" name="first_semester" class="form-control" placeholder="Primer semestre"
+                                    maxlength="50" required>
+                            </div>
+
+                            <div class="form-group">
+                                <input type="text" id="last_semester" name="last_semester" class="form-control" placeholder="Último semestre"
+                                    maxlength="50" required>
+                            </div>
+
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-success btn-block text-white">Guardar</button>
+                            </div>
+
+                            <!--
+                                class Major(models.Model):
+                                autoId = models.AutoField(primary_key=True)
+                                name = models.CharField(max_length=35)
+                                description = models.CharField(max_length=255)
+                            -->
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-sm-12 col-md-6 col-lg-9 col-xl-9 mt-4">
+                <h1>Listado de estudiantes</h1>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>code</th>
+                            <th>name</th>
+                            <th>lastname</th>
+                            <th>school</th>
+                            <th>email</th>
+                            <th>phone</th>
+                            <th>first_semester</th>
+                            <th>last_semester</th>
+                            <th colspan="">Opciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for student in students %}
+                            <tr>
+                                <td>{{ student.auto_id }}</td>
+                                <td>{{ student.code }}</td>
+                                <td>{{ student.name }}</td>
+                                <td>{{ student.lastname }}</td>
+                                <td>{{ student.school }}</td>
+                                <td>{{ student.email }}</td>
+                                <td>{{ student.phone }}</td>
+                                <td>{{ student.first_semester }}</td>
+                                <td>{{ student.last_semester }}</td>
+                                <td><a href= "modify_contact/{{contact.auto_id}}" class ="btn btn-info">Edit</a></td>
+                                <td>
+                                    <a href="delete_contact/{{contact.auto_id}}" id="delete-contact" class="btn btn-danger";">Delete</a>
+                                </td>  
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}

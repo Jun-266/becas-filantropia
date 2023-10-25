@@ -7,22 +7,13 @@
                 <a href="/home" class="btn btn-primary btn-sm">Volver</a>
                 
                 <div class="card mt-3">
-                    <h1 class="card-title mx-3 mt-2">Agregar usuario</h1>
+                    <h1 class="card-title mx-3 mt-2">Agregar contacto</h1>
                     <div class="card-body">
-                        <form action="/manage_user/" method="POST">
+                        <form action="/manage_contact/" method="POST">
+
                             {% csrf_token %}
                             <div class="form-group">
-                                <input type="text" id="user_id" name="user_id" class="form-control" placeholder="Número de documento"
-                                    maxlength="50" required>
-                            </div>
-
-                            <div class="form-group">
-                                <input type="text" id="name" name="name" class="form-control" placeholder="Nombre"
-                                    maxlength="50" required>
-                            </div>
-
-                            <div class="form-group">
-                                <input type="text" id="lastname" name="lastname" class="form-control" placeholder="Apellido"
+                                <input type="text" id="identification" name="identification" class="form-control" placeholder="Número de identificación"
                                     maxlength="50" required>
                             </div>
 
@@ -37,10 +28,9 @@
                             </div>
 
                             <div class="form-group">
-                                <select name="rol" class="form-control col-md-6" style="margin-bottom: 10px;">
-                                    <option value="1">Apoyo Financiero</option>
-                                    <option value="2">Filantropia</option>
-                                    <option value="3">Director Filantropia</option>
+                                <select name="type" class="form-control col-md-6" style="margin-bottom: 10px;">
+                                    <option value="1">Dueño</option>
+                                    <option value="2">Empleado</option>
                                 </select>
                             </div>
 
@@ -54,33 +44,29 @@
 
 
             <div class="col-sm-12 col-md-6 col-lg-9 col-xl-9 mt-4">
-                <h1>Listado de Usuarios</h1>
+                <h1>Listado de Contactos</h1>
                 <table class="table table-striped">
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Documento</th>
-                            <th>Nombre</th>
-                            <th>Apellido</th>
+                            <th>identificacion</th>
                             <th>Correo</th>
                             <th>Telefono</th>
-                            <th>Rol</th>
+                            <th>Tipo</th>
                             <th colspan="">Opciones</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {% for user in users %}
+                        {% for contact in contacts %}
                             <tr>
-                                <td>{{ user.auto_id }}</td>
-                                <td>{{ user.user_id }}</td>
-                                <td>{{ user.name }}</td>
-                                <td>{{ user.lastname }}</td>
-                                <td>{{ user.email }}</td>
-                                <td>{{ user.phone }}</td>
-                                <td>{{ user.rol }}</td>
-                                <td><a href= "modify_user/{{user.auto_id}}" class ="btn btn-info">Edit</a></td>
+                                <td>{{ contact.auto_id }}</td>
+                                <td>{{ contact.identification }}</td>
+                                <td>{{ contact.email }}</td>
+                                <td>{{ contact.phone }}</td>
+                                <td>{{ contact.type }}</td>
+                                <td><a href= "modify_contact/{{contact.auto_id}}" class ="btn btn-info">Edit</a></td>
                                 <td>
-                                    <a href="delete_user/{{user.auto_id}}" id="delete-user" class="btn btn-danger";">Delete</a>
+                                    <a href="delete_contact/{{contact.auto_id}}" id="delete-contact" class="btn btn-danger";">Delete</a>
                                 </td>  
                             </tr>
                         {% endfor %}

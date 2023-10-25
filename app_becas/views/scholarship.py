@@ -15,10 +15,4 @@ class Scholarship(View):
             'scholarships': scholarships,
         })
 
-    def searchByName(name):
-        for scholarship in self.becas:
-            if scholarship["nombre"] == name:
-                return scholarship
-            return None
-
         

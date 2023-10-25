@@ -7,15 +7,25 @@ import app_becas.views.reports as hr
 from app_becas.views.calendar import Calendar
 from app_becas.views.calendar_add import Calendar_add
 from app_becas.views.calendar_show_info import Calendar_show_info
-from app_becas.views.manageuser import ManageUser
+from app_becas.views.manageuser import ManageUser as Manage_user
+from app_becas.views.manage_student import Manage_student
+from app_becas.views.manage_donor import Manage_donor
+from app_becas.views.manage_contact import Manage_contact
 from app_becas.views.scholarship import Scholarship
 from app_becas.views.add_scholarship import Add_scholarship
-from app_becas.views.all_scholarships import All_scholarships
+from app_becas.views.delete_user import Delete_user
+from app_becas.views.modify_user import Modify_user
 from app_becas.views.add_type_scholarship import AddTypeScholarship
 from django.conf import settings
 from django.views.static import serve
 from app_becas.views.delete_type_scholarship import DeleteTypeScholarship
 from app_becas.views.show_scholarship_info import Show_scholarship_info
+from app_becas.views.search_scholarship import SearchScholarship
+from app_becas.views.delete_donor import Delete_donor
+from app_becas.views.modify_donor import Modify_donor
+from app_becas.views.delete_contact import Delete_contact
+from app_becas.views.modify_contact import Modify_contact
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -30,19 +40,29 @@ urlpatterns = [
     path('delete_calendar/', Calendar_show_info.delete_calendar, name='delete_calendar'),
     path('calendar_update/', Calendar_show_info.update_calendar, name='calendar_update'),
 
-    path('scholarship/', Scholarship.as_view(), name='scholarship'),
-    path('add_scholarship/', Add_scholarship.as_view(), name='add_scholarship'),
-    path('all_scholarships/', All_scholarships.as_view(), name='all_scholarships'),
-    path('add_scholarship/add_type_scholarship/', AddTypeScholarship.as_view(), name='add_type_scholarship'),
-    path('add_scholarship/delete_type_scholarship/', DeleteTypeScholarship.as_view(), name='delete_type_scholarship'),
-    path('show_scholarship_info/', Show_scholarship_info.as_view(), name='show_scholarship_info'),
 
-    path('manage_user/', ManageUser.as_view(), name='manage_user'),
+    path('scholarship/', Scholarship.as_view(), name='scholarship'),
+    path('show_scholarship_info/', Show_scholarship_info.as_view(), name='show_scholarship_info'),
+    path('add_scholarship/', Add_scholarship.as_view(), name='add_scholarship'),
+    path('add_scholarship/add_type_scholarship/', AddTypeScholarship.as_view(), name ='add_type_scholarship'),
+    path('add_scholarship/delete_type_scholarship/', DeleteTypeScholarship.as_view(), name ='delete_type_scholarship'),
+    path('search_scholarship/', SearchScholarship.as_view(), name ='search_scholarship'),
 
     path('reports/', hr.home, name='reports'),
     path('reports_upload/', hr.upload_report, name='upload_report'),
     path('reports_external/', hr.external_reports, name='external_reports'),
     path('reports_generate/', hr.generate_report, name='generate_report'),
+    
+    path('manage_user/', Manage_user.as_view(), name='manage_user'),
+    path('manage_student/', Manage_student.as_view(), name='manage_student'),
+    path('manage_user/delete_user/<str:auto_id>/', Delete_user.as_view(), name='delete_user'),
+    path('manage_contact/', Manage_contact.as_view(), name='manage_contact'),
+    path('manage_user/modify_user/<str:auto_id>/', Modify_user.as_view(), name='modify_user'),
+    path('manage_donor/', Manage_donor.as_view(), name='manage_donor'),
+    path('manage_donor/delete_donor/<str:auto_id>/', Delete_donor.as_view(), name='delete_donor'),
+    path('manage_donor/modify_donor/<str:auto_id>/', Modify_donor.as_view(), name='modify_donor'),
+    path('manage_contact/delete_contact/<str:auto_id>/', Delete_contact.as_view(), name='delete_contact'),
+    path('manage_contact/modify_contact/<str:auto_id>/', Modify_contact.as_view(), name='modify_contact'),
 
 ]
 

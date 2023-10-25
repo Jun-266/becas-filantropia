@@ -1,0 +1,50 @@
+{% extends 'layouts/base.html' %}
+
+{% block content %}
+    <div class="container p-5 my-3 border">
+        <div class="row">
+            <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4">
+                <a href="/manage_contact" class="btn btn-primary btn-sm">Volver</a>
+                
+                <div class="card mt-3">
+                    <h1 class="card-title mx-3 mt-2">Modificar contacto</h1>
+                    <div class="card-body">
+                        <form method="POST">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <input type="text" id="auto_Id" value="{{contact.auto_id|default:'Auto ID'|safe}}" name="auto_Id" class="form-control" placeholder="Auto ID" readonly
+                                    maxlength="50" required>
+                            </div>
+
+                            <div class="form-group">
+                                <input type="text" id="identification" value="{{contact.identification|default:'identification'|safe}}" name="identification" class="form-control" placeholder="Número de identificación"
+                                    maxlength="50" required>
+                            </div>
+
+                            <div class="form-group">
+                                <input type="text" id="email" value="{{contact.email|default:'email'|safe}}" name="email" class="form-control" placeholder="Correo electrónico"
+                                    maxlength="50" required>
+                            </div>
+
+                            <div class="form-group">
+                                <input type="text" id="phone" value="{{contact.phone|default:'phone'|safe}}" name="phone" class="form-control" placeholder="Teléfono"
+                                    maxlength="50" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <select name="type" class="form-control col-md-6" style="margin-bottom: 10px;">
+                                    <option value="1" {% if contact.type == 1 %}selected{% endif %}>Dueño</option>
+                                    <option value="2" {% if contact.type == 2 %}selected{% endif %}>Empleado</option>
+                                </select>
+                            </div>    
+
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-success btn-block text-white">Guardar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
