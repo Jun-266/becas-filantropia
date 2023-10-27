@@ -16,7 +16,7 @@
             </li>
             <li class="nav-item">
                 <a href="/reports_upload/" class="btn btn-primary m-2">
-                    Cargar Archivo
+                    Cargar informe
                 </a>
             </li>
             <li class="nav-item">
@@ -28,16 +28,31 @@
     </div>
 
     <div class="container">
-        <h1>Informes cargados</h1>
+        <h2>Informes cargados</h2>
         {% for file in files %}
-            <div class="card m-3">
-                <div class="card-body">
-                    <a href="{{ file.my_file.url }}" target="_blank">
-                        {{ file.my_file }}
-                    </a>
+            <form action="{% url 'delete_report' file.id %}" method="POST">
+                {% csrf_token %}
+                <div class="card m-3 shadow">
+                    <div class="card-body">
+                        <a href="{{ file.my_file.url }}" target="_blank">
+                            {{ file.my_file }}
+                        </a>
+                        <input type="submit"
+                               value="delete"
+                               class="material-icons btn btn-danger float-end"
+                               id="delete-report"
+                        >
+                    </div>
                 </div>
-            </div>
+            </form>
         {% endfor %}
     </div>
+
+    <script>
+        const btn_del = document.getElementById('delete-report');
+        btn_del.addEventListener('click', () => {
+            alert('Reporte eliminado.');
+        });
+    </script>
 
 {% endblock %}
