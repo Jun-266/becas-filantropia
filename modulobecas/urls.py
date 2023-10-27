@@ -7,7 +7,7 @@ import app_becas.views.reports as hr
 from app_becas.views.calendar import Calendar
 from app_becas.views.calendar_add import Calendar_add
 from app_becas.views.calendar_show_info import Calendar_show_info
-from app_becas.views.manageuser import ManageUser as Manage_user
+from app_becas.views.manage_user import Manage_user
 from app_becas.views.manage_donor import Manage_donor
 from app_becas.views.manage_contact import Manage_contact
 from app_becas.views.scholarship import Scholarship
