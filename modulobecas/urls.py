@@ -48,6 +48,7 @@ urlpatterns = [
     path('search_scholarship/', SearchScholarship.as_view(), name ='search_scholarship'),
 
     path('reports/', hr.home, name='reports'),
+    path('reports/<int:file_id>', hr.delete_report, name='delete_report'),
     path('reports_upload/', hr.upload_report, name='upload_report'),
     path('reports_external/', hr.external_reports, name='external_reports'),
     path('reports_generate/', hr.generate_report, name='generate_report'),
