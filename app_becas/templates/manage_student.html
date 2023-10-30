@@ -56,13 +56,6 @@
                                 <button type="submit" class="btn btn-success btn-block text-white">Guardar</button>
                             </div>
 
-                            <!--
-                                class Major(models.Model):
-                                autoId = models.AutoField(primary_key=True)
-                                name = models.CharField(max_length=35)
-                                description = models.CharField(max_length=255)
-                            -->
-
                         </form>
                     </div>
                 </div>
@@ -98,9 +91,9 @@
                                 <td>{{ student.phone }}</td>
                                 <td>{{ student.first_semester }}</td>
                                 <td>{{ student.last_semester }}</td>
-                                <td><a href= "modify_contact/{{contact.auto_id}}" class ="btn btn-info">Edit</a></td>
+                                <td><a href= "modify_student/{{student.auto_id}}" class ="btn btn-info">Edit</a></td>
                                 <td>
-                                    <a href="delete_contact/{{contact.auto_id}}" id="delete-contact" class="btn btn-danger";">Delete</a>
+                                    <a href="delete_student/{{student.auto_id}}" id="delete-student" class="btn btn-danger";">Delete</a>
                                 </td>  
                             </tr>
                         {% endfor %}

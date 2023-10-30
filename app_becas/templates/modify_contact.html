@@ -12,7 +12,7 @@
                         <form method="POST">
                             {% csrf_token %}
                             <div class="form-group">
-                                <input type="text" id="auto_Id" value="{{contact.auto_id|default:'Auto ID'|safe}}" name="auto_Id" class="form-control" placeholder="Auto ID" readonly
+                                <input type="text" id="auto_id" value="{{contact.auto_id|default:'Auto ID'|safe}}" name="auto_Id" class="form-control" placeholder="Auto ID" readonly
                                     maxlength="50" required>
                             </div>
 

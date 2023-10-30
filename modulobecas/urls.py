@@ -25,6 +25,8 @@ from app_becas.views.delete_donor import Delete_donor
 from app_becas.views.modify_donor import Modify_donor
 from app_becas.views.delete_contact import Delete_contact
 from app_becas.views.modify_contact import Modify_contact
+from app_becas.views.delete_student import Delete_student
+from app_becas.views.modify_student import Modify_student
 
 
 urlpatterns = [
@@ -63,6 +65,8 @@ urlpatterns = [
     path('manage_donor/modify_donor/<str:auto_id>/', Modify_donor.as_view(), name='modify_donor'),
     path('manage_contact/delete_contact/<str:auto_id>/', Delete_contact.as_view(), name='delete_contact'),
     path('manage_contact/modify_contact/<str:auto_id>/', Modify_contact.as_view(), name='modify_contact'),
+    path('manage_student/delete_student/<str:auto_id>/', Delete_student.as_view(), name='delete_student'),
+    path('manage_student/modify_student/<str:auto_id>/', Modify_student.as_view(), name='modify_student'),
 
 ]
 
