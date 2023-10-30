@@ -22,7 +22,7 @@
     <script>
         const inputLabel = document.querySelector('label');
         const btnUpload = document.querySelector('#btn-upload');
-        inputLabel.innerText = 'Archivo:'
+        inputLabel.innerHTML = '<i class="material-icons">file_upload</i>';
         btnUpload.addEventListener('click', () => {
             alert('Informe añadido exitosamente');
         });
