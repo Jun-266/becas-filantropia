@@ -53,6 +53,7 @@
 | 23 -10 -2023 | Creé el modelo de Student y Major con su relación de 1 a 1 | Avanzar con la vista de Student | Ninguno
 | 24 -10 -2023 | Creé la base de la vista de Student e hice un ajuste para solucionar un problema con el manage_user | Continuar con la vista de Student y su relación en la interfaz con Major | Ninguno
 | 29 -10 -2023 | Terminé de hacer la función de agregar y borrar Student, también adelante la de modificar para asociar el estudiante con major | Trabajar en la interfaz de modificar student para relacionar con Major  | Ninguno
+| 30 -10 -2023 | Terminé de hacer la interfaz de modificar student para agregar major o modificar el estudiante con major | Hacer la relación de beca con estudiante e ir relacionando con el estado de la aplicación a la beca | Ninguno
 
 ## Santiago Prado Larrarte
 | Fecha      | ¿Qué he hecho desde el último daily SCRUM?                                                                                             | ¿Qué haré durante el día de hoy?                                                                                                                                                    | ¿He visto o encontrado algún impedimento?                                                                                                                               |
