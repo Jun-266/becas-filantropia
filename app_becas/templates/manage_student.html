@@ -68,14 +68,15 @@
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>code</th>
-                            <th>name</th>
-                            <th>lastname</th>
-                            <th>school</th>
-                            <th>email</th>
-                            <th>phone</th>
-                            <th>first_semester</th>
-                            <th>last_semester</th>
+                            <th>Code</th>
+                            <th>Name</th>
+                            <th>Last Name</th>
+                            <th>School</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>First Semester</th>
+                            <th>Last Semester</th>
+                            <th>Major ID</th>
                             <th colspan="">Opciones</th>
                         </tr>
                     </thead>
@@ -91,6 +92,7 @@
                                 <td>{{ student.phone }}</td>
                                 <td>{{ student.first_semester }}</td>
                                 <td>{{ student.last_semester }}</td>
+                                <td>{{ student.major_id }}</td>
                                 <td><a href= "modify_student/{{student.auto_id}}" class ="btn btn-info">Edit</a></td>
                                 <td>
                                     <a href="delete_student/{{student.auto_id}}" id="delete-student" class="btn btn-danger";">Delete</a>
