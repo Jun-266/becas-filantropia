@@ -68,6 +68,19 @@
         const divError = document.getElementById('divError');
         const value = divError.innerText;
         divError.hidden = value === '';
+
+        const changeLabels = () => {
+            const labels = document.querySelectorAll('label');
+
+            labels.forEach(label => {
+                if (label.innerText === 'Username:')
+                    label.innerText = 'Usuario:';
+                else if (label.innerText === 'Password:')
+                    label.innerText = 'Contraseña:';
+            });
+        }
+
+        changeLabels();
     </script>
 </body>
 </html>
