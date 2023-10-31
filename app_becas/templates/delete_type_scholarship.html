@@ -1,19 +1,21 @@
 {% extends 'layouts/base.html' %}
 
 {% block content %}
-    <h1>Eliminar un tipo de beca</h1>
+<form id="formID_delete_scholarship" class="container p-5" method="post">
 
-    <div class="card-deck">
-        {% for beca in tipos_beca %}
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">Nombre: {{ beca.name }}</h5>
-                    <form method="post" action="{% url 'delete_type_scholarship' beca.name %}">
-                        {% csrf_token %}
-                        <button type="submit" class="btn btn-danger">Eliminar</button>
-                    </form>
-                </div>
+    {% csrf_token %}
+
+    {% for beca in tipos_beca %}
+        <div class="card">
+            <div class="card-body">
+                <label for="beca_{{ beca.name }}">
+                    <input type="checkbox" id="beca_{{ beca.name }}" name="tipos_beca" value="{{ beca.name }}">
+                    {{ beca.name }}<br>
+                </label>
             </div>
-        {% endfor %}
-    </div>
+        </div>
+    {% endfor %}
+    <br>
+    <button type="submit">Eliminar seleccionados</button>
+</form>
 {% endblock %}
