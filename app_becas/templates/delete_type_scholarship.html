@@ -2,9 +2,8 @@
 
 {% block content %}
 <form id="formID_delete_scholarship" class="container p-5" method="post">
-
     {% csrf_token %}
-
+    
     {% for beca in tipos_beca %}
         <div class="card">
             <div class="card-body">
@@ -15,7 +14,16 @@
             </div>
         </div>
     {% endfor %}
-    <br>
-    <button type="submit">Eliminar seleccionados</button>
+    
+    <button type="button" onclick="confirmDelete()">Eliminar seleccionados</button>
 </form>
+
+<script>
+    function confirmDelete() {
+        if (confirm("¿Estás seguro de que deseas eliminar las becas seleccionadas?")) {
+            const form = document.getElementById("formID_delete_scholarship");
+            form.submit();
+        }
+    }
+</script>
 {% endblock %}
