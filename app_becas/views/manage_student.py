@@ -11,13 +11,13 @@ class Manage_student(View):
 
     def get(self, request):
         students = Student.objects.all()
+        majors = Major.objects.all()
         return render(request, 'manage_student.html', {
-            'students': students,
+            'students': students, 'majors' : majors,
             'form': Form_add_student()
         })
 
     def post(self, request):
-
         Student.objects.create( code =request.POST['code'],
                                 name =request.POST['name'],
                                 lastname =request.POST['lastname'],
@@ -25,7 +25,8 @@ class Manage_student(View):
                                 email = request.POST['email'],
                                 phone = request.POST['phone'],
                                 first_semester = request.POST['first_semester'],
-                                last_semester = request.POST['last_semester']
+                                last_semester = request.POST['last_semester'],
+                                major_id = request.POST['major_select'],
                                 )
 
         return HttpResponseRedirect(request.path)

@@ -51,6 +51,18 @@
                                 <input type="text" id="last_semester" name="last_semester" class="form-control" placeholder="Último semestre"
                                     maxlength="50" required>
                             </div>
+                            
+                            <div class="form-group">
+                                <select name="major_select" class="form-control col-md-6" style="margin-bottom: 10px;" id="major_select">
+                                    {% for major in majors %}
+                                        <option value={{major.auto_id}}>{{major.name}}</option>
+                                    {% endfor %}
+                                    <option value="0">Ninguno</option>
+                                </select>
+                            </div>
+                            <a href="/manage_student/add_major/" class="btn btn-link center mb-3">
+                                ¿No se encuentra tu carrera? Regístrala aquí
+                            </a>
 
                             <div class="form-group">
                                 <button type="submit" class="btn btn-success btn-block text-white">Guardar</button>
@@ -76,7 +88,7 @@
                             <th>Phone</th>
                             <th>First Semester</th>
                             <th>Last Semester</th>
-                            <th>Major ID</th>
+                            <th>ID Carrera</th>
                             <th colspan="">Opciones</th>
                         </tr>
                     </thead>

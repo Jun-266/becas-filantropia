@@ -8,7 +8,7 @@
                     <a href="/manage_student" class="btn btn-primary btn-sm">Volver</a>
                     
                     <div class="card mt-3">
-                        <h1 class="card-title mx-3 mt-2">Modificar estudiante</h1>
+                        <h1 class="card-title mx-3 mt-4">Modificar estudiante</h1>
                         <div class="card-body">
                             <form method="POST">
                                 {% csrf_token %}
@@ -62,6 +62,19 @@
                                     <button type="submit" name="action" value="asociar_beca" class="btn btn-primary">Asociar Beca</button>
                                 </div>
                                 -->
+                                
+
+                                <div class="form-group">
+                                    <select name="major_select" class="form-control col-md-6" style="margin-bottom: 10px;" id="major_select">
+                                        {% for major in majors %}
+                                            <option value="{{ major.auto_id }}" {% if major.auto_id == student.major_id %}selected{% endif %}>{{ major.name }}</option>
+                                        {% endfor %}
+                                        <option value="0">Ninguno</option>
+                                    </select>                                    
+                                </div>
+                                <a href="/manage_student/add_major/" class="btn btn-link center mb-3">
+                                    ¿No se encuentra tu carrera? Regístrala aquí
+                                </a>
                                                 
                                 <div class="form-group">
                                     <button type="submit" class="btn btn-success btn-block text-white" style="margin-top: 10px;">Guardar</button>
@@ -70,67 +83,7 @@
                         </div>
                     </div>
                 </div>
-
-                <div class="col-md-4 mt-5">
-                    <div class="card mt-3">
-                        <h1 class="card-title mx-3 mt-2">Major</h1>
-                            <div class="card-body">
-                                <form method="POST">
-                                    {% csrf_token %}
-            
-                                    <div class="form-group">
-                                        <input type="text" id="major_name" value="{{major.name|safe}}" name="major_name" class="form-control" placeholder="Nombre"
-                                            maxlength="50" required>
-                                    </div>
-            
-                                    <div class="form-group">
-                                        <input type="text" id="major_description" value="{{major.description|safe}}" name="major_description" class="form-control" placeholder="Descripción"
-                                            maxlength="50" required>
-                                    </div>
-            
-                                    <!--
-                                    <div class="input-group mt-3">
-                                        <input type="text" class="form-control" id="donor_scholarship" name="donor_scholarship" placeholder='ID Beca'>
-                                        <button type="submit" name="action" value="asociar_beca" class="btn btn-primary">Asociar Beca</button>
-                                    </div>
-                                    -->  
-            
-                                    <div class="input-group mt-1 mb-3">
-                                        <input type="text" class="form-control" id="major_id" name="major_id"  value="{{major.auto_id|safe}}" placeholder='ID Major'>
-                                        <button type="submit" name="action" value="asociar_major" class="btn btn-primary">Guardar</button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
     </div>
 
 {% endblock %}
-
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script type="text/javascript">
-
-/*
-function asociarBeca() {
-    const donorAutoId = $("#donor_scholarship").val();
-    const scholarshipId = $("#donor_scholarship").val();
-
-    $.post("/asociar_beca/", { donor_auto_id: donorAutoId, scholarship_id: scholarshipId }, function(data) {
-        console.log(data);
-    });
-}
-
-*/
-
-function asociarMajor() {
-    const studentAutoId = $("#major_id").val();
-    const majorId = $("#major_id").val();
-
-    $.post("/asociar_major/", { student_auto_id: studentAutoId, major_id: majorId }, function(data) {
-        console.log(data);
-    });
-}
-
-</script>
