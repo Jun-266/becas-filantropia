@@ -12,6 +12,16 @@ class Manage_student(View):
     def get(self, request):
         students = Student.objects.all()
         majors = Major.objects.all()
+        
+        try:
+            Major.objects.get(auto_id=0)
+        except Major.DoesNotExist:
+            Major.objects.create(
+                auto_id=0,
+                name='NA',
+                description='NA'
+            )
+
         return render(request, 'manage_student.html', {
             'students': students, 'majors' : majors,
             'form': Form_add_student()

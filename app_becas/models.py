@@ -74,17 +74,17 @@ class File(models.Model):
 
 
 class Major(models.Model):
-    auto_id = models.CharField(max_length=50, default=uuid.uuid4, editable=False, primary_key= True)   
+    auto_id = models.CharField(max_length=50, default=uuid.uuid4, editable=False, primary_key=True)
     name = models.CharField(max_length=35)
     description = models.CharField(max_length=255)
 
     def __str__(self):
-        return str(self.auto_id)    
-    
+        return str(self.auto_id)
+
 
 class Student(models.Model):
-    major = models.OneToOneField(Major, on_delete=models.CASCADE, null=True, blank=True)
-    auto_id = models.CharField(max_length=50, default=uuid.uuid4, editable=False, primary_key= True)   
+    major = models.ForeignKey(Major, on_delete=models.CASCADE)  # Cambia OneToOneField a ForeignKey
+    auto_id = models.CharField(max_length=50, default=uuid.uuid4, editable=False, primary_key=True)
     code = models.CharField(max_length=20)
     name = models.CharField(max_length=20)
     lastname = models.CharField(max_length=30)
