@@ -96,3 +96,28 @@ class Student(models.Model):
 
     def __str__(self):
         return str(self.auto_id)
+    
+from django.db import models
+
+
+class ApplicationStatus(models.Model):
+    type = models.CharField(max_length=50, primary_key=True, choices=[
+        ('Aprobada', 'Aprobada'),
+        ('En proceso', 'En proceso'),
+        ('Denegada', 'Denegada'),
+        ('Concluida', 'Concluida'),
+    ])
+
+    def __str__(self):
+        return self.type
+
+
+class ScholarshipApplication(models.Model):
+    scholarship = models.ForeignKey(Scholarship, on_delete=models.CASCADE)
+    student = models.ForeignKey(Student, on_delete=models.CASCADE)
+    application_status = models.ForeignKey(ApplicationStatus, on_delete=models.CASCADE)
+
+    class Meta:
+        verbose_name = "Scholarship Application"
+        verbose_name_plural = "Scholarship Applications"
+
