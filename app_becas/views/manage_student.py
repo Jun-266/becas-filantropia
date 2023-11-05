@@ -2,7 +2,7 @@ from django.views import View
 from django.shortcuts import render, redirect
 from django.http import HttpResponseRedirect
 from app_becas.forms.add_student import Form_add_student
-from app_becas.models import Student, Major
+from app_becas.models import Student, Major, ApplicationStatus
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 
@@ -20,6 +20,26 @@ class Manage_student(View):
                 auto_id=0,
                 name='NA',
                 description='NA'
+            )
+
+        try:
+            ApplicationStatus.objects.get(type="En proceso")
+        except ApplicationStatus.DoesNotExist:
+
+            ApplicationStatus.objects.create(
+                type="Aprobada"
+            )
+             
+            ApplicationStatus.objects.create(
+                type="En proceso"
+            )
+            
+            ApplicationStatus.objects.create(
+                type="Denegada"
+            )
+            
+            ApplicationStatus.objects.create(
+                type="Concluida"
             )
 
         return render(request, 'manage_student.html', {

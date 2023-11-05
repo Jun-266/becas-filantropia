@@ -105,9 +105,9 @@
                                 <td>{{ student.first_semester }}</td>
                                 <td>{{ student.last_semester }}</td>
                                 <td>{{ student.major_id }}</td>
-                                <td><a href= "modify_student/{{student.auto_id}}" class ="btn btn-info">Edit</a></td>
+                                <td><a href= "modify_student/{{student.auto_id}}" class ="btn btn-info">Gestionar</a></td>
                                 <td>
-                                    <a href="delete_student/{{student.auto_id}}" id="delete-student" class="btn btn-danger";">Delete</a>
+                                    <a href="delete_student/{{student.auto_id}}" id="delete-student" class="btn btn-danger";">Borrar</a>
                                 </td>  
                             </tr>
                         {% endfor %}
@@ -117,3 +117,4 @@
         </div>
     </div>
 {% endblock %}
+
