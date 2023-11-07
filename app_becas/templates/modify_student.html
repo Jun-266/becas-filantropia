@@ -87,44 +87,49 @@
 
                 <div class="col-md-8">
                     <div class="card mt-5">
-                        <h1 class="card-title mx-3 mt-4">Aplicaciones a becas</h1>
-                            <table class="table table-striped">
-                                <thead>
-                                    <tr>
-                                        <th>ID Aplicación</th>
-                                        <th>ID Beca</th>
-                                        <th>ID Estudiante</th>
-                                        <th>Estado</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <form method="POST" action="">
-                                        {% csrf_token %}
-                                        {% for application in student.scholarshipapplication_set.all %}
-                                            <tr>
-                                                <td>{{ application.auto_id }}</td>
-                                                <td>{{ application.scholarship.auto_id }}</td>
-                                                <td>{{ application.student.auto_id }}</td>
-                                                <td>
-                                                    <select name="status_{{ application.auto_id }}">
-                                                        <option value="Aprobada" {% if application.application_status.type == 'Aprobada' %}selected{% endif %}>Aprobada</option>
-                                                        <option value="Denegada" {% if application.application_status.type == 'Denegada' %}selected{% endif %}>Denegada</option>
-                                                        <option value="Concluida" {% if application.application_status.type == 'Concluida' %}selected{% endif %}>Concluida</option>
-                                                        <option value="En proceso" {% if application.application_status.type == 'En proceso' %}selected{% endif %}>En proceso</option>
-                                                    </select>
-                                                </td>
-                                                <td>
-                                                    <div class="form-group">
-                                                        <input type="hidden" name="application_id" value="{{ application.auto_id }}">
-                                                        <button type="submit" name="action" value="update_status" class="btn btn-sm btn-success text-white" style="display: block; margin-top: 5px; margin-bottom: 10px;">Actualizar</button>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        
-                                        {% endfor %}
-                                    </form>
-                                </tbody>
-                            </table>
+                        <form method="POST" action="">
+                            <h1 class="card-title mx-3 mt-4">Aplicaciones a becas</h1>
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>ID Aplicación</th>
+                                            <th>ID Beca</th>
+                                            <th>ID Estudiante</th>
+                                            <th>Estado</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                            {% csrf_token %}
+                                            {% for application in student.scholarshipapplication_set.all %}
+                                                <tr>
+                                                    <td>{{ application.auto_id }}</td>
+                                                    <td>{{ application.scholarship.auto_id }}</td>
+                                                    <td>{{ application.student.auto_id }}</td>
+                                                    <td>
+                                                        <select name="status_{{ application.auto_id }}">
+                                                            <option value="Aprobada" {% if application.application_status.type == 'Aprobada' %}selected{% endif %}>Aprobada</option>
+                                                            <option value="Denegada" {% if application.application_status.type == 'Denegada' %}selected{% endif %}>Denegada</option>
+                                                            <option value="Concluida" {% if application.application_status.type == 'Concluida' %}selected{% endif %}>Concluida</option>
+                                                            <option value="En proceso" {% if application.application_status.type == 'En proceso' %}selected{% endif %}>En proceso</option>
+                                                        </select>
+                                                    </td>
+                                                    <td>
+                                                        <div class="form-group">
+                                                            <input type="hidden" name="application_id" value="{{ application.auto_id }}">
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            
+                                            {% endfor %}
+                                        </tbody>
+                                </table>
+                                <td>
+                                    <div class="form-group text-center mb-4">
+                                        <button type="submit" name="action" value="update_status" class="btn btn-sm btn-success text-white" style="margin-top: 10px;">Actualizar</button>
+                                    </div>
+                                </td>
+                        </form>
                     </div>
                 </div>
             </div>
