@@ -58,6 +58,8 @@
 | 01 -11 -2023 | Cambié la relación de la tabla Major con Student e hice las debidas modificaciones para que funcione sin problema | Una vez solucionados el pull request, continuaré con la siguiente hu de relacioinar beca con estudiante y si es posible también ir relacionando con el estado de la aplicación a la beca | Ninguno
 | 03 -11 -2023 | Creé un modelo ScholarshipApplication que relaciona los modelos Scholarship y Student. Hice también su propia tabla ApplicationStatus con su columna type y valores especificados | Continuar con la parte grafica de la relación | Ninguno
 | 05 -11 -2023 | Ya se puede hacer la relación entre los modelos Scholarship y Student por el id de la beca con un ApplicationStatus por defecto de 'En proceso' | Continuar con el Siguiente requerimiento (feat-5) para gestionar el status del estudiante seleccionado para beca | la verificación que hago en manage_student.py para crear valores iniciales en las tablas tal vez se pueda realizar de una mejor forma
+| 06 -11 -2023 | Inicié el requerimiento feat-5 para gestionar el status del estudiante seleccionado para beca, terminé una primera versión sin embargo continuaré con mejoras bajo el mismo requerimiento| Agregar un auto_id a la tabla ScholarshipAplication y continuar mejorando feat-5 | Este es el último requerimieto, tengo varias ideas para continuar una vez finalizado pero primero debo llevarlas al jira. 
+
 
 
 ## Santiago Prado Larrarte
