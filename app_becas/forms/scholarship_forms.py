@@ -34,6 +34,12 @@ class type_scholarship_form(forms.Form):
     new_type_scholarship = forms.CharField(
         label='Nuevo Tipo de Beca',
     )
+    weight_percentage = forms.DecimalField(label='Peso porcentual')
+    units_available = forms.DecimalField(label='Unidades disponibles')
+    units_type = forms.ChoiceField(
+        label='Tipo de Unidades',
+        choices=(('Porcentaje', 'Porcentaje'), ('Dinero', 'Dinero'), ('Cantidad', 'Cantidad'))
+    )
 
 class delete_type(forms.Form):
 

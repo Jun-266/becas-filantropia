@@ -44,6 +44,9 @@ class Calendar(models.Model):
     
 class TypeScholarship(models.Model):
     name = models.CharField(max_length=50, primary_key=True)
+    weight_percentaje = models.DecimalField(max_digits=5,decimal_places=2,default=0)
+    units_available = models.DecimalField(max_digits=10,decimal_places=2,default=0)
+    units_type = models.CharField(max_length=20,default=1)
 
     def __str__(self):
         return self.name 

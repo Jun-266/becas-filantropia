@@ -17,12 +17,21 @@ class AddTypeScholarship(View):
     def post(self, request):
 
         nuevo_tipo_beca = request.POST['new_type_scholarship']
+        form = type_scholarship_form(request.POST)
 
-        if nuevo_tipo_beca:
-           
-            tipo_beca = TypeScholarship(name=nuevo_tipo_beca)
-            tipo_beca.save()
-            return redirect('add_type_scholarship') 
+        if form.is_valid():
+            nuevo_tipo_beca = form.cleaned_data['new_type_scholarship']
+            peso_porcentual = form.cleaned_data['weight_percentage']
+            unidades_disponibles = form.cleaned_data['units_available']
+
+            if nuevo_tipo_beca:
+                tipo_beca = TypeScholarship(
+                    name=nuevo_tipo_beca,
+                    weight_percentage=peso_porcentual,
+                    units_available=unidades_disponibles
+                )
+                tipo_beca.save()
+                return redirect('add_type_scholarship')
 
        
         tipos_beca = TypeScholarship.objects.all()
