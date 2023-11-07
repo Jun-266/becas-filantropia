@@ -4,7 +4,7 @@
 
     <div class="container p-5 my-3 border">
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-4">
                     <a href="/manage_student" class="btn btn-primary btn-sm">Volver</a>
                     
                     <div class="card mt-3">
@@ -85,7 +85,7 @@
                     </div>
                 </div>
 
-                <div class="col-md-6">
+                <div class="col-md-8">
                     <div class="card mt-5">
                         <h1 class="card-title mx-3 mt-4">Aplicaciones a becas</h1>
                             <table class="table table-striped">
@@ -102,11 +102,11 @@
                                         {% csrf_token %}
                                         {% for application in student.scholarshipapplication_set.all %}
                                             <tr>
-                                                <td>{{ application.id }}</td>
+                                                <td>{{ application.auto_id }}</td>
                                                 <td>{{ application.scholarship.auto_id }}</td>
                                                 <td>{{ application.student.auto_id }}</td>
                                                 <td>
-                                                    <select name="status_{{ application.id }}">
+                                                    <select name="status_{{ application.auto_id }}">
                                                         <option value="Aprobada" {% if application.application_status.type == 'Aprobada' %}selected{% endif %}>Aprobada</option>
                                                         <option value="Denegada" {% if application.application_status.type == 'Denegada' %}selected{% endif %}>Denegada</option>
                                                         <option value="Concluida" {% if application.application_status.type == 'Concluida' %}selected{% endif %}>Concluida</option>
@@ -115,7 +115,7 @@
                                                 </td>
                                                 <td>
                                                     <div class="form-group">
-                                                        <input type="hidden" name="application_id" value="{{ application.id }}">
+                                                        <input type="hidden" name="application_id" value="{{ application.auto_id }}">
                                                         <button type="submit" name="action" value="update_status" class="btn btn-sm btn-success text-white" style="display: block; margin-top: 5px; margin-bottom: 10px;">Actualizar</button>
                                                     </div>
                                                 </td>

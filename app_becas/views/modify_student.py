@@ -50,11 +50,11 @@ class Modify_student(View):
 
         return HttpResponseRedirect(request.path)
     
-    def update_status(self, request, auto_id):
-        student = Student.objects.get(auto_id=auto_id)
+    def update_status(self, request, auto_id_student):
+        student = Student.objects.get(auto_id=auto_id_student)
 
         for application in student.scholarshipapplication_set.all():
-            application_id = application.id
+            application_id = application.auto_id
             status = request.POST.get(f"status_{application_id}")
             application_status = ApplicationStatus.objects.get(type=status)
             application.application_status = application_status

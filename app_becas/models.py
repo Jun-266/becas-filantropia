@@ -3,8 +3,8 @@ from django.db import models
 
 
 class My_user(models.Model):
-    user_id = models.CharField(max_length=255)
     auto_id = models.CharField(max_length=50, primary_key=True, default=uuid.uuid4, editable=False) 
+    user_id = models.CharField(max_length=255)
     name = models.CharField(max_length=255)
     lastname = models.CharField(max_length=255)
     email = models.EmailField()
@@ -60,9 +60,9 @@ class Contact(models.Model):
 
 
 class Donor(models.Model):
+    auto_id = models.CharField(max_length=50, default=uuid.uuid4, editable=False, primary_key= True)
     scholarships = models.ManyToManyField(Scholarship, related_name='donors')
     contacts = models.ManyToManyField(Contact, related_name='donors')
-    auto_id = models.CharField(max_length=50, default=uuid.uuid4, editable=False, primary_key= True)
     enterprise_name = models.CharField(max_length=20)
 
     def __str__(self):
@@ -113,6 +113,7 @@ class ApplicationStatus(models.Model):
 
 
 class ScholarshipApplication(models.Model):
+    auto_id = models.CharField(max_length=50, default=uuid.uuid4, editable=False, primary_key=True)
     scholarship = models.ForeignKey(Scholarship, on_delete=models.CASCADE)
     student = models.ForeignKey(Student, on_delete=models.CASCADE)
     application_status = models.ForeignKey(ApplicationStatus, on_delete=models.CASCADE)
