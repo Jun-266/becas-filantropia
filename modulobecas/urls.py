@@ -1,5 +1,6 @@
 from django.contrib import admin
 from django.urls import path, re_path
+from django.conf.urls.static import static
 from app_becas.views.signup import Signup
 from app_becas.views.signin import Signin
 from app_becas.views.home import Home
@@ -43,9 +44,9 @@ urlpatterns = [
     path('scholarship/', Scholarship.as_view(), name='scholarship'),
     path('show_scholarship_info/', Show_scholarship_info.as_view(), name='show_scholarship_info'),
     path('add_scholarship/', Add_scholarship.as_view(), name='add_scholarship'),
-    path('add_scholarship/add_type_scholarship/', AddTypeScholarship.as_view(), name ='add_type_scholarship'),
-    path('add_scholarship/delete_type_scholarship/', DeleteTypeScholarship.as_view(), name ='delete_type_scholarship'),
-    path('search_scholarship/', SearchScholarship.as_view(), name ='search_scholarship'),
+    path('add_scholarship/add_type_scholarship/', AddTypeScholarship.as_view(), name='add_type_scholarship'),
+    path('add_scholarship/delete_type_scholarship/', DeleteTypeScholarship.as_view(), name='delete_type_scholarship'),
+    path('search_scholarship/', SearchScholarship.as_view(), name='search_scholarship'),
 
     path('reports/', hr.home, name='reports'),
     path('reports/<int:file_id>', hr.delete_report, name='delete_report'),
@@ -65,6 +66,8 @@ urlpatterns = [
 
 ]
 
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 urlpatterns += [
     re_path(r'^media/(?P<path>.*)$', serve, {
         'document_root': settings.MEDIA_ROOT

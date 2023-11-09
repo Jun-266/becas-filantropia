@@ -2,6 +2,7 @@
 https://docs.djangoproject.com/en/4.2/topics/settings/
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
+import os
 import os.path
 from pathlib import Path
 
@@ -16,9 +17,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-x(o+twe7@c933!sv0$94ssa!kdj_o3@!#-g!h!_t4$y^5_47zt'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-ALLOWED_HOSTS = []
+DEBUG = False
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -114,6 +114,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = 'static/'
+STATICFILES_DIRS = os.path.join(BASE_DIR, 'static')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static')
 
 MEDIA_URL = 'media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
