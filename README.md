@@ -12,6 +12,7 @@
 | 11-10-2023 | Trabajar en la implementación de la funcionalidad P1MB-28 | No trabaje en el proyecto porque estaba repasando para otras materias | Ninguno. |
 | 13-10-2023 | Trabaje muy poco en la funcionalidad P1MB-28 y no he terminado su implementación | Pulire la GUI para los informes y añadiré los loginrequired haciendo que el usuario tenga que logearse para ver los informes | Por el momento no he encontrado ningún impedimento. |
 | 26-10-2023 | Implementé la funcionalidad para eliminar informes. | Implementaré la funcionalidad para generar informes de acuerdo a los requerimientos del cliente. | No he encontrado impedimento alguno. |
+| 08-11-2023 | Añadí los archivos necesarios junto con la configuración necesaria para hacer el deploy de la aplicación. | Revisar de nuevo la configuración para hacer el deploy | La aplicación fue desplegada, pero se muestra una página de error 404. |
 
 ## Juan Lora
 
