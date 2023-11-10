@@ -1,6 +1,7 @@
 from django.contrib import admin
 from django.urls import path, re_path
-from django.conf.urls.static import static
+from django.conf import settings
+# from django.conf.urls.static import static
 from app_becas.views.signup import Signup
 from app_becas.views.signin import Signin
 from app_becas.views.home import Home
@@ -16,7 +17,6 @@ from app_becas.views.add_scholarship import Add_scholarship
 from app_becas.views.delete_user import Delete_user
 from app_becas.views.modify_user import Modify_user
 from app_becas.views.add_type_scholarship import AddTypeScholarship
-from django.conf import settings
 from django.views.static import serve
 from app_becas.views.delete_type_scholarship import DeleteTypeScholarship
 from app_becas.views.show_scholarship_info import Show_scholarship_info
@@ -66,8 +66,8 @@ urlpatterns = [
 
 ]
 
-urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+# urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+# urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 urlpatterns += [
     re_path(r'^media/(?P<path>.*)$', serve, {
         'document_root': settings.MEDIA_ROOT
