@@ -28,6 +28,8 @@ from app_becas.views.modify_contact import Modify_contact
 from app_becas.views.delete_student import Delete_student
 from app_becas.views.modify_student import Modify_student
 from app_becas.views.add_major import Add_major
+from app_becas.views.delete_donor_contact import Delete_donor_contact
+from app_becas.views.delete_donor_scholarship import Delete_donor_scholarship
 
 
 urlpatterns = [
@@ -69,6 +71,8 @@ urlpatterns = [
     path('manage_student/delete_student/<str:auto_id>/', Delete_student.as_view(), name='delete_student'),
     path('manage_student/modify_student/<str:auto_id>/', Modify_student.as_view(), name='modify_student'),
     path('manage_student/add_major/', Add_major.as_view(), name='add_major'),
+    path('manage_donor/modify_donor/<str:auto_id>/donor_contact/<str:contact_auto_id>/', Delete_donor_contact.as_view(), name='delete_donor_contact'),
+    path('manage_donor/modify_donor/<str:auto_id>/donor_scholarship/<str:scholarship_auto_id>/', Delete_donor_scholarship.as_view(), name='delete_donor_scholarship'),
     
 ]
 
