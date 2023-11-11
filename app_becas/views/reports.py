@@ -29,18 +29,12 @@ def upload_report(request):
 
 
 @login_required
-def external_reports(request):
-    return render(request, main_dir + 'external_reports.html')
-
-
-@login_required
-def generate_report(request):
-    return render(request, main_dir + 'generate_report.html')
-
-
-@login_required
 def delete_report(request, file_id):
     a_file = get_object_or_404(File, pk=file_id)
     if request.method == 'POST':
         a_file.delete()
         return redirect('reports')
+
+
+def render_list_of_candidates(request):
+    return render(request, main_dir + 'list_of_candidates.html')

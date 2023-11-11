@@ -48,12 +48,12 @@ urlpatterns = [
     path('add_scholarship/delete_type_scholarship/', DeleteTypeScholarship.as_view(), name='delete_type_scholarship'),
     path('search_scholarship/', SearchScholarship.as_view(), name='search_scholarship'),
 
+    # Reports.
     path('reports/', hr.home, name='reports'),
     path('reports/<int:file_id>', hr.delete_report, name='delete_report'),
     path('reports_upload/', hr.upload_report, name='upload_report'),
-    path('reports_external/', hr.external_reports, name='external_reports'),
-    path('reports_generate/', hr.generate_report, name='generate_report'),
-    
+    path('list_of_candidates/', hr.render_list_of_candidates, name='loc'),
+
     path('manage_user/', Manage_user.as_view(), name='manage_user'),
     path('manage_user/delete_user/<str:auto_id>/', Delete_user.as_view(), name='delete_user'),
     path('manage_contact/', Manage_contact.as_view(), name='manage_contact'),
