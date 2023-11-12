@@ -1,6 +1,12 @@
+import os
+from django.conf import settings
+from django.http import HttpResponse
+from django.template import Context
+from django.template.loader import get_template
+from xhtml2pdf import pisa
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
-from app_becas.models import File
+from app_becas.models import File, Scholarship, Candidate
 from app_becas.forms.upload_file_form import UploadFileForm
 
 main_dir = '../templates/report_management/'
@@ -37,4 +43,21 @@ def delete_report(request, file_id):
 
 
 def render_list_of_candidates(request):
-    return render(request, main_dir + 'list_of_candidates.html')
+    scholarships = Scholarship.objects.all()
+    return render(request, main_dir + 'list_of_candidates.html', {
+        'scholarships': scholarships
+    })
+
+
+def generate_list_of_candidates(request):
+    scholarship = get_object_or_404(Scholarship, pk='1')
+    candidates = Candidate.objects.filter(requested_scholarship='1')
+    if request.method == 'GET':
+        template = get_template('report_management/template_report_list_of_candidates.html')
+        context = {'scholarship': scholarship, 'candidates': candidates}
+        html = template.render(context)
+        response = HttpResponse(content_type='application/pdf')
+        pisa_status = pisa.CreatePDF(html, dest=response)
+        if pisa_status.err:
+            return HttpResponse('We had some errors <pre>' + html + '</pre>')
+        return response

@@ -1,5 +1,37 @@
 {% extends 'layouts/base.html' %}
 
 {% block content %}
-    <h1>Hello world</h1>
+    <main class="container mt-3">
+        <h1 class="text-center">Informe de aspirantes</h1>
+        <p class="text-center">
+            Selecciona la beca de tu interes para generar el informe de los aspirantes.
+        </p>
+        <hr>
+        <section class="container">
+            <h2 class="text-center mb-3">Becas registradas</h2>
+            {% for scholarship in scholarships %}
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="text-center">{{ scholarship.name }}</h4>
+                    </div>
+                    <div class="card-body">
+                        <p><b>Descripción:</b> {{ scholarship.description }}</p>
+                        <p><b>Presupuesto:</b> {{ scholarship.amount }}</p>
+                        <p><b>Tipo de beca:</b> {{ scholarship.type_scholarship }}</p>
+                    </div>
+                    <div class="card-footer">
+                        <a class="btn btn-primary"
+                           href="{% url 'g_loc' %}"
+                        >Generar PDF</a>
+                        <!--
+                        <form action="" method="POST">
+                            {% csrf_token %}
+
+                        </form>
+                        -->
+                    </div>
+                </div>
+            {% endfor %}
+        </section>
+    </main>
 {% endblock %}

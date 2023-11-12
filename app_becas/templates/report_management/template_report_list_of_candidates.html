@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Informe de aspirantes</title>
+</head>
+<body>
+    <header>
+        <h1><b>Beca:</b> {{ scholarship.name }}</h1>
+    </header>
+    <main>
+        <section>
+            <p><b>Descripción:</b> {{ scholarship.description }}</p>
+            <p><b>Presupuesto:</b> {{ scholarship.amount }}</p>
+            <p><b>Tipo de beca:</b> {{ scholarship.type_scholarship }}</p>
+        </section>
+        <hr>
+        <section>
+            <h2>Aspirantes inscritos</h2>
+            {% for candidate in candidates %}
+                <div>
+                    <p><b>Nombre completo:</b> {{ candidate.full_name }}</p>
+                    <p><b>Código de estudiante:</b> {{ candidate.student_code }}</p>
+                    <p><b>Correo institucional:</b> {{ candidate.email }}</p>
+                    <p><b>Promedio ponderado:</b> {{ candidate.grade_point_average }}</p>
+                    <p><b>Fecha de solicitud para la beca:</b> {{ candidate.application_date }}</p>
+                <hr>
+                </div>
+            {% endfor %}
+        </section>
+    </main>
+</body>
+</html>
