@@ -61,7 +61,7 @@
 | 05 -11 -2023 | Ya se puede hacer la relación entre los modelos Scholarship y Student por el id de la beca con un ApplicationStatus por defecto de 'En proceso' | Continuar con el Siguiente requerimiento (feat-5) para gestionar el status del estudiante seleccionado para beca | la verificación que hago en manage_student.py para crear valores iniciales en las tablas tal vez se pueda realizar de una mejor forma
 | 06 -11 -2023 | Inicié el requerimiento feat-5 para gestionar el status del estudiante seleccionado para beca, terminé una primera versión sin embargo continuaré con mejoras bajo el mismo requerimiento| Agregar un auto_id a la tabla ScholarshipAplication y continuar mejorando feat-5 | Este es el último requerimieto, tengo varias ideas para continuar una vez finalizado pero primero debo llevarlas al jira. 
 | 10 -11 -2023 | Organizé las ideas de lo que quiero continuar haciendo con el proyecto, las correciones y mejoras pertienentes| Iniciaré realizando las correciones encontradas| Ninguno 
-
+| 11-11-2023 |Hice la tarea de modificar donante, cambiando las interfaces por unas un poco más amigables con el usuario y con funciones adicionales como la de mostrar becas y contactos asociados| Realizaré las correcciones generales desde la rama hotfix y definiré si continuar con test u otras correciones o mejoras específicas | Ninguno 
 
 
 ## Santiago Prado Larrarte
