@@ -10,25 +10,26 @@
         <section class="container">
             <h2 class="text-center mb-3">Becas registradas</h2>
             {% for scholarship in scholarships %}
-                <div class="card">
+                <div class="card mb-3">
                     <div class="card-header">
                         <h4 class="text-center">{{ scholarship.name }}</h4>
                     </div>
                     <div class="card-body">
                         <p><b>Descripción:</b> {{ scholarship.description }}</p>
-                        <p><b>Presupuesto:</b> {{ scholarship.amount }}</p>
+                        <p><b>Presupuesto:</b> ${{ scholarship.amount }} COP</p>
                         <p><b>Tipo de beca:</b> {{ scholarship.type_scholarship }}</p>
                     </div>
                     <div class="card-footer">
-                        <a class="btn btn-primary"
-                           href="{% url 'g_loc' %}"
-                        >Generar PDF</a>
-                        <!--
-                        <form action="" method="POST">
+                        <form action="{% url 'g_loc' %}" method="POST">
                             {% csrf_token %}
-
+                            <label>
+                                <input value="{{ scholarship.auto_id }}"
+                                       type="text"
+                                       name="scholarship_id"
+                                       hidden>
+                            </label>
+                            <input class="btn btn-primary" type="submit" value="Generar PDF">
                         </form>
-                        -->
                     </div>
                 </div>
             {% endfor %}
