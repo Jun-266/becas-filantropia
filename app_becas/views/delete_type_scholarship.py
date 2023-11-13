@@ -8,23 +8,18 @@ from app_becas.forms.scholarship_forms import delete_type
 
 @method_decorator(login_required, name='dispatch')
 
+
 class DeleteTypeScholarship(View):
+    template_name = 'delete_type_scholarship.html'
 
     def get(self, request):
         tipos_beca = TypeScholarship.objects.all()
-        return render(request, 'delete_type_scholarship.html', {'tipos_beca': tipos_beca, 'form': delete_type})
+        return render(request, self.template_name, {'tipos_beca': tipos_beca})
 
     def post(self, request):
+        confirmed_deletion = request.POST.getlist('tipos_beca')
         
-        tipo_de_beca_borrar = request.POST['delete_type_scholarship']
+        if confirmed_deletion:
+            TypeScholarship.objects.filter(name__in=confirmed_deletion).delete()
 
-        print('okokoko')
-        
-        if tipo_de_beca_borrar:
-
-            
-
-            tipo_beca = TypeScholarship(name = tipo_de_beca_borrar)
-            tipo_beca.delete()
-            return redirect('delete_type_scholarship')
-        
+        return redirect('delete_type_scholarship')
