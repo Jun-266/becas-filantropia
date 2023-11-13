@@ -1,12 +1,14 @@
 {% extends 'layouts/base.html' %}
 
 {% block content %}
-    <main class="container mt-3">
+    <header class="container mt-2">
         <h1 class="text-center">Informe de aspirantes</h1>
         <p class="text-center">
             Selecciona la beca de tu interes para generar el informe de los aspirantes.
         </p>
-        <hr>
+    </header>
+    <hr>
+    <main class="container mt-3">
         <section class="container">
             <h2 class="text-center mb-3">Becas registradas</h2>
             {% for scholarship in scholarships %}
