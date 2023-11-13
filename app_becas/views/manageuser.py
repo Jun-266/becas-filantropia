@@ -1,11 +1,13 @@
-from django.http import HttpResponseRedirect
+from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
 from django.views import View
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from app_becas.forms.add_user import Form_add_user
 from app_becas.models import MyUser
 
 
-class Manage_user(View):
+@method_decorator(login_required, name='dispatch')
+class ManageUser(View):
 
     def get(self, request):
         users = MyUser.objects.all()
@@ -22,4 +24,4 @@ class Manage_user(View):
                               email=request.POST['email'],
                               phone=request.POST['phone'],
                               rol=request.POST['rol'])
-        return HttpResponseRedirect(request.path)
+        return redirect('manage_user')

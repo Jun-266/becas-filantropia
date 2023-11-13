@@ -73,3 +73,28 @@ class Donor(models.Model):
 
 class File(models.Model):
     my_file = models.FileField(upload_to='archivos/')
+
+
+class Major(models.Model):
+    auto_id = models.CharField(max_length=50, default=uuid.uuid4, editable=False, primary_key=True)
+    name = models.CharField(max_length=35)
+    description = models.CharField(max_length=255)
+
+    def __str__(self):
+        return str(self.auto_id)
+
+
+class Student(models.Model):
+    major = models.ForeignKey(Major, on_delete=models.CASCADE)  # Cambia OneToOneField a ForeignKey
+    auto_id = models.CharField(max_length=50, default=uuid.uuid4, editable=False, primary_key=True)
+    code = models.CharField(max_length=20)
+    name = models.CharField(max_length=20)
+    lastname = models.CharField(max_length=30)
+    school = models.CharField(max_length=30)
+    email = models.EmailField(max_length=40)
+    phone = models.CharField(max_length=10)
+    first_semester = models.CharField(max_length=8)
+    last_semester = models.CharField(max_length=8)
+
+    def __str__(self):
+        return str(self.auto_id)

@@ -1,0 +1,89 @@
+{% extends 'layouts/base.html' %}
+
+{% block content %}
+
+    <div class="container p-5 my-3 border">
+        <div class="row">
+            <div class="col-md-6">
+                    <a href="/manage_student" class="btn btn-primary btn-sm">Volver</a>
+                    
+                    <div class="card mt-3">
+                        <h1 class="card-title mx-3 mt-4">Modificar estudiante</h1>
+                        <div class="card-body">
+                            <form method="POST">
+                                {% csrf_token %}
+                                <div class="form-group">
+                                    <input type="text" id="auto_id" value="{{student.auto_id|default:'Auto ID'|safe}}" name="auto_id" class="form-control" placeholder="Auto ID" readonly maxlength="50" required>
+                                </div>
+    
+                                <div class="form-group">
+                                    <input type="text" id="code" value="{{student.code|safe}}" name="code" class="form-control" placeholder="Código de estudiante"
+                                        maxlength="50" required>
+                                </div>
+    
+                                <div class="form-group">
+                                    <input type="text" id="name" value="{{student.name|safe}}" name="name" class="form-control" placeholder="Nombre"
+                                        maxlength="50" required>
+                                </div>
+    
+                                <div class="form-group">
+                                    <input type="text" id="lastname" value="{{student.lastname|safe}}" name="lastname" class="form-control" placeholder="Apellido"
+                                        maxlength="50" required>
+                                </div>
+    
+                                <div class="form-group">
+                                    <input type="text" id="school" value="{{student.school|safe}}" name="school" class="form-control" placeholder="Escuela"
+                                        maxlength="50" required>
+                                </div>
+    
+                                <div class="form-group">
+                                    <input type="text" id="email" value="{{student.email|safe}}" name="email" class="form-control" placeholder="Correo electrónico"
+                                        maxlength="50" required>
+                                </div>
+    
+                                <div class="form-group">
+                                    <input type="text" id="phone" value="{{student.phone|safe}}" name="phone" class="form-control" placeholder="Teléfono"
+                                        maxlength="50" required>
+                                </div>
+    
+                                <div class="form-group">
+                                    <input type="text" id="first_semester" value="{{student.first_semester|safe}}" name="first_semester" class="form-control" placeholder="Primer semestre"
+                                        maxlength="50" required>
+                                </div>
+    
+                                <div class="form-group">
+                                    <input type="text" id="last_semester" value="{{student.last_semester|safe}}" name="last_semester" class="form-control" placeholder="Último semestre"
+                                        maxlength="50" required>
+                                </div>
+    
+                                <!--
+                                <div class="input-group mt-3">
+                                    <input type="text" class="form-control" id="donor_scholarship" name="donor_scholarship" placeholder='ID Beca'>
+                                    <button type="submit" name="action" value="asociar_beca" class="btn btn-primary">Asociar Beca</button>
+                                </div>
+                                -->
+                                
+
+                                <div class="form-group">
+                                    <select name="major_select" class="form-control col-md-6" style="margin-bottom: 10px;" id="major_select">
+                                        {% for major in majors %}
+                                            <option value="{{ major.auto_id }}" {% if major.auto_id == student.major_id %}selected{% endif %}>{{ major.name }}</option>
+                                        {% endfor %}
+                                        <option value="0">Ninguno</option>
+                                    </select>                                    
+                                </div>
+                                <a href="/manage_student/add_major/" class="btn btn-link center mb-3">
+                                    ¿No se encuentra tu carrera? Regístrala aquí
+                                </a>
+                                                
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-success btn-block text-white" style="margin-top: 10px;">Guardar</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+
+{% endblock %}
