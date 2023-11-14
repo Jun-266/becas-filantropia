@@ -4,6 +4,7 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import authenticate, login
 from app_becas.scripts import init as init_script
 
+
 class Signin(View):
 
     def get(self, request):
