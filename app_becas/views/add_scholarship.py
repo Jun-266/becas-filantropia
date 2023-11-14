@@ -5,6 +5,7 @@ from django.utils.decorators import method_decorator
 from app_becas.models import Scholarship
 from app_becas.forms.scholarship_forms import ScholarshipForm
 
+
 @method_decorator(login_required, name='dispatch')
 class Add_scholarship(View):
 

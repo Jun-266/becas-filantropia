@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from app_becas.models import File
 from app_becas.forms.upload_file_form import UploadFileForm
@@ -36,3 +36,11 @@ def external_reports(request):
 @login_required
 def generate_report(request):
     return render(request, main_dir + 'generate_report.html')
+
+
+@login_required
+def delete_report(request, file_id):
+    a_file = get_object_or_404(File, pk=file_id)
+    if request.method == 'POST':
+        a_file.delete()
+        return redirect('reports')

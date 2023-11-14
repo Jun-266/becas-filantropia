@@ -1,8 +1,8 @@
 {% extends 'layouts/base.html' %}
 
 {% block content %}
-    <div class="container p-5 my-3 border">
-        <h1 class="text-center">Gestión de informes</h1>
+    <div class="container p-5 my-3 border shadow">
+        <h1 class="text-center">Gestión de archivos/informes</h1>
         <ul class="nav justify-content-center">
             <li class="nav-item">
                 <a href="/reports_generate/" rel="next" class="btn btn-primary m-2">
@@ -16,28 +16,43 @@
             </li>
             <li class="nav-item">
                 <a href="/reports_upload/" class="btn btn-primary m-2">
-                    Cargar Archivo
+                    Cargar archivo/informe
                 </a>
             </li>
             <li class="nav-item">
                 <a href="mailto:" class="btn btn-primary m-2">
-                    Enviar informe
+                    Enviar archivo/informe
                 </a>
             </li>
         </ul>
     </div>
 
     <div class="container">
-        <h1>Informes cargados</h1>
+        <h2>Archivos/informes cargados</h2>
         {% for file in files %}
-            <div class="card m-3">
-                <div class="card-body">
-                    <a href="{{ file.my_file.url }}" target="_blank">
-                        {{ file.my_file }}
-                    </a>
+            <form action="{% url 'delete_report' file.id %}" method="POST">
+                {% csrf_token %}
+                <div class="card m-3 shadow">
+                    <div class="card-body">
+                        <a href="{{ file.my_file.url }}" target="_blank">
+                            {{ file.my_file }}
+                        </a>
+                        <input type="submit"
+                               value="delete"
+                               class="material-icons btn btn-danger float-end"
+                               id="delete-report"
+                        >
+                    </div>
                 </div>
-            </div>
+            </form>
         {% endfor %}
     </div>
+
+    <script>
+        const btn_del = document.getElementById('delete-report');
+        btn_del.addEventListener('click', () => {
+            alert('Reporte eliminado.');
+        });
+    </script>
 
 {% endblock %}
