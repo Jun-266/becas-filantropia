@@ -4,7 +4,7 @@ from django.db import models
 
 class MyUser(models.Model):
     user_id = models.CharField(max_length=255)
-    auto_id = models.CharField(max_length=50, primary_key=True, default=uuid.uuid4, editable=False) 
+    auto_id = models.CharField(max_length=50, primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=255)
     lastname = models.CharField(max_length=255)
     email = models.EmailField()
@@ -62,9 +62,9 @@ class Contact(models.Model):
 
 
 class Donor(models.Model):
+    auto_id = models.CharField(max_length=50, default=uuid.uuid4, editable=False, primary_key=True)
     scholarships = models.ManyToManyField(Scholarship, related_name='donors')
     contacts = models.ManyToManyField(Contact, related_name='donors')
-    auto_id = models.CharField(max_length=50, default=uuid.uuid4, editable=False, primary_key=True)
     enterprise_name = models.CharField(max_length=20)
 
     def __str__(self):
@@ -82,3 +82,51 @@ class Candidate(models.Model):
     grade_point_average = models.DecimalField(max_digits=5, decimal_places=2)
     application_date = models.DateField()
     requested_scholarship = models.ForeignKey(Scholarship, on_delete=models.CASCADE)
+
+
+class Major(models.Model):
+    auto_id = models.CharField(max_length=50, default=uuid.uuid4, editable=False, primary_key=True)
+    name = models.CharField(max_length=35)
+    description = models.CharField(max_length=255)
+
+    def __str__(self):
+        return str(self.auto_id)
+
+
+class Student(models.Model):
+    major = models.ForeignKey(Major, on_delete=models.CASCADE)  # Cambia OneToOneField a ForeignKey
+    auto_id = models.CharField(max_length=50, default=uuid.uuid4, editable=False, primary_key=True)
+    code = models.CharField(max_length=20)
+    name = models.CharField(max_length=20)
+    lastname = models.CharField(max_length=30)
+    school = models.CharField(max_length=30)
+    email = models.EmailField(max_length=40)
+    phone = models.CharField(max_length=10)
+    first_semester = models.CharField(max_length=8)
+    last_semester = models.CharField(max_length=8)
+
+    def __str__(self):
+        return str(self.auto_id)
+
+
+class ApplicationStatus(models.Model):
+    type = models.CharField(max_length=50, primary_key=True, choices=[
+        ('Aprobada', 'Aprobada'),
+        ('En proceso', 'En proceso'),
+        ('Denegada', 'Denegada'),
+        ('Concluida', 'Concluida'),
+    ])
+
+    def __str__(self):
+        return self.type
+
+
+class ScholarshipApplication(models.Model):
+    auto_id = models.CharField(max_length=50, default=uuid.uuid4, editable=False, primary_key=True)
+    scholarship = models.ForeignKey(Scholarship, on_delete=models.CASCADE)
+    student = models.ForeignKey(Student, on_delete=models.CASCADE)
+    application_status = models.ForeignKey(ApplicationStatus, on_delete=models.CASCADE)
+
+    class Meta:
+        verbose_name = "Scholarship Application"
+        verbose_name_plural = "Scholarship Applications"

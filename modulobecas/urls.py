@@ -9,7 +9,8 @@ import app_becas.views.reports as hr
 from app_becas.views.calendar import Calendar
 from app_becas.views.calendar_add import Calendar_add
 from app_becas.views.calendar_show_info import Calendar_show_info
-from app_becas.views.manage_user import Manage_user
+from app_becas.views.manage_student import Manage_student
+from app_becas.views.manageuser import ManageUser
 from app_becas.views.manage_donor import Manage_donor
 from app_becas.views.manage_contact import Manage_contact
 from app_becas.views.scholarship import Scholarship
@@ -25,6 +26,11 @@ from app_becas.views.delete_donor import Delete_donor
 from app_becas.views.modify_donor import Modify_donor
 from app_becas.views.delete_contact import Delete_contact
 from app_becas.views.modify_contact import Modify_contact
+from app_becas.views.delete_student import Delete_student
+from app_becas.views.modify_student import Modify_student
+from app_becas.views.add_major import Add_major
+from app_becas.views.delete_donor_contact import Delete_donor_contact
+from app_becas.views.delete_donor_scholarship import Delete_donor_scholarship
 
 
 urlpatterns = [
@@ -55,7 +61,8 @@ urlpatterns = [
     path('list_of_candidates/', hr.render_list_of_candidates, name='loc'),
     path('list_of_candidates/generate/', hr.generate_list_of_candidates, name='g_loc'),
 
-    path('manage_user/', Manage_user.as_view(), name='manage_user'),
+    path('manage_user/', ManageUser.as_view(), name='manage_user'),
+    path('manage_student/', Manage_student.as_view(), name='manage_student'),
     path('manage_user/delete_user/<str:auto_id>/', Delete_user.as_view(), name='delete_user'),
     path('manage_contact/', Manage_contact.as_view(), name='manage_contact'),
     path('manage_user/modify_user/<str:auto_id>/', Modify_user.as_view(), name='modify_user'),
@@ -64,7 +71,12 @@ urlpatterns = [
     path('manage_donor/modify_donor/<str:auto_id>/', Modify_donor.as_view(), name='modify_donor'),
     path('manage_contact/delete_contact/<str:auto_id>/', Delete_contact.as_view(), name='delete_contact'),
     path('manage_contact/modify_contact/<str:auto_id>/', Modify_contact.as_view(), name='modify_contact'),
-
+    path('manage_student/delete_student/<str:auto_id>/', Delete_student.as_view(), name='delete_student'),
+    path('manage_student/modify_student/<str:auto_id>/', Modify_student.as_view(), name='modify_student'),
+    path('manage_student/add_major/', Add_major.as_view(), name='add_major'),
+    path('manage_donor/modify_donor/<str:auto_id>/donor_contact/<str:contact_auto_id>/', Delete_donor_contact.as_view(), name='delete_donor_contact'),
+    path('manage_donor/modify_donor/<str:auto_id>/donor_scholarship/<str:scholarship_auto_id>/', Delete_donor_scholarship.as_view(), name='delete_donor_scholarship'),
+    
 ]
 
 # urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

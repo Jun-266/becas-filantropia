@@ -8,7 +8,7 @@
                 <a href="/manage_donor" class="btn btn-primary btn-sm">Volver</a>
                 
                 <div class="card mt-3">
-                    <h1 class="card-title mx-3 mt-2">Modificar donante</h1>
+                    <h1 class="card-title mx-3 mt-2">Gestionar donante</h1>
                     <div class="card-body">
                         <form method="POST">
                             {% csrf_token %}
@@ -18,7 +18,13 @@
 
                             <div class="form-group">
                                 <input type="text" id="enterprise_name" style="margin-bottom: 10px;" value="{{donor.enterprise_name|safe}}" name="enterprise_name" class="form-control" placeholder="Nombre de la empresa" maxlength="50" required>
+                            </div> 
+
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-success btn-block text-white" style="margin-top: 10px;">Guardar</button>
                             </div>
+                            
+                            <h1 class="card-title mx-3 mt-4">Agregar relación</h1>
 
                             <div class="input-group mt-3">
                                 <input type="text" class="form-control" id="donor_scholarship" name="donor_scholarship" placeholder='ID Beca'>
@@ -29,37 +35,57 @@
                                 <input type="text" class="form-control" id="donor_contact" name="donor_contact" placeholder='ID Contacto'>
                                 <button type="submit" name="action" value="asociar_contacto" class="btn btn-primary">Asociar Contacto</button>
                               </div>
-                                          
-
-                            <div class="form-group">
-                                <button type="submit" class="btn btn-success btn-block text-white" style="margin-top: 10px;">Guardar</button>
-                            </div>
+                                         
                     
                         </form>
                     </div>
                 </div>
             </div>
+            <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4 mt-4">
+                <h1>Becas asociadas</h1>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>ID Beca</th>
+                            <th>Nombre</th>
+                            <th>Opciones</th>
+                        </tr>
+                    </thead>
+                    {% for donor_scholarship in donor.scholarships.all %}
+                    <tr>
+                        <td>{{ donor_scholarship.auto_id }}</td>
+                        <td>{{ donor_scholarship.name }}</td>
+                        <td>
+                            <a href="donor_scholarship/{{donor_scholarship.auto_id}}" id="delete-donor-scholarship" class="btn btn-danger">Borrar</a>
+                        </td>  
+                    </tr>
+                    {% endfor %}
+                
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4 mt-4">
+                <h1>Contactos asociados</h1>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>ID Contacto</th>
+                            <th>Opciones</th>
+                        </tr>
+                    </thead>
+
+                    {% for donor_contact in donor.contacts.all %}
+                    <tr>
+                        <td>{{ donor_contact.auto_id }}</td>
+                        <td>
+                           <a href="donor_contact/{{donor_contact.auto_id}}" id="delete-donor-contact" class="btn btn-danger">Borrar</a>
+                        </td>  
+                    </tr>
+                    {% endfor %}
+
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 {% endblock %}
-
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script type="text/javascript">
-function asociarBeca() {
-    const donorAutoId = $("#donor_scholarship").val();
-    const scholarshipId = $("#donor_scholarship").val();
-
-    $.post("/asociar_beca/", { donor_auto_id: donorAutoId, scholarship_id: scholarshipId }, function(data) {
-        console.log(data);
-    });
-}
-
-function asociarContacto() {
-    const donorAutoId = $("#donor_contact").val();
-    const contactId = $("#donor_contact").val();
-
-    $.post("/asociar_contacto/", { donor_auto_id: donorAutoId, contact_id: contactId }, function(data) {
-        console.log(data);
-    });
-}
-</script>

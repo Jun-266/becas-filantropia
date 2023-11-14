@@ -27,7 +27,7 @@ class Modify_donor(View):
         scholarship = Scholarship.objects.get(auto_id=scholarship_id)
         donor.scholarships.add(scholarship)
         donor.save()
-        return redirect('manage_donor')
+        return redirect(request.META.get('HTTP_REFERER', '/'))
 
     def asociar_contacto(self, request, auto_id):
         donor = Donor.objects.get(auto_id=auto_id)
@@ -35,4 +35,4 @@ class Modify_donor(View):
         contact = Contact.objects.get(auto_id=contact_id)
         donor.contacts.add(contact)
         donor.save()
-        return redirect('manage_donor')
+        return redirect(request.META.get('HTTP_REFERER', '/'))
