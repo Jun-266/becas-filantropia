@@ -42,24 +42,3 @@
         </div>
     </div>
 {% endblock %}
-
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script type="text/javascript">
-function asociarBeca() {
-    const donorAutoId = $("#donor_scholarship").val();
-    const scholarshipId = $("#donor_scholarship").val();
-
-    $.post("/asociar_beca/", { donor_auto_id: donorAutoId, scholarship_id: scholarshipId }, function(data) {
-        console.log(data);
-    });
-}
-
-function asociarContacto() {
-    const donorAutoId = $("#donor_contact").val();
-    const contactId = $("#donor_contact").val();
-
-    $.post("/asociar_contacto/", { donor_auto_id: donorAutoId, contact_id: contactId }, function(data) {
-        console.log(data);
-    });
-}
-</script>
