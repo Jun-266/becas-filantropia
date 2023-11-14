@@ -62,8 +62,3 @@ class Modify_student(View):
             application.save()
 
         return HttpResponseRedirect(request.path)
-
-
-
-
-
