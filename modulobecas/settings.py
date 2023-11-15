@@ -1,3 +1,4 @@
+import os
 import os.path
 from pathlib import Path
 
@@ -13,10 +14,10 @@ SECRET_KEY = 'django-insecure-x(o+twe7@c933!sv0$94ssa!kdj_o3@!#-g!h!_t4$y^5_47zt
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
-# DEBUG = False
-# ALLOWED_HOSTS = ['*']
-DEBUG = True
-ALLOWED_HOSTS = []
+DEBUG = False
+ALLOWED_HOSTS = ['*']
+# DEBUG = True
+# ALLOWED_HOSTS = []
 
 # Application definition
 
@@ -64,26 +65,26 @@ WSGI_APPLICATION = 'modulobecas.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+'''
 DATABASES = {
   'default': {
      'ENGINE': 'django.db.backends.sqlite3',
      'NAME': BASE_DIR / 'db.sqlite3',
   }
 }
-
 '''
+
 DATABASES = {
   'default': {
     'ENGINE': 'django.db.backends.postgresql',
-    'NAME': 'becasFilantropia',
+    'NAME': 'filantropia',
     'USER': 'Jun-266',
-    'PASSWORD': 'YA9IsJGotgv1',
-    'HOST': 'ep-broken-rain-67475720.us-east-2.aws.neon.tech',
+    'PASSWORD': 'mI06UjoskEBZ',
+    'HOST': 'ep-spring-mud-38362233.us-east-2.aws.neon.tech',
     'PORT': '5432',
     'OPTIONS': {'sslmode': 'require'},
   }
 }
-'''
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
@@ -128,4 +129,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+STATICFILES_DIRS = os.path.join(BASE_DIR, 'static'),
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static')
 
