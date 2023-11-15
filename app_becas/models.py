@@ -75,6 +75,15 @@ class File(models.Model):
     my_file = models.FileField(upload_to='archivos/')
 
 
+class Candidate(models.Model):
+    full_name = models.CharField(max_length=250)
+    student_code = models.CharField(max_length=20)
+    email = models.EmailField(unique=True)
+    grade_point_average = models.DecimalField(max_digits=5, decimal_places=2)
+    application_date = models.DateField()
+    requested_scholarship = models.ForeignKey(Scholarship, on_delete=models.CASCADE)
+
+
 class Major(models.Model):
     auto_id = models.CharField(max_length=50, default=uuid.uuid4, editable=False, primary_key=True)
     name = models.CharField(max_length=35)
