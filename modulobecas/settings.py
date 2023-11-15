@@ -1,8 +1,3 @@
-"""
-https://docs.djangoproject.com/en/4.2/topics/settings/
-https://docs.djangoproject.com/en/4.2/ref/settings/
-"""
-import os
 import os.path
 from pathlib import Path
 
@@ -17,9 +12,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-x(o+twe7@c933!sv0$94ssa!kdj_o3@!#-g!h!_t4$y^5_47zt'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
-ALLOWED_HOSTS = ['*']
 
+# DEBUG = False
+# ALLOWED_HOSTS = ['*']
+DEBUG = True
+ALLOWED_HOSTS = []
 
 # Application definition
 
@@ -69,6 +66,14 @@ WSGI_APPLICATION = 'modulobecas.wsgi.application'
 
 DATABASES = {
   'default': {
+     'ENGINE': 'django.db.backends.sqlite3',
+     'NAME': BASE_DIR / 'db.sqlite3',
+  }
+}
+
+'''
+DATABASES = {
+  'default': {
     'ENGINE': 'django.db.backends.postgresql',
     'NAME': 'becasFilantropia',
     'USER': 'Jun-266',
@@ -78,6 +83,7 @@ DATABASES = {
     'OPTIONS': {'sslmode': 'require'},
   }
 }
+'''
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
@@ -114,8 +120,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = 'static/'
-# STATICFILES_DIRS = os.path.join(BASE_DIR, 'static')
-# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static')
 
 MEDIA_URL = 'media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
@@ -124,7 +128,4 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-STATICFILES_DIRS = os.path.join(BASE_DIR, 'static'),
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static')
 
