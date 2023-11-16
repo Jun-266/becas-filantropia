@@ -23,37 +23,37 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'manage_user' %}">
+                <a class="nav-link {% if request.path == '/manage_user/ %}active{% endif %}" href="{% url 'manage_user' %}">
                     Administradores
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'scholarship' %}">
+                <a class="nav-link {% if request.path == '/scholarship/' %}active{% endif %}" href="{% url 'scholarship' %}">
                     Becas
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'manage_contact' %}">
+                <a class="nav-link {% if request.path == '/manage_contact/' %}active{% endif %}" href="{% url 'manage_contact' %}">
                     Contactos
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'manage_student' %}">
+                <a class="nav-link {% if request.path == '/manage_student/' %}active{% endif %}" href="{% url 'manage_student' %}">
                     Estudiantes
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'calendar' %}">
+                <a class="nav-link {% if request.path == '/calendar/' %}active{% endif %}" href="{% url 'calendar' %}">
                     Cronogramas
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'manage_donor' %}">
+                <a class="nav-link {% if request.path == '/manage_donor/' %}active{% endif %}" href="{% url 'manage_donor' %}">
                     Donantes
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/reports/">
+                <a class="nav-link {% if request.path == '/reports/' %}active{% endif %}" href="/reports/">
                     Informes
                 </a>
             </li>
