@@ -2,6 +2,18 @@
 
 {% block content %}
 
+<div class="container py-4">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"> 
+            <a href="/home/"> Inicio</a></li>
+            <li class="breadcrumb-item">
+            <a href="{% url 'scholarship' %}">Becas</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Informacion Beca </li>
+        </ol>
+    </nav>
+  </div>
+
     <div class="container p-5">
         <h1>Beca: {{scholarship.name}} </h1><br>
         
@@ -10,9 +22,15 @@
         <p> <span class="fw-bold">Monto: </span> {{scholarship.amount}}</p>
         <p> <span class="fw-bold">Destinado a: </span> {{scholarship.type_scholarship}}</p>
         <br>
+        
+        <h2></h2>
+        <p> <span class="fw-bold">Monto </span> {{scholarship_params.units}}</p>
+        <br>
+
 
         <a href="" class="btn btn-warning">Eliminar Beca</a>
         <a href="" class="btn btn-secondary">Actualizar Beca</a>  
+        <a href="/add_type_to_scholarship?auto_id={{scholarship.auto_id}}" class="btn btn-secondary">Añadir Tipo de Beca</a>
     </div>
 
     

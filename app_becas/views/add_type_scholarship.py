@@ -17,26 +17,26 @@ class AddTypeScholarship(View):
     def post(self, request):
 
         nuevo_tipo_beca = request.POST['new_type_scholarship']
-        form = type_scholarship_form(request.POST)
 
-        if form.is_valid():
-            nuevo_tipo_beca = form.cleaned_data['new_type_scholarship']
-            peso_porcentual = form.cleaned_data['weight_percentage']
-            unidades_disponibles = form.cleaned_data['units_available']
-
-            if nuevo_tipo_beca:
-                tipo_beca = TypeScholarship(
-                    name=nuevo_tipo_beca,
-                    weight_percentage=peso_porcentual,
-                    units_available=unidades_disponibles
-                )
-                tipo_beca.save()
-                return redirect('add_type_scholarship')
+        if nuevo_tipo_beca:
+           
+            tipo_beca = TypeScholarship(name=nuevo_tipo_beca)
+            tipo_beca.save()
+            return redirect('add_type_scholarship') 
 
        
         tipos_beca = TypeScholarship.objects.all()
         error_message = "Debes proporcionar un nuevo tipo de beca."
         return render(request, 'add_type_scholarship.html', {'tipos_beca': tipos_beca, 'error_message': error_message})
+    
+    def delete_type_scholarship(request):
+        type_scholarship = TypeScholarship.objects.get(name = request.GET('name_scholarship'))
+        type_scholarship.delete()
+        try:
+            del request.session['name_scholarship']
+        except KeyError:
+            pass
+        return redirect('add_type_scholarship')
     
     def delete_type_scholarship(request):
         type_scholarship = TypeScholarship.objects.get(name = request.GET('name_scholarship'))

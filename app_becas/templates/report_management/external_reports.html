@@ -1,6 +1,17 @@
 {% extends 'layouts/base.html' %}
 
 {% block content %}
+<div class="container py-4">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"> 
+            <a href="/home/"> Inicio</a></li>
+            <li class="breadcrumb-item">
+            <a href="{% url 'reports' %}">Informes</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Informes Externos</li>
+        </ol>
+    </nav>
+  </div>
     <div class="container p-5">
         <h1>Informes externos</h1>
         <a class="btn btn-primary" href="/reports/">

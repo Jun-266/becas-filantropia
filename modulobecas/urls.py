@@ -12,6 +12,7 @@ from app_becas.views.manage_donor import Manage_donor
 from app_becas.views.manage_contact import Manage_contact
 from app_becas.views.scholarship import Scholarship
 from app_becas.views.add_scholarship import Add_scholarship
+from app_becas.views.add_type_to_scholarship import AddTypeToScholarship
 from app_becas.views.delete_user import Delete_user
 from app_becas.views.modify_user import Modify_user
 from app_becas.views.add_type_scholarship import AddTypeScholarship
@@ -24,6 +25,7 @@ from app_becas.views.delete_donor import Delete_donor
 from app_becas.views.modify_donor import Modify_donor
 from app_becas.views.delete_contact import Delete_contact
 from app_becas.views.modify_contact import Modify_contact
+
 
 
 urlpatterns = [
@@ -46,7 +48,7 @@ urlpatterns = [
     path('add_scholarship/add_type_scholarship/', AddTypeScholarship.as_view(), name ='add_type_scholarship'),
     path('add_scholarship/delete_type_scholarship/', DeleteTypeScholarship.as_view(), name ='delete_type_scholarship'),
     path('search_scholarship/', SearchScholarship.as_view(), name ='search_scholarship'),
-
+    path('add_type_to_scholarship/', AddTypeToScholarship.as_view(), name='add_type_to_scholarship'),
     path('reports/', hr.home, name='reports'),
     path('reports/<int:file_id>', hr.delete_report, name='delete_report'),
     path('reports_upload/', hr.upload_report, name='upload_report'),
@@ -62,7 +64,6 @@ urlpatterns = [
     path('manage_donor/modify_donor/<str:auto_id>/', Modify_donor.as_view(), name='modify_donor'),
     path('manage_contact/delete_contact/<str:auto_id>/', Delete_contact.as_view(), name='delete_contact'),
     path('manage_contact/modify_contact/<str:auto_id>/', Modify_contact.as_view(), name='modify_contact'),
-
 ]
 
 urlpatterns += [

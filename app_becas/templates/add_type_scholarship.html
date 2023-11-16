@@ -1,6 +1,20 @@
 {% extends 'layouts/base.html' %}
 
 {% block content %}
+
+<div class="container py-4">
+  <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+          <li class="breadcrumb-item"> 
+          <a href="/home/"> Inicio</a></li>
+          <li class="breadcrumb-item">
+          <a href="{% url 'scholarship' %}">Becas</a></li>
+          <li class="breadcrumb-item"> 
+            <a href="{% url 'add_scholarship' %}">Registrar Programa de Beca</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Agregar Tipo De Beca </li>
+      </ol>
+  </nav>
+</div>
     <h1>Registrar un tipo de beca</h1>
 
     {% for beca in tipos_beca %}
@@ -17,12 +31,10 @@
   {% csrf_token %}
   {{form.as_p }}
 
-  <button type="submit">
-    Guardar
-  </button>
-
-
 </form>
 
-{% endblock %}
+    <button type="submit">
+      Guardar
+    </button>
 
+{% endblock %}

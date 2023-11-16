@@ -34,12 +34,6 @@ class type_scholarship_form(forms.Form):
     new_type_scholarship = forms.CharField(
         label='Nuevo Tipo de Beca',
     )
-    weight_percentage = forms.DecimalField(label='Peso porcentual')
-    units_available = forms.DecimalField(label='Unidades disponibles')
-    units_type = forms.ChoiceField(
-        label='Tipo de Unidades',
-        choices=(('Porcentaje', 'Porcentaje'), ('Dinero', 'Dinero'), ('Cantidad', 'Cantidad'))
-    )
 
 class delete_type(forms.Form):
 
@@ -50,4 +44,16 @@ class delete_type(forms.Form):
 class SearchScholarshipForm(forms.Form):
     scholarship_name = forms.CharField(label='Nombre de la Beca', required=False)
 
+class add_type_to_scholarship(forms.Form):
+    types_obj = TypeScholarship.objects.all()
+    try:
+        types = [(obj.name,obj.name) for obj in types_obj]
+    except OperationalError:
+        print("## Es necesario que apliques las migraciones")
+        print("## Para que se cree automáticamente las tablas necesarias")
+    units = forms.DecimalField(label='Unidades disponibles')
+    units_type = forms.ChoiceField(
+        label='Tipo de Unidades',
+        choices=(('Porcentaje', 'Porcentaje'), ('Dinero', 'Dinero'), ('Articulos', 'Articulos'))
+    )
 

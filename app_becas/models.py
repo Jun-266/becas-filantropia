@@ -16,20 +16,26 @@ class My_user(models.Model):
     
 class TypeScholarship(models.Model):
     name = models.CharField(max_length=50, primary_key=True)
-    weight_percentage = models.DecimalField(max_digits=5,decimal_places=2,default=0)
-    units_available = models.DecimalField(max_digits=10,decimal_places=2,default=0)
-    units_type = models.CharField(max_length=20,default=1)
 
     def __str__(self):
         return self.name 
     
+class ScholarshipParams(models.Model):
+    auto_id = models.CharField(max_length=50, default=uuid.uuid4, editable=False, primary_key= True)
+    type_name = models.CharField(max_length=30, default=uuid.uuid4)
+    scholarship_id = models.CharField(max_length=30, default=uuid.uuid4)
+    units = models.DecimalField(max_digits=10,decimal_places=2,default=0)
+    units_type = models.CharField(max_length=20,default=1)
+
+    def __str__(self):
+        return self.auto_id 
+
+
 class Scholarship(models.Model):
     auto_id = models.CharField(max_length=50, default=uuid.uuid4, editable=False, primary_key= True)   
     name = models.CharField(max_length=30)
     description = models.CharField(max_length=250)
     amount = models.IntegerField()
-    type_scholarship = models.CharField(max_length=50)
-    types = models.ManyToManyField(TypeScholarship)
     
     def __str__(self):
         return self.name

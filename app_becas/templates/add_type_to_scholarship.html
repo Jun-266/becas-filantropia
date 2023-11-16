@@ -1,0 +1,16 @@
+{% extends 'layouts/base.html' %}
+
+{% block content %}
+
+    <h1>Registrar parametros de beca</h1>
+
+    <form id="formID_add_scholarship" class="container p-5" method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <button type="submit">
+            Guardar
+        </button>
+    </form>
+{% endblock %}
+
