@@ -2,9 +2,9 @@ import uuid
 from django.db import models
 
 
-class My_user(models.Model):
+class MyUser(models.Model):
     user_id = models.CharField(max_length=255)
-    auto_id = models.CharField(max_length=50, primary_key=True, default=uuid.uuid4, editable=False) 
+    auto_id = models.CharField(max_length=50, primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=255)
     lastname = models.CharField(max_length=255)
     email = models.EmailField()
@@ -13,26 +13,28 @@ class My_user(models.Model):
     
     def __str__(self):
         return f'{self.name} {self.lastname}'
-    
+
+
 class TypeScholarship(models.Model):
     name = models.CharField(max_length=50, primary_key=True)
 
     def __str__(self):
         return self.name 
-    
+
+
 class ScholarshipParams(models.Model):
-    auto_id = models.CharField(max_length=50, default=uuid.uuid4, editable=False, primary_key= True)
+    auto_id = models.CharField(max_length=50, default=uuid.uuid4, editable=False, primary_key=True)
     type_name = models.CharField(max_length=30, default=uuid.uuid4)
     scholarship_id = models.CharField(max_length=30, default=uuid.uuid4)
-    units = models.DecimalField(max_digits=10,decimal_places=2,default=0)
-    units_type = models.CharField(max_length=20,default=1)
+    units = models.DecimalField(max_digits=10, decimal_places=2, default=0)
+    units_type = models.CharField(max_length=20, default=1)
 
     def __str__(self):
         return self.auto_id 
 
 
 class Scholarship(models.Model):
-    auto_id = models.CharField(max_length=50, default=uuid.uuid4, editable=False, primary_key= True)   
+    auto_id = models.CharField(max_length=50, default=uuid.uuid4, editable=False, primary_key=True)
     name = models.CharField(max_length=30)
     description = models.CharField(max_length=250)
     amount = models.IntegerField()
@@ -42,7 +44,7 @@ class Scholarship(models.Model):
 
     
 class Calendar(models.Model):
-    auto_id = models.CharField(max_length=50, default=uuid.uuid4, primary_key= True)
+    auto_id = models.CharField(max_length=50, default=uuid.uuid4, primary_key=True)
     convocation_type_id = models.CharField(max_length=2)
     scholarship_id = models.CharField(max_length=20)
     inscription_start_date = models.DateField()
@@ -52,14 +54,14 @@ class Calendar(models.Model):
     interview_start_date = models.DateField()
     interview_deadline = models.DateField()
     publish_elected_start_date = models.DateField()
-    publish_elected_deadline = models.DateField( )
+    publish_elected_deadline = models.DateField()
 
     def _str_(self):
         return str("sch id:"+self.scholarship_id)
-    
+
 
 class Contact(models.Model):
-    auto_id = models.CharField(max_length=50, default=uuid.uuid4, editable=False, primary_key= True)   
+    auto_id = models.CharField(max_length=50, default=uuid.uuid4, editable=False, primary_key=True)
     identification = models.CharField(max_length=30)
     type = models.CharField(max_length=30)
     email = models.EmailField(max_length=30)
@@ -70,9 +72,9 @@ class Contact(models.Model):
 
 
 class Donor(models.Model):
+    auto_id = models.CharField(max_length=50, default=uuid.uuid4, editable=False, primary_key=True)
     scholarships = models.ManyToManyField(Scholarship, related_name='donors')
     contacts = models.ManyToManyField(Contact, related_name='donors')
-    auto_id = models.CharField(max_length=50, default=uuid.uuid4, editable=False, primary_key= True)
     enterprise_name = models.CharField(max_length=20)
 
     def __str__(self):
@@ -82,3 +84,59 @@ class Donor(models.Model):
 class File(models.Model):
     my_file = models.FileField(upload_to='archivos/')
 
+
+class Candidate(models.Model):
+    full_name = models.CharField(max_length=250)
+    student_code = models.CharField(max_length=20)
+    email = models.EmailField(unique=True)
+    grade_point_average = models.DecimalField(max_digits=5, decimal_places=2)
+    application_date = models.DateField()
+    requested_scholarship = models.ForeignKey(Scholarship, on_delete=models.CASCADE)
+
+
+class Major(models.Model):
+    auto_id = models.CharField(max_length=50, default=uuid.uuid4, editable=False, primary_key=True)
+    name = models.CharField(max_length=35)
+    description = models.CharField(max_length=255)
+
+    def __str__(self):
+        return str(self.auto_id)
+
+
+class Student(models.Model):
+    major = models.ForeignKey(Major, on_delete=models.CASCADE)  # Cambia OneToOneField a ForeignKey
+    auto_id = models.CharField(max_length=50, default=uuid.uuid4, editable=False, primary_key=True)
+    code = models.CharField(max_length=20)
+    name = models.CharField(max_length=20)
+    lastname = models.CharField(max_length=30)
+    school = models.CharField(max_length=30)
+    email = models.EmailField(max_length=40)
+    phone = models.CharField(max_length=10)
+    first_semester = models.CharField(max_length=8)
+    last_semester = models.CharField(max_length=8)
+
+    def __str__(self):
+        return str(self.auto_id)
+
+
+class ApplicationStatus(models.Model):
+    type = models.CharField(max_length=50, primary_key=True, choices=[
+        ('Aprobada', 'Aprobada'),
+        ('En proceso', 'En proceso'),
+        ('Denegada', 'Denegada'),
+        ('Concluida', 'Concluida'),
+    ])
+
+    def __str__(self):
+        return self.type
+
+
+class ScholarshipApplication(models.Model):
+    auto_id = models.CharField(max_length=50, default=uuid.uuid4, editable=False, primary_key=True)
+    scholarship = models.ForeignKey(Scholarship, on_delete=models.CASCADE)
+    student = models.ForeignKey(Student, on_delete=models.CASCADE)
+    application_status = models.ForeignKey(ApplicationStatus, on_delete=models.CASCADE)
+
+    class Meta:
+        verbose_name = "Scholarship Application"
+        verbose_name_plural = "Scholarship Applications"
