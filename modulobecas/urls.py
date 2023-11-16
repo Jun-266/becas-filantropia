@@ -15,6 +15,7 @@ from app_becas.views.manage_donor import Manage_donor
 from app_becas.views.manage_contact import Manage_contact
 from app_becas.views.scholarship import Scholarship
 from app_becas.views.add_scholarship import Add_scholarship
+from app_becas.views.add_type_to_scholarship import AddTypeToScholarship
 from app_becas.views.delete_user import Delete_user
 from app_becas.views.modify_user import Modify_user
 from app_becas.views.add_type_scholarship import AddTypeScholarship
@@ -50,9 +51,12 @@ urlpatterns = [
     path('scholarship/', Scholarship.as_view(), name='scholarship'),
     path('show_scholarship_info/', Show_scholarship_info.as_view(), name='show_scholarship_info'),
     path('add_scholarship/', Add_scholarship.as_view(), name='add_scholarship'),
-    path('add_scholarship/add_type_scholarship/', AddTypeScholarship.as_view(), name='add_type_scholarship'),
-    path('add_scholarship/delete_type_scholarship/', DeleteTypeScholarship.as_view(), name='delete_type_scholarship'),
+    path('add_scholarship/add_type_scholarship/', AddTypeScholarship.as_view(),
+         name='add_type_scholarship'),
+    path('add_scholarship/delete_type_scholarship/', DeleteTypeScholarship.as_view(),
+         name='delete_type_scholarship'),
     path('search_scholarship/', SearchScholarship.as_view(), name='search_scholarship'),
+    path('add_type_to_scholarship/', AddTypeToScholarship.as_view(), name='add_type_to_scholarship'),
 
     # Reports.
     path('reports/', hr.home, name='reports'),
@@ -74,13 +78,12 @@ urlpatterns = [
     path('manage_student/delete_student/<str:auto_id>/', Delete_student.as_view(), name='delete_student'),
     path('manage_student/modify_student/<str:auto_id>/', Modify_student.as_view(), name='modify_student'),
     path('manage_student/add_major/', Add_major.as_view(), name='add_major'),
-    path('manage_donor/modify_donor/<str:auto_id>/donor_contact/<str:contact_auto_id>/', Delete_donor_contact.as_view(), name='delete_donor_contact'),
-    path('manage_donor/modify_donor/<str:auto_id>/donor_scholarship/<str:scholarship_auto_id>/', Delete_donor_scholarship.as_view(), name='delete_donor_scholarship'),
-    
+    path('manage_donor/modify_donor/<str:auto_id>/donor_contact/<str:contact_auto_id>/',
+         Delete_donor_contact.as_view(), name='delete_donor_contact'),
+    path('manage_donor/modify_donor/<str:auto_id>/donor_scholarship/<str:scholarship_auto_id>/',
+         Delete_donor_scholarship.as_view(), name='delete_donor_scholarship'),
 ]
 
-# urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-# urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 urlpatterns += [
     re_path(r'^media/(?P<path>.*)$', serve, {
         'document_root': settings.MEDIA_ROOT

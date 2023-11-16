@@ -1,6 +1,20 @@
 {% extends 'layouts/base.html' %}
 
 {% block content %}
+<div class="container py-4">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"> 
+            <a href="/home/"> Inicio</a></li>
+            <li class="breadcrumb-item">
+            <a href="{% url 'scholarship' %}">Becas</a></li>
+            <li class="breadcrumb-item"> 
+              <a href="{% url 'add_scholarship' %}">Registrar Programa de Beca</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Eliminar Tipo De Beca </li>
+        </ol>
+    </nav>
+  </div>
+  
 <form id="formID_delete_scholarship" class="container p-5" method="post">
     {% csrf_token %}
     

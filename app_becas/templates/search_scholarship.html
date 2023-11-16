@@ -2,14 +2,6 @@
 
 {% block content %}
 <div class="container p-5">
-    <h1>Buscar Beca por Nombre</h1>
-    <form method="post">
-        {% csrf_token %}
-        <label for="nombre_beca">Nombre de Beca:</label>
-        <input type="text" name="nombre_beca" id="nombre_beca">
-        <button type="submit">Buscar</button>
-    </form>
-
     {% if scholarship %}
         <h2>Resultados de la Búsqueda:</h2>
         <ul>
