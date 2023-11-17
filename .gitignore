@@ -7,6 +7,9 @@ __pycache__/
 .DS_Store
 Thumbs.db
 
+# Ignora archivos relacionados con las migraciones.
+app_becas/migrations/*
+
 # Ignorar archivos y directorios generados por Django
 *.log
 *.pot
