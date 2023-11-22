@@ -48,8 +48,7 @@ class delete_type(forms.Form):
 
 class SearchScholarshipForm(forms.Form):
     scholarship_name = forms.CharField(label='Nombre de la Beca', required=False)
-
-
+    
 class add_type_to_scholarship(forms.Form):
     types_obj = TypeScholarship.objects.all()
     try:
