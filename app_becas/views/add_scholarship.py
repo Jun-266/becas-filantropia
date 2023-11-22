@@ -20,7 +20,6 @@ class Add_scholarship(View):
             name = form.cleaned_data['name']
             description = form.cleaned_data['description']
             amount = form.cleaned_data['amount']
-            
             Scholarship.objects.create(
                 name=name,
                 description=description,
