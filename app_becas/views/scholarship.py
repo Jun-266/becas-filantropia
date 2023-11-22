@@ -14,5 +14,18 @@ class Scholarship(View):
         return render(request, 'scholarship.html', {
             'scholarships': scholarships,
         })
+    
+    def post(self, request):
+        msg = ''
+        scholarship = None
+    
+        try:
+            scholarship = Scholarship_obj.objects.get(name=request.POST['nombre_beca'])
+        except Scholarship_obj.DoesNotExist:
+            msg = "La beca no esta registrada" 
+            return render(request, 'scholarship.html', {'msg': msg})
+        
+        return render(request, 'scholarship.html', {'searched': scholarship, 'msg': msg})
+        
 
         

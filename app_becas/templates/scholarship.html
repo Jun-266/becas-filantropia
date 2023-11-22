@@ -1,5 +1,4 @@
 {% extends 'layouts/base.html' %}
-
 {% block content %}
 
 <div class="container py-4">
@@ -15,7 +14,7 @@
 <div class="container p-5">
     <h1>Gestión de becas</h1>
 
-    <div class="creation-scolarship">
+    <div class="creation-scholarship">
         <a href="{% url 'add_scholarship' %}" class="btn btn-primary">Registrar Programa De Beca</a>
         <br><br>
     </div>
@@ -26,20 +25,41 @@
     </div>
     <br><br>
 
-    {% load send_id %}
-    {% if scholarship is defined %}
-        {% for scholarship in scholarships %}
-            <article class="card container p-1">
-                <a href="{% send_id 'show_scholarship_info' scholarship.auto_id %}" class="btn btn-primary">
-                    Beca: {{scholarship.name}}
-                </a>
-            </article>
-
-        {% endfor %}
-    {% else %}
-        <p>No existe ningún registro</p>
-    {% endif %}
-
+    <div class="search_scholarship">
+        <h1>Buscar Beca por Nombre</h1>
+        <form method="post">
+            {% csrf_token %}
+            <label for="nombre_beca">Nombre de Beca:</label>
+            <input type="text" name="nombre_beca" id="nombre_beca">
+            <button type="submit">Buscar</button>
+        </form>
+    
+        {% if searched %}
+            <h2>Resultados de la Búsqueda:</h2>
+            <ul>
+                <li><a class="btn btn-primary" href="/show_scholarship_info?auto_id={{searched.auto_id}}">{{ searched.name }}</a></li>
+            </ul>
+            
+        {% else %}
+             {{msg}}    
+        {% endif %}
+    </div>
+    
+    <div class="show-scholarships">
+        <h2>Listados de becas</h2>
+        {% load send_id %}
+        {% if scholarships %}
+            {% for scholarship in scholarships %}
+                <article class="card container p-1">
+                    <a href="{% send_id 'show_scholarship_info' scholarship.auto_id %}" class="btn btn-primary">
+                        Beca: {{ scholarship.name }}
+                    </a>
+                </article>
+            {% endfor %}
+        {% else %}
+            <p>No hay registros de becas</p>
+        {% endif %}
+    </div>   
 </div>
 
 
