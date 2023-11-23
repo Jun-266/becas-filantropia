@@ -52,36 +52,48 @@
                 </div>
             </div>
 
+            <div class="col-sm-12 col-md-6 col-lg-9 col-xl-9 table-responsive">
+                <h1>Contactos</h1>
 
-            <div class="col-sm-12 col-md-6 col-lg-9 col-xl-9 mt-4">
-                <h1>Listado de Contactos</h1>
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>identificacion</th>
-                            <th>Correo</th>
-                            <th>Telefono</th>
-                            <th>Tipo</th>
-                            <th colspan="">Opciones</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for contact in contacts %}
-                            <tr>
-                                <td>{{ contact.auto_id }}</td>
-                                <td>{{ contact.identification }}</td>
-                                <td>{{ contact.email }}</td>
-                                <td>{{ contact.phone }}</td>
-                                <td>{{ contact.type }}</td>
-                                <td><a href= "modify_contact/{{contact.auto_id}}" class ="btn btn-info">Edit</a></td>
-                                <td>
-                                    <a href="delete_contact/{{contact.auto_id}}" id="delete-contact" class="btn btn-danger";">Delete</a>
-                                </td>  
-                            </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
+                {% if search_term %}
+                    <p>Resultados de la búsqueda para: "{{ search_term }}"</p>
+                {% endif %}
+
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <form action="{% url 'manage_contact' %}" method="GET" class="d-flex">
+                            <input type="text" name="search" class="form-control" placeholder="Buscar contacto">
+                            <div class="input-group-append">
+                                <button type="submit" class="btn btn-primary border">Buscar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+    
+                <div class="row" id="card-view">
+                    {% for contact in contacts   %}
+                        <div class="col-md-4 mb-3">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5 class="card-title">{{ contact.identification }}</h5>
+                                </div>
+                                <div class="card-body">
+                                    <p class="card-text"><b>ID:</b> {{ contact.auto_id }}</p>
+                                    <p class="card-text"><b>Correo:</b> {{ contact.email }}</p>
+                                    <p class="card-text"><b>Teléfono:</b> {{ contact.phone }}</p>
+                                    <p class="card-text"><b>Tipo:</b> {{ contact.type }}</p>
+                                </div>
+                                <div class="card-footer">
+                                    <a href= "modify_contact/{{contact.auto_id}}" class ="btn btn-primary btn-sm">Gestionar</a>
+                                    <a href="delete_contact/{{contact.auto_id}}" id="delete-contact" class="btn btn-primary btn-sm";">Borrar</a>
+                                </div>
+                            </div>
+                        </div>
+                        {% if forloop.counter|divisibleby:3 %}
+                            </div><div class="row" id="card-view">
+                        {% endif %}
+                    {% endfor %}
+                </div>
             </div>
         </div>
     </div>

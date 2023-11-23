@@ -34,8 +34,6 @@
                                 <button type="submit" class="btn btn-success btn-block text-white" style="margin-top: 10px;">Guardar</button>
                             </div>
                             
-                            <h1 class="card-title mx-3 mt-4">Agregar relación</h1>
-
                             <div class="input-group mt-3">
                                 <input type="text" class="form-control" id="donor_scholarship" name="donor_scholarship" placeholder='ID Beca'>
                                 <button type="submit" name="action" value="asociar_beca" class="btn btn-primary">Asociar Beca</button>
@@ -51,8 +49,8 @@
                     </div>
                 </div>
             </div>
-            <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4 mt-4">
-                <h1>Becas asociadas</h1>
+            <div class="col-sm-12 col-md-6 col-lg-4 col-xl-5 mt-5 table-responsive">
+                <h1>Becas Activas</h1>
                 <table class="table table-striped">
                     <thead>
                         <tr>
@@ -66,7 +64,7 @@
                         <td>{{ donor_scholarship.auto_id }}</td>
                         <td>{{ donor_scholarship.name }}</td>
                         <td>
-                            <a href="donor_scholarship/{{donor_scholarship.auto_id}}" id="delete-donor-scholarship" class="btn btn-danger">Borrar</a>
+                            <a href="donor_scholarship/{{donor_scholarship.auto_id}}" id="delete-donor-scholarship" class="btn btn-primary btn-sm">Borrar</a>
                         </td>  
                     </tr>
                     {% endfor %}
@@ -74,8 +72,8 @@
                     </tbody>
                 </table>
             </div>
-            <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4 mt-4">
-                <h1>Contactos asociados</h1>
+            <div class="col-sm-12 col-md-6 col-lg-3 col-xl-3 mt-5 table-responsive">
+                <h1>Contactos</h1>
                 <table class="table table-striped">
                     <thead>
                         <tr>
@@ -88,7 +86,7 @@
                     <tr>
                         <td>{{ donor_contact.auto_id }}</td>
                         <td>
-                           <a href="donor_contact/{{donor_contact.auto_id}}" id="delete-donor-contact" class="btn btn-danger">Borrar</a>
+                           <a href="donor_contact/{{donor_contact.auto_id}}" id="delete-donor-contact" class="btn btn-primary btn-sm">Borrar</a>
                         </td>  
                     </tr>
                     {% endfor %}

@@ -13,7 +13,7 @@
 </div>
     <div class="container p-5 my-3 border">
         <div class="row">
-            <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4">
+            <div class="col-sm-12 col-md-6 col-lg-3 col-xl-3">
                 <a href="/home" class="btn btn-primary btn-sm">Volver</a>
                 
                 <div class="card mt-3">
@@ -34,31 +34,47 @@
                 </div>
             </div>
 
+            <div class="col-sm-12 col-md-6 col-lg-9 col-xl-9 mt-4 table-responsive">
+                <h1>Donantes</h1>
+                
+                {% if search_term %}
+                    <p>Resultados de la búsqueda para: "{{ search_term }}"</p>
+                {% endif %}
 
-            <div class="col-sm-12 col-md-6 col-lg-8 col-xl-8 mt-4">
-                <h1>Listado de donantes</h1>
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Nombre de la empresa</th>
-                            <th colspan="">Opciones</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for donor in donors %}
-                            <tr>
-                                <td>{{ donor.auto_id }}</td>
-                                <td>{{ donor.enterprise_name }}</td>
-                                <td><a href= "modify_donor/{{donor.auto_id}}" class ="btn btn-info">Gestionar</a></td>
-                                <td>
-                                    <a href="delete_donor/{{donor.auto_id}}" id="delete-donor" class="btn btn-danger";">Borrar</a>
-                                </td>  
-                            </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <form action="{% url 'manage_donor' %}" method="GET" class="d-flex">
+                            <input type="text" name="search" class="form-control" placeholder="Buscar donante">
+                            <div class="input-group-append">
+                                <button type="submit" class="btn btn-primary border">Buscar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+    
+                <div class="row" id="card-view">
+                    {% for donor in donors   %}
+                        <div class="col-md-4 mb-3">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5 class="card-title">{{ donor.enterprise_name }}</h5>
+                                </div>
+                                <div class="card-body">
+                                    <p class="card-text"><b>ID:</b> {{ donor.auto_id }}</p>
+                                </div>
+                                <div class="card-footer">
+                                    <a href= "modify_donor/{{donor.auto_id}}" class ="btn btn-primary btn-sm">Gestionar</a>
+                                    <a href="delete_donor/{{donor.auto_id}}" id="delete-donor" class="btn btn-primary btn-sm";">Borrar</a>
+                                </div>
+                            </div>
+                        </div>
+                        {% if forloop.counter|divisibleby:3 %}
+                            </div><div class="row" id="card-view">
+                        {% endif %}
+                    {% endfor %}
+                </div>
             </div>
+
         </div>
     </div>
 {% endblock %}
