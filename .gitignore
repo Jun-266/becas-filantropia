@@ -27,6 +27,7 @@ celerybeat-schedule
 
 # Ignorar archivos de entorno virtual (por ejemplo, si estás usando virtualenv o venv)
 venv/
+myenv/
 env/
 
 # Ignorar archivos de configuración de IDE
