@@ -1,29 +1,31 @@
 {% extends 'layouts/base.html' %}
-
 {% block content %}
 
 <div class="container py-4">
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"> 
-            <a href="/home/"> Inicio</a> </li>
+                <a href="/home/"> Inicio</a>
+            </li>
             <li class="breadcrumb-item active" aria-current="page"> Donantes </li>
         </ol>
     </nav>
 </div>
 
-    <div class="container p-5 my-3 border">
-        <div class="row">
-            <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4">
-                <a href="/manage_donor" class="btn btn-primary btn-sm">Volver</a>
-                
-                <div class="card mt-3">
-                    <h1 class="card-title mx-3 mt-2">Gestionar donante</h1>
-                    <div class="card-body">
+<div class="container p-5 my-3 border">
+    <div class="row">
+        <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4">
+            <a href="/manage_donor" class="btn btn-primary btn-sm">Volver</a>
+            
+            <div class="card mt-3">
+                <h1 class="card-title mx-3 mt-2">
+                    Gestionar donante
+                </h1>
+                <div class="card-body">
                         <form method="POST">
                             {% csrf_token %}
                             <div class="form-group">
-                                <input type="text" id="auto_Id" value="{{donor.auto_id|default:'Auto ID'|safe}}" name="auto_Id" class="form-control" placeholder="Auto ID" readonly maxlength="50" required>
+                                <input type="text" id="auto_id" style="margin-bottom: 10px;" value="{{donor.auto_id|default:'Auto ID'|safe}}" name="auto_id" class="form-control" placeholder="Auto ID" readonly maxlength="50" required>
                             </div>
 
                             <div class="form-group">
@@ -31,28 +33,60 @@
                             </div> 
 
                             <div class="form-group">
+                                <input type="text" id="email" style="margin-bottom: 10px;" value="{{donor.email|safe}}" name="email" class="form-control" placeholder="Email"
+                                  maxlength="50" required>
+                            </div>
+
+                            <div class="form-group">
+                                <input type="text" id="phone" style="margin-bottom: 10px;" value="{{donor.phone|safe}}" name="phone" class="form-control" placeholder="Phone"
+                                  maxlength="50" required>
+                            </div>
+
+                            <div class="form-group">
+                                <input type="text" id="city" style="margin-bottom: 10px;" value="{{donor.city|safe}}" name="city" class="form-control" placeholder="City"
+                                  maxlength="50" required>
+                            </div>
+
+                            <div class="form-group">
+                                <input type="text" id="pais" style="margin-bottom: 10px;" value="{{donor.pais|safe}}" name="pais" class="form-control" placeholder="Pais"
+                                  maxlength="50" required>
+                            </div>
+
+                            <div class="form-group">
+                                <input type="text" id="joined_date" style="margin-bottom: 10px;" value="{{donor.joined_date|safe}}" name="joined_date" class="form-control" placeholder="Fecha de unión"
+                                  maxlength="50" required>
+                            </div>
+
+                            <div class="form-group">
                                 <button type="submit" class="btn btn-success btn-block text-white" style="margin-top: 10px;">Guardar</button>
                             </div>
                             
-                            <h1 class="card-title mx-3 mt-4">Agregar relación</h1>
-
-                            <div class="input-group mt-3">
+                            <div class="input-group mt-3 mb-2">
                                 <input type="text" class="form-control" id="donor_scholarship" name="donor_scholarship" placeholder='ID Beca'>
                                 <button type="submit" name="action" value="asociar_beca" class="btn btn-primary">Asociar Beca</button>
                               </div>
                               
-                              <div class="input-group mt-1 mb-3">
+                            <div class="input-group mt-1 mb-3">
                                 <input type="text" class="form-control" id="donor_contact" name="donor_contact" placeholder='ID Contacto'>
                                 <button type="submit" name="action" value="asociar_contacto" class="btn btn-primary">Asociar Contacto</button>
-                              </div>
-                                         
-                    
+                            </div>
+                                     
                         </form>
                     </div>
                 </div>
             </div>
-            <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4 mt-4">
-                <h1>Becas asociadas</h1>
+            <div class="col-sm-12 col-md-6 col-lg-4 col-xl-5 mt-5 table-responsive">
+                <div style="display: flex; align-items: center;">
+                    <h1 style="margin: 0;">Becas Activas</h1>
+                    <div class="contenedor" style="margin-left: 10px;">
+                        <a href="/ruta-de-tu-pagina">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
+                                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                
                 <table class="table table-striped">
                     <thead>
                         <tr>
@@ -66,7 +100,7 @@
                         <td>{{ donor_scholarship.auto_id }}</td>
                         <td>{{ donor_scholarship.name }}</td>
                         <td>
-                            <a href="donor_scholarship/{{donor_scholarship.auto_id}}" id="delete-donor-scholarship" class="btn btn-danger">Borrar</a>
+                            <a href="donor_scholarship/{{donor_scholarship.auto_id}}" id="delete-donor-scholarship" class="btn btn-primary btn-sm">Borrar</a>
                         </td>  
                     </tr>
                     {% endfor %}
@@ -74,8 +108,22 @@
                     </tbody>
                 </table>
             </div>
-            <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4 mt-4">
-                <h1>Contactos asociados</h1>
+            <div class="col-sm-12 col-md-6 col-lg-3 col-xl-3 mt-5 table-responsive">
+                <div style="display: flex; align-items: center;">
+                    <h1 style="margin: 0;">Contactos </h1>
+                    
+                    <div class="contenedor" style="margin-left: 10px;">
+                        <a href="manage_contact">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" class="bi bi-person-plus-fill" viewBox="0 0 16 16">
+                                <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
+                                <path fill-rule="evenodd" d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5"/>
+                            </svg>
+                        </a>
+                    </div>
+                    
+                </div>
+                                     
+                    
                 <table class="table table-striped">
                     <thead>
                         <tr>
@@ -88,7 +136,7 @@
                     <tr>
                         <td>{{ donor_contact.auto_id }}</td>
                         <td>
-                           <a href="donor_contact/{{donor_contact.auto_id}}" id="delete-donor-contact" class="btn btn-danger">Borrar</a>
+                           <a href="donor_contact/{{donor_contact.auto_id}}" id="delete-donor-contact" class="btn btn-primary btn-sm">Borrar</a>
                         </td>  
                     </tr>
                     {% endfor %}

@@ -13,53 +13,53 @@
                             <form method="POST">
                                 {% csrf_token %}
                                 <div class="form-group">
-                                    <input type="text" id="auto_id" value="{{student.auto_id|default:'Auto ID'|safe}}" name="auto_id" class="form-control" placeholder="Auto ID" readonly maxlength="50" required>
+                                    <input type="text" id="auto_id" style="margin-bottom: 10px;" value="{{student.auto_id|default:'Auto ID'|safe}}" name="auto_id" class="form-control" placeholder="Auto ID" readonly maxlength="50" required>
                                 </div>
     
                                 <div class="form-group">
-                                    <input type="text" id="code" value="{{student.code|safe}}" name="code" class="form-control" placeholder="Código de estudiante"
+                                    <input type="text" id="code" style="margin-bottom: 10px;" value="{{student.code|safe}}" name="code" class="form-control" placeholder="Código de estudiante"
                                         maxlength="50" required>
                                 </div>
     
                                 <div class="form-group">
-                                    <input type="text" id="name" value="{{student.name|safe}}" name="name" class="form-control" placeholder="Nombre"
+                                    <input type="text" id="name" style="margin-bottom: 10px;" value="{{student.name|safe}}" name="name" class="form-control" placeholder="Nombre"
                                         maxlength="50" required>
                                 </div>
     
                                 <div class="form-group">
-                                    <input type="text" id="lastname" value="{{student.lastname|safe}}" name="lastname" class="form-control" placeholder="Apellido"
+                                    <input type="text" id="lastname" style="margin-bottom: 10px;" value="{{student.lastname|safe}}" name="lastname" class="form-control" placeholder="Apellido"
                                         maxlength="50" required>
                                 </div>
     
                                 <div class="form-group">
-                                    <input type="text" id="school" value="{{student.school|safe}}" name="school" class="form-control" placeholder="Escuela"
+                                    <input type="text" id="school" style="margin-bottom: 10px;" value="{{student.school|safe}}" name="school" class="form-control" placeholder="Escuela"
                                         maxlength="50" required>
                                 </div>
     
                                 <div class="form-group">
-                                    <input type="text" id="email" value="{{student.email|safe}}" name="email" class="form-control" placeholder="Correo electrónico"
+                                    <input type="text" id="email" style="margin-bottom: 10px;" value="{{student.email|safe}}" name="email" class="form-control" placeholder="Correo electrónico"
                                         maxlength="50" required>
                                 </div>
     
                                 <div class="form-group">
-                                    <input type="text" id="phone" value="{{student.phone|safe}}" name="phone" class="form-control" placeholder="Teléfono"
+                                    <input type="text" id="phone" style="margin-bottom: 10px;" value="{{student.phone|safe}}" name="phone" class="form-control" placeholder="Teléfono"
                                         maxlength="50" required>
                                 </div>
     
                                 <div class="form-group">
-                                    <input type="text" id="first_semester" value="{{student.first_semester|safe}}" name="first_semester" class="form-control" placeholder="Primer semestre"
+                                    <input type="text" id="first_semester" style="margin-bottom: 10px;" value="{{student.first_semester|safe}}" name="first_semester" class="form-control" placeholder="Primer semestre"
                                         maxlength="50" required>
                                 </div>
     
                                 <div class="form-group mb-2">
-                                    <input type="text" id="last_semester" value="{{student.last_semester|safe}}" name="last_semester" class="form-control" placeholder="Último semestre"
+                                    <input type="text" id="last_semester" style="margin-bottom: 10px;" value="{{student.last_semester|safe}}" name="last_semester" class="form-control" placeholder="Último semestre"
                                         maxlength="50" required>
                                 </div>
 
                                 <a>Seleccionar carrera:</a>                         
 
                                 <div class="form-group mt-1">
-                                    <select name="major_select" class="form-control col-md-6" style="margin-bottom: 10px;" id="major_select">
+                                    <select name="major_select" style="margin-bottom: 10px;" class="form-control col-md-6" style="margin-bottom: 10px;" id="major_select">
                                         {% for major in majors %}
                                             <option value="{{ major.auto_id }}" {% if major.auto_id == student.major_id %}selected{% endif %}>{{ major.name }}</option>
                                         {% endfor %}
@@ -88,7 +88,7 @@
                 <div class="col-md-8">
                     <div class="card mt-5">
                         <form method="POST" action="">
-                            <h1 class="card-title mx-3 mt-4">Aplicaciones a becas</h1>
+                            <h1 class="card-title mx-3 mt-4 table-responsive">Aplicaciones a becas</h1>
                                 <table class="table table-striped">
                                     <thead>
                                         <tr>

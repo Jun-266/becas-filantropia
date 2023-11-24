@@ -16,8 +16,18 @@ class Modify_donor(View):
             return self.asociar_contacto(request, auto_id)
         else:
             enterprise_name = request.POST['enterprise_name']
+            city=request.POST['city']
+            pais=request.POST['pais']
+            joined_date=request.POST['joined_date']
+            email =request.POST['email']
+            phone = request.POST['phone']
             donor = Donor.objects.get(auto_id=auto_id)
             donor.enterprise_name = enterprise_name
+            donor.email = email
+            donor.phone = phone
+            donor.city = city
+            donor.pais = pais
+            donor.joined_date = joined_date
             donor.save()
             return redirect("manage_donor")
 

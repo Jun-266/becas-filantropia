@@ -12,40 +12,40 @@
                         <form method="POST">
                             {% csrf_token %}
                             <div class="form-group">
-                                <input type="text" id="auto_Id" value="{{user.auto_id|default:'Auto ID'|safe}}" name="auto_Id" class="form-control" placeholder="Auto ID" readonly
+                                <input type="text" id="auto_Id" style="margin-bottom: 10px;" value="{{user.auto_id|default:'Auto ID'|safe}}" name="auto_Id" class="form-control" placeholder="Auto ID" readonly
                                     maxlength="50" required>
                             </div>
 
                             <div class="form-group">
-                                <input type="text" id="user_id" value="{{user.user_id|safe}}" name="user_id" class="form-control" placeholder="Numero de documento" readonly
+                                <input type="text" id="user_id" style="margin-bottom: 10px;" value="{{user.user_id|safe}}" name="user_id" class="form-control" placeholder="Numero de documento" readonly
                                     maxlength="50" required>
                             </div>
 
                             <div class="form-group">
-                                <input type="text" id="name" value="{{user.name|safe}}" name="name" class="form-control" placeholder="Nombre"
+                                <input type="text" id="name" style="margin-bottom: 10px;" value="{{user.name|safe}}" name="name" class="form-control" placeholder="Nombre"
                                     maxlength="50" required>
                             </div>
 
                             <div class="form-group">
-                                <input type="text" id="lastname" value="{{user.lastname|safe}}" name="lastname" class="form-control" placeholder="Apellido"
+                                <input type="text" id="lastname" style="margin-bottom: 10px;" value="{{user.lastname|safe}}" name="lastname" class="form-control" placeholder="Apellido"
                                     maxlength="50" required>
                             </div>
 
                             <div class="form-group">
-                                <input type="text" id="email" value="{{user.email|safe}}" name="email" class="form-control" placeholder="Correo electrónico"
+                                <input type="text" id="email" style="margin-bottom: 10px;" value="{{user.email|safe}}" name="email" class="form-control" placeholder="Correo electrónico"
                                     maxlength="50" required>
                             </div>
 
                             <div class="form-group">
-                                <input type="text" id="phone" value="{{user.phone|safe}}" name="phone" class="form-control" placeholder="Teléfono"
+                                <input type="text" id="phone" style="margin-bottom: 10px;" value="{{user.phone|safe}}" name="phone" class="form-control" placeholder="Teléfono"
                                     maxlength="50" required>
                             </div>
 
                             <div class="form-group">
-                                <select name="rol" class="form-control col-md-6" style="margin-bottom: 10px;">
-                                    <option value="1" {% if user.rol == 1 %}selected{% endif %}>Apoyo Financiero</option>
-                                    <option value="2" {% if user.rol == 2 %}selected{% endif %}>Filantropia</option>
-                                    <option value="3" {% if user.rol == 3 %}selected{% endif %}>Director Filantropia</option>
+                                <select name="rol" style="margin-bottom: 10px;" class="form-control col-md-6" style="margin-bottom: 10px;">
+                                    <option value="Director filantropía" {% if user.rol == 'Director filantropía' %}selected{% endif %}>Apoyo Financiero</option>
+                                    <option value="Filantropía" {% if user.rol == 'Filantropía' %}selected{% endif %}>Filantropia</option>
+                                    <option value="Apoyo financiero" {% if user.rol == 'Apoyo financiero' %}selected{% endif %}>Director Filantropia</option>
                                 </select>
                             </div>                            
 

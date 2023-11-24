@@ -10,6 +10,8 @@ class Modify_contact(View):
 
     def post(self, request, auto_id):
         identification =request.POST['identification']
+        name =request.POST['name']
+        lastname =request.POST['lastname']
         type = request.POST['type']
         email = request.POST['email']
         phone = request.POST['phone']

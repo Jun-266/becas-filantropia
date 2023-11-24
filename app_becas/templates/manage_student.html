@@ -24,47 +24,47 @@
 
                             {% csrf_token %}
                             <div class="form-group">
-                                <input type="text" id="code" name="code" class="form-control" placeholder="Código de estudiante"
+                                <input type="text" id="code" style="margin-bottom: 10px;" name="code" value="{{donor.code|safe}}" class="form-control" placeholder="Código de estudiante"
                                     maxlength="50" required>
                             </div>
 
                             <div class="form-group">
-                                <input type="text" id="name" name="name" class="form-control" placeholder="Nombre"
+                                <input type="text" id="name" style="margin-bottom: 10px;" name="name" value="{{donor.name|safe}}" class="form-control" placeholder="Nombre"
                                     maxlength="50" required>
                             </div>
 
                             <div class="form-group">
-                                <input type="text" id="lastname" name="lastname" class="form-control" placeholder="Apellido"
+                                <input type="text" id="lastname" style="margin-bottom: 10px;" name="lastname" value="{{donor.lastname|safe}}" class="form-control" placeholder="Apellido"
                                     maxlength="50" required>
                             </div>
 
                             <div class="form-group">
-                                <input type="text" id="school" name="school" class="form-control" placeholder="Escuela"
+                                <input type="text" id="school" style="margin-bottom: 10px;" name="school" value="{{donor.school|safe}}" class="form-control" placeholder="Escuela"
                                     maxlength="50" required>
                             </div>
 
                             <div class="form-group">
-                                <input type="text" id="email" name="email" class="form-control" placeholder="Correo electrónico"
+                                <input type="text" id="email" style="margin-bottom: 10px;" name="email" value="{{donor.email|safe}}" class="form-control" placeholder="Correo electrónico"
                                     maxlength="50" required>
                             </div>
 
                             <div class="form-group">
-                                <input type="text" id="phone" name="phone" class="form-control" placeholder="Teléfono"
+                                <input type="text" id="phone" style="margin-bottom: 10px;" name="phone" value="{{donor.phone|safe}}" class="form-control" placeholder="Teléfono"
                                     maxlength="50" required>
                             </div>
 
                             <div class="form-group">
-                                <input type="text" id="first_semester" name="first_semester" class="form-control" placeholder="Primer semestre"
+                                <input type="text" id="first_semester" style="margin-bottom: 10px;" value="{{donor.first_semester|safe}}" name="first_semester" class="form-control" placeholder="Primer semestre"
                                     maxlength="50" required>
                             </div>
 
                             <div class="form-group">
-                                <input type="text" id="last_semester" name="last_semester" class="form-control" placeholder="Último semestre"
+                                <input type="text" id="last_semester" style="margin-bottom: 10px;" value="{{donor.last_semester|safe}}" name="last_semester" class="form-control" placeholder="Último semestre"
                                     maxlength="50" required>
                             </div>
                             
                             <div class="form-group">
-                                <select name="major_select" class="form-control col-md-6" style="margin-bottom: 10px;" id="major_select">
+                                <select name="major_select" style="margin-bottom: 10px;"  class="form-control col-md-6" style="margin-bottom: 10px;" id="major_select">
                                     {% for major in majors %}
                                         <option value={{major.auto_id}}>{{major.name}}</option>
                                     {% endfor %}
@@ -84,46 +84,52 @@
                 </div>
             </div>
 
+            <div class="col-sm-12 col-md-6 col-lg-9 col-xl-9 table-responsive">
+                <h1>Estudiantes</h1>
 
-            <div class="col-sm-12 col-md-6 col-lg-9 col-xl-9 mt-4">
-                <h1>Listado de estudiantes</h1>
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Code</th>
-                            <th>Name</th>
-                            <th>Last Name</th>
-                            <th>School</th>
-                            <th>Email</th>
-                            <th>Phone</th>
-                            <th>First Semester</th>
-                            <th>Last Semester</th>
-                            <th>ID Carrera</th>
-                            <th colspan="">Opciones</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for student in students %}
-                            <tr>
-                                <td>{{ student.auto_id }}</td>
-                                <td>{{ student.code }}</td>
-                                <td>{{ student.name }}</td>
-                                <td>{{ student.lastname }}</td>
-                                <td>{{ student.school }}</td>
-                                <td>{{ student.email }}</td>
-                                <td>{{ student.phone }}</td>
-                                <td>{{ student.first_semester }}</td>
-                                <td>{{ student.last_semester }}</td>
-                                <td>{{ student.major_id }}</td>
-                                <td><a href= "modify_student/{{student.auto_id}}" class ="btn btn-info">Gestionar</a></td>
-                                <td>
-                                    <a href="delete_student/{{student.auto_id}}" id="delete-student" class="btn btn-danger";">Borrar</a>
-                                </td>
-                            </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
+                {% if search_term %}
+                    <p>Resultados de la búsqueda para: "{{ search_term }}"</p>
+                {% endif %}
+
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <form action="{% url 'manage_student' %}" method="GET" class="d-flex">
+                            <input type="text" name="search" class="form-control" placeholder="Buscar estudiante">
+                            <div class="input-group-append">
+                                <button type="submit" class="btn btn-primary border">Buscar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+        
+                <div class="row" id="card-view">
+                    {% for student in students %}
+                        <div class="col-md-4 mb-3">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5 class="card-title">{{student.name}} {{student.lastname}}</h5>
+                                </div>
+                                <div class="card-body">
+                                    <p class="card-text"><b>ID:</b> {{ student.auto_id }}</p>
+                                    <p class="card-text"><b>Code:</b> {{ student.code }}</p>
+                                    <p class="card-text"><b>Correo:</b> {{ student.email }}</p>
+                                    <p class="card-text"><b>Teléfono:</b> {{ student.phone }}</p>
+                                    <p class="card-text"><b>Escuela:</b> {{ student.school }}</p>
+                                    <p class="card-text"><b>Primer semestre:</b> {{ student.first_semester }}</p>
+                                    <p class="card-text"><b>Último semestre:</b> {{ student.last_semester }}</p>
+                                    <p class="card-text"><b>ID Carrera:</b> {{ student.major_id }}</p>
+                                </div>
+                                <div class="card-footer">
+                                    <a href= "modify_student/{{student.auto_id}}" class ="btn btn-primary btn-sm">Gestionar</a>
+                                    <a href="delete_student/{{student.auto_id}}" id="delete-student" class="btn btn-primary btn-sm mt-2";">Borrar</a>
+                                </div>
+                            </div>
+                        </div>
+                        {% if forloop.counter|divisibleby:3 %}
+                            </div><div class="row" id="card-view">
+                        {% endif %}
+                    {% endfor %}
+                </div>
             </div>
         </div>
     </div>

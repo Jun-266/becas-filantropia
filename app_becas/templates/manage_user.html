@@ -6,97 +6,107 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"> 
-            <a href="/home/"> Inicio</a> </li>
+                <a href="/home/"> Inicio</a>
+            </li>
             <li class="breadcrumb-item active" aria-current="page"> Administradores </li>
         </ol>
     </nav>
 </div>
-    <div class="container p-5 my-3 border">
-        <div class="row">
-            <div class="col-sm-12 col-md-6 col-lg-3 col-xl-3">
-                <a href="/home" class="btn btn-primary btn-sm">Volver</a>
-                
-                <div class="card mt-3">
-                    <h1 class="card-title mx-3 mt-2">Agregar usuario</h1>
-                    <div class="card-body">
-                        <form action="/manage_user/" method="POST">
-                            {% csrf_token %}
-                            <div class="form-group">
-                                <input type="text" id="user_id" name="user_id" class="form-control" placeholder="Número de documento"
-                                    maxlength="50" required>
-                            </div>
+<div class="container p-5 my-3 border">
+    <div class="row">
+        <div class="col-sm-12 col-md-6 col-lg-3 col-xl-3 table-responsive">
+            <a href="/home" class="btn btn-primary btn-sm">Volver</a>
+            
+            <div class="card mt-3">
+                <h1 class="card-title mx-3 mt-2">Agregar usuario</h1>
+                <div class="card-body">
+                    <form action="/manage_user/" method="POST">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <input type="text" id="user_id" style="margin-bottom: 10px;" name="user_id" value="{{donor.user_id|safe}}" class="form-control" placeholder="Número de documento"
+                                maxlength="50" required>
+                        </div>
 
-                            <div class="form-group">
-                                <input type="text" id="name" name="name" class="form-control" placeholder="Nombre"
-                                    maxlength="50" required>
-                            </div>
+                        <div class="form-group">
+                            <input type="text" id="name" style="margin-bottom: 10px;" name="name" value="{{donor.name|safe}}" class="form-control" placeholder="Nombre"
+                                maxlength="50" required>
+                        </div>
 
-                            <div class="form-group">
-                                <input type="text" id="lastname" name="lastname" class="form-control" placeholder="Apellido"
-                                    maxlength="50" required>
-                            </div>
+                        <div class="form-group">
+                            <input type="text" id="lastname" style="margin-bottom: 10px;" name="lastname" value="{{donor.lastname|safe}}" class="form-control" placeholder="Apellido"
+                                maxlength="50" required>
+                        </div>
 
-                            <div class="form-group">
-                                <input type="text" id="email" name="email" class="form-control" placeholder="Correo electrónico"
-                                    maxlength="50" required>
-                            </div>
+                        <div class="form-group">
+                            <input type="text" id="email" style="margin-bottom: 10px;" name="email" value="{{donor.email|safe}}" class="form-control" placeholder="Correo electrónico"
+                                maxlength="50" required>
+                        </div>
 
-                            <div class="form-group">
-                                <input type="text" id="phone" name="phone" class="form-control" placeholder="Teléfono"
-                                    maxlength="50" required>
-                            </div>
+                        <div class="form-group">
+                            <input type="text" id="phone" style="margin-bottom: 10px;" name="phone" value="{{donor.phone|safe}}" class="form-control" placeholder="Teléfono"
+                                maxlength="50" required>
+                        </div>
 
-                            <div class="form-group">
-                                <select name="rol" class="form-control col-md-6" style="margin-bottom: 10px;">
-                                    <option value="1">Apoyo Financiero</option>
-                                    <option value="2">Filantropia</option>
-                                    <option value="3">Director Filantropia</option>
-                                </select>
-                            </div>
+                        <div class="form-group">
+                            <select name="rol" style="margin-bottom: 10px;" class="form-control col-md-6" style="margin-bottom: 10px;">
+                                <option value="Director filantropía">Director Filantropia</option>
+                                <option value="Filantropía">Filantropia</option>
+                                <option value="Apoyo financiero">Apoyo Financiero</option>
+                            </select>
+                        </div>
 
-                            <div class="form-group">
-                                <button type="submit" class="btn btn-success btn-block text-white">Guardar</button>
-                            </div>
-                        </form>
-                    </div>
+                        <div class="form-group">
+                            <button type="submit" style="margin-bottom: 10px;" class="btn btn-success btn-block text-white">Guardar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-md-6 col-lg-9 col-xl-9 table-responsive">
+
+            <h1>Usuarios</h1>
+
+            {% if search_term %}
+                <p>Resultados de la búsqueda para: "{{ search_term }}"</p>
+            {% endif %}
+
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <form action="{% url 'manage_user' %}" method="GET" class="d-flex">
+                        <input type="text" name="search" class="form-control" placeholder="Buscar usuario">
+                        <div class="input-group-append">
+                            <button type="submit" class="btn btn-primary border">Buscar</button>
+                        </div>
+                    </form>
                 </div>
             </div>
 
-
-            <div class="col-sm-12 col-md-6 col-lg-9 col-xl-9 mt-4">
-                <h1>Listado de Usuarios</h1>
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Documento</th>
-                            <th>Nombre</th>
-                            <th>Apellido</th>
-                            <th>Correo</th>
-                            <th>Telefono</th>
-                            <th>Rol</th>
-                            <th colspan="">Opciones</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for user in users %}
-                            <tr>
-                                <td>{{ user.auto_id }}</td>
-                                <td>{{ user.user_id }}</td>
-                                <td>{{ user.name }}</td>
-                                <td>{{ user.lastname }}</td>
-                                <td>{{ user.email }}</td>
-                                <td>{{ user.phone }}</td>
-                                <td>{{ user.rol }}</td>
-                                <td><a href= "modify_user/{{user.auto_id}}" class ="btn btn-info">Edit</a></td>
-                                <td>
-                                    <a href="delete_user/{{user.auto_id}}" id="delete-user" class="btn btn-danger";">Delete</a>
-                                </td>  
-                            </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
+            <div class="row" id="card-view">
+                {% for user in users %}
+                    <div class="col-md-4 mb-3">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5 class="card-title">{{user.name}} {{user.lastname}}</h5>
+                            </div>
+                            <div class="card-body">
+                                <p class="card-text"><b>ID:</b> {{ user.auto_id }}</p>
+                                <p class="card-text"><b>Correo:</b> {{ user.email }}</p>
+                                <p class="card-text"><b>Teléfono:</b> {{ user.phone }}</p>
+                                <p class="card-text"><b>Rol:</b> {{ user.rol }}</p>
+                            </div>
+                            <div class="card-footer">
+                                <a href="modify_user/{{user.auto_id}}" class="btn btn-primary btn-sm">Modificar</a>
+                                <a href="delete_user/{{user.auto_id}}" id="delete-user" class="btn btn-primary btn-sm">Borrar</a>
+                            </div>
+                        </div>
+                    </div>
+                    {% if forloop.counter|divisibleby:3 %}
+                        </div><div class="row" id="card-view">
+                    {% endif %}
+                {% endfor %}
             </div>
         </div>
     </div>
+</div>
 {% endblock %}
