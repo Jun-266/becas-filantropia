@@ -37,12 +37,3 @@ class AddTypeScholarship(View):
         except KeyError:
             pass
         return redirect('add_type_scholarship')
-    
-    def delete_type_scholarship(request):
-        type_scholarship = TypeScholarship.objects.get(name = request.GET('name_scholarship'))
-        type_scholarship.delete()
-        try:
-            del request.session['name_scholarship']
-        except KeyError:
-            pass
-        return redirect('add_type_scholarship')

@@ -55,7 +55,7 @@ urlpatterns = [
          name='add_type_scholarship'),
     path('add_scholarship/delete_type_scholarship/', DeleteTypeScholarship.as_view(),
          name='delete_type_scholarship'),
-    path('search_scholarship/', SearchScholarship.as_view(), name='search_scholarship'),
+    #path('scholarship/', SearchScholarship.as_view(), name='scholarship'),
     path('add_type_to_scholarship/', AddTypeToScholarship.as_view(), name='add_type_to_scholarship'),
 
     # Reports.
