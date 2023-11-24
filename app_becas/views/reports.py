@@ -44,7 +44,6 @@ def render_list_of_candidates(request):
         'scholarships': scholarships
     })
 
-
 def generate_list_of_candidates(request):
     scholarship_id = request.POST['scholarship_id']
     scholarship = get_object_or_404(Scholarship, pk=scholarship_id)
