@@ -292,3 +292,9 @@ body.dark .home .text {
     grid-template-columns: 1fr 1fr; 
     gap: 20px; 
 }
+
+/* Scholarship jd*/
+.scholarship-info {
+    font-size: 15pt;
+}
+

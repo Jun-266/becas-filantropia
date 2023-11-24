@@ -10,25 +10,31 @@
     </nav>
 </div>
 
-    <div class="container p-5">
+    <div class="container p-3">
         <h1>Página principal</h1>
     </div>
 
-    <div class="container--cols">
-        <div >
-            <h1>Becas recientes</h1>
+    {% load static %}
+    <div class="container p-5">
+        <a href="https://www.icesi.edu.co/moodle/login/index.php" target="_blank" rel="noopener noreferrer">
+            <img src="{% static 'img/intu_logo.png' %}" alt="intu logo">
+        </a>
+    </div>
+
+    <div class="container--cols p-5">
+        <div class="show-scholarships" style="margin-top: 2rem;">
             {% if scholarships%}
             <div class="card-group">
+                {% load tags_and_filters %}  
                 {% for scholarship in scholarships %}
                     
-                        <div class="card mb-3" style="margin: 0 3px 0 3px; max-width: 18rem; min-width: 17rem;">
+                        <div class="card mb-3" style="margin: 0 3px 0 3px; max-width: 20rem; min-width: 17rem;">
                             <div class="card-header text-white"  style="background-color: rgb(56, 74, 190); min-height: 7rem" >{{ scholarship.name }}</div>
                             <div class="card-body">
-                                <p> <span class="fw-bold">Resumen: </span><span style="font-weight: 100; color: darkolivegreen;">{{scholarship.summary}}</span> </p>
-                                <p> <span class="fw-bold">Público: </span><span style="font-weight: 100; color: darkolivegreen;">{{scholarship.target_audiences}}</span> </p>
-                                <p> <span class="fw-bold">Beneficios: </span><span style="font-weight: 100; color: darkolivegreen;">{{scholarship.benefits}}</span> </p>
-                                <br>
-                                
+                                <p> <span class="fw-bold">Resumen: </span><span style="font-weight: 100; color: darkolivegreen;">{{scholarship.summary|shorten:20}}</span> </p>
+                                <p> <span class="fw-bold">Público: </span><span style="font-weight: 100; color: darkolivegreen;">{{scholarship.target_audiences|shorten:20}}</span> </p>
+                                <p> <span class="fw-bold">Beneficios: </span><span style="font-weight: 100; color: darkolivegreen;">{{scholarship.benefits|shorten:20}}</span> </p>
+             
                                 <a href="/show_scholarship_info?auto_id={{scholarship.auto_id}}" class="btn btn-secondary">
                                     Abrir
                                 </a> 
@@ -37,8 +43,10 @@
                     
                 {% endfor %}
             </div>
+            {% elif not searched %}
+                <p>No hay registros de becas</p>
             {% endif %}
-        </div>
+        </div> 
         <div style="max-width: 19rem;">
             <h2>Tus Archivos Recientes</h2>
             {% for file in files %}

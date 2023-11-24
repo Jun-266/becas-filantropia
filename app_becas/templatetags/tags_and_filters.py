@@ -4,6 +4,13 @@ from django.shortcuts import redirect
 
 register = template.Library()
 
+@register.filter
+def shorten(value, length):
+    if len(value) > length:
+        result = value[:length] + '...'
+        return result
+    return value
+
 @register.simple_tag(name="send_id")
 def send_id(my_url, value):
     
@@ -16,3 +23,4 @@ def redirect_params(url, params):
         response['Location'] += '?' + query_string
 
     return response.url
+
