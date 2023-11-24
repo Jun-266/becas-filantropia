@@ -13,4 +13,53 @@
     <div class="container p-5">
         <h1>Página principal</h1>
     </div>
+
+    <div class="container--cols">
+        <div >
+            <h1>Becas recientes</h1>
+            {% if scholarships%}
+            <div class="card-group">
+                {% for scholarship in scholarships %}
+                    
+                        <div class="card mb-3" style="margin: 0 3px 0 3px; max-width: 18rem; min-width: 17rem;">
+                            <div class="card-header text-white"  style="background-color: rgb(56, 74, 190); min-height: 7rem" >{{ scholarship.name }}</div>
+                            <div class="card-body">
+                                <p> <span class="fw-bold">Resumen: </span><span style="font-weight: 100; color: darkolivegreen;">{{scholarship.summary}}</span> </p>
+                                <p> <span class="fw-bold">Público: </span><span style="font-weight: 100; color: darkolivegreen;">{{scholarship.target_audiences}}</span> </p>
+                                <p> <span class="fw-bold">Beneficios: </span><span style="font-weight: 100; color: darkolivegreen;">{{scholarship.benefits}}</span> </p>
+                                <br>
+                                
+                                <a href="/show_scholarship_info?auto_id={{scholarship.auto_id}}" class="btn btn-secondary">
+                                    Abrir
+                                </a> 
+                            </div>
+                        </div>
+                    
+                {% endfor %}
+            </div>
+            {% endif %}
+        </div>
+        <div style="max-width: 19rem;">
+            <h2>Tus Archivos Recientes</h2>
+            {% for file in files %}
+                <form action="{% url 'delete_report' file.id %}" method="POST">
+                    {% csrf_token %}
+                    <div class="card m-3 shadow">
+                        <div class="card-body">
+                            <a href="{{ file.my_file.url }}" target="_blank">
+                                {{ file.my_file }}
+                            </a>
+                            <input type="submit"
+                                   value="delete"
+                                   class="material-icons btn btn-danger float-end"
+                                   id="delete-report"
+                            >
+                        </div>
+                    </div>
+                </form>
+            {% endfor %}
+        </div>
+      </div>
+
+      
 {% endblock %}
