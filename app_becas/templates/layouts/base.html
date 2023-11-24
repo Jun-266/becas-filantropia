@@ -30,8 +30,9 @@
             <i class='bx bx-menu toggle'></i>
         </header>
         <div class="menu-bar">
-            <div class="menu">
-                <ul class="menu-links">
+            <div class="bottom-content">
+
+                <li class="">
                     <li class="nav-link">
                         <a href="/home/">
                             <i class="bx bx-home icon" ></i>
@@ -80,24 +81,11 @@
                             <span class="text nav-text">Informes</span>
                         </a>
                     </li>
-                </ul>
-            </div>
-            <div class="bottom-content">
-                <li class="">
+                    <li class="nav-link">
                     <a href="/signout/">
                         <i class='bx bxs-exit icon' ></i>
                         <span class="text nav-text">Salir</span>
                     </a>
-                </li>
-                <li class="mode">
-                    <div class="sun-moon">
-                        <i class="bx bx-moon icon moon"></i>
-                        <i class="bx bx-sun icon sun"></i>
-                    </div>
-                    <span class="mode-text text">Modo oscuro</span>
-                    <div class="toogle-switch">
-                        <span class="switch"></span>
-                    </div>
                 </li>
             </div>
         </div>
@@ -113,30 +101,4 @@
 
 </body>
 </html>
-
-
-    <!--
-                    <li class="list__item list__item--click">
-                        <div class="list__button list__button--click">
-                            <img src="{% static 'assets/scholarship.svg' %}" class="list__img">
-                            <a href="/scholarship/" class="nav__link">Gestion de Becas</a>
-                            <img src="{% static 'assets/arrow.svg' %}" class="list__arrow">
-                        </div>
-    
-                        <ul class="list__show">
-                            <li class="list__inside">
-                                <a href="{% url 'add_scholarship' %}" class="nav__link--inside">Agregar Beca</a>
-                            </li>
-                            <li class="list__inside">
-                                <a href="{% url 'add_type_scholarship' %}" class="nav__link--inside">Agregar Tipo de Beca</a>
-                            </li>
-                            <li class="list__inside">
-                                <a href="{% url 'delete_type_scholarship' %}" class="nav__link--inside">Eliminar Tipo de Beca</a>
-                            </li>
-                        </ul>
-                    </li>
-    -->
-    
-         
-
 
