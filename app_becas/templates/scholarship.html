@@ -23,40 +23,71 @@
         <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><path d="M3.9 54.9C10.5 40.9 24.5 32 40 32H472c15.5 0 29.5 8.9 36.1 22.9s4.6 30.5-5.2 42.5L320 320.9V448c0 12.1-6.8 23.2-17.7 28.6s-23.8 4.3-33.5-3l-64-48c-8.1-6-12.8-15.5-12.8-25.6V320.9L9 97.3C-.7 85.4-2.8 68.8 3.9 54.9z"/></svg>
         <input placeholder="Becas Activas">
     </div>
-    <br><br>
+    <br>
 
     <div class="search_scholarship">
         <h1>Buscar Beca por Nombre</h1>
+        
         <form method="post">
             {% csrf_token %}
-            <label for="nombre_beca">Nombre de Beca:</label>
-            <input type="text" name="nombre_beca" id="nombre_beca">
-            <button type="submit">Buscar</button>
+            {% if searched %}
+                <input type="text" id="nombre_beca" name="nombre_beca" placeholder="nombre de la beca" value={{default_value_msg}}>
+            {% else %}
+                <input type="text" id="nombre_beca" name="nombre_beca" placeholder="nombre de la beca" >
+            {% endif%}
+            <button type="submit"><i class="fa fa-search"></i></button>
+            {% if searched or msg%}
+            <a href="{{scholarship}}" class="btn btn-warning">
+                Limpiar búsqueda
+            </a>   
+        {% endif %}
         </form>
+        
     
         {% if searched %}
+        <br>
             <h2>Resultados de la Búsqueda:</h2>
-            <ul>
-                <li><a class="btn btn-primary" href="/show_scholarship_info?auto_id={{searched.auto_id}}">{{ searched.name }}</a></li>
-            </ul>
-            
-        {% else %}
-             {{msg}}    
+            <div class="card mb-3" style="margin: 0 3px 0 3px; max-width: 18rem; min-width: 17rem;">
+                <div class="card-header text-white"  style="background-color: rgb(56, 74, 190); min-height: 7rem" >{{ searched.name }}</div>
+                <div class="card-body">
+                    <p> <span class="fw-bold">Resumen: </span><span style="font-weight: 100; color: darkolivegreen;">{{searched.summary}}</span> </p>
+                    <p> <span class="fw-bold">Público: </span><span style="font-weight: 100; color: darkolivegreen;">{{searched.target_audiences}}</span> </p>
+                    <p> <span class="fw-bold">Beneficios: </span><span style="font-weight: 100; color: darkolivegreen;">{{searched.benefits}}</span> </p>
+                    <br>
+                    
+                    <a href="/show_scholarship_info?auto_id={{scholarship.auto_id}}" class="btn btn-secondary">
+                        Abrir
+                    </a> 
+                </div>
+            </div>
         {% endif %}
+        
     </div>
+
+
     
-    <div class="show-scholarships">
-        <h2>Listados de becas</h2>
-        {% load send_id %}
-        {% if scholarships %}
+    <div class="show-scholarships" style="margin-top: 2rem;">
+        {% if scholarships%}
+        <div class="card-group">
             {% for scholarship in scholarships %}
-                <article class="card container p-1">
-                    <a href="{% send_id 'show_scholarship_info' scholarship.auto_id %}" class="btn btn-primary">
-                        Beca: {{ scholarship.name }}
-                    </a>
-                </article>
+                
+                    <div class="card mb-3" style="margin: 0 3px 0 3px; max-width: 18rem; min-width: 17rem;">
+                        <div class="card-header text-white"  style="background-color: rgb(56, 74, 190); min-height: 7rem" >{{ scholarship.name }}</div>
+                        <div class="card-body">
+                            <p> <span class="fw-bold">Resumen: </span><span style="font-weight: 100; color: darkolivegreen;">{{scholarship.summary}}</span> </p>
+                            <p> <span class="fw-bold">Público: </span><span style="font-weight: 100; color: darkolivegreen;">{{scholarship.target_audiences}}</span> </p>
+                            <p> <span class="fw-bold">Beneficios: </span><span style="font-weight: 100; color: darkolivegreen;">{{scholarship.benefits}}</span> </p>
+                            <br>
+                            
+                            <a href="/show_scholarship_info?auto_id={{scholarship.auto_id}}" class="btn btn-secondary">
+                                Abrir
+                            </a> 
+                        </div>
+                    </div>
+                
             {% endfor %}
-        {% else %}
+        </div>
+        {% elif not searched %}
             <p>No hay registros de becas</p>
         {% endif %}
     </div>   
