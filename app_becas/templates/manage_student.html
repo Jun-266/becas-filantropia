@@ -13,47 +13,47 @@
 
                             {% csrf_token %}
                             <div class="form-group">
-                                <input type="text" id="code" name="code" class="form-control" placeholder="Código de estudiante"
+                                <input type="text" id="code" style="margin-bottom: 10px;" name="code" value="{{donor.code|safe}}" class="form-control" placeholder="Código de estudiante"
                                     maxlength="50" required>
                             </div>
 
                             <div class="form-group">
-                                <input type="text" id="name" name="name" class="form-control" placeholder="Nombre"
+                                <input type="text" id="name" style="margin-bottom: 10px;" name="name" value="{{donor.name|safe}}" class="form-control" placeholder="Nombre"
                                     maxlength="50" required>
                             </div>
 
                             <div class="form-group">
-                                <input type="text" id="lastname" name="lastname" class="form-control" placeholder="Apellido"
+                                <input type="text" id="lastname" style="margin-bottom: 10px;" name="lastname" value="{{donor.lastname|safe}}" class="form-control" placeholder="Apellido"
                                     maxlength="50" required>
                             </div>
 
                             <div class="form-group">
-                                <input type="text" id="school" name="school" class="form-control" placeholder="Escuela"
+                                <input type="text" id="school" style="margin-bottom: 10px;" name="school" value="{{donor.school|safe}}" class="form-control" placeholder="Escuela"
                                     maxlength="50" required>
                             </div>
 
                             <div class="form-group">
-                                <input type="text" id="email" name="email" class="form-control" placeholder="Correo electrónico"
+                                <input type="text" id="email" style="margin-bottom: 10px;" name="email" value="{{donor.email|safe}}" class="form-control" placeholder="Correo electrónico"
                                     maxlength="50" required>
                             </div>
 
                             <div class="form-group">
-                                <input type="text" id="phone" name="phone" class="form-control" placeholder="Teléfono"
+                                <input type="text" id="phone" style="margin-bottom: 10px;" name="phone" value="{{donor.phone|safe}}" class="form-control" placeholder="Teléfono"
                                     maxlength="50" required>
                             </div>
 
                             <div class="form-group">
-                                <input type="text" id="first_semester" name="first_semester" class="form-control" placeholder="Primer semestre"
+                                <input type="text" id="first_semester" style="margin-bottom: 10px;" value="{{donor.first_semester|safe}}" name="first_semester" class="form-control" placeholder="Primer semestre"
                                     maxlength="50" required>
                             </div>
 
                             <div class="form-group">
-                                <input type="text" id="last_semester" name="last_semester" class="form-control" placeholder="Último semestre"
+                                <input type="text" id="last_semester" style="margin-bottom: 10px;" value="{{donor.last_semester|safe}}" name="last_semester" class="form-control" placeholder="Último semestre"
                                     maxlength="50" required>
                             </div>
                             
                             <div class="form-group">
-                                <select name="major_select" class="form-control col-md-6" style="margin-bottom: 10px;" id="major_select">
+                                <select name="major_select" style="margin-bottom: 10px;"  class="form-control col-md-6" style="margin-bottom: 10px;" id="major_select">
                                     {% for major in majors %}
                                         <option value={{major.auto_id}}>{{major.name}}</option>
                                     {% endfor %}
@@ -73,7 +73,7 @@
                 </div>
             </div>
 
-            <div class="col-sm-12 col-md-6 col-lg-9 col-xl-9 mt-4 table-responsive">
+            <div class="col-sm-12 col-md-6 col-lg-9 col-xl-9 table-responsive">
                 <h1>Estudiantes</h1>
 
                 {% if search_term %}
@@ -103,10 +103,10 @@
                                     <p class="card-text"><b>Code:</b> {{ student.code }}</p>
                                     <p class="card-text"><b>Correo:</b> {{ student.email }}</p>
                                     <p class="card-text"><b>Teléfono:</b> {{ student.phone }}</p>
-                                    <p class="card-text"><b>School:</b> {{ student.school }}</p>
-                                    <p class="card-text"><b>First semester:</b> {{ student.first_semester }}</p>
-                                    <p class="card-text"><b>Last semester:</b> {{ student.last_semester }}</p>
-                                    <p class="card-text"><b>Major id:</b> {{ student.major_id }}</p>
+                                    <p class="card-text"><b>Escuela:</b> {{ student.school }}</p>
+                                    <p class="card-text"><b>Primer semestre:</b> {{ student.first_semester }}</p>
+                                    <p class="card-text"><b>Último semestre:</b> {{ student.last_semester }}</p>
+                                    <p class="card-text"><b>ID Carrera:</b> {{ student.major_id }}</p>
                                 </div>
                                 <div class="card-footer">
                                     <a href= "modify_student/{{student.auto_id}}" class ="btn btn-primary btn-sm">Gestionar</a>

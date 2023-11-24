@@ -12,29 +12,39 @@
                         <form method="POST">
                             {% csrf_token %}
                             <div class="form-group">
-                                <input type="text" id="auto_id" value="{{contact.auto_id|default:'Auto ID'|safe}}" name="auto_Id" class="form-control" placeholder="Auto ID" readonly
+                                <input type="text" id="auto_id" style="margin-bottom: 10px;" value="{{contact.auto_id|default:'Auto ID'|safe}}" name="auto_Id" class="form-control" placeholder="Auto ID" readonly
                                     maxlength="50" required>
                             </div>
 
                             <div class="form-group">
-                                <input type="text" id="identification" value="{{contact.identification|default:'identification'|safe}}" name="identification" class="form-control" placeholder="Número de identificación"
+                                <input type="text" id="identification" style="margin-bottom: 10px;" value="{{contact.identification|default:'identification'|safe}}" name="identification" class="form-control" placeholder="Número de identificación"
                                     maxlength="50" required>
                             </div>
 
                             <div class="form-group">
-                                <input type="text" id="email" value="{{contact.email|default:'email'|safe}}" name="email" class="form-control" placeholder="Correo electrónico"
+                                <input type="text" id="name" style="margin-bottom: 10px;" name="name" value="{{contact.name|default:'name'|safe}}" class="form-control" placeholder="Nombre"
                                     maxlength="50" required>
                             </div>
 
                             <div class="form-group">
-                                <input type="text" id="phone" value="{{contact.phone|default:'phone'|safe}}" name="phone" class="form-control" placeholder="Teléfono"
+                                <input type="text" id="lastname" style="margin-bottom: 10px;" name="lastname" value="{{contact.lastname|default:'lastname'|safe}}" class="form-control" placeholder="Apellido"
+                                    maxlength="50" required>
+                            </div>
+
+                            <div class="form-group">
+                                <input type="text" id="email" style="margin-bottom: 10px;" value="{{contact.email|default:'email'|safe}}" name="email" class="form-control" placeholder="Correo electrónico"
+                                    maxlength="50" required>
+                            </div>
+
+                            <div class="form-group">
+                                <input type="text" id="phone" style="margin-bottom: 10px;" value="{{contact.phone|default:'phone'|safe}}" name="phone" class="form-control" placeholder="Teléfono"
                                     maxlength="50" required>
                             </div>
                             
-                            <div class="form-group">
-                                <select name="type" class="form-control col-md-6" style="margin-bottom: 10px;">
-                                    <option value="1" {% if contact.type == 1 %}selected{% endif %}>Dueño</option>
-                                    <option value="2" {% if contact.type == 2 %}selected{% endif %}>Empleado</option>
+                            <div class="form-group" >
+                                <select name="type" style="margin-bottom: 10px;" class="form-control col-md-6" style="margin-bottom: 10px;">
+                                    <option value="Dueño" {% if contact.type == 1 %}selected{% endif %}>Dueño</option>
+                                    <option value="Empleado" {% if contact.type == 2 %}selected{% endif %}>Empleado</option>
                                 </select>
                             </div>    
 

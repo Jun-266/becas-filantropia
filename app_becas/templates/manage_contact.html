@@ -23,24 +23,34 @@
 
                             {% csrf_token %}
                             <div class="form-group">
-                                <input type="text" id="identification" name="identification" class="form-control" placeholder="Número de identificación"
+                                <input type="text" id="identification" name="identification" value="{{donor.identification|safe}}" style="margin-bottom: 10px;" class="form-control" placeholder="Identificación"
                                     maxlength="50" required>
                             </div>
 
                             <div class="form-group">
-                                <input type="text" id="email" name="email" class="form-control" placeholder="Correo electrónico"
+                                <input type="text" id="name" name="name" value="{{donor.name|safe}}" style="margin-bottom: 10px;" class="form-control" placeholder="Nombre"
                                     maxlength="50" required>
                             </div>
 
                             <div class="form-group">
-                                <input type="text" id="phone" name="phone" class="form-control" placeholder="Teléfono"
+                                <input type="text" id="lastname" name="lastname" value="{{donor.lastname|safe}}" style="margin-bottom: 10px;" class="form-control" placeholder="Apellido"
+                                    maxlength="50" required>
+                            </div>
+
+                            <div class="form-group">
+                                <input type="text" id="email" name="email" value="{{donor.email|safe}}" style="margin-bottom: 10px;" class="form-control" placeholder="Correo electrónico"
+                                    maxlength="50" required>
+                            </div>
+
+                            <div class="form-group">
+                                <input type="text" id="phone" name="phone" value="{{donor.phone|safe}}" style="margin-bottom: 10px;" class="form-control" placeholder="Teléfono"
                                     maxlength="50" required>
                             </div>
 
                             <div class="form-group">
                                 <select name="type" class="form-control col-md-6" style="margin-bottom: 10px;">
-                                    <option value="1">Dueño</option>
-                                    <option value="2">Empleado</option>
+                                    <option value="Dueño">Dueño</option>
+                                    <option value="Empleado">Empleado</option>
                                 </select>
                             </div>
 
@@ -75,10 +85,11 @@
                         <div class="col-md-4 mb-3">
                             <div class="card">
                                 <div class="card-header">
-                                    <h5 class="card-title">{{ contact.identification }}</h5>
+                                    <h5 class="card-title">{{contact.name}} {{contact.lastname}}</h5>
                                 </div>
                                 <div class="card-body">
                                     <p class="card-text"><b>ID:</b> {{ contact.auto_id }}</p>
+                                    <p class="card-text"><b>identificación:</b> {{ contact.identification }}</p>
                                     <p class="card-text"><b>Correo:</b> {{ contact.email }}</p>
                                     <p class="card-text"><b>Teléfono:</b> {{ contact.phone }}</p>
                                     <p class="card-text"><b>Tipo:</b> {{ contact.type }}</p>

@@ -23,40 +23,40 @@
                     <form action="/manage_user/" method="POST">
                         {% csrf_token %}
                         <div class="form-group">
-                            <input type="text" id="user_id" name="user_id" class="form-control" placeholder="Número de documento"
+                            <input type="text" id="user_id" style="margin-bottom: 10px;" name="user_id" value="{{donor.user_id|safe}}" class="form-control" placeholder="Número de documento"
                                 maxlength="50" required>
                         </div>
 
                         <div class="form-group">
-                            <input type="text" id="name" name="name" class="form-control" placeholder="Nombre"
+                            <input type="text" id="name" style="margin-bottom: 10px;" name="name" value="{{donor.name|safe}}" class="form-control" placeholder="Nombre"
                                 maxlength="50" required>
                         </div>
 
                         <div class="form-group">
-                            <input type="text" id="lastname" name="lastname" class="form-control" placeholder="Apellido"
+                            <input type="text" id="lastname" style="margin-bottom: 10px;" name="lastname" value="{{donor.lastname|safe}}" class="form-control" placeholder="Apellido"
                                 maxlength="50" required>
                         </div>
 
                         <div class="form-group">
-                            <input type="text" id="email" name="email" class="form-control" placeholder="Correo electrónico"
+                            <input type="text" id="email" style="margin-bottom: 10px;" name="email" value="{{donor.email|safe}}" class="form-control" placeholder="Correo electrónico"
                                 maxlength="50" required>
                         </div>
 
                         <div class="form-group">
-                            <input type="text" id="phone" name="phone" class="form-control" placeholder="Teléfono"
+                            <input type="text" id="phone" style="margin-bottom: 10px;" name="phone" value="{{donor.phone|safe}}" class="form-control" placeholder="Teléfono"
                                 maxlength="50" required>
                         </div>
 
                         <div class="form-group">
-                            <select name="rol" class="form-control col-md-6" style="margin-bottom: 10px;">
-                                <option value="1">Apoyo Financiero</option>
-                                <option value="2">Filantropia</option>
-                                <option value="3">Director Filantropia</option>
+                            <select name="rol" style="margin-bottom: 10px;" class="form-control col-md-6" style="margin-bottom: 10px;">
+                                <option value="Director filantropía">Director Filantropia</option>
+                                <option value="Filantropía">Filantropia</option>
+                                <option value="Apoyo financiero">Apoyo Financiero</option>
                             </select>
                         </div>
 
                         <div class="form-group">
-                            <button type="submit" class="btn btn-success btn-block text-white">Guardar</button>
+                            <button type="submit" style="margin-bottom: 10px;" class="btn btn-success btn-block text-white">Guardar</button>
                         </div>
                     </form>
                 </div>

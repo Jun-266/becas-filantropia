@@ -3,13 +3,17 @@ from django.db import models
 
 
 class MyUser(models.Model):
-    user_id = models.CharField(max_length=255)
-    auto_id = models.CharField(max_length=50, primary_key=True, default=uuid.uuid4, editable=False)
-    name = models.CharField(max_length=255)
-    lastname = models.CharField(max_length=255)
+    user_id = models.CharField(max_length=50)
+    auto_id = models.CharField(max_length=30, primary_key=True, default=uuid.uuid4, editable=False)
+    name = models.CharField(max_length=30)
+    lastname = models.CharField(max_length=30)
     email = models.EmailField()
-    phone = models.CharField(max_length=255)
-    rol = models.CharField(max_length=255)
+    phone = models.CharField(max_length=20)
+    rol = models.CharField(max_length=30, choices=[
+        ('Director filantropía', 'Director filantropía'),
+        ('Filantropía', 'Filantropía'),
+        ('Apoyo financiero', 'Apoyo financiero'),
+    ])
     
     def __str__(self):
         return f'{self.name} {self.lastname}'
@@ -63,7 +67,12 @@ class Calendar(models.Model):
 class Contact(models.Model):
     auto_id = models.CharField(max_length=50, default=uuid.uuid4, editable=False, primary_key=True)
     identification = models.CharField(max_length=30)
-    type = models.CharField(max_length=30)
+    name = models.CharField(max_length=50)
+    lastname = models.CharField(max_length=50)
+    type = models.CharField(max_length=20, choices=[
+        ('Dueño', 'Dueño'),
+        ('Empleado', 'Empleado'),
+    ])
     email = models.EmailField(max_length=30)
     phone = models.CharField(max_length=30)
 
@@ -74,8 +83,13 @@ class Contact(models.Model):
 class Donor(models.Model):
     auto_id = models.CharField(max_length=50, default=uuid.uuid4, editable=False, primary_key=True)
     scholarships = models.ManyToManyField(Scholarship, related_name='donors')
-    contacts = models.ManyToManyField(Contact, related_name='donors')
+    contact = models.ForeignKey(Contact, on_delete=models.CASCADE, null=True, blank=True, related_name='donors')
     enterprise_name = models.CharField(max_length=20)
+    email = models.EmailField()
+    phone = models.CharField(max_length=20)
+    city = models.CharField(max_length=30, null=True, blank=True)
+    pais = models.CharField(max_length=30, null=True, blank=True)
+    joined_date = models.DateField(null=True, blank=True)
 
     def __str__(self):
         return str(self.auto_id)
@@ -104,7 +118,7 @@ class Major(models.Model):
 
 
 class Student(models.Model):
-    major = models.ForeignKey(Major, on_delete=models.CASCADE)  # Cambia OneToOneField a ForeignKey
+    major = models.ForeignKey(Major, on_delete=models.CASCADE)
     auto_id = models.CharField(max_length=50, default=uuid.uuid4, editable=False, primary_key=True)
     code = models.CharField(max_length=20)
     name = models.CharField(max_length=20)
@@ -120,7 +134,7 @@ class Student(models.Model):
 
 
 class ApplicationStatus(models.Model):
-    type = models.CharField(max_length=50, primary_key=True, choices=[
+    type = models.CharField(max_length=20, primary_key=True, choices=[
         ('Aprobada', 'Aprobada'),
         ('En proceso', 'En proceso'),
         ('Denegada', 'Denegada'),

@@ -14,7 +14,8 @@ class ManageUser(View):
         search_term = request.GET.get('search', '')
         search_terms = search_term.split()  
 
-        queries = [Q(user_id__icontains=term) |
+        queries = [Q(auto_id__icontains=search_term) |
+                   Q(user_id__icontains=term) |
                    Q(name__icontains=term) |
                    Q(lastname__icontains=term) |
                    Q(email__icontains=term) |

@@ -13,17 +13,20 @@ class Manage_student(View):
     def get(self, request):
 
         search_term = request.GET.get('search', '')
-        students = Student.objects.filter(
-            Q(code__icontains=search_term) |
-            Q(name__icontains=search_term) |
-            Q(lastname__icontains=search_term) |
-            Q(school__icontains=search_term) |
-            Q(email__icontains=search_term) |
-            Q(phone__icontains=search_term) |
-            Q(first_semester__icontains=search_term) |
-            Q(last_semester__icontains=search_term) |
-            Q(major__name__icontains=search_term)
-        )
+        search_terms = search_term.split()
+
+        queries = [Q(auto_id__icontains=term) |
+                   Q(code__icontains=term) |
+                   Q(name__icontains=term) |
+                   Q(lastname__icontains=term) |
+                   Q(school__icontains=term) |
+                   Q(email__icontains=term) |
+                   Q(phone__icontains=term) |
+                   Q(first_semester__icontains=term) |
+                   Q(last_semester__icontains=term) |
+                   Q(major__name__icontains=term) for term in search_terms]
+
+        students = Student.objects.filter(*queries)
         majors = Major.objects.all()
 
         try:
@@ -42,15 +45,15 @@ class Manage_student(View):
             ApplicationStatus.objects.create(
                 type="Aprobada"
             )
-             
+
             ApplicationStatus.objects.create(
                 type="En proceso"
             )
-            
+
             ApplicationStatus.objects.create(
                 type="Denegada"
             )
-            
+
             ApplicationStatus.objects.create(
                 type="Concluida"
             )
@@ -63,15 +66,16 @@ class Manage_student(View):
         })
 
     def post(self, request):
-        Student.objects.create( code =request.POST['code'],
-                                name =request.POST['name'],
-                                lastname =request.POST['lastname'],
-                                school =request.POST['school'],
-                                email = request.POST['email'],
-                                phone = request.POST['phone'],
-                                first_semester = request.POST['first_semester'],
-                                last_semester = request.POST['last_semester'],
-                                major_id = request.POST['major_select'],
-                                )
+        Student.objects.create(
+            code=request.POST['code'],
+            name=request.POST['name'],
+            lastname=request.POST['lastname'],
+            school=request.POST['school'],
+            email=request.POST['email'],
+            phone=request.POST['phone'],
+            first_semester=request.POST['first_semester'],
+            last_semester=request.POST['last_semester'],
+            major_id=request.POST['major_select'],
+        )
 
         return HttpResponseRedirect(request.path)

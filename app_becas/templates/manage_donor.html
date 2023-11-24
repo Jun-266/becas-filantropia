@@ -6,75 +6,80 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"> 
-            <a href="/home/"> Inicio</a> </li>
+                <a href="/home/"> Inicio</a>
+            </li>
             <li class="breadcrumb-item active" aria-current="page"> Donantes </li>
         </ol>
     </nav>
 </div>
-    <div class="container p-5 my-3 border">
-        <div class="row">
-            <div class="col-sm-12 col-md-6 col-lg-3 col-xl-3">
-                <a href="/home" class="btn btn-primary btn-sm">Volver</a>
-                
-                <div class="card mt-3">
-                    <h1 class="card-title mx-3 mt-2">Agregar donante</h1>
-                    <div class="card-body">
-                        <form action="/manage_donor/" method="POST">
-                            {% csrf_token %}
-                            <div class="form-group">
-                                <input type="text" id="enterprise_name" style="margin-bottom: 10px;" value="{{donor.enterprise_name|safe}}" name="enterprise_name" class="form-control" placeholder="Nombre de la empresa"
-                                  maxlength="50" required>
-                            </div>
 
-                            <div class="form-group">
-                                <button type="submit" class="btn btn-success btn-block text-white">Guardar</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-sm-12 col-md-6 col-lg-9 col-xl-9 mt-4 table-responsive">
-                <h1>Donantes</h1>
-                
-                {% if search_term %}
-                    <p>Resultados de la búsqueda para: "{{ search_term }}"</p>
-                {% endif %}
-
-                <div class="row mb-3">
-                    <div class="col-md-6">
-                        <form action="{% url 'manage_donor' %}" method="GET" class="d-flex">
-                            <input type="text" name="search" class="form-control" placeholder="Buscar donante">
-                            <div class="input-group-append">
-                                <button type="submit" class="btn btn-primary border">Buscar</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-    
-                <div class="row" id="card-view">
-                    {% for donor in donors   %}
-                        <div class="col-md-4 mb-3">
-                            <div class="card">
-                                <div class="card-header">
-                                    <h5 class="card-title">{{ donor.enterprise_name }}</h5>
-                                </div>
-                                <div class="card-body">
-                                    <p class="card-text"><b>ID:</b> {{ donor.auto_id }}</p>
-                                </div>
-                                <div class="card-footer">
-                                    <a href= "modify_donor/{{donor.auto_id}}" class ="btn btn-primary btn-sm">Gestionar</a>
-                                    <a href="delete_donor/{{donor.auto_id}}" id="delete-donor" class="btn btn-primary btn-sm";">Borrar</a>
-                                </div>
-                            </div>
+<div class="container p-5 my-3 border">
+    <div class="row">
+        <div class="col-sm-12 col-md-6 col-lg-3 col-xl-3">
+            <a href="/home" class="btn btn-primary btn-sm">Volver</a>
+            
+            <div class="card mt-3">
+                <h1 class="card-title mx-3 mt-2">
+                    Agregar donante
+                </h1>
+                <div class="card-body">
+                    <form method="POST" action="{% url 'manage_donor' %}">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-success btn-block text-white">Guardar</button>
                         </div>
-                        {% if forloop.counter|divisibleby:3 %}
-                            </div><div class="row" id="card-view">
-                        {% endif %}
-                    {% endfor %}
+                    </form>
                 </div>
             </div>
-
         </div>
+
+        <div class="col-sm-12 col-md-6 col-lg-9 col-xl-9 table-responsive">
+            <h1>Donantes</h1>
+            
+            {% if search_term %}
+                <p>Resultados de la búsqueda para: "{{ search_term }}"</p>
+            {% endif %}
+
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <form action="{% url 'manage_donor' %}" method="GET" class="d-flex">
+                        <input type="text" name="search" class="form-control" placeholder="Buscar donante">
+                        <div class="input-group-append">
+                            <button type="submit" class="btn btn-primary border">Buscar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="row" id="card-view">
+                {% for donor in donors %}
+                <div class="col-md-4 mb-3">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="card-title">{{ donor.enterprise_name }}</h5>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text"><b>ID:</b> {{ donor.auto_id }}</p>
+                            <p class="card-text"><b>Correo:</b> {{ donor.email }}</p>
+                            <p class="card-text"><b>Teléfono:</b> {{ donor.phone }}</p>
+                            <p class="card-text"><b>Ciudad:</b> {{ donor.city }}</p>
+                            <p class="card-text"><b>País:</b> {{ donor.pais }}</p>
+                            <p class="card-text"><b>Fecha de unión:</b> {{ donor.joined_date }}</p>
+                        </div>
+                        <div class="card-footer">
+                            <a href="modify_donor/{{ donor.auto_id }}" class="btn btn-primary btn-sm">Gestionar</a>
+                            <a href="delete_donor/{{ donor.auto_id }}" id="delete-donor" class="btn btn-primary btn-sm">Borrar</a>
+                        </div>
+                    </div>
+                </div>
+                {% if forloop.counter|divisibleby:3 %}
+                    </div><div class="row" id="card-view">
+                {% endif %}
+            {% endfor %}
+            </div>
+        </div>
+
     </div>
+</div>
 {% endblock %}
