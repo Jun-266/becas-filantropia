@@ -15,30 +15,35 @@
   </div>
 
     <div class="container p-5">
-        <h1>Beca: {{scholarship.name}} </h1><br>
-        
-        <p> <span class="fw-bold">Resumen: </span> {{scholarship.summary}}</p>
-        <p> <span class="fw-bold">Dirigida a: </span> {{scholarship.target_audiences}}</p>
-        <p> <span class="fw-bold">Beneficios a: </span> {{scholarship.benefits }}</p>
-        <p> <span class="fw-bold">Recomendaciones: </span> {{scholarship.recomendations }}</p>
-        <p> <span class="fw-bold">Informacion adicional: </span> {{scholarship.additional_info  }}</p>
-        <br>
-        Mas Informacion
-        <p><span class="fw-bold">ID: </span> {{scholarship.auto_id}}</p>
-        
+        <h1 class="fw-bold" style="color: black;">Beca: {{scholarship.name}} </h1><br>
+        <div class="scholarship-info">
 
+            <p class="fw-bold">Resumen: </p>
+            <p>{{ scholarship.summary }}</p>
 
-        <a href="" class="btn btn-warning">Eliminar Beca</a>
-        <a href="" class="btn btn-secondary">Actualizar Beca</a>  
-        <a href="/add_type_to_scholarship?auto_id={{scholarship.auto_id}}" class="btn btn-secondary">Añadir Tipo de Beca</a>
+            <p class="fw-bold">Dirigida a: </p>
+            <p>{{ scholarship.target_audiences }}</p>
+
+            <p class="fw-bold">Beneficios a: </p>
+            <p>{{ scholarship.benefits }}</p>
+
+            <p class="fw-bold">Recomendaciones: </p>
+            <p>{{ scholarship.recomendations }}</p>
+
+            <p class="fw-bold">Informacion adicional: </p>
+            <p>{{ scholarship.additional_info }}</p>            
+            
+            <a href="{% url 'delete_scholarship' %}" class="btn btn-warning">Eliminar Beca</a>
+            <a href="{% url 'update_scholarship' %}" class="btn btn-secondary">Actualizar Beca</a>
+        </div>
     </div>
 
     
-{% endblock %}
-        <!--
-            For future functions, delete and modify view Calendar
-            <a href="{% url 'delete_scholarship' %}" class="btn btn-warning">Eliminar Beca</a>
-            <a href="{% url 'update_scholarship' %}" class="btn btn-secondary">Actualizar Beca</a>
-        -->
+    {% endblock %}
+    <!--
+        For future functions, delete and modify view Calendar
+        
+        <a href="/add_type_to_scholarship?auto_id={{scholarship.auto_id}}" class="btn btn-secondary">Añadir Tipo de Beca</a>
+    -->
         
     

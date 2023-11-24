@@ -1,7 +1,8 @@
 from django.contrib import admin
 from django.urls import path, re_path
 from django.conf import settings
-# from django.conf.urls.static import static
+from django.conf.urls.static import static
+
 from app_becas.views.signup import Signup
 from app_becas.views.signin import Signin
 from app_becas.views.home import Home
@@ -41,13 +42,14 @@ urlpatterns = [
     path('signup/', Signup.as_view(), name='signup'),
     path('signout/', Home.signout, name='signout'),
 
+    # Calendar
     path('calendar/', Calendar.as_view(), name='calendar'),
     path('calendar_add/', Calendar_add.as_view(), name='calendar_add'),
     path('calendar_show_info/', Calendar_show_info.as_view(), name='calendar_show_info'),
     path('delete_calendar/', Calendar_show_info.delete_calendar, name='delete_calendar'),
     path('calendar_update/', Calendar_show_info.update_calendar, name='calendar_update'),
-
-
+    
+    # Scholarship
     path('scholarship/', Scholarship.as_view(), name='scholarship'),
     path('show_scholarship_info/', Show_scholarship_info.as_view(), name='show_scholarship_info'),
     path('add_scholarship/', Add_scholarship.as_view(), name='add_scholarship'),
@@ -55,8 +57,9 @@ urlpatterns = [
          name='add_type_scholarship'),
     path('add_scholarship/delete_type_scholarship/', DeleteTypeScholarship.as_view(),
          name='delete_type_scholarship'),
-    #path('scholarship/', SearchScholarship.as_view(), name='scholarship'),
     path('add_type_to_scholarship/', AddTypeToScholarship.as_view(), name='add_type_to_scholarship'),
+    path('delete_scholarship/', Show_scholarship_info.delete_scholarship, name='delete_scholarship'),
+    path('update_scholarship/', Show_scholarship_info.update_scholarship, name='update_scholarship'),
 
     # Reports.
     path('reports/', hr.home, name='reports'),
@@ -65,6 +68,7 @@ urlpatterns = [
     path('list_of_candidates/', hr.render_list_of_candidates, name='loc'),
     path('list_of_candidates/generate/', hr.generate_list_of_candidates, name='g_loc'),
 
+    #User
     path('manage_user/', ManageUser.as_view(), name='manage_user'),
     path('manage_student/', Manage_student.as_view(), name='manage_student'),
     path('manage_user/delete_user/<str:auto_id>/', Delete_user.as_view(), name='delete_user'),
@@ -89,3 +93,5 @@ urlpatterns += [
         'document_root': settings.MEDIA_ROOT
     })
 ]
+
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
