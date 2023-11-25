@@ -10,7 +10,8 @@ from django.db.models import Q
 @method_decorator(login_required, name='dispatch')
 class Manage_contact(View):
 
-    def get(self, request):
+    def get(self, request, auto_id):
+
         search_term = request.GET.get('search', '')
         search_terms = search_term.split()  
 
@@ -24,23 +25,24 @@ class Manage_contact(View):
 
         contacts = Contact.objects.filter(*queries)
 
+        donor = Donor.objects.get(auto_id=auto_id)
+
         return render(request, 'manage_contact.html', {
-            'contacts': contacts,
             'form': Form_add_contact(),
-            'search_term': search_term
+            'search_term': search_term,
+            "donor": donor,
+            "contacts": contacts
         })
 
-    def post(self, request):
+    def post(self, request, auto_id):
+        donor = Donor.objects.get(auto_id=auto_id)
         form = Form_add_contact(request.POST)
 
         if form.is_valid():
             contact = form.save(commit=False)
-            
-            donor_id = request.POST.get('donor', None)
-            if donor_id:
-                donor = Donor.objects.get(auto_id=donor_id)
-                contact.donor = donor
-
+            contact.donor = donor
             contact.save()
+            
 
-        return HttpResponseRedirect(request.path)
+        return redirect(request.META.get('HTTP_REFERER', '/'))
+

@@ -73,8 +73,11 @@ urlpatterns = [
     path('manage_donor/', Manage_donor.as_view(), name='manage_donor'),
     path('manage_donor/delete_donor/<str:auto_id>/', Delete_donor.as_view(), name='delete_donor'),
     path('manage_donor/modify_donor/<str:auto_id>/', Modify_donor.as_view(), name='modify_donor'),
-    path('manage_contact/delete_contact/<str:auto_id>/', Delete_contact.as_view(), name='delete_contact'),
-    path('manage_contact/modify_contact/<str:auto_id>/', Modify_contact.as_view(), name='modify_contact'),
+
+    path('manage_donor/modify_donor/<str:auto_id>/manage_contact/', Manage_contact.as_view(), name='manage_contact'),
+    path('manage_donor/modify_donor/<str:auto_id>/manage_contact/delete_contact/<str:contact_auto_id>', Delete_contact.as_view(), name='delete_contact'),
+    path('manage_donor/modify_donor/<str:auto_id>/manage_contact/modify_contact/<str:contact_auto_id>', Modify_contact.as_view(), name='modify_contact'),
+    
     path('manage_student/delete_student/<str:auto_id>/', Delete_student.as_view(), name='delete_student'),
     path('manage_student/modify_student/<str:auto_id>/', Modify_student.as_view(), name='modify_student'),
     path('manage_student/add_major/', Add_major.as_view(), name='add_major'),

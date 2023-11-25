@@ -64,8 +64,22 @@ class Calendar(models.Model):
         return str("sch id:"+self.scholarship_id)
 
 
+class Donor(models.Model):
+    auto_id = models.CharField(max_length=50, default=uuid.uuid4, editable=False, primary_key=True)
+    scholarships = models.ManyToManyField(Scholarship, related_name='donors')
+    enterprise_name = models.CharField(max_length=20)
+    email = models.EmailField()
+    phone = models.CharField(max_length=20)
+    city = models.CharField(max_length=30, null=True, blank=True)
+    pais = models.CharField(max_length=30, null=True, blank=True)
+    joined_date = models.DateField(null=True, blank=True)
+
+    def __str__(self):
+        return str(self.auto_id)
+    
 class Contact(models.Model):
     auto_id = models.CharField(max_length=50, default=uuid.uuid4, editable=False, primary_key=True)
+    donor = models.ForeignKey(Donor, on_delete=models.CASCADE, null=True, blank=True, related_name='contacts')
     identification = models.CharField(max_length=30)
     name = models.CharField(max_length=50)
     lastname = models.CharField(max_length=50)
@@ -75,21 +89,6 @@ class Contact(models.Model):
     ])
     email = models.EmailField(max_length=30)
     phone = models.CharField(max_length=30)
-
-    def __str__(self):
-        return str(self.auto_id)
-
-
-class Donor(models.Model):
-    auto_id = models.CharField(max_length=50, default=uuid.uuid4, editable=False, primary_key=True)
-    scholarships = models.ManyToManyField(Scholarship, related_name='donors')
-    contact = models.ForeignKey(Contact, on_delete=models.CASCADE, null=True, blank=True, related_name='donors')
-    enterprise_name = models.CharField(max_length=20)
-    email = models.EmailField()
-    phone = models.CharField(max_length=20)
-    city = models.CharField(max_length=30, null=True, blank=True)
-    pais = models.CharField(max_length=30, null=True, blank=True)
-    joined_date = models.DateField(null=True, blank=True)
 
     def __str__(self):
         return str(self.auto_id)
