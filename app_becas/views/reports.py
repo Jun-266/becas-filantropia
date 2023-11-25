@@ -38,13 +38,11 @@ def delete_report(request, file_id):
         a_file.delete()
         return redirect('reports')
 
-
 def render_list_of_candidates(request):
     scholarships = Scholarship.objects.all()
     return render(request, main_dir + 'list_of_candidates.html', {
         'scholarships': scholarships
     })
-
 
 def generate_list_of_candidates(request):
     scholarship_id = request.POST['scholarship_id']

@@ -39,13 +39,41 @@ class ScholarshipParams(models.Model):
 
 class Scholarship(models.Model):
     auto_id = models.CharField(max_length=50, default=uuid.uuid4, editable=False, primary_key=True)
-    name = models.CharField(max_length=30)
-    description = models.CharField(max_length=250)
-    amount = models.IntegerField()
+    calendar_id = models.CharField(max_length=50, default=uuid.uuid4, editable=True)
+    #donor_id = models.CharField(max_length=50, default=uuid.uuid4, editable=True)
+    name = models.CharField(max_length=40)
+    summary = models.CharField(max_length=250)
+    target_audiences = models.CharField(max_length=400,
+                                        default="La Beca está dirigida a _, de estratos _, del departamento/municipio de _, con alto desempeño, potencial académico y limitaciones económicas manifiestas, interesados en cursar los programas de pregrado de _. Esta beca no aplica para _ ")
+    benefits = models.CharField(max_length=450)
+
+    #conditions = Another table
+    recomendations = models.CharField(max_length=2200)
+    additional_info = models.CharField(max_length=2500)
+    #post_img = models.ImageField(upload_to='images/')
+    #is_active = models.BooleanField()
     
     def __str__(self):
         return self.name
 
+class ConditionEnum(models.Model):
+    name = models.CharField(max_length=35, editable=False, primary_key=True)
+    condition_type = models.CharField(max_length=40)
+    ## SI/NO. SI/NO e Ingresar dato
+    data_type = models.CharField(max_length=10)
+    # Numero, Texto, Fecha 
+     
+    def __str__(self):
+        return self.name
+    
+class ConditionParams(models.Model):
+    auto_id = models.CharField(max_length=50, default=uuid.uuid4, editable=False, primary_key=True)
+    scholarship_id = models.CharField(max_length=50, default=uuid.uuid4, editable=False)
+    condition_name = models.CharField(max_length=50, editable=False)
+    value = models.CharField(max_length=30, editable=False)
+
+    def __str__(self):
+        return self.name
     
 class Calendar(models.Model):
     auto_id = models.CharField(max_length=50, default=uuid.uuid4, primary_key=True)
