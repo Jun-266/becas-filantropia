@@ -1,81 +1,64 @@
-
-
-<script>
-    function onSubmitForm() {
-        // Aquí puedes realizar cualquier lógica adicional antes de enviar el formulario
-
-        // Después de enviar el formulario, regresar a la página anterior
-        window.history.back();
-
-        // Evitar el envío del formulario al navegador
-        return false;
-    }
-</script>
-
-
-
-
-
-
 {% extends 'layouts/base.html' %}
 
 {% block content %}
     <div class="container p-5 my-3 border">
-        <div class="row">
-            <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4">
-                <a href="javascript:void(0);" onclick="goBack();" class="btn btn-primary btn-sm">Volver</a>
+
+        <a href="javascript:void(0);" onclick="goBack();" class="btn btn-primary btn-sm">Volver</a>
                 
-                <script>
-                    function goBack() {
-                      window.history.back();
-                    }
-                </script>
+        <script>
+            function goBack() {
+              window.history.back();
+            }
+        </script>
+
+        <div class="row d-flex align-items-center text-center text-xl">
+            <h1 class="card-title mx-3 mb-4">
+              Contacto: {{contact.name}} {{contact.lastname}}
+            </h1>
+        </div>
+
+        <div class="row d-flex align-items-center justify-content-center text-center text-xl">
+            <div class="col-sm-12 col-md-6 col-lg-8 col-xl-8">
                 
                 <div class="card mt-3">
-                    <h1 class="card-title mx-3 mt-2">Modificar contacto</h1>
+                    <h1 class="card-title mx-3 mt-2">Modificar</h1>
                     <div class="card-body">
 
                         <form method="POST">
 
                             {% csrf_token %}
-                            
-                            <div class="form-group">
-                                <input type="text" id="auto_id" style="margin-bottom: 10px;" value="{{contact.auto_id|default:'Auto ID'|safe}}" name="auto_Id" class="form-control" placeholder="Auto ID" readonly
-                                    maxlength="50" required>
-                            </div>
 
-                            <div class="form-group">
-                                <input type="text" id="identification" style="margin-bottom: 10px;" value="{{contact.identification|default:'identification'|safe}}" name="identification" class="form-control" placeholder="Número de identificación"
-                                    maxlength="50" required>
-                            </div>
-
-                            <div class="form-group">
-                                <input type="text" id="name" style="margin-bottom: 10px;" name="name" value="{{contact.name|default:'name'|safe}}" class="form-control" placeholder="Nombre"
-                                    maxlength="50" required>
-                            </div>
-
-                            <div class="form-group">
-                                <input type="text" id="lastname" style="margin-bottom: 10px;" name="lastname" value="{{contact.lastname|default:'lastname'|safe}}" class="form-control" placeholder="Apellido"
-                                    maxlength="50" required>
-                            </div>
-
-                            <div class="form-group">
-                                <input type="text" id="email" style="margin-bottom: 10px;" value="{{contact.email|default:'email'|safe}}" name="email" class="form-control" placeholder="Correo electrónico"
-                                    maxlength="50" required>
-                            </div>
-
-                            <div class="form-group">
-                                <input type="text" id="phone" style="margin-bottom: 10px;" value="{{contact.phone|default:'phone'|safe}}" name="phone" class="form-control" placeholder="Teléfono"
-                                    maxlength="50" required>
+                            <div class="form-group text-center">
+                                <input type="text" id="auto_id" style="margin-bottom: 10px;" value="{{contact.auto_id|default:'Auto ID'|safe}}" name="auto_Id" class="form-control text-center" placeholder="Auto ID" readonly maxlength="50" required>
                             </div>
                             
-                            <div class="form-group" >
-                                <select name="type" style="margin-bottom: 10px;" class="form-control col-md-6" style="margin-bottom: 10px;">
-                                    <option value="Dueño" {% if contact.type == 1 %}selected{% endif %}>Dueño</option>
-                                    <option value="Empleado" {% if contact.type == 2 %}selected{% endif %}>Empleado</option>
+                            <div class="form-group text-center"> 
+                                <input type="text" id="identification" style="margin-bottom: 10px;" value="{{contact.identification|default:'identification'|safe}}" name="identification" class="form-control text-center" placeholder="Número de identificación" maxlength="50" required>
+                            </div>
+                            
+                            <div class="form-group text-center"> 
+                                <input type="text" id="name" style="margin-bottom: 10px;" name="name" value="{{contact.name|default:'name'|safe}}" class="form-control text-center" placeholder="Nombre" maxlength="50" required>
+                            </div>
+                            
+                            <div class="form-group text-center"> 
+                                <input type="text" id="lastname" style="margin-bottom: 10px;" name="lastname" value="{{contact.lastname|default:'lastname'|safe}}" class="form-control text-center" placeholder="Apellido" maxlength="50" required>
+                            </div>
+                            
+                            <div class="form-group text-center"> 
+                                <input type="text" id="email" style="margin-bottom: 10px;" value="{{contact.email|default:'email'|safe}}" name="email" class="form-control text-center" placeholder="Correo electrónico" maxlength="50" required>
+                            </div>
+                            
+                            <div class="form-group text-center"> 
+                                <input type="text" id="phone" style="margin-bottom: 10px;" value="{{contact.phone|default:'phone'|safe}}" name="phone" class="form-control text-center" placeholder="Teléfono" maxlength="50" required>
+                            </div>
+                            
+                            <div class="form-group text-center">
+                                <select name="type" style="margin-bottom: 10px;" class="form-control col-md-6 text-center" style="margin-bottom: 10px;">
+                                    <option value="Dueño" {% if contact.type == "Dueño" %}selected{% endif %}>Dueño</option>
+                                    <option value="Empleado" {% if contact.type == "Empleado" %}selected{% endif %}>Empleado</option>
                                 </select>
-                            </div>   
-
+                            </div>
+                            
                             <div class="form-group">
                                 <button type="submit" class="btn btn-success btn-block text-white">Guardar</button>
                             </div>

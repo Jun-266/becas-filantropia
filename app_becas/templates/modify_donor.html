@@ -1,27 +1,33 @@
 {% extends 'layouts/base.html' %}
+
 {% block content %}
+    <div class="container py-4">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"> 
+                    <a href="/home/">Inicio</a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page"> Donantes </li>
+            </ol>
+        </nav>
+    </div>
 
-<div class="container py-4">
-    <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item"> 
-                <a href="/home/"> Inicio</a>
-            </li>
-            <li class="breadcrumb-item active" aria-current="page"> Donantes </li>
-        </ol>
-    </nav>
-</div>
+    <div class="container p-5 my-3 border">
+        <a href="/manage_donor/" class="btn btn-primary btn-sm">Volver</a>
 
-<div class="container p-5 my-3 border">
-    <div class="row">
-        <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4">
-            <a href="/manage_donor/" class="btn btn-primary btn-sm">Volver</a>
-            
-            <div class="card mt-3">
-                <h1 class="card-title mx-3 mt-2">
-                    Gestionar donante
-                </h1>
-                <div class="card-body">
+        <div class="row d-flex align-items-center text-center text-xl">
+            <h1 class="card-title mx-3 mb-4">
+                Donante: {{donor.enterprise_name}}
+            </h1>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12 col-md-6 col-lg-3 col-xl-3">
+                <div class="card">
+                    <h1 class="card-title mx-3 mt-4">
+                        Modificar donante
+                    </h1>
+                    <div class="card-body">
                         <form method="POST">
                             {% csrf_token %}
                             <div class="form-group">
@@ -65,80 +71,73 @@
                                 <input type="text" class="form-control" id="donor_scholarship" name="donor_scholarship" placeholder='ID Beca'>
                                 <button type="submit" name="action" value="asociar_beca" class="btn btn-primary">Asociar Beca</button>
                               </div>
-                                     
                         </form>
                     </div>
                 </div>
             </div>
-            <div class="col-sm-12 col-md-6 col-lg-4 col-xl-5 mt-5 table-responsive">
+
+            <div class="card card-md-6 col-lg-3 col-xl-3 table-responsive">
                 <div style="display: flex; align-items: center;">
-                    <h1 style="margin: 0;">Becas</h1>
-                    <div class="contenedor" style="margin-left: 10px;">
+
+                    <div class="mt-4">                       
+                        <h1 style="margin: 0;">Becas</h1>
+                    </div>
+                    <div class="contenedor mt-4" style="margin-left: 10px;">
                         <a href="/ruta-de-tu-pagina">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
-                                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3z"/>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                                <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                                <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"/>
                             </svg>
                         </a>
                     </div>
+
                 </div>
-                
                 <table class="table table-striped">
                     <thead>
                         <tr>
-                            <th>ID Beca</th>
                             <th>Nombre</th>
-                            <th>Opciones</th>
                         </tr>
                     </thead>
                     {% for donor_scholarship in donor.scholarships.all %}
-                    <tr>
-                        <td>{{ donor_scholarship.auto_id }}</td>
-                        <td>{{ donor_scholarship.name }}</td>
-                        <td>
-                            <a href="donor_scholarship/{{donor_scholarship.auto_id}}" id="delete-donor-scholarship" class="btn btn-primary btn-sm">Borrar</a>
-                        </td>  
-                    </tr>
+                        <tr>
+                            <td>{{ donor_scholarship.name }}</td>
+                        </tr>
                     {% endfor %}
-                
-                    </tbody>
                 </table>
             </div>
-            <div class="col-sm-12 col-md-6 col-lg-3 col-xl-3 mt-5 table-responsive">
+            
+            <div class="card card-md-6 col-lg-5 col-xl-5 table-responsive">
                 <div style="display: flex; align-items: center;">
-                    <h1 style="margin: 0;">Contactos </h1>
-                    
-                    <div class="contenedor" style="margin-left: 10px;">
+
+                    <div class="mt-4">                       
+                        <h1 style="margin: 0;">Contactos </h1>
+                    </div>
+
+                    <div class="contenedor mt-4" style="margin-left: 10px;">
                         <a href="manage_contact">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" class="bi bi-person-plus-fill" viewBox="0 0 16 16">
-                                <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
-                                <path fill-rule="evenodd" d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5"/>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                                <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                                <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"/>
                             </svg>
                         </a>
                     </div>
-                    
                 </div>
-                                     
-                    
                 <table class="table table-striped">
                     <thead>
                         <tr>
-                            <th>ID Contacto</th>
-                            <th>Opciones</th>
+                            <th>Nombre</th>
+                            <th>Identificación</th>
                         </tr>
                     </thead>
-
                     {% for donor_contact in donor.contacts.all %}
-                    <tr>
-                        <td>{{ donor_contact.auto_id }}</td>
-                        <td>
-                           <a href="donor_contact/{{donor_contact.auto_id}}" id="delete-donor-contact" class="btn btn-primary btn-sm">Borrar</a>
-                        </td>  
-                    </tr>
+                        <tr>
+                            <td>{{ donor_contact.name }} {{ donor_contact.lastname }}</td>
+                            <td>{{ donor_contact.identification }}</td>
+                        </tr>
                     {% endfor %}
-
-                    </tbody>
                 </table>
             </div>
         </div>
     </div>
 {% endblock %}
+

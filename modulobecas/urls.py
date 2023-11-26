@@ -33,7 +33,7 @@ from app_becas.views.modify_student import Modify_student
 from app_becas.views.add_major import Add_major
 from app_becas.views.delete_donor_contact import Delete_donor_contact
 from app_becas.views.delete_donor_scholarship import Delete_donor_scholarship
-
+from app_becas.views.choose_user import ChooseUser
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -69,6 +69,9 @@ urlpatterns = [
     path('list_of_candidates/generate/', hr.generate_list_of_candidates, name='g_loc'),
 
     #User
+
+    path('choose_user/', ChooseUser.as_view(), name='manage_user'),
+
     path('manage_user/', ManageUser.as_view(), name='manage_user'),
     path('manage_student/', Manage_student.as_view(), name='manage_student'),
     path('manage_user/delete_user/<str:auto_id>/', Delete_user.as_view(), name='delete_user'),
@@ -81,7 +84,9 @@ urlpatterns = [
     path('manage_donor/modify_donor/<str:auto_id>/manage_contact/', Manage_contact.as_view(), name='manage_contact'),
     path('manage_donor/modify_donor/<str:auto_id>/manage_contact/delete_contact/<str:contact_auto_id>', Delete_contact.as_view(), name='delete_contact'),
     path('manage_donor/modify_donor/<str:auto_id>/manage_contact/modify_contact/<str:contact_auto_id>', Modify_contact.as_view(), name='modify_contact'),
-    
+    path('manage_donor/modify_donor/<str:auto_id>/delete_contact/<str:contact_auto_id>', Delete_contact.as_view(), name='delete_contact'),
+
+
     path('manage_student/delete_student/<str:auto_id>/', Delete_student.as_view(), name='delete_student'),
     path('manage_student/modify_student/<str:auto_id>/', Modify_student.as_view(), name='modify_student'),
     path('manage_student/add_major/', Add_major.as_view(), name='add_major'),

@@ -18,7 +18,7 @@
             <a href="/manage_donor/modify_donor/{{ donor.auto_id }}/" class="btn btn-primary btn-sm">Volver</a>
 
             <div class="card mt-3">
-                <h1 class="card-title mx-3 mt-2">Agregar contacto</h1>
+                <h1 class="card-title mx-3 mt-4">Agregar contacto</h1>
                 <div class="card-body">
                     <form method="POST">
                         {% csrf_token %}
@@ -90,7 +90,7 @@
                                 <p class="card-text"><b>Tipo:</b> {{ contact.type }}</p>
                             </div>
                             <div class="card-footer">
-                                <a href="modify_contact/{{ contact.auto_id }}" class="btn btn-primary btn-sm">Gestionar</a>
+                                <a href="modify_contact/{{ contact.auto_id }}" class="btn btn-primary btn-sm">Modificar</a>
                                 <a href="delete_contact/{{ contact.auto_id }}" id="delete-contact" class="btn btn-primary btn-sm">Borrar</a>
                             </div>
                         </div>

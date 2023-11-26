@@ -14,11 +14,11 @@
 
     <div class="container p-5 my-3 border">
         <div class="row">
-            <div class="col-sm-12 col-md-6 col-lg-3 col-xl-3">
-                <a href="/home" class="btn btn-primary btn-sm">Volver</a>
+            <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4">
+                <a href="/choose_user" class="btn btn-primary btn-sm">Volver</a>
                 
                 <div class="card mt-3">
-                    <h1 class="card-title mx-3 mt-2">Agregar estudiante</h1>
+                    <h1 class="card-title mx-3 mt-4">Agregar estudiante</h1>
                     <div class="card-body">
                         <form action="/manage_student/" method="POST">
 
@@ -58,12 +58,17 @@
                                     maxlength="50" required>
                             </div>
 
-                            <div class="form-group">
+                            <div class="form-group mb-3">
                                 <input type="text" id="last_semester" style="margin-bottom: 10px;" value="{{donor.last_semester|safe}}" name="last_semester" class="form-control" placeholder="Último semestre"
                                     maxlength="50" required>
                             </div>
+
+                            <div style = "line-height: 0.5">
+                                <a style="font-size: 16px;">Seleccionar o <a href="/manage_student/add_major/" style="font-size: 16px; line-height: 0.8;">agregar nueva carrera:</a></a>
+                            </div>
                             
-                            <div class="form-group">
+                            
+                            <div class="form-group mt-3">
                                 <select name="major_select" style="margin-bottom: 10px;"  class="form-control col-md-6" style="margin-bottom: 10px;" id="major_select">
                                     {% for major in majors %}
                                         <option value={{major.auto_id}}>{{major.name}}</option>
@@ -71,9 +76,7 @@
                                     <option value="0">Ninguno</option>
                                 </select>
                             </div>
-                            <a href="/manage_student/add_major/" class="btn btn-link center mb-3">
-                                ¿No se encuentra tu carrera? Regístrala aquí
-                            </a>
+                            
 
                             <div class="form-group">
                                 <button type="submit" class="btn btn-success btn-block text-white">Guardar</button>
@@ -84,7 +87,7 @@
                 </div>
             </div>
 
-            <div class="col-sm-12 col-md-6 col-lg-9 col-xl-9 table-responsive">
+            <div class="col-sm-12 col-md-6 col-lg-8 col-xl-8 table-responsive">
                 <h1>Estudiantes</h1>
 
                 {% if search_term %}

@@ -3,12 +3,18 @@
 {% block content %}
 
     <div class="container p-5 my-3 border">
+        <a href="/manage_student" class="btn btn-primary btn-sm">Volver</a>
+
+        <div class="row d-flex align-items-center text-center text-xl">
+            <h1 class="card-title mx-3 mb-4">
+              Estudiante: {{student.name}} {{student.lastname}} {{" - "}} {{student.code}}
+            </h1>
+        </div>
         <div class="row">
             <div class="col-md-4">
-                    <a href="/manage_student" class="btn btn-primary btn-sm">Volver</a>
-                    
-                    <div class="card mt-3">
-                        <h1 class="card-title mx-3 mt-4">Gestionar estudiante</h1>
+                                          
+                    <div class="card">
+                        <h1 class="card-title mx-3 mt-4">Modificar estudiante</h1>
                         <div class="card-body">
                             <form method="POST">
                                 {% csrf_token %}
@@ -56,9 +62,11 @@
                                         maxlength="50" required>
                                 </div>
 
-                                <a>Seleccionar carrera:</a>                         
+                                <div style = "line-height: 0.5">
+                                    <a style="font-size: 16px;">Seleccionar o <a href="/manage_student/add_major/" style="font-size: 16px; line-height: 0.8;">agregar nueva carrera:</a></a>
+                                </div>                       
 
-                                <div class="form-group mt-1">
+                                <div class="form-group mt-3">
                                     <select name="major_select" style="margin-bottom: 10px;" class="form-control col-md-6" style="margin-bottom: 10px;" id="major_select">
                                         {% for major in majors %}
                                             <option value="{{ major.auto_id }}" {% if major.auto_id == student.major_id %}selected{% endif %}>{{ major.name }}</option>
@@ -66,9 +74,6 @@
                                         <option value="0">Ninguno</option>
                                     </select>                                    
                                 </div>
-                                <a href="/manage_student/add_major/" class="btn btn-link center mb-1">
-                                    ¿No se encuentra tu carrera? Regístrala aquí
-                                </a>
 
                                 <div class="form-group">
                                     <button type="submit" class="btn btn-success btn-block text-white" style="margin-top: 10px;">Guardar</button>
@@ -86,15 +91,16 @@
                 </div>
 
                 <div class="col-md-8">
-                    <div class="card mt-5">
+                    <div class="card">
                         <form method="POST" action="">
-                            <h1 class="card-title mx-3 mt-4 table-responsive">Aplicaciones a becas</h1>
-                                <table class="table table-striped">
+                            <div class="text-center">
+                                <h1 class="card-title mx-3 mt-4">Aplicaciones a becas</h1>
+                            </div>                            
+                                <table class="table table-striped table-responsive">
                                     <thead>
                                         <tr>
-                                            <th>ID Aplicación</th>
-                                            <th>ID Beca</th>
-                                            <th>ID Estudiante</th>
+                                            <th>Beca</th>
+                                            <th>Donante</th>
                                             <th>Estado</th>
                                         </tr>
                                     </thead>
@@ -103,9 +109,8 @@
                                             {% csrf_token %}
                                             {% for application in student.scholarshipapplication_set.all %}
                                                 <tr>
-                                                    <td>{{ application.auto_id }}</td>
-                                                    <td>{{ application.scholarship.auto_id }}</td>
-                                                    <td>{{ application.student.auto_id }}</td>
+                                                    <td>{{ application.scholarship.name}}</td>
+                                                    <td>{{ application.scholarship.name}}</td>
                                                     <td>
                                                         <select name="status_{{ application.auto_id }}">
                                                             <option value="Aprobada" {% if application.application_status.type == 'Aprobada' %}selected{% endif %}>Aprobada</option>
