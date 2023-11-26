@@ -6,7 +6,7 @@
 </head>
 <body>
     <header>
-        <h1><b>Beca:</b> {{ scholarship.name }}</h1>
+        <h1>Beca: {{ scholarship.name }}</h1>
     </header>
     <main>
         <section>
@@ -17,16 +17,28 @@
         <hr>
         <section>
             <h2>Aspirantes inscritos</h2>
-            {% for candidate in candidates %}
-                <div>
-                    <p><b>Nombre completo:</b> {{ candidate.full_name }}</p>
-                    <p><b>Código de estudiante:</b> {{ candidate.student_code }}</p>
-                    <p><b>Correo institucional:</b> {{ candidate.email }}</p>
-                    <p><b>Promedio ponderado:</b> {{ candidate.grade_point_average }}</p>
-                    <p><b>Fecha de solicitud para la beca:</b> {{ candidate.application_date }}</p>
-                <hr>
-                </div>
-            {% endfor %}
+            <table>
+                <thead>
+                <tr>
+                    <th>Código de estudiante</th>
+                    <th>Nombre completo</th>
+                    <th>Correo institucional</th>
+                    <th>Promedio ponderado</th>
+                    <th>Fecha de solicitud para la beca</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for candidate in candidates %}
+                    <tr>
+                        <td>{{ candidate.student_code }}</td>
+                        <td>{{ candidate.full_name }}</td>
+                        <td>{{ candidate.email }}</td>
+                        <td>{{ candidate.grade_point_average }}</td>
+                        <td>{{ candidate.application_date }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
         </section>
     </main>
 </body>

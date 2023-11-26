@@ -1,0 +1,33 @@
+{% extends 'layouts/base.html' %}
+
+{% block content %}
+    <a href="{% url 'reports' %}" class="btn btn-primary">Volver</a>
+    <header class="container">
+        <h1 class="text-center">Informe de estudiantes becados</h1>
+    </header>
+    <main class="container">
+        <p class="text-center">
+            Selecciona la beca para la cual deseas generar el informe.
+        </p>
+        <hr>
+        <section class="container-fluid text-center">
+            {% if scholarships %}
+                <form method="POST" action="{% url 'generate_scholarship_students' %}">
+                    {% csrf_token %}
+                    <label for="f_scholarship_id">Elije la beca:</label><br>
+                    <select id="f_scholarship_id" name="scholarship_id" size="5" style="width: 350px">
+                        {% for scholarship in scholarships %}
+                            <option value="{{ scholarship.auto_id }}">
+                                {{ scholarship.name }}<span> | </span>{{ scholarship.summary }}
+                            </option>
+                        {% endfor %}
+                    </select>
+                    <br>
+                    <input class="btn btn-success" type="submit" value="Seleccionar">
+                </form>
+            {% else %}
+                <p class="text-center">No hay becas registradas.</p>
+            {% endif %}
+        </section>
+    </main>
+{% endblock %}

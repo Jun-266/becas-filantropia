@@ -40,7 +40,7 @@ class ScholarshipParams(models.Model):
 class Scholarship(models.Model):
     auto_id = models.CharField(max_length=50, default=uuid.uuid4, editable=False, primary_key=True)
     calendar_id = models.CharField(max_length=50, default=uuid.uuid4, editable=True)
-    #donor_id = models.CharField(max_length=50, default=uuid.uuid4, editable=True)
+    # donor_id = models.CharField(max_length=50, default=uuid.uuid4, editable=True)
     name = models.CharField(max_length=40)
     summary = models.CharField(max_length=250)
     target_audiences = models.CharField(max_length=400,
@@ -56,6 +56,7 @@ class Scholarship(models.Model):
     def __str__(self):
         return self.name
 
+
 class ConditionEnum(models.Model):
     name = models.CharField(max_length=35, editable=False, primary_key=True)
     condition_type = models.CharField(max_length=40)
@@ -65,7 +66,8 @@ class ConditionEnum(models.Model):
      
     def __str__(self):
         return self.name
-    
+
+
 class ConditionParams(models.Model):
     auto_id = models.CharField(max_length=50, default=uuid.uuid4, editable=False, primary_key=True)
     scholarship_id = models.CharField(max_length=50, default=uuid.uuid4, editable=False)
@@ -74,7 +76,8 @@ class ConditionParams(models.Model):
 
     def __str__(self):
         return self.name
-    
+
+
 class Calendar(models.Model):
     auto_id = models.CharField(max_length=50, default=uuid.uuid4, primary_key=True)
     convocation_type_id = models.CharField(max_length=2)

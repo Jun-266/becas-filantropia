@@ -2,11 +2,10 @@ from django.contrib import admin
 from django.urls import path, re_path
 from django.conf import settings
 from django.conf.urls.static import static
-
 from app_becas.views.signup import Signup
 from app_becas.views.signin import Signin
 from app_becas.views.home import Home
-import app_becas.views.reports as hr
+import app_becas.views.reports as rp
 from app_becas.views.calendar import Calendar
 from app_becas.views.calendar_add import Calendar_add
 from app_becas.views.calendar_show_info import Calendar_show_info
@@ -23,7 +22,6 @@ from app_becas.views.add_type_scholarship import AddTypeScholarship
 from django.views.static import serve
 from app_becas.views.delete_type_scholarship import DeleteTypeScholarship
 from app_becas.views.show_scholarship_info import Show_scholarship_info
-from app_becas.views.search_scholarship import SearchScholarship
 from app_becas.views.delete_donor import Delete_donor
 from app_becas.views.modify_donor import Modify_donor
 from app_becas.views.delete_contact import Delete_contact
@@ -62,13 +60,16 @@ urlpatterns = [
     path('update_scholarship/', Show_scholarship_info.update_scholarship, name='update_scholarship'),
 
     # Reports.
-    path('reports/', hr.home, name='reports'),
-    path('reports/<int:file_id>', hr.delete_report, name='delete_report'),
-    path('reports_upload/', hr.upload_report, name='upload_report'),
-    path('list_of_candidates/', hr.render_list_of_candidates, name='loc'),
-    path('list_of_candidates/generate/', hr.generate_list_of_candidates, name='g_loc'),
+    path('reports/', rp.home, name='reports'),
+    path('reports/<int:file_id>', rp.delete_report, name='delete_report'),
+    path('reports_upload/', rp.upload_report, name='upload_report'),
+    path('list_of_candidates/', rp.render_list_of_candidates, name='loc'),
+    path('list_of_candidates/generate/', rp.generate_list_of_candidates, name='g_loc'),
+    path('report_scholarship_students/', rp.scholarship_students_report, name='rv_scholarship_students'),
+    path('report_scholarship_students/generate/', rp.generate_report_scholarship_students,
+         name='generate_scholarship_students'),
 
-    #User
+    # User
     path('manage_user/', ManageUser.as_view(), name='manage_user'),
     path('manage_student/', Manage_student.as_view(), name='manage_student'),
     path('manage_user/delete_user/<str:auto_id>/', Delete_user.as_view(), name='delete_user'),

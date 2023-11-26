@@ -12,28 +12,39 @@
         </nav>
     </div>
 
+    {% if error_message %}
+        <section class="container-fluid">
+            <p class="alert alert-danger">
+                {{ error_message }}
+            </p>
+        </section>
+    {% endif %}
+
     <div class="container p-5 my-3 border shadow">
-    <h1 class="text-center">Gestión de archivos/informes</h1>
-    <ul class="nav justify-content-center">
-    <li class="nav-item btn-group m-2">
-        <button class="btn btn-primary dropdown-toggle"
-                data-bs-toggle="dropdown"
-        >Generar informe</button>
-        <div class="dropdown-menu">
-            <a class="dropdown-item" href="{% url 'loc' %}">Lista de aspirantes</a>
-        </div>
-    </li>
-    <li class="nav-item">
-        <a href="/reports_upload/" class="btn btn-primary m-2">
-            Cargar archivo/informe
-        </a>
-    </li>
-    <li class="nav-item">
-        <a href="mailto:" class="btn btn-primary m-2">
-            Enviar archivo/informe
-        </a>
-    </li>
-    </ul>
+        <h1 class="text-center">Gestión de archivos/informes</h1>
+        <ul class="nav justify-content-center">
+            <li class="nav-item btn-group m-2">
+                <button class="btn btn-primary dropdown-toggle"
+                        data-bs-toggle="dropdown"
+                >Generar informe</button>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="{% url 'loc' %}">Aspirantes</a>
+                    <a class="dropdown-item" href="{% url 'rv_scholarship_students' %}">
+                        Estudiantes becados
+                    </a>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a href="/reports_upload/" class="btn btn-primary m-2">
+                    Cargar archivo/informe
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="mailto:" class="btn btn-primary m-2">
+                    Enviar archivo/informe
+                </a>
+            </li>
+        </ul>
     </div>
 
     <div class="container">
@@ -96,7 +107,6 @@
             });
         });
     </script>
-
     <script>
         const btn_del = document.getElementById('delete-report');
         btn_del.addEventListener('click', () => {
@@ -105,7 +115,5 @@
         });
     </script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    </script>
-    
-    
- {% endblock %}
+
+{% endblock %}

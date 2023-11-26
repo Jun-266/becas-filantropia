@@ -38,22 +38,65 @@ def delete_report(request, file_id):
         a_file.delete()
         return redirect('reports')
 
+
 def render_list_of_candidates(request):
     scholarships = Scholarship.objects.all()
     return render(request, main_dir + 'list_of_candidates.html', {
         'scholarships': scholarships
     })
 
+
+def scholarship_students_report(request):
+    if request.method == 'GET':
+        scholarships = Scholarship.objects.all()
+        return render(request, main_dir + 'scholarship_students.html', {
+            'scholarships': scholarships
+        })
+    elif request.method == 'POST':
+        return redirect('reports')
+
+
 def generate_list_of_candidates(request):
-    scholarship_id = request.POST['scholarship_id']
-    scholarship = get_object_or_404(Scholarship, pk=scholarship_id)
-    candidates = Candidate.objects.filter(requested_scholarship=scholarship_id)
     if request.method == 'POST':
-        template = get_template('report_management/template_report_list_of_candidates.html')
-        context = {'scholarship': scholarship, 'candidates': candidates}
-        html = template.render(context)
-        response = HttpResponse(content_type='application/pdf')
-        pisa_status = pisa.CreatePDF(html, dest=response)
-        if pisa_status.err:
-            return HttpResponse('We had some errors <pre>' + html + '</pre>')
-        return response
+        scholarship_id = request.POST['scholarship_id']
+        scholarship = get_object_or_404(Scholarship, pk=scholarship_id)
+        candidates = Candidate.objects.filter(requested_scholarship=scholarship_id)
+
+        if candidates.count() == 0:
+            files = File.objects.all()
+            return render(request, main_dir + 'home_reports.html', {
+                'error_message': 'La beca seleccionada no tiene aspirantes.',
+                'files': files
+            })
+        else:
+            template = get_template('report_management/template_report_list_of_candidates.html')
+            context = {'scholarship': scholarship, 'candidates': candidates}
+            html = template.render(context)
+            response = HttpResponse(content_type='application/pdf')
+            pisa_status = pisa.CreatePDF(html, dest=response)
+            if pisa_status.err:
+                return HttpResponse('We had some errors <pre>' + html + '</pre>')
+            return response
+
+
+def generate_report_scholarship_students(request):
+    if request.method == 'POST':
+        scholarship_id = request.POST['scholarship_id']
+        scholarship = get_object_or_404(Scholarship, pk=scholarship_id)
+        candidates = Candidate.objects.filter(requested_scholarship=scholarship_id)
+
+        if candidates.count() == 0:
+            files = File.objects.all()
+            return render(request, main_dir + 'home_reports.html', {
+                'error_message': 'La beca seleccionada no tiene estudiantes becados.',
+                'files': files
+            })
+        else:
+            template = get_template('report_management/template_scholarship_students_report.html')
+            context = {'scholarship': scholarship, 'candidates': candidates}
+            html = template.render(context)
+            response = HttpResponse(content_type='application/pdf')
+            pisa_status = pisa.CreatePDF(html, dest=response)
+            if pisa_status.err:
+                return HttpResponse('We had some errors <pre>' + html + '</pre>')
+            return response
