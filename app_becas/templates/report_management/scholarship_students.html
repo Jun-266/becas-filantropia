@@ -12,19 +12,37 @@
         <hr>
         <section class="container-fluid text-center">
             {% if scholarships %}
-                <form method="POST" action="{% url 'generate_scholarship_students' %}">
-                    {% csrf_token %}
-                    <label for="f_scholarship_id">Elije la beca:</label><br>
-                    <select id="f_scholarship_id" name="scholarship_id" size="5" style="width: 350px">
-                        {% for scholarship in scholarships %}
-                            <option value="{{ scholarship.auto_id }}">
-                                {{ scholarship.name }}<span> | </span>{{ scholarship.summary }}
-                            </option>
-                        {% endfor %}
-                    </select>
-                    <br>
-                    <input class="btn btn-success" type="submit" value="Seleccionar">
-                </form>
+                <h2 class="text-center mb-3">Becas registradas</h2>
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Descripción</th>
+                        <th>Presupuesto</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for scholarship in scholarships %}
+                        <tr>
+                            <td>{{ scholarship.name }}</td>
+                            <td>{{ scholarship.description }}</td>
+                            <td>{{ scholarship.amount }}</td>
+                            <td>
+                                <form action="{% url 'generate_scholarship_students' %}" method="POST">
+                                    {% csrf_token %}
+                                    <label>
+                                        <input value="{{ scholarship.auto_id }}"
+                                               type="hidden"
+                                               name="scholarship_id"
+                                        >
+                                    </label>
+                                    <input class="btn btn-primary" type="submit" value="Generar PDF">
+                                </form>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
             {% else %}
                 <p class="text-center">No hay becas registradas.</p>
             {% endif %}

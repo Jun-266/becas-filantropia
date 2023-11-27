@@ -39,6 +39,7 @@ def delete_report(request, file_id):
         return redirect('reports')
 
 
+@login_required
 def render_list_of_candidates(request):
     scholarships = Scholarship.objects.all()
     return render(request, main_dir + 'list_of_candidates.html', {
@@ -46,6 +47,7 @@ def render_list_of_candidates(request):
     })
 
 
+@login_required
 def scholarship_students_report(request):
     if request.method == 'GET':
         scholarships = Scholarship.objects.all()
@@ -56,6 +58,7 @@ def scholarship_students_report(request):
         return redirect('reports')
 
 
+@login_required
 def generate_list_of_candidates(request):
     if request.method == 'POST':
         scholarship_id = request.POST['scholarship_id']
@@ -79,6 +82,7 @@ def generate_list_of_candidates(request):
             return response
 
 
+@login_required
 def generate_report_scholarship_students(request):
     if request.method == 'POST':
         scholarship_id = request.POST['scholarship_id']

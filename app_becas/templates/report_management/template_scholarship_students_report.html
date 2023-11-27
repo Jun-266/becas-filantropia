@@ -1,10 +1,85 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
+    <style>
+        h1 {
+            font-size: 30px;
+        }
+
+        h3 {
+            font-size: 15px;
+        }
+
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+            padding-top: 3px;
+        }
+
+        td {
+            padding-left: 3px;
+        }
+    </style>
     <title>Informe estudiantes becados</title>
 </head>
 <body>
-
+    <header>
+        <h1>Beca {{ scholarship.name }}</h1>
+        <h2>Informe de estudiantes becados.</h2>
+    </header>
+    <hr>
+    <main>
+        <section>
+            <h3>Detalles de la beca:</h3>
+            <p><b>Nombre de la beca: </b>...</p>
+            <p><b>Presupuesto de la beca: </b>...</p>
+            <p><b>Requisitos: </b>...</p>
+        </section>
+        <hr>
+        <section>
+            <h3>Compromisos y expectativas:</h3>
+            <p><b>Compromisos asociados: </b>...</p>
+            <p><b>Expectativas: </b>...</p>
+        </section>
+        <hr>
+        <section>
+            <h3>Fechas de la beca:</h3>
+            <p><b>Inicio de la beca: </b>...</p>
+            <p><b>Finalización de la beca: </b>...</p>
+        </section>
+        <hr>
+        <section>
+            <h3>Estado actual de la beca:</h3>
+            <p><b>Estado actual: </b>...</p>
+        </section>
+        <hr>
+        <section>
+            <h3>Estudiantes becados:</h3>
+            <p><b>Total estudiantes becados: </b>0</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Código</th>
+                        <th>Nombre</th>
+                        <th>Carrera</th>
+                        <th>Promedio ponderado</th>
+                        <th>Correo institucional</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for candidate in candidates %}
+                        <tr>
+                            <td>{{ candidate.student_code }}</td>
+                            <td>{{ candidate.full_name }}</td>
+                            <td>{{ candidate.email }}</td>
+                            <td>{{ candidate.grade_point_average }}</td>
+                            <td>{{ candidate.application_date }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </section>
+    </main>
 </body>
 </html>

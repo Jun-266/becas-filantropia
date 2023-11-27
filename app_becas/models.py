@@ -53,8 +53,8 @@ class Scholarship(models.Model):
     #post_img = models.ImageField(upload_to='images/')
     #is_active = models.BooleanField()
     
-    def __str__(self):
-        return self.name
+    # def __str__(self):
+    # return self.name
 
 
 class ConditionEnum(models.Model):
