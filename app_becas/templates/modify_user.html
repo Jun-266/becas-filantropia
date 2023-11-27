@@ -2,54 +2,55 @@
 
 {% block content %}
     <div class="container p-5 my-3 border">
-        <div class="row">
-            <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4">
-                <a href="/manage_user" class="btn btn-primary btn-sm">Volver</a>
-                
+        <a href="/manage_user" class="btn btn-primary btn-sm">Volver</a>
+
+        <div class="row d-flex align-items-center text-center text-xl">
+            <h1 class="card-title mx-3 mb-4">
+                {{user.rol}} {{":"}} {{user.name}} {{user.lastname}}
+            </h1>
+        </div>
+
+        <div class="row d-flex align-items-center justify-content-center text-center text-xl">
+            <div class="col-sm-12 col-md-6 col-lg-8 col-xl-8">
                 <div class="card mt-3">
-                    <h1 class="card-title mx-3 mt-2">Modificar usuario</h1>
+                    <h1 class="card-title mx-3 mt-4">Modificar</h1>
                     <div class="card-body">
                         <form method="POST">
                             {% csrf_token %}
-                            <div class="form-group">
-                                <input type="text" id="auto_Id" style="margin-bottom: 10px;" value="{{user.auto_id|default:'Auto ID'|safe}}" name="auto_Id" class="form-control" placeholder="Auto ID" readonly
-                                    maxlength="50" required>
+
+                            <div class="form-group text-center">
+                                <input type="text" id="auto_Id" style="margin-bottom: 10px;" class="form-control text-center" value="{{user.auto_id|default:'Auto ID'|safe}}" name="auto_Id" placeholder="Auto ID" readonly maxlength="50" required>
                             </div>
 
-                            <div class="form-group">
-                                <input type="text" id="user_id" style="margin-bottom: 10px;" value="{{user.user_id|safe}}" name="user_id" class="form-control" placeholder="Numero de documento" readonly
-                                    maxlength="50" required>
+                            <div class="form-group text-center">
+                                <input type="text" id="user_id" style="margin-bottom: 10px;" class="form-control text-center" value="{{user.user_id|safe}}" name="user_id" placeholder="Numero de documento" readonly maxlength="50" required>
                             </div>
 
-                            <div class="form-group">
-                                <input type="text" id="name" style="margin-bottom: 10px;" value="{{user.name|safe}}" name="name" class="form-control" placeholder="Nombre"
-                                    maxlength="50" required>
+                            <div class="form-group text-center">
+                                <input type="text" id="name" style="margin-bottom: 10px;" class="form-control text-center" value="{{user.name|safe}}" name="name" placeholder="Nombre" maxlength="50" required>
                             </div>
 
-                            <div class="form-group">
-                                <input type="text" id="lastname" style="margin-bottom: 10px;" value="{{user.lastname|safe}}" name="lastname" class="form-control" placeholder="Apellido"
-                                    maxlength="50" required>
+                            <div class="form-group text-center">
+                                <input type="text" id="lastname" style="margin-bottom: 10px;" class="form-control text-center" value="{{user.lastname|safe}}" name="lastname" placeholder="Apellido" maxlength="50" required>
                             </div>
 
-                            <div class="form-group">
-                                <input type="text" id="email" style="margin-bottom: 10px;" value="{{user.email|safe}}" name="email" class="form-control" placeholder="Correo electrónico"
-                                    maxlength="50" required>
+                            <div class="form-group text-center">
+                                <input type="text" id="email" style="margin-bottom: 10px;" class="form-control text-center" value="{{user.email|safe}}" name="email" placeholder="Correo electrónico" maxlength="50" required>
                             </div>
 
-                            <div class="form-group">
-                                <input type="text" id="phone" style="margin-bottom: 10px;" value="{{user.phone|safe}}" name="phone" class="form-control" placeholder="Teléfono"
-                                    maxlength="50" required>
+                            <div class="form-group text-center">
+                                <input type="text" id="phone" style="margin-bottom: 10px;" class="form-control text-center" value="{{user.phone|safe}}" name="phone" placeholder="Teléfono" maxlength="50" required>
                             </div>
 
-                            <div class="form-group">
-                                <select name="rol" style="margin-bottom: 10px;" class="form-control col-md-6" style="margin-bottom: 10px;">
-                                    <option value="Director filantropía" {% if user.rol == 'Director filantropía' %}selected{% endif %}>Apoyo Financiero</option>
-                                    <option value="Filantropía" {% if user.rol == 'Filantropía' %}selected{% endif %}>Filantropia</option>
-                                    <option value="Apoyo financiero" {% if user.rol == 'Apoyo financiero' %}selected{% endif %}>Director Filantropia</option>
+                            <div class="form-group text-center" style="margin-bottom: 10px;">
+                                <select name="rol" class="form-control text-center" style="margin-bottom: 10px;">
+                                    <option value="Director filantropía" {% if user.rol == 'Director filantropía' %}selected{% endif %}>Director Filantropía</option>
+                                    <option value="Filantropía" {% if user.rol == 'Filantropía' %}selected{% endif %}>Filantropía</option>
+                                    <option value="Apoyo financiero" {% if user.rol == 'Apoyo financiero' %}selected{% endif %}>Apoyo Financiero</option>
                                 </select>
-                            </div>                            
+                            </div>
 
-                            <div class="form-group">
+                            <div class="form-group text-center">
                                 <button type="submit" class="btn btn-success btn-block text-white">Guardar</button>
                             </div>
                         </form>

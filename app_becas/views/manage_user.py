@@ -7,7 +7,7 @@ from app_becas.models import MyUser
 from django.db.models import Q
 
 @method_decorator(login_required, name='dispatch')
-class ManageUser(View):
+class Manage_user(View):
 
     def get(self, request):
         

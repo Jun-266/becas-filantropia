@@ -1,27 +1,34 @@
 {% extends 'layouts/base.html' %}
+
 {% block content %}
+    <div class="container py-4">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"> 
+                    <a href="/home/">Inicio</a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page"> Donantes </li>
+            </ol>
+        </nav>
+    </div>
 
+    <div class="container p-5 my-3 border">
+        <a href="/manage_donor/" class="btn btn-primary btn-sm">Volver</a>
 
-    <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item"> 
-                <a href="/home/"> Inicio</a>
-            </li>
-            <li class="breadcrumb-item active" aria-current="page"> Donantes </li>
-        </ol>
-    </nav>
+        <div class="row d-flex align-items-center text-center text-xl">
+            <h1 class="card-title mx-3 mb-4">
+                Donante: {{donor.enterprise_name}}
+            </h1>
+        </div>
 
+        <div class="row">
+            <div class="col-sm-12 col-md-6 col-lg-3 col-xl-3">
+                <div class="card">
+                    <h1 class="card-title mx-3 mt-4">
+                        Modificar donante
+                    </h1>
+                    <div class="card-body">
 
-<div class="container p-5 my-3 border">
-    <div class="row">
-        <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4">
-            <a href="/manage_donor" class="btn btn-primary btn-sm">Volver</a>
-            
-            <div class="card mt-3">
-                <h1 class="card-title mx-3 mt-2">
-                    Gestionar donante
-                </h1>
-                <div class="card-body">
                         <form method="POST">
                             {% csrf_token %}
                             <div class="form-group">
@@ -60,90 +67,81 @@
                             <div class="form-group">
                                 <button type="submit" class="btn btn-success btn-block text-white" style="margin-top: 10px;">Guardar</button>
                             </div>
-                            
-                            <div class="input-group mt-3 mb-2">
-                                <input type="text" class="form-control" id="donor_scholarship" name="donor_scholarship" placeholder='ID Beca'>
-                                <button type="submit" name="action" value="asociar_beca" class="btn btn-primary">Asociar Beca</button>
-                              </div>
-                              
-                            <div class="input-group mt-1 mb-3">
-                                <input type="text" class="form-control" id="donor_contact" name="donor_contact" placeholder='ID Contacto'>
-                                <button type="submit" name="action" value="asociar_contacto" class="btn btn-primary">Asociar Contacto</button>
-                            </div>
-                                     
                         </form>
                     </div>
                 </div>
             </div>
-            <div class="col-sm-12 col-md-6 col-lg-4 col-xl-5 mt-5 table-responsive">
+            
+            <div class="card card-md-6 col-lg-4 col-xl-4 table-responsive">
                 <div style="display: flex; align-items: center;">
-                    <h1 style="margin: 0;">Becas Activas</h1>
-                    <div class="contenedor" style="margin-left: 10px;">
-                        <a href="/ruta-de-tu-pagina">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
-                                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3z"/>
-                            </svg>
+
+                    <div class="mt-4">                       
+                        <h1 style="margin: 0;">Contactos </h1>
+                    </div>
+
+                    <div class="contenedor mt-4" style="margin-left: 10px;">
+                        <a href="manage_contact" style="text-decoration: none; color: inherit;">
+                            <div style="width: 40px; height: 40px; background-color: rgb(0, 123, 255); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="white" class="bi bi-gear" viewBox="0 0 16 16">
+                                    <path d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492zM5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0z"/>
+                                    <path d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52l-.094-.319zm-2.633.283c.246-.835 1.428-.835 1.674 0l.094.319a1.873 1.873 0 0 0 2.693 1.115l.291-.16c.764-.415 1.6.42 1.184 1.185l-.159.292a1.873 1.873 0 0 0 1.116 2.692l.318.094c.835.246.835 1.428 0 1.674l-.319.094a1.873 1.873 0 0 0-1.115 2.693l.16.291c.415.764-.42 1.6-1.185 1.184l-.291-.159a1.873 1.873 0 0 0-2.693 1.116l-.094.318c-.246.835-1.428.835-1.674 0l-.094-.319a1.873 1.873 0 0 0-2.692-1.115l-.292.16c-.764.415-1.6-.42-1.184-1.185l.159-.291A1.873 1.873 0 0 0 1.945 8.93l-.319-.094c-.835-.246-.835-1.428 0-1.674l.319-.094A1.873 1.873 0 0 0 3.06 4.377l-.16-.292c-.415-.764.42-1.6 1.185-1.184l.292.159a1.873 1.873 0 0 0 2.692-1.115l.094-.319z"/>
+                                </svg>
+                            </div>
                         </a>
                     </div>
                 </div>
-                
                 <table class="table table-striped">
                     <thead>
                         <tr>
-                            <th>ID Beca</th>
                             <th>Nombre</th>
-                            <th>Opciones</th>
+                            <th>Identificación</th>
+                        </tr>
+                    </thead>
+                    {% for donor_contact in donor.contacts.all %}
+                        <tr>
+                            <td>{{ donor_contact.name }} {{ donor_contact.lastname }}</td>
+                            <td>{{ donor_contact.identification }}</td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </div>
+
+            <div class="card card-md-6 col-lg-4 col-xl-4 table-responsive" style="margin-left: 10px;">
+                <div style="display: flex; align-items: center;">
+
+                    <div class="mt-4">                       
+                        <h1 style="margin: 0;">Becas</h1>
+                    </div>
+                    <div class="contenedor mt-4" style="margin-left: 10px;">
+                        <a href="manage_scholarship">
+                            <div style="width: 40px; height: 40px; background-color: rgb(0, 123, 255); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="white" class="bi bi-gear" viewBox="0 0 16 16">
+                                    <path d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492zM5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0z"/>
+                                    <path d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52l-.094-.319zm-2.633.283c.246-.835 1.428-.835 1.674 0l.094.319a1.873 1.873 0 0 0 2.693 1.115l.291-.16c.764-.415 1.6.42 1.184 1.185l-.159.292a1.873 1.873 0 0 0 1.116 2.692l.318.094c.835.246.835 1.428 0 1.674l-.319.094a1.873 1.873 0 0 0-1.115 2.693l.16.291c.415.764-.42 1.6-1.185 1.184l-.291-.159a1.873 1.873 0 0 0-2.693 1.116l-.094.318c-.246.835-1.428.835-1.674 0l-.094-.319a1.873 1.873 0 0 0-2.692-1.115l-.292.16c-.764.415-1.6-.42-1.184-1.185l.159-.291A1.873 1.873 0 0 0 1.945 8.93l-.319-.094c-.835-.246-.835-1.428 0-1.674l.319-.094A1.873 1.873 0 0 0 3.06 4.377l-.16-.292c-.415-.764.42-1.6 1.185-1.184l.292.159a1.873 1.873 0 0 0 2.692-1.115l.094-.319z"/>
+                                </svg>
+                            </div>
+                        </a>
+                    </div>
+
+                </div>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
                         </tr>
                     </thead>
                     {% for donor_scholarship in donor.scholarships.all %}
-                    <tr>
-                        <td>{{ donor_scholarship.auto_id }}</td>
-                        <td>{{ donor_scholarship.name }}</td>
-                        <td>
-                            <a href="donor_scholarship/{{donor_scholarship.auto_id}}" id="delete-donor-scholarship" class="btn btn-primary btn-sm">Borrar</a>
-                        </td>  
-                    </tr>
-                    {% endfor %}
-                
-                    </tbody>
-                </table>
-            </div>
-            <div class="col-sm-12 col-md-6 col-lg-3 col-xl-3 mt-5 table-responsive">
-                <div style="display: flex; align-items: center;">
-                    <h1 style="margin: 0;">Contactos </h1>
-                    
-                    <div class="contenedor" style="margin-left: 10px;">
-                        <a href="manage_contact">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" class="bi bi-person-plus-fill" viewBox="0 0 16 16">
-                                <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
-                                <path fill-rule="evenodd" d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5"/>
-                            </svg>
-                        </a>
-                    </div>
-                    
-                </div>
-                                     
-                    
-                <table class="table table-striped">
-                    <thead>
                         <tr>
-                            <th>ID Contacto</th>
-                            <th>Opciones</th>
+                            <td>{{ donor_scholarship.name }}</td>
                         </tr>
-                    </thead>
-
-                    {% for donor_contact in donor.contacts.all %}
-                    <tr>
-                        <td>{{ donor_contact.auto_id }}</td>
-                        <td>
-                           <a href="donor_contact/{{donor_contact.auto_id}}" id="delete-donor-contact" class="btn btn-primary btn-sm">Borrar</a>
-                        </td>  
-                    </tr>
                     {% endfor %}
-
-                    </tbody>
                 </table>
             </div>
+
+
+
+
         </div>
     </div>
 {% endblock %}
+

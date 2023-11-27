@@ -38,11 +38,3 @@ class Modify_donor(View):
         donor.scholarships.add(scholarship)
         donor.save()
         return redirect(request.META.get('HTTP_REFERER', '/'))
-
-    def asociar_contacto(self, request, auto_id):
-        donor = Donor.objects.get(auto_id=auto_id)
-        contact_id = request.POST['donor_contact']
-        contact = Contact.objects.get(auto_id=contact_id)
-        donor.contacts.add(contact)
-        donor.save()
-        return redirect(request.META.get('HTTP_REFERER', '/'))

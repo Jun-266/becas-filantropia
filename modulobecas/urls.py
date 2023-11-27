@@ -11,9 +11,10 @@ from app_becas.views.calendar import Calendar
 from app_becas.views.calendar_add import Calendar_add
 from app_becas.views.calendar_show_info import Calendar_show_info
 from app_becas.views.manage_student import Manage_student
-from app_becas.views.manageuser import ManageUser
+from app_becas.views.manage_user import Manage_user
 from app_becas.views.manage_donor import Manage_donor
 from app_becas.views.manage_contact import Manage_contact
+from app_becas.views.manage_scholarship import Manage_scholarship
 from app_becas.views.scholarship import Scholarship
 from app_becas.views.add_scholarship import Add_scholarship
 from app_becas.views.add_type_to_scholarship import AddTypeToScholarship
@@ -27,12 +28,19 @@ from app_becas.views.search_scholarship import SearchScholarship
 from app_becas.views.delete_donor import Delete_donor
 from app_becas.views.modify_donor import Modify_donor
 from app_becas.views.delete_contact import Delete_contact
+from app_becas.views.delete_scholarship import DeleteScholarship
 from app_becas.views.modify_contact import Modify_contact
 from app_becas.views.delete_student import Delete_student
 from app_becas.views.modify_student import Modify_student
 from app_becas.views.add_major import Add_major
 from app_becas.views.delete_donor_contact import Delete_donor_contact
 from app_becas.views.delete_donor_scholarship import Delete_donor_scholarship
+from app_becas.views.link_scholarship import Link_scholarship
+from app_becas.views.link_student2scholarship import Link_student2scholarship
+from app_becas.views.linking_student2scholarship import Linking_student2scholarship
+from app_becas.views.choose_user import ChooseUser
+from app_becas.views.add_scholarship2donor import Add_scholarship2donor
+from app_becas.views.delete_scholarshipapplication import Delete_scholarshipapplication
 
 
 urlpatterns = [
@@ -69,7 +77,10 @@ urlpatterns = [
     path('list_of_candidates/generate/', hr.generate_list_of_candidates, name='g_loc'),
 
     #User
-    path('manage_user/', ManageUser.as_view(), name='manage_user'),
+
+    path('choose_user/', ChooseUser.as_view(), name='manage_user'),
+
+    path('manage_user/', Manage_user.as_view(), name='manage_user'),
     path('manage_student/', Manage_student.as_view(), name='manage_student'),
     path('manage_user/delete_user/<str:auto_id>/', Delete_user.as_view(), name='delete_user'),
     path('manage_contact/', Manage_contact.as_view(), name='manage_contact'),
@@ -77,8 +88,21 @@ urlpatterns = [
     path('manage_donor/', Manage_donor.as_view(), name='manage_donor'),
     path('manage_donor/delete_donor/<str:auto_id>/', Delete_donor.as_view(), name='delete_donor'),
     path('manage_donor/modify_donor/<str:auto_id>/', Modify_donor.as_view(), name='modify_donor'),
-    path('manage_contact/delete_contact/<str:auto_id>/', Delete_contact.as_view(), name='delete_contact'),
-    path('manage_contact/modify_contact/<str:auto_id>/', Modify_contact.as_view(), name='modify_contact'),
+    
+    
+    path('manage_donor/modify_donor/<str:auto_id>/manage_scholarship/', Manage_scholarship.as_view(), name='manage_scholarship'),
+    path('manage_donor/modify_donor/<str:auto_id_donor>/manage_scholarship/delete_scholarship/<str:auto_id_scholarship>', DeleteScholarship.as_view(), name='delete_scholarship'),
+    path('manage_donor/modify_donor/<str:auto_id_donor>/manage_scholarship/link_scholarship/', Link_scholarship.as_view(), name='link_scholarship'),
+    path('manage_donor/modify_donor/<str:auto_id_donor>/manage_scholarship/link_scholarship/add_scholarship2donor/<str:auto_id_scholarship>', Add_scholarship2donor.as_view(), name='add_scholarship2donor'),
+    path('manage_donor/modify_donor/<str:auto_id>/manage_contact/', Manage_contact.as_view(), name='manage_contact'),
+    path('manage_donor/modify_donor/<str:auto_id>/manage_contact/delete_contact/<str:contact_auto_id>', Delete_contact.as_view(), name='delete_contact'),
+    path('manage_donor/modify_donor/<str:auto_id>/manage_contact/modify_contact/<str:contact_auto_id>', Modify_contact.as_view(), name='modify_contact'),
+    path('manage_donor/modify_donor/<str:auto_id>/delete_contact/<str:contact_auto_id>', Delete_contact.as_view(), name='delete_contact'),
+
+    path('manage_student/modify_student/<str:auto_id_student>/link_student2scholarship/', Link_student2scholarship.as_view(), name='link_student2scholarship'),
+    path('manage_student/modify_student/<str:auto_id_student>/link_student2scholarship/linking_student2scholarship/<str:auto_id_scholarship>', Linking_student2scholarship.as_view(), name='linking_student2scholarship'),
+    path('manage_student/modify_student/<str:auto_id_student>/delete_scholarshipapplication/<str:auto_id_scholarshipapplication>', Delete_scholarshipapplication.as_view(), name='delete_scholarshipapplication'),
+
     path('manage_student/delete_student/<str:auto_id>/', Delete_student.as_view(), name='delete_student'),
     path('manage_student/modify_student/<str:auto_id>/', Modify_student.as_view(), name='modify_student'),
     path('manage_student/add_major/', Add_major.as_view(), name='add_major'),

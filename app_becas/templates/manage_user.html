@@ -15,10 +15,10 @@
 <div class="container p-5 my-3 border">
     <div class="row">
         <div class="col-sm-12 col-md-6 col-lg-3 col-xl-3 table-responsive">
-            <a href="/home" class="btn btn-primary btn-sm">Volver</a>
+            <a href="/choose_user" class="btn btn-primary btn-sm">Volver</a>
             
             <div class="card mt-3">
-                <h1 class="card-title mx-3 mt-2">Agregar usuario</h1>
+                <h1 class="card-title mx-3 mt-4">Agregar usuario</h1>
                 <div class="card-body">
                     <form action="/manage_user/" method="POST">
                         {% csrf_token %}
@@ -90,14 +90,13 @@
                                 <h5 class="card-title">{{user.name}} {{user.lastname}}</h5>
                             </div>
                             <div class="card-body">
-                                <p class="card-text"><b>ID:</b> {{ user.auto_id }}</p>
                                 <p class="card-text"><b>Correo:</b> {{ user.email }}</p>
                                 <p class="card-text"><b>Teléfono:</b> {{ user.phone }}</p>
                                 <p class="card-text"><b>Rol:</b> {{ user.rol }}</p>
                             </div>
                             <div class="card-footer">
                                 <a href="modify_user/{{user.auto_id}}" class="btn btn-primary btn-sm">Modificar</a>
-                                <a href="delete_user/{{user.auto_id}}" id="delete-user" class="btn btn-primary btn-sm">Borrar</a>
+                                <a href="delete_user/{{user.auto_id}}" id="delete-user" class="btn btn-danger btn-sm">Borrar</a>
                             </div>
                         </div>
                     </div>

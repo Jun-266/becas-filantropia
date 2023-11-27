@@ -6,106 +6,100 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"> 
-            <a href="/home/"> Inicio</a> </li>
-            <li class="breadcrumb-item active" aria-current="page"> Contactos </li>
+            <a href="/home/">Inicio</a> </li>
+            <li class="breadcrumb-item active" aria-current="page">Contactos</li>
         </ol>
     </nav>
 
-    <div class="container p-5 my-3 border">
-        <div class="row">
-            <div class="col-sm-12 col-md-6 col-lg-3 col-xl-3">
-                <a href="/home" class="btn btn-primary btn-sm">Volver</a>
-                
-                <div class="card mt-3">
-                    <h1 class="card-title mx-3 mt-2">Agregar contacto</h1>
-                    <div class="card-body">
-                        <form action="/manage_contact/" method="POST">
+<div class="container p-5 my-3 border">
+    <div class="row">
+        <div class="col-sm-12 col-md-6 col-lg-3 col-xl-3">
+            <a href="/manage_donor/modify_donor/{{ donor.auto_id }}/" class="btn btn-primary btn-sm">Volver</a>
 
-                            {% csrf_token %}
-                            <div class="form-group">
-                                <input type="text" id="identification" name="identification" value="{{donor.identification|safe}}" style="margin-bottom: 10px;" class="form-control" placeholder="Identificación"
-                                    maxlength="50" required>
-                            </div>
-
-                            <div class="form-group">
-                                <input type="text" id="name" name="name" value="{{donor.name|safe}}" style="margin-bottom: 10px;" class="form-control" placeholder="Nombre"
-                                    maxlength="50" required>
-                            </div>
-
-                            <div class="form-group">
-                                <input type="text" id="lastname" name="lastname" value="{{donor.lastname|safe}}" style="margin-bottom: 10px;" class="form-control" placeholder="Apellido"
-                                    maxlength="50" required>
-                            </div>
-
-                            <div class="form-group">
-                                <input type="text" id="email" name="email" value="{{donor.email|safe}}" style="margin-bottom: 10px;" class="form-control" placeholder="Correo electrónico"
-                                    maxlength="50" required>
-                            </div>
-
-                            <div class="form-group">
-                                <input type="text" id="phone" name="phone" value="{{donor.phone|safe}}" style="margin-bottom: 10px;" class="form-control" placeholder="Teléfono"
-                                    maxlength="50" required>
-                            </div>
-
-                            <div class="form-group">
-                                <select name="type" class="form-control col-md-6" style="margin-bottom: 10px;">
-                                    <option value="Dueño">Dueño</option>
-                                    <option value="Empleado">Empleado</option>
-                                </select>
-                            </div>
-
-                            <div class="form-group">
-                                <button type="submit" class="btn btn-success btn-block text-white">Guardar</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-sm-12 col-md-6 col-lg-9 col-xl-9 table-responsive">
-                <h1>Contactos</h1>
-
-                {% if search_term %}
-                    <p>Resultados de la búsqueda para: "{{ search_term }}"</p>
-                {% endif %}
-
-                <div class="row mb-3">
-                    <div class="col-md-6">
-                        <form action="{% url 'manage_contact' %}" method="GET" class="d-flex">
-                            <input type="text" name="search" class="form-control" placeholder="Buscar contacto">
-                            <div class="input-group-append">
-                                <button type="submit" class="btn btn-primary border">Buscar</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-    
-                <div class="row" id="card-view">
-                    {% for contact in contacts   %}
-                        <div class="col-md-4 mb-3">
-                            <div class="card">
-                                <div class="card-header">
-                                    <h5 class="card-title">{{contact.name}} {{contact.lastname}}</h5>
-                                </div>
-                                <div class="card-body">
-                                    <p class="card-text"><b>ID:</b> {{ contact.auto_id }}</p>
-                                    <p class="card-text"><b>identificación:</b> {{ contact.identification }}</p>
-                                    <p class="card-text"><b>Correo:</b> {{ contact.email }}</p>
-                                    <p class="card-text"><b>Teléfono:</b> {{ contact.phone }}</p>
-                                    <p class="card-text"><b>Tipo:</b> {{ contact.type }}</p>
-                                </div>
-                                <div class="card-footer">
-                                    <a href= "modify_contact/{{contact.auto_id}}" class ="btn btn-primary btn-sm">Gestionar</a>
-                                    <a href="delete_contact/{{contact.auto_id}}" id="delete-contact" class="btn btn-primary btn-sm";">Borrar</a>
-                                </div>
-                            </div>
+            <div class="card mt-3">
+                <h1 class="card-title mx-3 mt-4">Agregar contacto</h1>
+                <div class="card-body">
+                    <form method="POST">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <input type="text" id="identification" name="identification" style="margin-bottom: 10px;" class="form-control" placeholder="Identificación" maxlength="50" required>
                         </div>
-                        {% if forloop.counter|divisibleby:3 %}
-                            </div><div class="row" id="card-view">
-                        {% endif %}
-                    {% endfor %}
+
+                        <div class="form-group">
+                            <input type="text" id="name" name="name" style="margin-bottom: 10px;" class="form-control" placeholder="Nombre" maxlength="50" required>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="text" id="lastname" name="lastname" style="margin-bottom: 10px;" class="form-control" placeholder="Apellido" maxlength="50" required>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="text" id="email" name="email" style="margin-bottom: 10px;" class="form-control" placeholder="Correo electrónico" maxlength="50" required>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="text" id="phone" name="phone" style="margin-bottom: 10px;" class="form-control" placeholder="Teléfono" maxlength="50" required>
+                        </div>
+
+                        <div class="form-group">
+                            <select name="type" class="form-control col-md-6" style="margin-bottom: 10px;">
+                                <option value="Dueño">Dueño</option>
+                                <option value="Empleado">Empleado</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-success btn-block text-white">Guardar</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
+
+        <div class="col-sm-12 col-md-6 col-lg-9 col-xl-9 table-responsive">
+            <h1>Contactos {{donor.enterprise_name}}</h1>
+
+            {% if search_term %}
+                <p>Resultados de la búsqueda para: "{{ search_term }}"</p>
+            {% endif %}
+
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <form method="GET" class="d-flex">
+                        <input type="text" name="search" class="form-control" placeholder="Buscar contacto">
+                        <div class="input-group-append">
+                            <button type="submit" class="btn btn-primary border">Buscar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="row" id="card-view">
+                {% for contact in contacts %}
+                    <div class="col-md-4 mb-3">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5 class="card-title">{{ contact.name }} {{ contact.lastname }}</h5>
+                            </div>
+                            <div class="card-body">
+                                <p class="card-text"><b>Identificación:</b> {{ contact.identification }}</p>
+                                <p class="card-text"><b>Correo:</b> {{ contact.email }}</p>
+                                <p class="card-text"><b>Teléfono:</b> {{ contact.phone }}</p>
+                                <p class="card-text"><b>Tipo:</b> {{ contact.type }}</p>
+                            </div>
+                            <div class="card-footer">
+                                <a href="modify_contact/{{ contact.auto_id }}" class="btn btn-primary btn-sm">Modificar</a>
+                                <a href="delete_contact/{{ contact.auto_id }}" id="delete-contact" class="btn btn-danger btn-sm">Borrar</a>
+                            </div>
+                        </div>
+                    </div>
+                    {% if forloop.counter|divisibleby:3 %}
+                        </div><div class="row" id="card-view">
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
     </div>
+</div>
+
 {% endblock %}

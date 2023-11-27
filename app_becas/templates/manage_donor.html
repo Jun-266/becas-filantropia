@@ -15,10 +15,10 @@
 <div class="container p-5 my-3 border">
     <div class="row">
         <div class="col-sm-12 col-md-6 col-lg-3 col-xl-3">
-            <a href="/home" class="btn btn-primary btn-sm">Volver</a>
+            <a href="/choose_user" class="btn btn-primary btn-sm">Volver</a>
             
             <div class="card mt-3">
-                <h1 class="card-title mx-3 mt-2">
+                <h1 class="card-title mx-3 mt-4">
                     Agregar donante
                 </h1>
                 <div class="card-body">
@@ -59,7 +59,6 @@
                             <h5 class="card-title">{{ donor.enterprise_name }}</h5>
                         </div>
                         <div class="card-body">
-                            <p class="card-text"><b>ID:</b> {{ donor.auto_id }}</p>
                             <p class="card-text"><b>Correo:</b> {{ donor.email }}</p>
                             <p class="card-text"><b>Teléfono:</b> {{ donor.phone }}</p>
                             <p class="card-text"><b>Ciudad:</b> {{ donor.city }}</p>
@@ -68,7 +67,7 @@
                         </div>
                         <div class="card-footer">
                             <a href="modify_donor/{{ donor.auto_id }}" class="btn btn-primary btn-sm">Gestionar</a>
-                            <a href="delete_donor/{{ donor.auto_id }}" id="delete-donor" class="btn btn-primary btn-sm">Borrar</a>
+                            <a href="delete_donor/{{ donor.auto_id }}" id="delete-donor" class="btn btn-danger btn-sm">Borrar</a>
                         </div>
                     </div>
                 </div>

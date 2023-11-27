@@ -3,12 +3,19 @@
 {% block content %}
 
     <div class="container p-5 my-3 border">
+        <a href="/manage_student" class="btn btn-primary btn-sm">Volver</a>
+
+        <div class="row d-flex align-items-center text-center text-xl">
+            <h1 class="card-title mx-3 mb-4">
+              Estudiante: {{student.name}} {{student.lastname}} {{" - "}} {{student.code}}
+            </h1>
+        </div>
+        
         <div class="row">
             <div class="col-md-4">
-                    <a href="/manage_student" class="btn btn-primary btn-sm">Volver</a>
-                    
-                    <div class="card mt-3">
-                        <h1 class="card-title mx-3 mt-4">Gestionar estudiante</h1>
+                                          
+                    <div class="card">
+                        <h1 class="card-title mx-3 mt-4">Modificar estudiante</h1>
                         <div class="card-body">
                             <form method="POST">
                                 {% csrf_token %}
@@ -56,9 +63,11 @@
                                         maxlength="50" required>
                                 </div>
 
-                                <a>Seleccionar carrera:</a>                         
+                                <div style = "line-height: 0.5">
+                                    <a style="font-size: 16px;">Seleccionar o <a href="/manage_student/add_major/" style="font-size: 16px; line-height: 0.8;">agregar nueva carrera:</a></a>
+                                </div>                       
 
-                                <div class="form-group mt-1">
+                                <div class="form-group mt-3">
                                     <select name="major_select" style="margin-bottom: 10px;" class="form-control col-md-6" style="margin-bottom: 10px;" id="major_select">
                                         {% for major in majors %}
                                             <option value="{{ major.auto_id }}" {% if major.auto_id == student.major_id %}selected{% endif %}>{{ major.name }}</option>
@@ -66,19 +75,10 @@
                                         <option value="0">Ninguno</option>
                                     </select>                                    
                                 </div>
-                                <a href="/manage_student/add_major/" class="btn btn-link center mb-1">
-                                    ¿No se encuentra tu carrera? Regístrala aquí
-                                </a>
 
                                 <div class="form-group">
                                     <button type="submit" class="btn btn-success btn-block text-white" style="margin-top: 10px;">Guardar</button>
                                 </div>
-                                
-                                <div class="input-group mt-3 mb-3">
-                                    <input type="text" class="form-control" id="student_scholarship" name="student_scholarship" placeholder='ID Beca'>
-                                    <button type="submit" name="action" value="asociar_beca" class="btn btn-primary">Asociar Beca</button>
-                                </div>
-                                
                                                 
                             </form>
                         </div>
@@ -86,49 +86,61 @@
                 </div>
 
                 <div class="col-md-8">
-                    <div class="card mt-5">
+                    <div class="card">
                         <form method="POST" action="">
-                            <h1 class="card-title mx-3 mt-4 table-responsive">Aplicaciones a becas</h1>
-                                <table class="table table-striped">
-                                    <thead>
-                                        <tr>
-                                            <th>ID Aplicación</th>
-                                            <th>ID Beca</th>
-                                            <th>ID Estudiante</th>
-                                            <th>Estado</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
 
-                                            {% csrf_token %}
-                                            {% for application in student.scholarshipapplication_set.all %}
-                                                <tr>
-                                                    <td>{{ application.auto_id }}</td>
-                                                    <td>{{ application.scholarship.auto_id }}</td>
-                                                    <td>{{ application.student.auto_id }}</td>
-                                                    <td>
-                                                        <select name="status_{{ application.auto_id }}">
-                                                            <option value="Aprobada" {% if application.application_status.type == 'Aprobada' %}selected{% endif %}>Aprobada</option>
-                                                            <option value="Denegada" {% if application.application_status.type == 'Denegada' %}selected{% endif %}>Denegada</option>
-                                                            <option value="Concluida" {% if application.application_status.type == 'Concluida' %}selected{% endif %}>Concluida</option>
-                                                            <option value="En proceso" {% if application.application_status.type == 'En proceso' %}selected{% endif %}>En proceso</option>
-                                                        </select>
-                                                    </td>
-                                                    <td>
-                                                        <div class="form-group">
-                                                            <input type="hidden" name="application_id" value="{{ application.auto_id }}">
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                            
-                                            {% endfor %}
-                                        </tbody>
-                                </table>
-                                <td>
-                                    <div class="form-group text-center mb-4">
-                                        <button type="submit" name="action" value="update_status" class="btn btn-sm btn-success text-white" style="margin-top: 10px;">Actualizar</button>
-                                    </div>
-                                </td>
+                            <div class="row d-flex align-items-center justify-content-center text-center text-xl mt-4">
+                                <h1 class="card-title">
+                                    <a class="card-title mx-1 mt-4" style="text-decoration: none;">Aplicaciones a becas</a>
+                                    <a href="link_student2scholarship">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-plus-square-fill" viewBox="0 0 16 16">
+                                            <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zm6.5 4.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3a.5.5 0 0 1 1 0"/>
+                                        </svg>
+                                    </a>
+                                </h1>
+
+                                <div class="row d-flex align-items-center justify-content-center text-center text-xl">
+                                    <table class="table mt-3 table-responsive">
+                                        <thead>
+                                            <tr>
+                                                <th>Beca</th>
+                                                <th>Donante</th>
+                                                <th>Estado</th>
+                                                <th>Opciones</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+    
+                                                {% csrf_token %}
+                                                {% for application in student.scholarshipapplication_set.all %}
+                                                    <tr>
+                                                        <td>{{ application.scholarship.name}}</td>
+                                                        <td>{{ application.scholarship.name}}</td>
+                                                        <td>
+                                                            <select name="status_{{ application.auto_id }}">
+                                                                <option value="Aprobada" {% if application.application_status.type == 'Aprobada' %}selected{% endif %}>Aprobada</option>
+                                                                <option value="Denegada" {% if application.application_status.type == 'Denegada' %}selected{% endif %}>Denegada</option>
+                                                                <option value="Concluida" {% if application.application_status.type == 'Concluida' %}selected{% endif %}>Concluida</option>
+                                                                <option value="En proceso" {% if application.application_status.type == 'En proceso' %}selected{% endif %}>En proceso</option>
+                                                            </select>
+                                                        </td>
+    
+                                                        <td>
+                                                            <div class="form-group">
+                                                                <a href= "delete_scholarshipapplication/{{application.auto_id}}" class ="btn btn-danger btn-sm">Desvincular</a>
+                                                            </div>
+                                                        </td>  
+                                                    </tr>
+                                                {% endfor %}
+                                            </tbody>
+                                    </table>
+                                    <td>
+                                        <div class="form-group text-center mb-4">
+                                            <button type="submit" name="action" value="update_status" class="btn btn-sm btn-success text-white" style="margin-top: 10px;">Actualizar</button>
+                                        </div>
+                                    </td>
+                                </div>
+                            </div>
                         </form>
                     </div>
                 </div>
