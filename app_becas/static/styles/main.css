@@ -7,6 +7,7 @@
     font-family: 'Poppins', sans-serif;
 }
 
+
 :root{
 
     --body-color: #f3f8fc;
@@ -215,3 +216,4 @@ body.dark .sidebar header .toggle{
     grid-template-columns: 1fr 1fr; 
     gap: 20px; 
 }
+

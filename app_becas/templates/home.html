@@ -2,64 +2,216 @@
 
 {% block content %}
 
-<div class="container py-4">
-    <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item active" aria-current="page"> Inicio</li>
-        </ol>
-    </nav>
-</div>
+<link href="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.css" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/timelinejs/3.4.1/css/timeline.min.css">
 
-    <div class="container p-5">
-        <h1>Página principal</h1>
-    </div>
+
+    <h1>Página principal</h1>
 
     <div class="container--cols">
-        <div >
-            <h1>Becas recientes</h1>
-            {% if scholarships%}
-            <div class="card-group">
-                {% for scholarship in scholarships %}
-                    
-                        <div class="card mb-3" style="margin: 0 3px 0 3px; max-width: 18rem; min-width: 17rem;">
-                            <div class="card-header text-white"  style="background-color: rgb(56, 74, 190); min-height: 7rem" >{{ scholarship.name }}</div>
+        
+        <div id='calendar'>
+            
+        </div>
+
+        
+        <div class="container">
+            <h2>Archivos/informes cargados</h2>
+            <div class="row">
+                {% for file in files %}
+                <div class="col-md-6">
+                    <form action="{% url 'delete_report' file.id %}" method="POST">
+                        {% csrf_token %}
+                        <div class="card m-3 shadow">
                             <div class="card-body">
-                                <p> <span class="fw-bold">Resumen: </span><span style="font-weight: 100; color: darkolivegreen;">{{scholarship.summary}}</span> </p>
-                                <p> <span class="fw-bold">Público: </span><span style="font-weight: 100; color: darkolivegreen;">{{scholarship.target_audiences}}</span> </p>
-                                <p> <span class="fw-bold">Beneficios: </span><span style="font-weight: 100; color: darkolivegreen;">{{scholarship.benefits}}</span> </p>
-                                <br>
-                                
-                                <a href="/show_scholarship_info?auto_id={{scholarship.auto_id}}" class="btn btn-secondary">
-                                    Abrir
-                                </a> 
+                                <a href="{{ file.my_file.url }}" target="_blank" data-file-url="{{ file.my_file.url }}">
+                                    {{ file.my_file }}
+                                </a>
+                                <div class="pdf-container">
+                                    <div class="pdf-preview"></div>
+                                </div>
                             </div>
                         </div>
-                    
+                    </form>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        
+    </div>
+
+    <div>
+        <h1>hola</h1>
+    </div>
+
+    <style>
+        #calendar {
+        max-width: 900px;
+        margin: 50px auto;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+    }
+    .container {
+        padding-top: 20px;
+        margin-bottom: 30px;
+    }
+
+    h2 {
+        margin-bottom: 20px;
+        font-size: 24px;
+        color: #333;
+    }
+
+    .card {
+        border: none;
+        transition: box-shadow 0.3s ease;
+        height: 200px;
+        width: 200px;
+        font-size: 18px;
+    }
+
+    .card:hover {
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .card-body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        height: 100%;
+    }
+
+    .card-link {
+     /* Asegúrate de establecer un ancho máximo */
+}
+
+
+    .card {
+        height: 100%; /* Ajusta la altura de la tarjeta */
+    }
+
+    .card-body {
+        display: block;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        max-width: 100%;
+        justify-content: center;
+    }
+
+    .pdf-container {
+        max-width: 100%; /* Ajusta el ancho del contenedor PDF */
+        overflow: hidden;
+    }
+
+
+    </style>
+
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/timelinejs/3.4.1/js/timeline.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.js"></script>
+    <script src="timeline.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const calendarEl = document.getElementById('calendar');
+            const calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'dayGridMonth', 
+                headerToolbar: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'dayGridMonth,timeGridDay' 
+                },
+                events: [
+                    {
+                        title: 'Beca 1',
+                        start: '2023-11-01', 
+                    },
+                    {
+                        title: 'Beca 2',
+                        start: '2023-11-05', 
+                    },
+                    {
+                        title: 'Beca 3',
+                        start: '2023-11-12', 
+                    },
+                    {
+                        title: 'Beca 4',
+                        start: '2023-11-20', 
+                    },
+                    {
+                        title: 'Beca 5',
+                        start: '2023-11-25', 
+                    },
+                ],
+                eventDidMount: function(info) {
+                    info.el.style.backgroundColor = '#007bff'; 
+                }
+            });
+            calendar.render();
+        });
+        
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var cards = document.querySelectorAll('.card');
+    
+            cards.forEach(function(card) {
+                var link = card.querySelector('a[data-file-url$=".pdf"]');
+                if (link) {
+                    var url = link.getAttribute('data-file-url');
+                    var pdfContainer = card.querySelector('.pdf-preview');
+    
+                    pdfjsLib.getDocument(url).promise.then(function(pdf) {
+                        pdf.getPage(1).then(function(page) {
+                            var canvas = document.createElement('canvas');
+                            var ctx = canvas.getContext('2d');
+                            var viewport = page.getViewport({ scale: 0.2 });
+    
+                            canvas.height = viewport.height;
+                            canvas.width = viewport.width;
+    
+                            var renderContext = {
+                                canvasContext: ctx,
+                                viewport: viewport
+                            };
+    
+                            page.render(renderContext);
+    
+                            pdfContainer.appendChild(canvas);
+                        });
+                    });
+                }
+            });
+        });
+    </script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.6.347/pdf.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+      
+{% endblock %}
+
+        <!--
+                    <div>
+            <h2>Becas recientes</h2>
+            {% if scholarships %}
+            <div class="card-group">
+                {% for scholarship in scholarships %}
+                <div class="card mb-3" style="margin: 0 3px 0 3px; max-width: 18rem; min-width: 17rem;">
+                    <div class="card-header text-white" style="background-color: rgb(56, 74, 190); min-height: 7rem">{{ scholarship.name }}</div>
+                    <div class="card-body">
+                        <p><span class="fw-bold">Resumen: </span><span style="font-weight: 100; color: darkolivegreen;">{{ scholarship.summary }}</span></p>
+                        <p><span class="fw-bold">Público: </span><span style="font-weight: 100; color: darkolivegreen;">{{ scholarship.target_audiences }}</span></p>
+                        <p><span class="fw-bold">Beneficios: </span><span style="font-weight: 100; color: darkolivegreen;">{{ scholarship.benefits }}</span></p>
+                        <br>
+                        <a href="/show_scholarship_info?auto_id={{ scholarship.auto_id }}" class="btn btn-secondary">Abrir</a>
+                    </div>
+                </div>
                 {% endfor %}
             </div>
             {% endif %}
         </div>
-        <div style="max-width: 19rem;">
-            <h2>Tus Archivos Recientes</h2>
-            {% for file in files %}
-                <form action="{% url 'delete_report' file.id %}" method="POST">
-                    {% csrf_token %}
-                    <div class="card m-3 shadow">
-                        <div class="card-body">
-                            <a href="{{ file.my_file.url }}" target="_blank">
-                                {{ file.my_file }}
-                            </a>
-                            <input type="submit"
-                                   value="delete"
-                                   class="material-icons btn btn-danger float-end"
-                                   id="delete-report"
-                            >
-                        </div>
-                    </div>
-                </form>
-            {% endfor %}
-        </div>
-      </div>
-
-      
-{% endblock %}
+        -->

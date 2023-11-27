@@ -7,9 +7,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const modeSwitch = document.querySelector(".toggle-switch");
     const modeText = document.querySelector(".mode-text");
 
-    
-
-    console.log(body, sidebar, toggle, searchBtn, modeSwitch, modeText);
 
     toggle.addEventListener("click", ()=> {
         sidebar.classList.toggle("close");
