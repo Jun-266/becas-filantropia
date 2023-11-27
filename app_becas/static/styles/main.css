@@ -7,6 +7,7 @@
     font-family: 'Poppins', sans-serif;
 }
 
+
 :root{
 
     --body-color: #f3f8fc;
@@ -220,7 +221,6 @@ body.dark .sidebar header .toggle{
 /* Scholarship jd*/
 .scholarship-info {
     font-size: 15pt;
-}
 
 .card-text {
     font-size: 20px;
