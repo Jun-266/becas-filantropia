@@ -25,8 +25,8 @@
                     {% for scholarship in scholarships %}
                         <tr>
                             <td>{{ scholarship.name }}</td>
-                            <td>{{ scholarship.description }}</td>
-                            <td>{{ scholarship.amount }}</td>
+                            <td>{{ scholarship.summary }}</td>
+                            <td>{{ scholarship.budget }}</td>
                             <td>
                                 <form action="{% url 'generate_scholarship_finantial' %}" method="POST">
                                     {% csrf_token %}

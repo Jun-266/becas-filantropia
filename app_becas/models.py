@@ -46,8 +46,11 @@ class Scholarship(models.Model):
     target_audiences = models.CharField(max_length=400,
                                         default="La Beca está dirigida a _, de estratos _, del departamento/municipio de _, con alto desempeño, potencial académico y limitaciones económicas manifiestas, interesados en cursar los programas de pregrado de _. Esta beca no aplica para _ ")
     benefits = models.CharField(max_length=450)
-
-    #conditions = Another table
+    status = models.CharField(max_length=250, default='Activa')
+    budget = models.DecimalField(max_digits=1000, decimal_places=2, default=0)
+    start_date = models.DateField(null=True)
+    finish_date = models.DateField(null=True)
+    # conditions = Another table
     recomendations = models.CharField(max_length=2200)
     additional_info = models.CharField(max_length=2500)
     #post_img = models.ImageField(upload_to='images/')
@@ -71,7 +74,6 @@ class Egress(models.Model):
 class SelectionCriteria(models.Model):
     criterion = models.CharField(max_length=255)
     scholarship_id = models.ForeignKey(Scholarship, on_delete=models.CASCADE)
-
 
 
 class ConditionEnum(models.Model):

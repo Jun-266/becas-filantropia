@@ -80,8 +80,16 @@ def generate_list_of_candidates(request):
                 'files': files
             })
         else:
+            sch_criteria = SelectionCriteria.objects.filter(scholarship_id=scholarship_id)
+            number_of_candidates = candidates.count()
+
             template = get_template('report_management/template_report_list_of_candidates.html')
-            context = {'scholarship': scholarship, 'candidates': candidates}
+            context = {
+                'scholarship': scholarship,
+                'candidates': candidates,
+                'criteria': sch_criteria,
+                'number_of_candidates': number_of_candidates
+            }
             html = template.render(context)
             response = HttpResponse(content_type='application/pdf')
             pisa_status = pisa.CreatePDF(html, dest=response)

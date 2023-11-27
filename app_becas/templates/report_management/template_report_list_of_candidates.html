@@ -26,37 +26,47 @@
 <body>
 <header>
     <h1>Beca {{ scholarship.name }}</h1>
-    <h2>Informe de estudiantes becados.</h2>
+    <h2>Informe de aspirantes a la beca.</h2>
 </header>
 <hr>
     <main>
         <section>
             <h3>Detalles de la beca:</h3>
-            <p><b>Nombre de la beca: </b>...</p>
-            <p><b>Presupuesto de la beca: </b>...</p>
-            <p><b>Requisitos: </b>...</p>
+            <p><b>Nombre de la beca: </b>{{ scholarship.name }}</p>
+            <p><b>Descripción de la beca: </b>{{ scholarship.summary }}</p>
+            <p><b>Presupuesto de la beca: </b>{{ scholarship.budget }}</p>
+            <p><b>Requisitos:</b></p>
+            {% if criteria %}
+                <ul>
+                    {% for criterion in criteria %}
+                        <li>{{ criterion.criterion }}</li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>No hay criterios registrados.</p>
+            {% endif %}
         </section>
         <hr>
         <section>
             <h3>Compromisos y expectativas:</h3>
-            <p><b>Compromisos asociados: </b>...</p>
-            <p><b>Expectativas: </b>...</p>
+            <p><b>Compromisos asociados: </b>{{ scholarship.recomendations }}</p>
+            <p><b>Beneficios: </b>{{ scholarship.benefits }}</p>
         </section>
         <hr>
         <section>
             <h3>Fechas de la beca:</h3>
-            <p><b>Inicio de la beca: </b>...</p>
-            <p><b>Finalización de la beca: </b>...</p>
+            <p><b>Inicio de la beca: </b>{{ scholarship.start_date }}</p>
+            <p><b>Finalización de la beca: </b>{{ scholarship.finish_date }}</p>
         </section>
         <hr>
         <section>
             <h3>Estado actual de la beca:</h3>
-            <p><b>Estado actual: </b>...</p>
+            <p><b>Estado actual: </b>{{ scholarship.status }}</p>
         </section>
         <hr>
         <section>
-            <h3>Estudiantes becados:</h3>
-            <p><b>Total estudiantes becados: </b>0</p>
+            <h3>Aspirantes inscritos:</h3>
+            <p><b>Total estudiantes becados: </b>{{ number_of_candidates }}</p>
             <table>
                 <thead>
                 <tr>

@@ -18,15 +18,13 @@
                         <tr>
                             <th>Nombre</th>
                             <th>Descripción</th>
-                            <th>Presupuesto</th>
                         </tr>
                     </thead>
                     <tbody>
                         {% for scholarship in scholarships %}
                         	<tr>
                                 <td>{{ scholarship.name }}</td>
-                                <td>{{ scholarship.description }}</td>
-                                <td>{{ scholarship.amount }}</td>
+                                <td>{{ scholarship.summary }}</td>
                                 <td>
                                     <form action="{% url 'g_loc' %}" method="POST">
                                         {% csrf_token %}
