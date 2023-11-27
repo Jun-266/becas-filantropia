@@ -68,6 +68,9 @@ urlpatterns = [
     path('report_scholarship_students/', rp.scholarship_students_report, name='rv_scholarship_students'),
     path('report_scholarship_students/generate/', rp.generate_report_scholarship_students,
          name='generate_scholarship_students'),
+    path('reports/scholarship_finantial/', rp.scholarship_finantial_report, name='rv_scholarship_finantial'),
+    path('reports/scholarship_finantial/generate/', rp.generate_scholarship_finantial_report,
+         name='generate_scholarship_finantial'),
 
     # User
     path('manage_user/', ManageUser.as_view(), name='manage_user'),

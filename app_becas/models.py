@@ -57,6 +57,23 @@ class Scholarship(models.Model):
     # return self.name
 
 
+class Donation(models.Model):
+    amount = models.DecimalField(max_digits=100, decimal_places=2)
+    scholarship_id = models.ForeignKey(Scholarship, on_delete=models.CASCADE)
+
+
+class Egress(models.Model):
+    amount = models.DecimalField(max_digits=100, decimal_places=2)
+    reason = models.CharField(max_length=250)
+    scholarship_id = models.ForeignKey(Scholarship, on_delete=models.CASCADE)
+
+
+class SelectionCriteria(models.Model):
+    criterion = models.CharField(max_length=255)
+    scholarship_id = models.ForeignKey(Scholarship, on_delete=models.CASCADE)
+
+
+
 class ConditionEnum(models.Model):
     name = models.CharField(max_length=35, editable=False, primary_key=True)
     condition_type = models.CharField(max_length=40)
@@ -70,12 +87,9 @@ class ConditionEnum(models.Model):
 
 class ConditionParams(models.Model):
     auto_id = models.CharField(max_length=50, default=uuid.uuid4, editable=False, primary_key=True)
-    scholarship_id = models.CharField(max_length=50, default=uuid.uuid4, editable=False)
     condition_name = models.CharField(max_length=50, editable=False)
     value = models.CharField(max_length=30, editable=False)
-
-    def __str__(self):
-        return self.name
+    scholarship_id = models.CharField(max_length=50, default=uuid.uuid4, editable=False)
 
 
 class Calendar(models.Model):
@@ -113,6 +127,7 @@ class Contact(models.Model):
 
 class Donor(models.Model):
     auto_id = models.CharField(max_length=50, default=uuid.uuid4, editable=False, primary_key=True)
+    description = models.CharField(max_length=250, blank=True)
     scholarships = models.ManyToManyField(Scholarship, related_name='donors')
     contact = models.ForeignKey(Contact, on_delete=models.CASCADE, null=True, blank=True, related_name='donors')
     enterprise_name = models.CharField(max_length=20)

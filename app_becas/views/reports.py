@@ -3,7 +3,7 @@ from django.template.loader import get_template
 from xhtml2pdf import pisa
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
-from app_becas.models import File, Scholarship, Candidate
+from app_becas.models import File, Scholarship, Candidate, Donation, Egress, SelectionCriteria, Donor
 from app_becas.forms.upload_file_form import UploadFileForm
 
 main_dir = '../templates/report_management/'
@@ -59,6 +59,14 @@ def scholarship_students_report(request):
 
 
 @login_required
+def scholarship_finantial_report(request):
+    scholarships = Scholarship.objects.all()
+    return render(request, main_dir + 'scholarship_finantial.html', {
+        'scholarships': scholarships
+    })
+
+
+@login_required
 def generate_list_of_candidates(request):
     if request.method == 'POST':
         scholarship_id = request.POST['scholarship_id']
@@ -104,3 +112,30 @@ def generate_report_scholarship_students(request):
             if pisa_status.err:
                 return HttpResponse('We had some errors <pre>' + html + '</pre>')
             return response
+
+
+@login_required
+def generate_scholarship_finantial_report(request):
+    if request.method == 'POST':
+        scholarship_id = request.POST['scholarship_id']
+        scholarship = get_object_or_404(Scholarship, pk=scholarship_id)
+        donations = Donation.objects.filter(scholarship_id=scholarship_id)
+        egresses = Egress.objects.filter(scholarship_id=scholarship_id)
+        selection_criteria = SelectionCriteria.objects.filter(scholarship_id=scholarship_id)
+        donors = Donor.objects.filter(scholarships=scholarship_id)
+        number_of_students = Candidate.objects.count()
+
+        template = get_template('report_management/template_scholarship_finantial_report.html')
+        context = {'scholarship': scholarship,
+                   'donations': donations,
+                   'number_of_students': number_of_students,
+                   'egresses': egresses,
+                   'criteria': selection_criteria,
+                   'donors': donors
+                   }
+        html = template.render(context)
+        response = HttpResponse(content_type='application/pdf')
+        pisa_status = pisa.CreatePDF(html, dest=response)
+        if pisa_status.err:
+            return HttpResponse('We had some errors <pre>' + html + '</pre>')
+        return response

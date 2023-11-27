@@ -24,26 +24,47 @@
     </style>
 </head>
 <body>
-    <header>
-        <h1>Beca: {{ scholarship.name }}</h1>
-    </header>
+<header>
+    <h1>Beca {{ scholarship.name }}</h1>
+    <h2>Informe de estudiantes becados.</h2>
+</header>
+<hr>
     <main>
         <section>
-            <p><b>Descripción:</b> {{ scholarship.description }}</p>
-            <p><b>Presupuesto:</b> {{ scholarship.amount }}</p>
-            <p><b>Tipo de beca:</b> {{ scholarship.type_scholarship }}</p>
+            <h3>Detalles de la beca:</h3>
+            <p><b>Nombre de la beca: </b>...</p>
+            <p><b>Presupuesto de la beca: </b>...</p>
+            <p><b>Requisitos: </b>...</p>
         </section>
         <hr>
         <section>
-            <h2>Aspirantes inscritos</h2>
+            <h3>Compromisos y expectativas:</h3>
+            <p><b>Compromisos asociados: </b>...</p>
+            <p><b>Expectativas: </b>...</p>
+        </section>
+        <hr>
+        <section>
+            <h3>Fechas de la beca:</h3>
+            <p><b>Inicio de la beca: </b>...</p>
+            <p><b>Finalización de la beca: </b>...</p>
+        </section>
+        <hr>
+        <section>
+            <h3>Estado actual de la beca:</h3>
+            <p><b>Estado actual: </b>...</p>
+        </section>
+        <hr>
+        <section>
+            <h3>Estudiantes becados:</h3>
+            <p><b>Total estudiantes becados: </b>0</p>
             <table>
                 <thead>
                 <tr>
-                    <th>Código de estudiante</th>
-                    <th>Nombre completo</th>
-                    <th>Correo institucional</th>
+                    <th>Código</th>
+                    <th>Nombre</th>
+                    <th>Carrera</th>
                     <th>Promedio ponderado</th>
-                    <th>Fecha de solicitud para la beca</th>
+                    <th>Correo institucional</th>
                 </tr>
                 </thead>
                 <tbody>

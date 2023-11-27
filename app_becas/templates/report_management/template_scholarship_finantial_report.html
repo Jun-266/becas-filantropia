@@ -3,8 +3,89 @@
 <head>
     <meta charset="UTF-8">
     <title>Informe financiero</title>
+    <style>
+        body {
+            font-family: 'Lucida Grande', Arial, sans-serif;
+        }
+
+        h1 {
+            font-size: 30px;
+        }
+
+        h3 {
+            font-size: 15px;
+        }
+
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+            padding-top: 3px;
+        }
+
+        td {
+            padding-left: 3px;
+        }
+    </style>
 </head>
 <body>
-
+<header>
+    <h1>Informe financiero de la beca {{ scholarship.name }}</h1>
+</header>
+<hr>
+<main>
+    <section>
+        <h3>Introducción y antecedentes:</h3>
+        <p>{{ scholarship.summary }}</p>
+    </section>
+    <hr>
+    <section>
+        <h3>Información del donante:</h3>
+        {% if donors %}
+            {% for donor in donors %}
+                <p>{{ donor.description }}</p>
+            {% endfor %}
+        {% else %}
+            <p>No hay donantes registrados</p>
+        {% endif %}
+    </section>
+    <hr>
+    <section>
+        <h3>Detalles financieros:</h3>
+        <p><b>Donaciones e ingresos:</b></p>
+        <ul>
+            {% for i in donations %}
+                <li>${{ i.amount }} COP</li>
+            {% endfor %}
+        </ul>
+        <p><b>Egresos:</b></p>
+        <ul>
+            {% if egresses %}
+                {% for egress in egresses %}
+                    <li>{{ egress.reason }}: ${{ egress.amount }} COP</li>
+                {% endfor %}
+            {% else %}
+                <li>Total egresos: 0</li>
+            {% endif %}
+        </ul>
+    </section>
+    <hr>
+    <section>
+        <h3>Criterios de selección:</h3>
+        {% if criteria %}
+            <ul>
+            {% for criterio in criteria %}
+                <li>{{ criterio.criterion }}</li>
+            {% endfor %}
+            </ul>
+        {% else %}
+            <p>No hay criterios registrados</p>
+        {% endif %}
+    </section>
+    <hr>
+    <section>
+        <h3>Beneficiarios:</h3>
+        <p>Total de estudiantes becados: {{ number_of_students }}</p>
+    </section>
+</main>
 </body>
 </html>
