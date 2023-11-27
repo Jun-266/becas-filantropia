@@ -13,32 +13,58 @@
         </ol>
     </nav>
 </div>
-    <h1 class="text-center mt-5">Registrar una beca</h1>
+    <h1 class="container p-4">Registrar una beca</h1>
     
-    <form id="formID_add_scholarship" class="container p-5" method="post">
+    <form class="container p-5" method="post" action="{% url 'add_scholarship' %}">
         {% csrf_token %}
 
-        {{form.as_p}}
-        
-        <a href='add_type_scholarship' class="btn btn-primary">Agregar Tipo de Beca</a>
-        <a href='delete_type_scholarship' class="btn btn-primary">Eliminar Tipo de Beca</a>
+        <div class="form-section">
+            {{ form.name.label_tag }}
+            {{ form.name }}
+            {{ form.donor_choice.label_tag }}
+            {{ form.donor_choice }}
+            <a href='/manage_donor' class="btn btn-secondary"><span style="font-size: medium;">Registrar Nuevo Donante</span></a>
+        </div>
 
+        <div class="form-section">
+            <br>
+            {{ form.calendar_choice.label_tag }}
+            {{ form.calendar_choice }}
+            <a href='/calendar_add' class="btn btn-secondary"><span style="font-size: medium;">Registrar Cronograma</span></a>
+        </div>
+        
+        <div class="form-section">
+            <br>    
+            {{ form.post_img.label_tag }}
+            {{ form.post_img }}
+        </div>
+
+        <div class="form-section">
+            <br>
+            {{ form.summary.label_tag }}
+            {{ form.summary }}
+            {{ form.target_audiences.label_tag }}
+            {{ form.target_audiences }}
+            {{ form.benefits.label_tag }}
+            {{ form.benefits }}
+            {{ form.recomendations.label_tag }}
+            {{ form.recomendations }}
+            {{ form.condition_params.label_tag }}
+            {{ form.condition_params }}
+            {{ form.renovation_info.label_tag }}
+            {{ form.renovation_info }}
+            {{ form.additional_info.label_tag }}
+            {{ form.additional_info }}
+            
+        </div>
+        
         <br><br>
-        <button type="submit">
-            Guardar
+        <button type="submit" class="btn btn-primary">
+            Guardar 
         </button>
     </form>
 {% endblock %}
-
-<!--
-    <label for="nombre_beca">Icon*:</label> 
-        <input type="name" name="nombre_beca"/>
-        <br>
-
-        {% for choice in choices %}
-            <input type="checkbox" value="{{choice}}" name="my_field"/>{{choice}}
-            <input type="text" name="my_field"/>
-            <br>
-        {% endfor %}
-
--->
+  <!--
+      <a href='add_type_scholarship' class="btn btn-secondary">Agregar Beneficio</a>
+      <a href='delete_type_scholarship' class="btn btn-danger">Eliminar Beneficio</a>
+  -->  

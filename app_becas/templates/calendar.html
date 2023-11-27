@@ -10,23 +10,23 @@
         </ol>
     </nav>
 </div>
-    <div class="container p-5">
-        <h1>Página Calendar</h1>
+<div class="container p-3">
+        
+        <h1>Cronogramas</h1>
+        
         <a href="{% url 'calendar_add' %}" class="btn btn-primary">
             Registrar Cronogramas
         </a>
     </div>
 
-    <div class="container pl-5">
-        <h3>Buscar una beca</h3>
+    <div class="container p-3">
+        <h3>Buscar por beca</h3>
         <form id="form_search_calendar" method = "POST">
             {% csrf_token %}
-            
-            <label for="search">icon.png *</label> 
             {% if default_value_msg == "not-searched" %}
-                <input type="text" id="to_search" name="to_search" placeholder="nombre de la beca" >
+                <input type="text" id="to_search" name="to_search" placeholder="Nombre de la beca" >
             {% else %}
-                <input type="text" id="to_search" name="to_search" placeholder="nombre de la beca" value={{default_value_msg}}>
+                <input type="text" id="to_search" name="to_search" placeholder="Nombre de la beca" value={{default_value_msg}}>
             {% endif%}
             <button class="btn btn-secondary">
                 Buscar
@@ -43,25 +43,37 @@
     </div>
     
     <div class="container pl-5">
-        <h2 > Cronogramas:</h2>
         <p>{{msg}}</p>
         
     </div>
     
 
-    <div class="card container p-5">
+    <div class="card container p-4">
         {% if calendar is defined %}
+        <h2>Resultados de la Búsqueda:</h2>
+        <br>
+        <div class="card-group">
             {% for calendar in calendars %}
-            <ul>
-                <li><a href="/calendar_show_info?auto_id={{calendar.auto_id}}" class="btn btn-primary">
-                    Asociado a beca # {{calendar.scholarship_id}}
-                    </a>
-                </li>
+            
+                    <div class="card mb-3" style="margin: 0 3px 0 3px; max-width: 25rem; min-width: 17rem;">
+                        <div class="card-header text-white"  style="background-color: rgb(56, 74, 190); min-height: 7rem" >Cronograma: {{calendar.scholarship_name}} </div>
+                        <div class="card-body">
+                            <p> <span class="fw-bold"><span style="font-size: large;">Inscripciones:</span> </span><span style="font-size: medium; font-weight: 100; color: darkolivegreen;">{{calendar.inscription_start_date}} - {{calendar.inscription_deadline}} </span> </p>
+                            <p> <span class="fw-bold"><span style="font-size: large;">Selcción:</span> </span><span style="font-size: medium; font-weight: 100; color: darkolivegreen;">{{calendar.selection_start_date}} - {{calendar.selection_deadline}} </span> </p>
+                            <p> <span class="fw-bold"><span style="font-size: large;">Entrevistas:</span> </span><span style="font-size: medium; font-weight: 100; color: darkolivegreen;">{{calendar.interview_start_date}} - {{calendar.interview_deadline}} </span> </p>
+                            <p> <span class="fw-bold"><span style="font-size: large;">Resultados:</span> </span><span style="font-size: medium; font-weight: 100; color: darkolivegreen;">{{calendar.publish_elected_start_date}} - {{calendar.publish_elected_deadline}} </span> </p>
+                        
+                            <a href="/calendar_show_info?auto_id={{calendar.auto_id}}" class="btn btn-secondary">
+                                Abrir</a>
+                        </div>
+                    </div>
                 
-            </ul>
-                
-    
+                    
             {% endfor %}
+        </div>
+
+        
+        <br>
         {% else %}
             <p>No existe ningún registro</p>
         {% endif %}

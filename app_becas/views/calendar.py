@@ -18,7 +18,7 @@ class Calendar(View):
     
     def post(self, request):
         
-        calendars = Calendar_obj.objects.filter(scholarship_id = request.POST['to_search']) 
+        calendars = Calendar_obj.objects.filter(scholarship_id__icontains = request.POST['to_search']) 
         
         if calendars: #Calendar not empty
             return render(request, 'calendar.html', {

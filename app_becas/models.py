@@ -19,7 +19,7 @@ class MyUser(models.Model):
         return f'{self.name} {self.lastname}'
 
 
-class TypeScholarship(models.Model):
+class TypeScholarship(models.Model): # Benefit type
     name = models.CharField(max_length=50, primary_key=True)
 
     def __str__(self):
@@ -31,7 +31,7 @@ class ScholarshipParams(models.Model):
     type_name = models.CharField(max_length=30, default=uuid.uuid4)
     scholarship_id = models.CharField(max_length=30, default=uuid.uuid4)
     units = models.DecimalField(max_digits=10, decimal_places=2, default=0)
-    units_type = models.CharField(max_length=20, default=1)
+    units_type = models.CharField(max_length=20, default=1) # Pesos($), Porcentaje(%), Objetos
 
     def __str__(self):
         return self.auto_id 
@@ -39,18 +39,17 @@ class ScholarshipParams(models.Model):
 
 class Scholarship(models.Model):
     auto_id = models.CharField(max_length=50, default=uuid.uuid4, editable=False, primary_key=True)
-    calendar_id = models.CharField(max_length=50, default=uuid.uuid4, editable=True)
-    #donor_id = models.CharField(max_length=50, default=uuid.uuid4, editable=True)
+    calendar_id = models.CharField(max_length=50, editable=False)
+    donor_id = models.CharField(max_length=50, editable=True)
     name = models.CharField(max_length=40)
     summary = models.CharField(max_length=250)
-    target_audiences = models.CharField(max_length=400,
-                                        default="La Beca está dirigida a _, de estratos _, del departamento/municipio de _, con alto desempeño, potencial académico y limitaciones económicas manifiestas, interesados en cursar los programas de pregrado de _. Esta beca no aplica para _ ")
-    benefits = models.CharField(max_length=450)
-
-    #conditions = Another table
+    target_audiences = models.CharField(max_length=400)
+    benefits = models.CharField(max_length=50) # Table ScholarshipParams
+    condition_params = models.CharField(max_length=50, editable=False) # Table
     recomendations = models.CharField(max_length=2200)
+    renovation_info = models.CharField(max_length=2000)
     additional_info = models.CharField(max_length=2500)
-    #post_img = models.ImageField(upload_to='images/')
+    post_img = models.ImageField(upload_to='images/')
     #is_active = models.BooleanField()
     
     def __str__(self):
@@ -70,15 +69,14 @@ class ConditionParams(models.Model):
     auto_id = models.CharField(max_length=50, default=uuid.uuid4, editable=False, primary_key=True)
     scholarship_id = models.CharField(max_length=50, default=uuid.uuid4, editable=False)
     condition_name = models.CharField(max_length=50, editable=False)
-    value = models.CharField(max_length=30, editable=False)
+    value = models.CharField(max_length=30, editable=True)
 
     def __str__(self):
-        return self.name
+        return str(self.condition_name+" - "+self.value)
     
 class Calendar(models.Model):
     auto_id = models.CharField(max_length=50, default=uuid.uuid4, primary_key=True)
-    convocation_type_id = models.CharField(max_length=2)
-    scholarship_id = models.CharField(max_length=20)
+    scholarship_name = models.CharField(max_length=30, editable=True)
     inscription_start_date = models.DateField()
     inscription_deadline = models.DateField()
     selection_start_date = models.DateField()
