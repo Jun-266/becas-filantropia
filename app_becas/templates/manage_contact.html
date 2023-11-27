@@ -58,7 +58,7 @@
         </div>
 
         <div class="col-sm-12 col-md-6 col-lg-9 col-xl-9 table-responsive">
-            <h1>Contactos</h1>
+            <h1>Contactos {{donor.enterprise_name}}</h1>
 
             {% if search_term %}
                 <p>Resultados de la búsqueda para: "{{ search_term }}"</p>
@@ -83,7 +83,6 @@
                                 <h5 class="card-title">{{ contact.name }} {{ contact.lastname }}</h5>
                             </div>
                             <div class="card-body">
-                                <p class="card-text"><b>ID:</b> {{ contact.auto_id }}</p>
                                 <p class="card-text"><b>Identificación:</b> {{ contact.identification }}</p>
                                 <p class="card-text"><b>Correo:</b> {{ contact.email }}</p>
                                 <p class="card-text"><b>Teléfono:</b> {{ contact.phone }}</p>

@@ -1,0 +1,64 @@
+{% extends 'layouts/base.html' %}
+
+{% block content %}
+    <div class="container p-5 my-3 border">
+        <a href="/manage_donor/modify_donor/{{ donor.auto_id }}/" class="btn btn-primary btn-sm">Volver</a>
+
+        <div class="row d-flex align-items-center justify-content-center text-center text-xl mt-4">
+            <h1 class="card-title">
+                <a> Becas {{ donor.enterprise_name }}</a>
+                <a href="link_scholarship">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="42" height="42" fill="gray" class="bi bi-plus-circle" viewBox="0 0 16 16">
+                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+                        <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"/>
+                    </svg>
+                </a>
+            </h1>
+        </div>
+
+        <div class="row d-flex align-items-center text-center text-xl">
+            {% if search_term %}
+                <p>Resultados de la búsqueda para: "{{ search_term }}"</p>
+            {% endif %}
+
+            <div class="row mb-3 justify-content-center">
+                <div class="col-md-7 mt-3">
+                    <form method="GET" class="d-flex justify-content-center">
+                        <input type="text" name="search" class="form-control" placeholder="Buscar beca">
+                        <div class="input-group-append">
+                            <button type="submit" class="btn btn-primary border">Buscar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="row d-flex">
+            <div class="card-body">
+                <div class="row" id="card-view">
+                    {% for scholarship in scholarships %}
+                        <div class="col-md-4 mb-3">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5 class="card-title">{{ scholarship.name }}</h5>
+                                </div>
+                                <div class="card-body">
+                                    <p class="card-text"><b>Resumen:</b> {{ scholarship.summary }}</p>
+                                    <p class="card-text"><b>Audiencia:</b> {{ scholarship.target_audiences }}</p>
+                                    <p class="card-text"><b>Beneficios:</b> {{ scholarship.benefits }}</p>
+                                </div>
+                                <div class="card-footer">
+                                    <a href="/show_scholarship_info/?auto_id={{ scholarship.auto_id }}" class="btn btn-primary btn-sm">Visitar</a>
+                                    <a href="delete_scholarship/{{ scholarship.auto_id }}" id="delete-scholarship" class="btn btn-primary btn-sm">Desvincular</a>
+                                </div>
+                            </div>
+                        </div>
+                        {% if forloop.counter|divisibleby:3 %}
+                            </div><div class="row" id="card-view">
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
