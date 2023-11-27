@@ -1,29 +1,33 @@
 from django import forms
-from django.db import models
 from app_becas.models import TypeScholarship 
 from app_becas.models import ConditionEnum 
 from app_becas.models import Scholarship 
 from django.db.utils import OperationalError, ProgrammingError
-from django.forms import ModelForm, Textarea
-
+from django.forms import ModelForm
 
 class ScholarshipFormModel(ModelForm):
     class Meta:
         model = Scholarship
-        fields = "__all__" 
-        name= forms.CharField(widget=forms.Textarea)
-        labels ={
-            'name':'Nombre',
-            'summary':'Resumen',
-            'target_audiences':'¿A quién está dirigida?',
-            'benefits':'Beneficios',
-            'recomendations':'Recomendaciones',
-            'additional_info':'Información Adicional',
+        fields = "__all__"
+        labels = {
+            'name': 'Nombre',
+            'summary': 'Resumen',
+            'target_audiences': '¿A quién está dirigida?',
+            'benefits': 'Beneficios',
+            'recomendations': 'Recomendaciones',
+            'additional_info': 'Información Adicional',
         }
 
-        widget = {
-            'summary': Textarea(attrs={"cols": 80, "rows": 50}),  
-        }   
+        widgets = {
+            'summary': forms.Textarea(attrs={'class': 'form-control mb-2 ', 'style': 'width:70%;',  'rows': 4}),
+            'target_audiences': forms.Textarea(attrs={'class': 'form-control mb-2 ', 'style': 'width:70%;',  'rows': 4}),
+            'benefits': forms.Textarea(attrs={'class': 'form-control mb-2 ', 'style': 'width:70%;'}),
+            'recomendations': forms.Textarea(attrs={'class': 'form-control mb-2', 'style': 'width:70%;'}),
+            'additional_info': forms.Textarea(attrs={'class': 'form-control mb-2', 'style': 'width:70%;'}),
+            
+            # Add other widgets for different fields if needed
+        }
+  
 
 
 # In pause
