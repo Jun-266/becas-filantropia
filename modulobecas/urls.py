@@ -11,7 +11,7 @@ from app_becas.views.calendar import Calendar
 from app_becas.views.calendar_add import Calendar_add
 from app_becas.views.calendar_show_info import Calendar_show_info
 from app_becas.views.manage_student import Manage_student
-from app_becas.views.manageuser import ManageUser
+from app_becas.views.manage_user import Manage_user
 from app_becas.views.manage_donor import Manage_donor
 from app_becas.views.manage_contact import Manage_contact
 from app_becas.views.manage_scholarship import Manage_scholarship
@@ -80,7 +80,7 @@ urlpatterns = [
 
     path('choose_user/', ChooseUser.as_view(), name='manage_user'),
 
-    path('manage_user/', ManageUser.as_view(), name='manage_user'),
+    path('manage_user/', Manage_user.as_view(), name='manage_user'),
     path('manage_student/', Manage_student.as_view(), name='manage_student'),
     path('manage_user/delete_user/<str:auto_id>/', Delete_user.as_view(), name='delete_user'),
     path('manage_contact/', Manage_contact.as_view(), name='manage_contact'),

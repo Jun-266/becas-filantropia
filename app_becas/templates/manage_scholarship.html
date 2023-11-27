@@ -5,12 +5,11 @@
         <a href="/manage_donor/modify_donor/{{ donor.auto_id }}/" class="btn btn-primary btn-sm">Volver</a>
 
         <div class="row d-flex align-items-center justify-content-center text-center text-xl mt-4">
-            <h1 class="card-title">
+            <h1 class="card-title ">
                 <a> Becas {{ donor.enterprise_name }}</a>
                 <a href="link_scholarship">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="42" height="42" fill="gray" class="bi bi-plus-circle" viewBox="0 0 16 16">
-                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
-                        <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"/>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-plus-square-fill" viewBox="0 0 16 16">
+                        <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zm6.5 4.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3a.5.5 0 0 1 1 0"/>
                     </svg>
                 </a>
             </h1>
@@ -48,8 +47,9 @@
                                     <p class="card-text"><b>Beneficios:</b> {{ scholarship.benefits }}</p>
                                 </div>
                                 <div class="card-footer">
-                                    <a href="/show_scholarship_info/?auto_id={{ scholarship.auto_id }}" class="btn btn-primary btn-sm">Visitar</a>
-                                    <a href="delete_scholarship/{{ scholarship.auto_id }}" id="delete-scholarship" class="btn btn-primary btn-sm">Desvincular</a>
+                                    <a href="/show_scholarship_info/?auto_id={{ scholarship.auto_id }}" class="btn btn-primary btn-sm">Detalles</a>
+                                    <a href="/update_scholarship/?auto_id={{ scholarship.auto_id }}" class="btn btn-primary btn-sm">Modificar</a>
+                                    <a href="delete_scholarship/{{ scholarship.auto_id }}" id="delete-scholarship" class="btn btn-danger btn-sm">Desvincular</a>
                                 </div>
                             </div>
                         </div>
