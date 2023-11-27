@@ -7,6 +7,7 @@ from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from django.db.models import Q
 
+
 @method_decorator(login_required, name='dispatch')
 class Manage_student(View):
 
@@ -77,5 +78,4 @@ class Manage_student(View):
             last_semester=request.POST['last_semester'],
             major_id=request.POST['major_select'],
         )
-
         return HttpResponseRedirect(request.path)

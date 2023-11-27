@@ -1,0 +1,49 @@
+{% extends 'layouts/base.html' %}
+
+{% block content %}
+    <a href="{% url 'reports' %}" class="btn btn-primary">Volver</a>
+    <header class="container">
+        <h1 class="text-center">Informe de estudiantes becados</h1>
+    </header>
+    <main class="container">
+        <p class="text-center">
+            Selecciona la beca para la cual deseas generar el informe.
+        </p>
+        <hr>
+        <section class="container-fluid text-center">
+            {% if scholarships %}
+                <h2 class="text-center mb-3">Becas registradas</h2>
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Descripción</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for scholarship in scholarships %}
+                        <tr>
+                            <td>{{ scholarship.name }}</td>
+                            <td>{{ scholarship.summary }}</td>
+                            <td>
+                                <form action="{% url 'generate_scholarship_students' %}" method="POST">
+                                    {% csrf_token %}
+                                    <label>
+                                        <input value="{{ scholarship.auto_id }}"
+                                               type="hidden"
+                                               name="scholarship_id"
+                                        >
+                                    </label>
+                                    <input class="btn btn-primary" type="submit" value="Generar PDF">
+                                </form>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                <p class="text-center">No hay becas registradas.</p>
+            {% endif %}
+        </section>
+    </main>
+{% endblock %}

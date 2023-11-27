@@ -1,40 +1,49 @@
 {% extends 'layouts/base.html' %}
 
 {% block content %}
+    <a href="{% url 'reports' %}" class="btn btn-primary">Volver</a>
     <header class="container mt-2">
         <h1 class="text-center">Informe de aspirantes</h1>
         <p class="text-center">
-            Selecciona la beca de tu interes para generar el informe de los aspirantes.
+            Selecciona la beca de tu interes para generar el informe.
         </p>
     </header>
     <hr>
     <main class="container mt-3">
         <section class="container">
-            <h2 class="text-center mb-3">Becas registradas</h2>
-            {% for scholarship in scholarships %}
-                <div class="card mb-3">
-                    <div class="card-header">
-                        <h4 class="text-center">{{ scholarship.name }}</h4>
-                    </div>
-                    <div class="card-body">
-                        <p><b>Descripción:</b> {{ scholarship.description }}</p>
-                        <p><b>Presupuesto:</b> ${{ scholarship.amount }} COP</p>
-                        <p><b>Tipo de beca:</b> {{ scholarship.type_scholarship }}</p>
-                    </div>
-                    <div class="card-footer">
-                        <form action="{% url 'g_loc' %}" method="POST">
-                            {% csrf_token %}
-                            <label>
-                                <input value="{{ scholarship.auto_id }}"
-                                       type="text"
-                                       name="scholarship_id"
-                                       hidden>
-                            </label>
-                            <input class="btn btn-primary" type="submit" value="Generar PDF">
-                        </form>
-                    </div>
-                </div>
-            {% endfor %}
+            {% if scholarships %}
+                <h2 class="text-center mb-3">Becas registradas</h2>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Descripción</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for scholarship in scholarships %}
+                        	<tr>
+                                <td>{{ scholarship.name }}</td>
+                                <td>{{ scholarship.summary }}</td>
+                                <td>
+                                    <form action="{% url 'g_loc' %}" method="POST">
+                                        {% csrf_token %}
+                                        <label>
+                                            <input value="{{ scholarship.auto_id }}"
+                                                   type="text"
+                                                   name="scholarship_id"
+                                                   hidden>
+                                        </label>
+                                        <input class="btn btn-primary" type="submit" value="Generar PDF">
+                                    </form>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                <p>No hay becas registradas.</p>
+            {% endif %}
         </section>
     </main>
 {% endblock %}

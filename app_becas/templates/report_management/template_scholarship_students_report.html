@@ -2,7 +2,6 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Informe de aspirantes</title>
     <style>
         h1 {
             font-size: 30px;
@@ -22,13 +21,14 @@
             padding-left: 3px;
         }
     </style>
+    <title>Informe estudiantes becados</title>
 </head>
 <body>
-<header>
-    <h1>Beca {{ scholarship.name }}</h1>
-    <h2>Informe de aspirantes a la beca.</h2>
-</header>
-<hr>
+    <header>
+        <h1>Beca {{ scholarship.name }}</h1>
+        <h2>Informe de estudiantes becados.</h2>
+    </header>
+    <hr>
     <main>
         <section>
             <h3>Detalles de la beca:</h3>
@@ -65,28 +65,28 @@
         </section>
         <hr>
         <section>
-            <h3>Aspirantes inscritos:</h3>
+            <h3>Estudiantes becados:</h3>
             <p><b>Total estudiantes becados: </b>{{ number_of_candidates }}</p>
             <table>
                 <thead>
-                <tr>
-                    <th>Código</th>
-                    <th>Nombre</th>
-                    <th>Carrera</th>
-                    <th>Promedio ponderado</th>
-                    <th>Correo institucional</th>
-                </tr>
+                    <tr>
+                        <th>Código</th>
+                        <th>Nombre</th>
+                        <th>Carrera</th>
+                        <th>Promedio ponderado</th>
+                        <th>Correo institucional</th>
+                    </tr>
                 </thead>
                 <tbody>
-                {% for candidate in candidates %}
-                    <tr>
-                        <td>{{ candidate.student_code }}</td>
-                        <td>{{ candidate.full_name }}</td>
-                        <td>{{ candidate.email }}</td>
-                        <td>{{ candidate.grade_point_average }}</td>
-                        <td>{{ candidate.application_date }}</td>
-                    </tr>
-                {% endfor %}
+                    {% for candidate in candidates %}
+                        <tr>
+                            <td>{{ candidate.student_code }}</td>
+                            <td>{{ candidate.full_name }}</td>
+                            <td>{{ candidate.email }}</td>
+                            <td>{{ candidate.grade_point_average }}</td>
+                            <td>{{ candidate.application_date }}</td>
+                        </tr>
+                    {% endfor %}
                 </tbody>
             </table>
         </section>

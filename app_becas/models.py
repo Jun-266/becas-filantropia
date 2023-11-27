@@ -40,21 +40,41 @@ class ScholarshipParams(models.Model):
 class Scholarship(models.Model):
     auto_id = models.CharField(max_length=50, default=uuid.uuid4, editable=False, primary_key=True)
     calendar_id = models.CharField(max_length=50, default=uuid.uuid4, editable=True)
-    #donor_id = models.CharField(max_length=50, default=uuid.uuid4, editable=True)
+    # donor_id = models.CharField(max_length=50, default=uuid.uuid4, editable=True)
     name = models.CharField(max_length=40)
     summary = models.CharField(max_length=250)
     target_audiences = models.CharField(max_length=400,
                                         default="La Beca está dirigida a _, de estratos _, del departamento/municipio de _, con alto desempeño, potencial académico y limitaciones económicas manifiestas, interesados en cursar los programas de pregrado de _. Esta beca no aplica para _ ")
     benefits = models.CharField(max_length=450)
-
-    #conditions = Another table
+    status = models.CharField(max_length=250, default='Activa')
+    budget = models.DecimalField(max_digits=1000, decimal_places=2, default=0)
+    start_date = models.DateField(null=True)
+    finish_date = models.DateField(null=True)
+    # conditions = Another table
     recomendations = models.CharField(max_length=2200)
     additional_info = models.CharField(max_length=2500)
     #post_img = models.ImageField(upload_to='images/')
     #is_active = models.BooleanField()
     
-    def __str__(self):
-        return self.name
+    # def __str__(self):
+    # return self.name
+
+
+class Donation(models.Model):
+    amount = models.DecimalField(max_digits=100, decimal_places=2)
+    scholarship_id = models.ForeignKey(Scholarship, on_delete=models.CASCADE)
+
+
+class Egress(models.Model):
+    amount = models.DecimalField(max_digits=100, decimal_places=2)
+    reason = models.CharField(max_length=250)
+    scholarship_id = models.ForeignKey(Scholarship, on_delete=models.CASCADE)
+
+
+class SelectionCriteria(models.Model):
+    criterion = models.CharField(max_length=255)
+    scholarship_id = models.ForeignKey(Scholarship, on_delete=models.CASCADE)
+
 
 class ConditionEnum(models.Model):
     name = models.CharField(max_length=35, editable=False, primary_key=True)
@@ -65,16 +85,15 @@ class ConditionEnum(models.Model):
      
     def __str__(self):
         return self.name
-    
+
+
 class ConditionParams(models.Model):
     auto_id = models.CharField(max_length=50, default=uuid.uuid4, editable=False, primary_key=True)
-    scholarship_id = models.CharField(max_length=50, default=uuid.uuid4, editable=False)
     condition_name = models.CharField(max_length=50, editable=False)
     value = models.CharField(max_length=30, editable=False)
+    scholarship_id = models.CharField(max_length=50, default=uuid.uuid4, editable=False)
 
-    def __str__(self):
-        return self.name
-    
+
 class Calendar(models.Model):
     auto_id = models.CharField(max_length=50, default=uuid.uuid4, primary_key=True)
     convocation_type_id = models.CharField(max_length=2)
@@ -110,6 +129,7 @@ class Contact(models.Model):
 
 class Donor(models.Model):
     auto_id = models.CharField(max_length=50, default=uuid.uuid4, editable=False, primary_key=True)
+    description = models.CharField(max_length=250, blank=True)
     scholarships = models.ManyToManyField(Scholarship, related_name='donors')
     contact = models.ForeignKey(Contact, on_delete=models.CASCADE, null=True, blank=True, related_name='donors')
     enterprise_name = models.CharField(max_length=20)
