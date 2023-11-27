@@ -14,9 +14,12 @@
     </nav>
   </div>
 
-    <div class="container p-5">
+    <div class="container p-5" style="text-align: justify;">
         <h1 class="fw-bold" style="color: black;">Beca: {{scholarship.name}} </h1><br>
         <div class="scholarship-info">
+            <!-- IMG here
+            -->
+
 
             <p class="fw-bold">Resumen: </p>
             <p>{{ scholarship.summary }}</p>
@@ -30,6 +33,9 @@
             <p class="fw-bold">Recomendaciones: </p>
             <p>{{ scholarship.recomendations }}</p>
 
+            <p class="fw-bold">Renovación de la beca: </p>
+            <p>{{ scholarship.renovation_info }}</p> 
+            
             <p class="fw-bold">Informacion adicional: </p>
             <p>{{ scholarship.additional_info }}</p>            
             
@@ -44,6 +50,10 @@
         For future functions, delete and modify view Calendar
         
         <a href="/add_type_to_scholarship?auto_id={{scholarship.auto_id}}" class="btn btn-secondary">Añadir Tipo de Beca</a>
+    -->
+    <!--
+
+                <img src="{{ scholarship.post_img.file.url }}" alt="Imagen Beca">
     -->
         
     

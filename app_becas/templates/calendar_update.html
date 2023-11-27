@@ -1,15 +1,32 @@
 {% extends 'layouts/base.html' %}
 
 {% block content %}
-    <div class=" container p-5">
+
+<div class="container py-4">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"> 
+            <a href="/home/"> Inicio</a> </li>
+            <li class="breadcrumb-item">
+            <a href="/calendar/"> Cronogramas</a> </li>
+            <li class="breadcrumb-item">
+            <a href="/calendar_show_info?auto_id={{form.auto_id.value}}"> {{form.scholarship_name.value}}</a> </li>
+            <li class="breadcrumb-item active" aria-current="page"> Actualizar Información</li>
+        </ol>
+    </nav>
+</div>
+
+    <div class=" container p-4">
         <form id="form_update_calendar" method="post">
             {% csrf_token %}
             {{form.as_p}}
-            <button  class="btn btn-secondary">
-                guardar
+            <button type="submit" class="btn btn-primary">
+                Guardar
             </button>
+            <a href="/calendar_show_info?auto_id={{form.auto_id.value}}" class="btn btn-danger">Cancelar</a>
         </form>
     </div>
+
     
 
 {% endblock %}
